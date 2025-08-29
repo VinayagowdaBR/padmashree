@@ -1,0 +1,66 @@
+.ck-wrap {}
+
+.wrap-check-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+}
+
+.wrap-check-box input {
+    position: relative;
+    top: 2px;
+    margin-right: 3px;
+}
+
+.ck-wrap label {
+    font-size: 12px;
+}
+
+.wrap-form-public {
+    max-width: 45%;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 17%), 0 6px 20px 0 rgb(0 0 0 / 0%);
+    border-radius: 14px;
+    border: 2px solid #dddddd;
+}
+
+.xdsoft_time.appmgr_busy_time {
+    position: relative;
+}
+
+.xdsoft_time.appmgr_busy_time:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #f564644f;
+    cursor: no-drop;
+    color: #ff3a3a;
+}
+
+
+/*Mobile*/
+
+@media (max-width:767px) {
+    .wrap-form-public {
+        max-width: 100%;
+    }
+}
+
+
+/*landscape mobiles devices*/
+
+@media (max-width:736px) and (orientation:landscape) {}
+
+
+/*tablet devices (both orentations)*/
+
+@media (min-width:768px) and (max-width:1024px) {
+    .wrap-form-public {
+        max-width: 60%;
+    }
+}

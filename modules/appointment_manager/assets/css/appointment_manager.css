@@ -1,0 +1,917 @@
+.fc-timegrid.fc-timeGridDay-view.fc-view {
+    overflow: auto;
+}
+
+td.fc-timegrid-slot.fc-timegrid-slot-label.fc-scrollgrid-shrink {
+    background-color: #f1f5f9;
+}
+
+.fc .fc-timegrid-slot-label-cushion {
+    width: 100%;
+    text-align: center;
+}
+
+#calendar_div .fc .fc-timegrid-slot-lane {
+    height: 40.5px !important;
+}
+
+.fc-event-appointment {
+    display: flex;
+    align-items: center !important;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.sidebar ul.nav li a {
+    padding: 6px 8px;
+}
+
+.sidebar ul.nav li a i.menu-icon {
+    margin-right: 8px;
+}
+
+#appointment_manager .fc-col-header-cell a {
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#viewappointment .table {
+    margin-top: 0;
+}
+
+#viewappointment .modal-body {
+    padding: 0;
+}
+
+.fc-dayGridMonth-button,
+.fc-timeGridWeek-button,
+.fc-timeGridDay-button {
+    background-color: #f3f3f3 !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    padding: 8px 12px !important;
+    color: black !important;
+}
+
+.fc-button-active {
+    background-color: gainsboro !important;
+}
+
+.close-btn-popover {
+    cursor: pointer;
+}
+
+.fc .fc-toolbar-title {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 600;
+}
+
+#calendar_div .fc-media-screen .fc-timegrid-event {
+    position: static;
+    margin: 4px !important;
+}
+
+.fc-event-appontment {
+    white-space: nowrap;
+}
+
+.fc-disabled-date {
+    opacity: 0.5;
+    /* Example: reduce opacity for disabled dates */
+    pointer-events: none;
+    /* Example: disable pointer events */
+    /* Add any other styles you want to apply to disabled dates */
+}
+
+.wrap-small-calendar-filter {
+    width: 28%;
+    float: left;
+}
+
+#small-calendar {
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #f1f5f9;
+}
+
+#appointment_manager {
+    width: 70%;
+    float: left;
+    margin-left: 2%;
+}
+
+#small-calendar .fc-daygrid-day {
+    border: 0;
+}
+
+#small-calendar .fc-header-toolbar {
+    margin-bottom: 6px;
+    padding: 4px 10px 6px 0;
+}
+
+#small-calendar .fc-daygrid-event {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: absolute;
+    top: -5px;
+    font-size: 6px;
+    left: 0;
+    right: 0;
+    color: #4eaf37 !important;
+    display: inline-block !important;
+    text-align: center;
+}
+
+#small-calendar .fc-daygrid-day-frame {
+    background: rgb(255 255 255);
+    box-shadow: 0 3px 18px 0 rgb(172 171 171 / 12%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    margin: 3px;
+    color: black !important;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 3px;
+    padding: 5px;
+    position: relative;
+}
+
+#small-calendar .fc-daygrid-day-events {
+    margin-bottom: 0;
+    min-height: 0em;
+}
+
+#small-calendar .fc-daygrid-day-number {
+    color: black;
+}
+
+#small-calendar .fc-view {
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
+#small-calendar .fc-col-header-cell {
+    background-color: #626871;
+    padding: 6px 0;
+}
+
+#small-calendar .fc-daygrid-day-events {
+    /* display: none */
+    /* position: absolute; */
+}
+
+#small-calendar .fc-daygrid-event-harness {
+    visibility: visible !important;
+}
+
+#small-calendar .fc-col-header-cell a {
+    color: white;
+}
+
+#small-calendar .fc-scrollgrid {
+    border: 0 !important;
+}
+
+#small-calendar .fc-theme-standard td {
+    border: 0 !important;
+}
+
+#small-calendar .fc-scrollgrid-section td {
+    border: 0 !important;
+    cursor: pointer;
+}
+
+#small-calendar th:first-child {
+    border-top-left-radius: 10px;
+}
+
+#small-calendar th:last-child {
+    border-top-right-radius: 10px;
+}
+
+#small-calendar .fc-header-toolbar .fc-toolbar-chunk:nth-child(2) {
+    width: 60%;
+}
+
+#small-calendar .fc-header-toolbar .fc-toolbar-chunk:nth-child(2) .fc-toolbar-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#small-calendar .fc-header-toolbar .fc-toolbar-chunk:nth-child(3) {
+    width: 40%;
+    text-align: right;
+}
+
+#small-calendar .fc-header-toolbar {
+    margin-bottom: 4px;
+}
+
+#small-calendar .fc-header-toolbar .fc-toolbar-chunk:nth-child(3) .fc-button-group {
+    gap: 10px;
+}
+
+#small-calendar .fc-header-toolbar .fc-toolbar-chunk:nth-child(3) button {
+    border-radius: 4px;
+    width: 34px;
+    height: 34px;
+    text-align: center;
+    padding: 0;
+    box-shadow: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#small-calendar .fc-day-today .fc-daygrid-day-frame {
+    background-color: rgba(255, 220, 40, 0.15) !important;
+}
+
+#small-calendar .fc-day-today .fc-daygrid-day-frame a {
+    color: black;
+}
+
+
+/***********/
+
+#appointment_manager .fc-toolbar-chunk .fc-button-group .fc-prev-button,
+#appointment_manager .fc-toolbar-chunk .fc-button-group .fc-next-button {
+    border-radius: 4px;
+    width: 34px;
+    height: 34px;
+    text-align: center;
+    padding: 0;
+    box-shadow: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#appointment_manager .fc-header-toolbar .fc-toolbar-chunk:nth-child(1) .fc-button-group {
+    gap: 10px;
+}
+
+.fc-today-button,
+.fc-button-primary {
+    text-transform: uppercase !important;
+}
+
+#appointment_manager .fc-col-header .fc-col-header-cell {
+    background-color: #626871 !important;
+    padding: 6px;
+}
+
+#appointment_manager .fc-col-header-cell a {
+    color: white;
+}
+
+#appointment_manager .fc-dayGridMonth-view .fc-daygrid-day {
+    border: 0;
+    padding: 4px;
+}
+
+#appointment_manager .fc-dayGridMonth-view .fc-daygrid-day-frame {
+    margin: 0;
+    background: rgb(255 255 255 / 0%);
+    box-shadow: 0 8px 32px 0 rgb(31 38 135 / 13%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#appointment_manager .fc-dayGridMonth-view .fc-daygrid-day-frame a {
+    color: black;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#appointment_manager .fc-day-today {
+    background-color: transparent !important;
+}
+
+#appointment_manager .fc-day-today .fc-daygrid-day-frame {
+    background-color: rgba(255, 220, 40, 0.15) !important;
+}
+
+.container-practitioner {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* Hide the browser's default checkbox */
+
+.container-practitioner input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+
+/* Create a custom checkbox */
+
+.checkmark-practitioner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background-color: #eee;
+    border-radius: 5px;
+}
+
+
+/* On mouse-over, add a grey background color */
+
+.container-practitioner:hover input~.checkmark-practitioner {
+    background-color: #ccc;
+}
+
+
+/* When the checkbox is checked, add a blue background */
+
+.container-practitioner input:checked~.checkmark-practitioner {
+    background-color: #2196f3;
+}
+
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark-practitioner:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Show the checkmark when checked */
+
+.container-practitioner input:checked~.checkmark-practitioner:after {
+    display: block;
+}
+
+
+/* Style the checkmark/indicator */
+
+.container-practitioner .checkmark-practitioner:after {
+    left: 7px;
+    top: 3px;
+    width: 8px;
+    height: 14px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.practitioner-area {
+    background-color: #f1f5f9;
+    padding: 0px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.practitioner-area h3 {
+    margin: 0 0 13px 0;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 15px;
+    border-bottom: 1px solid #00000021;
+}
+
+.practitioner-checkbox {
+    padding: 0px 13px;
+}
+
+.srch-practitioner {
+    width: 100%;
+    position: relative;
+    margin-top: 24px;
+}
+
+.srch-practitioner input {
+    width: 100% !important;
+    padding: 23px 10px 23px 31px;
+    outline: 0 !important;
+    box-shadow: none !important;
+    border-color: #d8d8d8 !important;
+    border-radius: 3px !important;
+}
+
+.srch-practitioner .input-group-text {
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    bottom: 0;
+    padding: 16px 10px;
+    color: #bebbbb;
+}
+
+.all-practitioner-check {
+    padding: 6px 4px 0 25px;
+    height: 25vh;
+    overflow: auto;
+}
+
+.all-practitioner-check::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+/* Track */
+
+.all-practitioner-check::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+.all-practitioner-check::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+}
+
+.all-practitioner-check .container-practitioner {
+    margin-bottom: 17px;
+}
+
+#appoint_div {
+    position: absolute;
+    right: 0;
+    width: 30%;
+    z-index: 99;
+    margin: 63px 23px;
+    cursor: all-scroll;
+}
+
+.fc-scroller.fc-scroller-liquid-absolute::-webkit-scrollbar {
+    width: 6px;
+}
+
+.fc-scroller.fc-scroller-liquid-absolute::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.fc-scroller.fc-scroller-liquid-absolute::-webkit-scrollbar-thumb {
+    background: #dbdfe9;
+}
+
+#appointment_manager .fc-timegrid-body,
+#appointment_manager .fc-timegrid-body table {
+    width: 100% !important;
+}
+
+.csmz-popover {}
+
+.popover {
+    margin-top: -10px;
+    width: 150px;
+    z-index: 999999 !important;
+    margin-left: -27px;
+}
+
+.popover-title {
+    background-color: #1e293b;
+    color: white;
+    font-weight: 600;
+    padding: 8px 9px;
+    margin: 0;
+    font-size: 12px;
+}
+
+.popover-content {
+    padding: 1px 1px;
+}
+
+.popover-content div {
+    margin: 2px;
+    border-bottom: 1px solid #efeded;
+    padding: 5px 8px;
+    background-color: #f0f0f0;
+}
+
+.popover-content strong {
+    display: flex;
+    gap: 5px;
+    font-weight: 600;
+    align-items: center;
+    margin-bottom: 0px;
+    color: #1e293b;
+    font-size: 10px;
+    font-family: unset;
+}
+
+.popover-content strong i {}
+
+.popover-content span {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-family: unset;
+    font-weight: 500;
+    font-size: 12px;
+    display: inline-block;
+    line-height: 15px;
+}
+
+.fc-timegrid-event-harness.fc-timegrid-event-harness-inset {
+    z-index: 1 !important;
+}
+
+.view-full-clndr {
+    padding: 10px 20px;
+    text-align: right;
+    background-color: #f9f9f9;
+}
+
+.view-full-clndr button {
+    padding: 10px 15px;
+    background-color: #172032;
+    color: white !important;
+    font-size: 14px;
+}
+
+.cldr-full-view .wrap-small-calendar-filter {
+    display: none;
+}
+
+.cldr-full-view #appointment_manager {
+    width: 100%;
+    margin-left: 0%;
+    float: left;
+    /*    transition: 0.5s*/
+}
+
+.cldr-full-view .fc-col-header,
+.cldr-full-view .fc-scrollgrid-sync-table,
+.cldr-full-view .fc-daygrid-body-natural {
+    width: 100% !important;
+}
+
+.normal-view {
+    display: none;
+}
+
+.cldr-full-view .full-view {
+    display: none;
+}
+
+.cldr-full-view .normal-view {
+    display: inline-block !important;
+}
+
+.xdsoft_time.appmgr_busy_time {
+    position: relative;
+}
+
+.xdsoft_time.appmgr_busy_time:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #f564644f;
+    cursor: no-drop;
+}
+
+.popover-content span {
+    word-wrap: break-word;
+    width: 110px;
+}
+
+
+/******For Month******/
+
+#appointment_manager .fc-dayGridMonth-view .fc-daygrid-dot-event {
+    overflow: hidden;
+    display: inline-block;
+    border-radius: 2px !important;
+    background-color: rgb(74, 106, 208);
+    width: 93%;
+    margin: 1px 3px !important;
+    color: white !important;
+    font-size: 12px !important;
+}
+
+.fc-dayGridMonth-view .fc-event-appointment {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fc-dayGridMonth-view a.fc-daygrid-more-link {
+    font-size: 13px !important;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    color: #4a6ad0 !important;
+}
+
+.view-full-clndr button {
+    padding: 7px 15px !important;
+}
+
+
+/*****popover******/
+
+.popover-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.popover {
+    width: 275px;
+}
+
+.widget .wrap-small-calendar-filter {
+    width: 35%;
+}
+
+.widget #appointment_manager {
+    width: 63%;
+}
+
+.widget #small-calendar .fc-daygrid-day-number {
+    font-size: 12px;
+}
+
+#small-calendar .fc-daygrid-day-number {
+    padding: 0;
+}
+
+#small-calendar .fc-daygrid-day-top {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.widget #small-calendar .fc-col-header-cell-cushion {
+    font-size: 10px;
+}
+
+.widget #appoint_div {
+    width: 30%;
+}
+
+
+/* #newAppointmentModal .modal-dialog {
+    width: 359.77px;
+} */
+
+.wrap-check-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+}
+
+.wrap-check-box input {
+    position: relative;
+    top: 2px;
+    margin-right: 3px;
+}
+
+.menu-item-appointment_manager a {
+    padding-right: 4px !important;
+}
+
+.menu-item-appointment_manager .pleft5 {
+    position: relative;
+    left: -7px;
+}
+
+
+/*============Responsive============*/
+
+
+/*Mobile*/
+
+@media (max-width: 767px) {
+    .wrap-small-calendar-filter {
+        width: 100% !important;
+        float: none;
+    }
+    #appointment_manager {
+        width: 100% !important;
+        float: none !important;
+        margin-left: 0% !important;
+    }
+    div#calendar_div {
+        padding: 30px 0;
+    }
+    #calendar_div .tw-mb-2.sm\:tw-mb-4 {
+        background-color: white;
+        padding: 20px;
+        max-width: 95%;
+        margin: 0 auto;
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
+    #calendar_div .tw-mb-2.sm\:tw-mb-4 .col-md-6 {
+        margin-bottom: 15px;
+    }
+    .view-full-clndr button {
+        padding: 7px 15px !important;
+    }
+    .wrap-small-calendar-filter {
+        margin-bottom: 40px;
+    }
+    #calendar_div .fc-view-harness.fc-view-harness-active {
+        height: 60vh !important;
+    }
+    #appoint_div {
+        width: 90% !important;
+        z-index: 99;
+        margin: 63px 23px;
+        cursor: all-scroll;
+        top: 0 !important;
+    }
+    .popover {
+        display: none !important;
+    }
+    #appoint_div label {
+        font-size: 12px !important;
+    }
+    #appoint_div .form-group {
+        margin-bottom: 6px !important;
+    }
+    #appoint_div .filter-option,
+    #appoint_div input {
+        font-size: 12px !important;
+    }
+    #appoint_div .col-md-6 {
+        margin-bottom: 8px;
+    }
+    #appoint_div textarea#description {
+        height: 90px;
+    }
+    .clk-evnt {
+        display: none !important;
+    }
+    #appointment_manager .fc-col-header-cell a {
+        font-size: 11px !important;
+    }
+    #appointment_manager .fc-dayGridMonth-view .fc-daygrid-day-frame a {
+        font-size: 13px !important;
+    }
+    #calendar_div .fc-toolbar-title {
+        font-size: 15px !important;
+    }
+}
+
+
+/*For small mobile devices*/
+
+@media (min-width: 320px) and (max-width: 479px) {}
+
+
+/*For landscape mobiles devices*/
+
+@media (max-width: 736px) and (orientation: landscape) {
+    .wrap-small-calendar-filter {
+        width: 45% !important;
+    }
+    #calendar_div .fc-view-harness.fc-view-harness-active {
+        height: 100vh !important;
+    }
+    #calendar_div .tw-mb-2.sm\:tw-mb-4 .form-group {
+        margin-bottom: 0;
+    }
+    #calendar_div .tw-mb-2.sm\:tw-mb-4 {
+        max-width: 100% !important;
+    }
+    #appointment_manager .fc-col-header-cell a {
+        font-size: 12px !important;
+    }
+    #appoint_div {
+        width: 50% !important;
+    }
+    .itm-wrap {
+        width: 49% !important;
+        display: inline-block;
+    }
+}
+
+
+/*tablet devices (both orentations)*/
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .wrap-small-calendar-filter {
+        width: 40% !important;
+    }
+    #appointment_manager {
+        width: 57% !important;
+        margin-left: 2% !important;
+    }
+    .itm-wrap {
+        width: 49% !important;
+        display: inline-block;
+    }
+    .itm-wrap.col-md-6 {
+        padding: 8px !important;
+    }
+    .row.cstm-group {
+        padding: 0 9px !important;
+    }
+    #calendar_div .tw-mb-2.sm\:tw-mb-4 {
+        background-color: white;
+        padding: 20px;
+        max-width: 95%;
+        margin: 0 auto;
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
+    #calendar_div .tw-mb-2.sm\:tw-mb-4 .col-md-6 {
+        margin-bottom: 15px;
+    }
+    .view-full-clndr button {
+        padding: 7px 15px !important;
+    }
+    .wrap-small-calendar-filter {
+        margin-bottom: 40px;
+    }
+    #calendar_div .fc-view-harness.fc-view-harness-active {
+        height: 60vh !important;
+    }
+    #appoint_div {
+        width: 50% !important;
+        z-index: 99;
+        margin: 63px 23px;
+        cursor: all-scroll;
+        top: 0 !important;
+    }
+    .itm-wrap .dropdown.bootstrap-select.bs3 {}
+    .popover {
+        display: none !important;
+    }
+    #appoint_div label {
+        font-size: 12px !important;
+    }
+    #appoint_div .form-group {
+        margin-bottom: 6px !important;
+    }
+    #appoint_div .filter-option,
+    #appoint_div input {
+        font-size: 12px !important;
+    }
+    #appoint_div .col-md-6 {
+        margin-bottom: 8px;
+    }
+    #appoint_div textarea#description {
+        height: 90px;
+    }
+    .clk-evnt {
+        display: none !important;
+    }
+    #calendar_div .tw-mb-2.sm\:tw-mb-4 .col-md-6 {
+        margin-bottom: 0 !important;
+        width: 50% !important;
+        float: left !important;
+    }
+    #calendar_div .panel-body {
+        padding: 10px;
+    }
+    .fc-daygrid-day-number {
+        font-size: 12px !important;
+    }
+    .fc-col-header-cell {
+        font-size: 12px !important;
+    }
+    #calendar_div h2.fc-toolbar-title {
+        font-size: 15px !important;
+    }
+    #calendar_div .tw-mb-2.sm\:tw-mb-4 .form-group {
+        margin-bottom: 0;
+    }
+    #calendar_div .tw-mb-2.sm\:tw-mb-4 {
+        max-width: 100% !important;
+    }
+    .apt-cl {
+        position: relative;
+        top: -30px;
+    }
+}
+
+
+/*For small screens and laptops devices*/
+
+@media (min-width: 980px) and (max-width: 1199px) {}
+
+@media (min-width: 1200px) and (max-width: 1399px) {}
+
+@media (min-width: 1200px) {}

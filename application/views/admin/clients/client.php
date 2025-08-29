@@ -1,0 +1,202 @@
+<?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
+<?php init_head(); ?>
+<div id="wrapper" class="customer_profile">
+    <div class="content">
+        <div class="md:tw-w-[calc(100%-theme(width.64)+theme(spacing.16))] [&_div:last-child]:tw-mb-6">
+            <?php if (isset($client) && $client->registration_confirmed == 0 && is_admin()) { ?>
+            <div class="alert alert-warning">
+                <h4>
+                    <?= _l('customer_requires_registration_confirmation'); ?>
+                </h4>
+                <a href="<?= admin_url('clients/confirm_registration/' . $client->userid); ?>"
+                    class="alert-link">
+                    <?= _l('confirm_registration'); ?>
+                </a>
+            </div>
+            <?php } elseif (isset($client) && $client->active == 0 && $client->registration_confirmed == 1) { ?>
+            <div class="alert alert-warning">
+                <?= _l('customer_inactive_message'); ?>
+                <br />
+                <a href="<?= admin_url('clients/mark_as_active/' . $client->userid); ?>"
+                    class="alert-link">
+                    <?= _l('mark_as_active'); ?>
+                </a>
+            </div>
+            <?php } ?>
+            <?php if (isset($client) && (staff_cant('view', 'customers') && is_customer_admin($client->userid))) {?>
+            <div class="alert alert-info">
+                <?= e(_l('customer_admin_login_as_client_message', get_staff_full_name(get_staff_user_id()))); ?>
+            </div>
+            <?php } ?>
+        </div>
+
+        <?php if (isset($client) && $client->leadid != null) { ?>
+        <small class="tw-block">
+            <b><?= e(_l('customer_from_lead', _l('lead'))); ?></b>
+            <a href="<?= admin_url('leads/index/' . $client->leadid); ?>"
+                onclick="init_lead(<?= e($client->leadid); ?>); return false;">
+                -
+                <?= _l('view'); ?>
+            </a>
+        </small>
+        <?php } ?>
+
+        <div class="md:tw-max-w-64 tw-w-full">
+            <?php if (isset($client)) { ?>
+            <h4 class="tw-text-lg tw-font-bold tw-text-neutral-800 tw-mt-0">
+                <div class="tw-space-x-3 tw-flex tw-items-center">
+                    <span class="tw-truncate">
+                        #<?= $client->userid . ' ' . $title; ?>
+                    </span>
+                    <?php if (staff_can('delete', 'customers') || is_admin()) { ?>
+                    <div class="btn-group">
+                        <a href="#" class="dropdown-toggle btn-link" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <?php if (is_admin()) { ?>
+                            <li>
+                                <a href="<?= admin_url('clients/login_as_client/' . $client->userid); ?>"
+                                    target="_blank">
+                                    <i class="fa-regular fa-share-from-square"></i>
+                                    <?= _l('login_as_client'); ?>
+                                </a>
+                            </li>
+                            <?php } ?>
+                            <?php if (staff_can('delete', 'customers')) { ?>
+                            <li>
+                                <a href="<?= admin_url('clients/delete/' . $client->userid); ?>"
+                                    class="text-danger delete-text _delete"><i class="fa fa-remove"></i>
+                                    <?= _l('delete'); ?>
+                                </a>
+                            </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                    <?php } ?>
+                </div>
+            </h4>
+            <?php } ?>
+        </div>
+
+        <div class="md:tw-flex md:tw-gap-6">
+            <?php if (isset($client)) { ?>
+            <div class="md:tw-max-w-64 tw-w-full">
+                <?php $this->load->view('admin/clients/tabs'); ?>
+            </div>
+            <?php } ?>
+            <div
+                class="tw-mt-12 md:tw-mt-0 tw-w-full <?= isset($client) ? 'tw-max-w-6xl' : 'tw-mx-auto tw-max-w-4xl'; ?>">
+
+                <?php if (! isset($client)) {?>
+                <h4 class="tw-mt-0 tw-font-bold tw-text-lg tw-text-neutral-700">
+                    <?= $title ?>
+                </h4>
+                <?php } ?>
+
+                <div class="panel_s">
+                    <div class="panel-body">
+                        <?php if (isset($client)) { ?>
+                        <?= form_hidden('isedit'); ?>
+                        <?= form_hidden('userid', $client->userid); ?>
+                        <div class="clearfix"></div>
+                        <?php } ?>
+                        <div>
+                            <div class="tab-content">
+                                <?php $this->load->view((isset($tab) ? $tab['view'] : 'admin/clients/groups/profile')); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php if ($group == 'profile') { ?>
+                    <div class="panel-footer text-right tw-space-x-1" id="profile-save-section">
+                        <!-- Add Affiliate Button -->
+                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#affiliateModal">
+                            <i class="fa fa-plus"></i> Add Affiliate
+                        </button>
+                        <button class="btn btn-primary only-save customer-form-submiter">
+                            <?= _l('submit'); ?>
+                        </button>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Affiliate Modal -->
+<div class="modal fade" id="affiliateModal" tabindex="-1" role="dialog" aria-labelledby="affiliateModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="affiliateModalLabel">Add Affiliate</h4>
+            </div>
+            <div class="modal-body">
+                <form id="affiliateForm">
+                    <?= form_hidden('client_id', isset($client) ? $client->userid : ''); ?>
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone_number">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone_number" name="phone_number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveAffiliate">Save Affiliate</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php init_tail(); ?>
+<?php if (isset($client)) { ?>
+<script>
+    $(function() {
+        init_rel_tasks_table( <?= e($client->userid); ?> , 'customer');
+        
+        // Save affiliate data
+        $('#saveAffiliate').on('click', function() {
+            var formData = $('#affiliateForm').serialize();
+            
+            $.ajax({
+                url: '<?= admin_url('clients/save_affiliate'); ?>',
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    response = JSON.parse(response);
+                    if (response.success) {
+                        alert_float('success', 'Affiliate saved successfully');
+                        $('#affiliateModal').modal('hide');
+                        // Optionally refresh affiliate list if you have one
+                    } else {
+                        alert_float('danger', response.message);
+                    }
+                },
+                error: function() {
+                    alert_float('danger', 'An error occurred while saving the affiliate');
+                }
+            });
+        });
+    });
+</script>
+<?php } ?>
+<?php $this->load->view('admin/clients/client_js'); ?>
+</body>
+</html>
