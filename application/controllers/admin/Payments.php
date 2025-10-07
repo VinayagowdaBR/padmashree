@@ -74,56 +74,83 @@ class Payments extends AdminController
     }
 
     /* Update payment data */
-    public function payment($id = '')
-    {
-        if (staff_cant('view', 'payments')
-            && staff_cant('view_own', 'invoices')
-            && get_option('allow_staff_view_invoices_assigned') == '0') {
-            access_denied('payments');
-        }
-
-        if (!$id) {
-            redirect(admin_url('payments'));
-        }
-
-        if ($this->input->post()) {
-            if (staff_cant('edit', 'payments')) {
-                access_denied('Update Payment');
-            }
-            $success = $this->payments_model->update($this->input->post(), $id);
-            if ($success) {
-                set_alert('success', _l('updated_successfully', _l('payment')));
-            }
-            redirect(admin_url('payments/payment/' . $id));
-        }
-
-        $payment = $this->payments_model->get($id);
-
-        if (!$payment) {
-            show_404();
-        }
-
-        $this->load->model('invoices_model');
-        $payment->invoice = $this->invoices_model->get($payment->invoiceid);
-        $template_name    = 'invoice_payment_recorded_to_customer';
-
-        $data = prepare_mail_preview_data($template_name, $payment->invoice->clientid);
-
-        $data['payment'] = $payment;
-        $this->load->model('payment_modes_model');
-        $data['payment_modes'] = $this->payment_modes_model->get('', [], true, true);
-
-        $i = 0;
-        foreach ($data['payment_modes'] as $mode) {
-            if ($mode['active'] == 0 && $data['payment']->paymentmode != $mode['id']) {
-                unset($data['payment_modes'][$i]);
-            }
-            $i++;
-        }
-
-        $data['title'] = _l('payment_receipt') . ' - ' . format_invoice_number($data['payment']->invoiceid);
-        $this->load->view('admin/payments/payment', $data);
+public function payment($id = '')
+{
+    if (staff_cant('view', 'payments')
+        && staff_cant('view_own', 'invoices')
+        && get_option('allow_staff_view_invoices_assigned') == '0') {
+        access_denied('payments');
     }
+
+    if (!$id) {
+        redirect(admin_url('payments'));
+    }
+
+    if ($this->input->post()) {
+        if (staff_cant('edit', 'payments')) {
+            access_denied('Update Payment');
+        }
+
+        $data = $this->input->post();
+
+        // Update main payment (existing behaviour)
+        $success = $this->payments_model->update($data, $id);
+
+        // Handle multiple payment splits if present
+        if (isset($data['payment_splits']) && is_array($data['payment_splits'])) {
+            $invoiceId = $data['invoiceid'];
+
+            foreach ($data['payment_splits'] as $split) {
+                if (!empty($split['amount']) && !empty($split['paymentmode'])) {
+                    $splitData = [
+                        'invoiceid'     => $invoiceId,
+                        'amount'        => $split['amount'],
+                        'paymentmode'   => $split['paymentmode'],
+                        'transactionid' => !empty($split['transactionid']) ? $split['transactionid'] : '',
+                        'date'          => to_sql_date($data['date']),
+                        'note'          => isset($data['note']) ? $data['note'] : '',
+                    ];
+
+                    // Insert as a new payment row
+                    $this->payments_model->add($splitData);
+                }
+            }
+        }
+
+        if ($success) {
+            set_alert('success', _l('updated_successfully', _l('payment')));
+        }
+        redirect(admin_url('payments/payment/' . $id));
+    }
+
+    // Get main payment record
+    $payment = $this->payments_model->get($id);
+    if (!$payment) {
+        show_404();
+    }
+
+    $this->load->model('invoices_model');
+    $payment->invoice = $this->invoices_model->get($payment->invoiceid);
+    $template_name    = 'invoice_payment_recorded_to_customer';
+
+    $data = prepare_mail_preview_data($template_name, $payment->invoice->clientid);
+    $data['payment'] = $payment;
+
+    $this->load->model('payment_modes_model');
+    $data['payment_modes'] = $this->payment_modes_model->get('', [], true, true);
+
+    $i = 0;
+    foreach ($data['payment_modes'] as $mode) {
+        if ($mode['active'] == 0 && $data['payment']->paymentmode != $mode['id']) {
+            unset($data['payment_modes'][$i]);
+        }
+        $i++;
+    }
+
+    $data['title'] = _l('payment_receipt') . ' - ' . format_invoice_number($data['payment']->invoiceid);
+    $this->load->view('admin/payments/payment', $data);
+}
+
 
     /**
      * Generate payment pdf

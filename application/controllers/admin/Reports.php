@@ -1236,7 +1236,7 @@ class Reports extends AdminController
             exit;
         }
     
-        $data['title'] = _l('balance_details');
+        $data['title'] = _l('Balance Details');
         $this->load->view('admin/reports/balance_details', $data);
     }
 
@@ -1416,7 +1416,7 @@ public function balance_details_table()
     if (!staff_can('view', 'invoices')) {
         access_denied('invoices');
     }
-    $data['title'] = _l('due_paid_details');
+    $data['title'] = _l('Due Paid Details');
     $this->load->view('admin/reports/due_paid_details', $data);
 }
 
@@ -1518,10 +1518,11 @@ public function due_paid_details_table()
             WHERE cfd.name = "Mobile.no" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
             AND cfdv.fieldto = "invoice" LIMIT 1) as Mobile',
 
-        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
-            JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
-            WHERE cfd.name = "Payment Details" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
-            AND cfdv.fieldto = "invoice" LIMIT 1) as payment_details',
+        '(SELECT GROUP_CONCAT(pr.transactionid SEPARATOR ", ") 
+            FROM ' . db_prefix() . 'invoicepaymentrecords pr
+            WHERE pr.invoiceid = ' . $invoiceTable . '.id
+            ) as payment_details',
+
 
         '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
             JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
@@ -1706,195 +1707,446 @@ public function referral_details()
         access_denied('invoices');
     }
 
-    $data['title'] = _l('referral_details');
+    $data['title'] = _l('Referral Details Report');
     $this->load->view('admin/reports/referral_details', $data);
 }
 
 
-public function referral_details_table()
-{
-    if (!staff_can('view', 'invoices')) {
-        access_denied('invoices');
-    }
+    // public function referral_details_table()
+    // {
+    //     if (!staff_can('view', 'invoices')) {
+    //         access_denied('invoices');
+    //     }
 
-    $invoiceTable = db_prefix() . 'invoices';
-    $clientsTable = db_prefix() . 'clients';
-    $itemableTable = db_prefix() . 'itemable';
-    $paymentRecordsTable = db_prefix() . 'invoicepaymentrecords';
-    $customFieldsValuesTable = db_prefix() . 'customfieldsvalues';
-    $customFieldsTable = db_prefix() . 'customfields';
-    $affiliateUsersTable = db_prefix() . 'affiliate_users';
-    $staffTable = db_prefix() . 'staff';
+    //     $invoiceTable = db_prefix() . 'invoices';
+    //     $clientsTable = db_prefix() . 'clients';
+    //     $itemableTable = db_prefix() . 'itemable';
+    //     $paymentRecordsTable = db_prefix() . 'invoicepaymentrecords';
+    //     $customFieldsValuesTable = db_prefix() . 'customfieldsvalues';
+    //     $customFieldsTable = db_prefix() . 'customfields';
+    //     $affiliateUsersTable = db_prefix() . 'affiliate_users';
+    //     $staffTable = db_prefix() . 'staff';
 
-    $this->load->model('invoices_model');
-    $this->load->model('currencies_model');
-    $currency = $this->currencies_model->get_base_currency();
-    log_message('debug', 'Loaded base currency: ' . print_r($currency, true));
+    //     $this->load->model('invoices_model');
+    //     $this->load->model('currencies_model');
+    //     $currency = $this->currencies_model->get_base_currency();
+    //     log_message('debug', 'Loaded base currency: ' . print_r($currency, true));
 
-    // Filters from POST
-    $from_date = $this->input->post('report_from');
-    $to_date   = $this->input->post('report_to');
-    $mrd_from  = $this->input->post('mrd_from');
-    $mrd_to    = $this->input->post('mrd_to');
-    $clientid  = $this->input->post('customer_id');
-    $project_id = $this->input->post('project_id');
-    $referral_name = $this->input->post('referral_name');
+    //     // Filters from POST
+    //     $from_date = $this->input->post('report_from');
+    //     $to_date   = $this->input->post('report_to');
+    //     $mrd_from  = $this->input->post('mrd_from');
+    //     $mrd_to    = $this->input->post('mrd_to');
+    //     $clientid  = $this->input->post('customer_id');
+    //     $project_id = $this->input->post('project_id');
+    //     $referral_name = $this->input->post('referral_name');
 
-    $where = [];
+    //     $where = [];
 
-    if ($from_date && $to_date) {
-        $where[] = 'AND DATE(inv.date) BETWEEN "' . $this->db->escape_str($from_date) . '" AND "' . $this->db->escape_str($to_date) . '"';
-    } elseif ($from_date) {
-        $where[] = 'AND DATE(inv.date) >= "' . $this->db->escape_str($from_date) . '"';
-    } elseif ($to_date) {
-        $where[] = 'AND DATE(inv.date) <= "' . $this->db->escape_str($to_date) . '"';
-    }
+    //     if ($from_date && $to_date) {
+    //         $where[] = 'AND DATE(inv.date) BETWEEN "' . $this->db->escape_str($from_date) . '" AND "' . $this->db->escape_str($to_date) . '"';
+    //     } elseif ($from_date) {
+    //         $where[] = 'AND DATE(inv.date) >= "' . $this->db->escape_str($from_date) . '"';
+    //     } elseif ($to_date) {
+    //         $where[] = 'AND DATE(inv.date) <= "' . $this->db->escape_str($to_date) . '"';
+    //     }
 
-    if ($mrd_from && $mrd_to) {
-        $where[] = 'AND c.userid BETWEEN "' . $this->db->escape_str($mrd_from) . '" AND "' . $this->db->escape_str($mrd_to) . '"';
-    } elseif ($mrd_from) {
-        $where[] = 'AND c.userid >= "' . $this->db->escape_str($mrd_from) . '"';
-    } elseif ($mrd_to) {
-        $where[] = 'AND c.userid <= "' . $this->db->escape_str($mrd_to) . '"';
-    }
+    //     if ($mrd_from && $mrd_to) {
+    //         $where[] = 'AND c.userid BETWEEN "' . $this->db->escape_str($mrd_from) . '" AND "' . $this->db->escape_str($mrd_to) . '"';
+    //     } elseif ($mrd_from) {
+    //         $where[] = 'AND c.userid >= "' . $this->db->escape_str($mrd_from) . '"';
+    //     } elseif ($mrd_to) {
+    //         $where[] = 'AND c.userid <= "' . $this->db->escape_str($mrd_to) . '"';
+    //     }
 
-    if ($referral_name) {
-        $referral_name_esc = $this->db->escape_like_str($referral_name);
-        $where[] = 'AND CONCAT(IFNULL(au.firstname, ""), " ", IFNULL(au.lastname, "")) LIKE "%' . $referral_name_esc . '%"';
-    }
+    //     if ($referral_name) {
+    //         $referral_name_esc = $this->db->escape_like_str($referral_name);
+    //         $where[] = 'AND CONCAT(IFNULL(au.firstname, ""), " ", IFNULL(au.lastname, "")) LIKE "%' . $referral_name_esc . '%"';
+    //     }
 
-    if (staff_cant('view', 'invoices')) {
-        $where[] = get_invoices_where_sql_for_staff(get_staff_user_id());
-    }
+    //     if (staff_cant('view', 'invoices')) {
+    //         $where[] = get_invoices_where_sql_for_staff(get_staff_user_id());
+    //     }
 
-    $where[] = 'AND (inv.total - IFNULL((SELECT SUM(amount) FROM ' . $paymentRecordsTable . ' WHERE invoiceid = inv.id), 0)) = 0';
+    //     $where[] = 'AND (inv.total - IFNULL((SELECT SUM(amount) FROM ' . $paymentRecordsTable . ' WHERE invoiceid = inv.id), 0)) = 0';
 
-  $sql = "
-    SELECT 
-        inv.id as invoice_id,
-        inv.number as invoice_number,
-        ii.rate AS item_fixed_rate,
-        (ii.qty * ii.rate) AS item_subtotal,
-        inv.discount_total,
-        inv.discount_percent,
-        inv.total,
-        c.company as client_name,
-        c.userid as mrd_no,
-        au.firstname,
-        au.lastname,
-        ii.id as item_id,
-        ii.description,
-        ii.long_description,
-        (SELECT MAX(date) FROM $paymentRecordsTable WHERE invoiceid = inv.id) as last_payment_date,
-        (SELECT SUM(amount) FROM $paymentRecordsTable WHERE invoiceid = inv.id) as total_paid,
-        cur.name as currency_name
-    FROM $invoiceTable as inv
-    LEFT JOIN $clientsTable as c ON c.userid = inv.clientid
-    LEFT JOIN $affiliateUsersTable as au ON au.affiliate_code = c.affiliate_code COLLATE utf8mb4_unicode_ci
-    LEFT JOIN " . db_prefix() . "currencies as cur ON cur.id = inv.currency
-    LEFT JOIN $itemableTable as ii ON ii.rel_id = inv.id AND ii.rel_type = 'invoice'
-    WHERE 1=1 " . implode(' ', $where) . "
-    ORDER BY inv.id ASC, ii.id ASC
-";
+    // $sql = "
+    //     SELECT 
+    //         inv.id as invoice_id,
+    //         inv.number as invoice_number,
+    //         ii.rate AS item_fixed_rate,
+    //         (ii.qty * ii.rate) AS item_subtotal,
+    //         inv.discount_total,
+    //         inv.discount_percent,
+    //         inv.total,
+    //         c.company as client_name,
+    //         c.userid as mrd_no,
+    //         au.firstname,
+    //         au.lastname,
+    //         ii.id as item_id,
+    //         ii.description,
+    //         ii.long_description,
+    //         (SELECT MAX(date) FROM $paymentRecordsTable WHERE invoiceid = inv.id) as last_payment_date,
+    //         (SELECT SUM(amount) FROM $paymentRecordsTable WHERE invoiceid = inv.id) as total_paid,
+    //         cur.name as currency_name
+    //     FROM $invoiceTable as inv
+    //     LEFT JOIN $clientsTable as c ON c.userid = inv.clientid
+    //     LEFT JOIN $affiliateUsersTable as au ON au.affiliate_code = c.affiliate_code COLLATE utf8mb4_unicode_ci
+    //     LEFT JOIN " . db_prefix() . "currencies as cur ON cur.id = inv.currency
+    //     LEFT JOIN $itemableTable as ii ON ii.rel_id = inv.id AND ii.rel_type = 'invoice'
+    //     WHERE 1=1 " . implode(' ', $where) . "
+    //     ORDER BY inv.id ASC, ii.id ASC
+    // ";
 
 
-    log_message('debug', 'Referral Details SQL: ' . $sql);
+    //     log_message('debug', 'Referral Details SQL: ' . $sql);
 
-    $results = $this->db->query($sql)->result();
+    //     $results = $this->db->query($sql)->result();
 
-    log_message('debug', 'Total Results Found: ' . count($results));
-    if (!empty($results)) {
-        log_message('debug', 'Sample Row: ' . print_r($results[0], true));
-    }
+    //     log_message('debug', 'Total Results Found: ' . count($results));
+    //     if (!empty($results)) {
+    //         log_message('debug', 'Sample Row: ' . print_r($results[0], true));
+    //     }
 
-    $output['aaData'] = [];
-    $serial = 1;
-    $total_subtotal = 0;
-    $total_discount = 0;
-    $total_total = 0;
-    $total_commission = 0;
-    $total_balance = 0;
-    $commission_custom_field_id = 91;
+    //     $output['aaData'] = [];
+    //     $serial = 1;
+    //     $total_subtotal = 0;
+    //     $total_discount = 0;
+    //     $total_total = 0;
+    //     $total_commission = 0;
+    //     $total_balance = 0;
+    //     $commission_custom_field_id = 91;
 
-    $invoice_item_counts = [];
-    foreach ($results as $r) {
-        if (!isset($invoice_item_counts[$r->invoice_id])) {
-            $invoice_item_counts[$r->invoice_id] = 0;
+    //     $invoice_item_counts = [];
+    //     foreach ($results as $r) {
+    //         if (!isset($invoice_item_counts[$r->invoice_id])) {
+    //             $invoice_item_counts[$r->invoice_id] = 0;
+    //         }
+    //         $invoice_item_counts[$r->invoice_id]++;
+    //     }
+
+    //     foreach ($results as $row) {
+    //         log_message('debug', 'Processing item_id: ' . $row->item_id);
+
+    //         $this->db->select('value');
+    //         $this->db->from($customFieldsValuesTable);
+    //         $this->db->where('relid', $row->item_id);
+    //         $this->db->where('fieldid', $commission_custom_field_id);
+    //         $this->db->where('fieldto', 'items');
+    //         $cf_result = $this->db->get()->row();
+
+    //         log_message('debug', 'Commission query: ' . $this->db->last_query());
+    //         log_message('debug', 'Commission result: ' . print_r($cf_result, true));
+
+    //         $commission = isset($cf_result->value) ? (float)$cf_result->value : 0;
+
+    // // Subtotal for this item
+    // $item_subtotal = (float)$row->item_fixed_rate;
+    // $discount_percent = isset($row->discount_percent) ? (float)$row->discount_percent : 0;
+    // $discount_total_item = $item_subtotal * ($discount_percent / 100);
+    // $item_total_after_discount = $item_subtotal - $discount_total_item;
+    // $commission_after_discount = max($commission - $discount_total_item, 0);
+
+
+    // // Balance remains invoice-level
+    // $balance = (float)$row->total - (float)$row->total_paid;
+
+    //         $output['aaData'][] = [
+    //     $serial++,
+    //     '<a href="' . admin_url('invoices/invoice/' . $row->invoice_id) . '" target="_blank">' . format_invoice_number($row->invoice_id) . '</a>',
+    //     _d($row->last_payment_date),
+    //     str_pad($row->mrd_no, 0, '0', STR_PAD_LEFT),
+    //     '<a href="' . admin_url('clients/client/' . $row->mrd_no) . '" target="_blank">' . html_escape($row->client_name) . '</a>',
+    //     ($row->firstname || $row->lastname) ? html_escape($row->firstname . ' ' . $row->lastname) : 'N/A',
+    //     html_escape($row->description),
+    //     html_escape($row->long_description),
+    //     app_format_money($item_subtotal, $currency->name),
+    //     app_format_money($discount_total_item, $currency->name),
+    //     app_format_money($item_total_after_discount, $currency->name),
+    //     app_format_money($balance, $currency->name),
+    //     '<span class="tw-text-green-600">' . app_format_money($commission_after_discount, $currency->name) . '</span>',
+    // ];
+
+    //         // Accumulate totals
+    //             $total_subtotal += $item_subtotal;
+    //             $total_discount += $discount_total_item;
+    //             $total_total    += (float)$row->total;
+    //             $total_balance  += $balance;
+    //             $total_commission += $commission_after_discount;
+
+    //     }
+
+    //     $output['aaData'][] = [
+    //         '', '', '', '', '', '', '', '<strong>Total:</strong>',
+    //         '<strong>' . app_format_money($total_subtotal, $currency->name) . '</strong>',
+    //         '<strong>' . app_format_money($total_discount, $currency->name) . '</strong>',
+    //         '<strong>' . app_format_money($total_total, $currency->name) . '</strong>',
+    //         '<strong>' . app_format_money($total_balance, $currency->name) . '</strong>',
+    //         '<strong>' . app_format_money($total_commission, $currency->name) . '</strong>',
+    //     ];
+
+    //     log_message('debug', 'Final Totals: ' . json_encode([
+    //         'subtotal' => $total_subtotal,
+    //         'discount' => $total_discount,
+    //         'total' => $total_total,
+    //         'balance' => $total_balance,
+    //         'commission' => $total_commission,
+    //     ]));
+
+    //     echo json_encode($output);
+    // }
+
+
+    public function referral_details_table()
+    {
+        log_message('debug', '🚀 Starting referral_details_table method');
+    
+        if (!staff_can('view', 'invoices')) {
+            log_message('debug', '❌ Access denied for viewing invoices');
+            access_denied('invoices');
         }
-        $invoice_item_counts[$r->invoice_id]++;
-    }
+    
+        $invoiceTable = db_prefix() . 'invoices';
+        $clientsTable = db_prefix() . 'clients';
+        $itemableTable = db_prefix() . 'itemable';
+        $paymentRecordsTable = db_prefix() . 'invoicepaymentrecords';
+        $customFieldsValuesTable = db_prefix() . 'customfieldsvalues';
+        $customFieldsTable = db_prefix() . 'customfields';
+        $affiliateUsersTable = db_prefix() . 'affiliate_users';
+        $staffTable = db_prefix() . 'staff';
+    
+        $this->load->model('invoices_model');
+        $this->load->model('currencies_model');
+        $currency = $this->currencies_model->get_base_currency();
+        log_message('debug', '💰 Loaded base currency: ' . print_r($currency, true));
+    
+        // Filters from POST
+        $from_date = $this->input->post('report_from');
+        $to_date   = $this->input->post('report_to');
+        $mrd_from  = $this->input->post('mrd_from');
+        $mrd_to    = $this->input->post('mrd_to');
+        $clientid  = $this->input->post('customer_id');
+        $project_id = $this->input->post('project_id');
+        $referral_name = $this->input->post('referral_name');
+    
+        log_message('debug', '🎯 Received filters:');
+        log_message('debug', '   - from_date: ' . $from_date);
+        log_message('debug', '   - to_date: ' . $to_date);
+        log_message('debug', '   - mrd_from: ' . $mrd_from);
+        log_message('debug', '   - mrd_to: ' . $mrd_to);
+        log_message('debug', '   - referral_name: ' . $referral_name);
+    
+        $where = [];
+    
+        if ($from_date && $to_date) {
+            $where[] = 'AND DATE(inv.date) BETWEEN "' . $this->db->escape_str($from_date) . '" AND "' . $this->db->escape_str($to_date) . '"';
+        } elseif ($from_date) {
+            $where[] = 'AND DATE(inv.date) >= "' . $this->db->escape_str($from_date) . '"';
+        } elseif ($to_date) {
+            $where[] = 'AND DATE(inv.date) <= "' . $this->db->escape_str($to_date) . '"';
+        }
+    
+        if ($mrd_from && $mrd_to) {
+            $where[] = 'AND c.userid BETWEEN "' . $this->db->escape_str($mrd_from) . '" AND "' . $this->db->escape_str($mrd_to) . '"';
+        } elseif ($mrd_from) {
+            $where[] = 'AND c.userid >= "' . $this->db->escape_str($mrd_from) . '"';
+        } elseif ($mrd_to) {
+            $where[] = 'AND c.userid <= "' . $this->db->escape_str($mrd_to) . '"';
+        }
+    
+        if ($referral_name) {
+            $referral_name_esc = $this->db->escape_like_str($referral_name);
+            $where[] = 'AND CONCAT(IFNULL(au.firstname, ""), " ", IFNULL(au.lastname, "")) LIKE "%' . $referral_name_esc . '%"';
+        }
+    
+        if (staff_cant('view', 'invoices')) {
+            $where[] = get_invoices_where_sql_for_staff(get_staff_user_id());
+        }
+    
+        $where[] = 'AND (inv.total - IFNULL((SELECT SUM(amount) FROM ' . $paymentRecordsTable . ' WHERE invoiceid = inv.id), 0)) = 0';
+    
+        log_message('debug', '📋 WHERE conditions: ' . implode(' ', $where));
+    
+        $sql = "
+        SELECT 
+            inv.id as invoice_id,
+            inv.number as invoice_number,
+            ii.rate AS item_fixed_rate,
+            (ii.qty * ii.rate) AS item_subtotal,
+            inv.discount_total,
+            inv.discount_percent,
+            inv.total,
+            inv.subtotal as invoice_subtotal,
+            c.company as client_name,
+            c.userid as mrd_no,
+            au.firstname,
+            au.lastname,
+            ii.id as item_id,
+            ii.description,
+            ii.long_description,
+            (SELECT MAX(date) FROM $paymentRecordsTable WHERE invoiceid = inv.id) as last_payment_date,
+            (SELECT SUM(amount) FROM $paymentRecordsTable WHERE invoiceid = inv.id) as total_paid,
+            cur.name as currency_name
+        FROM $invoiceTable as inv
+        LEFT JOIN $clientsTable as c ON c.userid = inv.clientid
+        LEFT JOIN $affiliateUsersTable as au ON au.affiliate_code = c.affiliate_code COLLATE utf8mb4_unicode_ci
+        LEFT JOIN " . db_prefix() . "currencies as cur ON cur.id = inv.currency
+        LEFT JOIN $itemableTable as ii ON ii.rel_id = inv.id AND ii.rel_type = 'invoice'
+        WHERE 1=1 " . implode(' ', $where) . "
+        ORDER BY inv.id ASC, ii.id ASC
+     ";
+    
+        log_message('debug', '🔍 Referral Details SQL: ' . $sql);
+    
+        $results = $this->db->query($sql)->result();
+    
+        log_message('debug', '📊 Total Results Found: ' . count($results));
+        if (!empty($results)) {
+            log_message('debug', '📄 Sample Row: ' . print_r($results[0], true));
+        } else {
+            log_message('debug', '📭 No results found for the given filters');
+        }
+    
+        $output['aaData'] = [];
+        $serial = 1;
+        $total_subtotal = 0;
+        $total_discount = 0;
+        $total_total = 0;
+        $total_commission = 0;
+        $total_balance = 0;
+        $commission_custom_field_id = 91;
+    
+        // Group results by invoice to calculate discount distribution per item
+        $invoices_data = [];
+        foreach ($results as $row) {
+            if (!isset($invoices_data[$row->invoice_id])) {
+                $invoices_data[$row->invoice_id] = [
+                    'invoice_data' => $row,
+                    'items' => [],
+                    'total_items_subtotal' => 0
+                ];
+            }
+            $invoices_data[$row->invoice_id]['items'][] = $row;
+            $invoices_data[$row->invoice_id]['total_items_subtotal'] += (float)$row->item_subtotal;
+        }
+    
+        log_message('debug', '🔄 Processing ' . count($invoices_data) . ' invoices:');
+    
+        foreach ($invoices_data as $invoice_id => $invoice_data) {
+            $invoice_row = $invoice_data['invoice_data'];
+            $items = $invoice_data['items'];
+            $total_items_subtotal = $invoice_data['total_items_subtotal'];
+            
+            // Get the invoice discount total (like in the first method)
+            $invoice_discount_total = (float)$invoice_row->discount_total;
+            
+            log_message('debug', "--- Processing Invoice {$invoice_id} ---");
+            log_message('debug', '💰 Invoice discount_total: ' . $invoice_discount_total);
+            log_message('debug', '💰 Invoice subtotal: ' . $invoice_row->invoice_subtotal);
+            log_message('debug', '💰 Total items subtotal: ' . $total_items_subtotal);
+    
+            foreach ($items as $index => $row) {
+                log_message('debug', "--- Processing Item {$index} for Invoice {$invoice_id} ---");
+    
+                log_message('debug', '🔍 Querying commission for item_id: ' . $row->item_id);
+                
+                $this->db->select('value');
+                $this->db->from($customFieldsValuesTable);
+                $this->db->where('relid', $row->item_id);
+                $this->db->where('fieldid', $commission_custom_field_id);
+                $this->db->where('fieldto', 'items');
+                $cf_result = $this->db->get()->row();
+    
+                log_message('debug', '💰 Commission query: ' . $this->db->last_query());
+                log_message('debug', '💰 Commission result: ' . print_r($cf_result, true));
+    
+                $commission = isset($cf_result->value) ? (float)$cf_result->value : 0;
+                log_message('debug', '💰 Commission value: ' . $commission);
+    
+                // Calculate item's share of the discount (proportional to item subtotal)
+                $item_subtotal = (float)$row->item_subtotal;
+                $item_discount_share = 0;
+                
+                if ($total_items_subtotal > 0) {
+                    $item_discount_share = ($item_subtotal / $total_items_subtotal) * $invoice_discount_total;
+                }
+                
+                $item_total_after_discount = $item_subtotal - $item_discount_share;
+                // $commission_after_discount = $commission ;
+                // Commission after discount should be reduced by the item's discount share
+                $commission_after_discount = max($commission - $item_discount_share, 0);
 
-    foreach ($results as $row) {
-        log_message('debug', 'Processing item_id: ' . $row->item_id);
-
-        $this->db->select('value');
-        $this->db->from($customFieldsValuesTable);
-        $this->db->where('relid', $row->item_id);
-        $this->db->where('fieldid', $commission_custom_field_id);
-        $this->db->where('fieldto', 'items');
-        $cf_result = $this->db->get()->row();
-
-        log_message('debug', 'Commission query: ' . $this->db->last_query());
-        log_message('debug', 'Commission result: ' . print_r($cf_result, true));
-
-        $commission = isset($cf_result->value) ? (float)$cf_result->value : 0;
-
-// Subtotal for this item
-$item_subtotal = (float)$row->item_fixed_rate;
-$discount_percent = isset($row->discount_percent) ? (float)$row->discount_percent : 0;
-$discount_total_item = $item_subtotal * ($discount_percent / 100);
-$item_total_after_discount = $item_subtotal - $discount_total_item;
-$commission_after_discount = max($commission - $discount_total_item, 0);
-
-
-// Balance remains invoice-level
-$balance = (float)$row->total - (float)$row->total_paid;
-
+    
+                // Balance remains invoice-level
+                $balance = (float)$row->total - (float)$row->total_paid;
+    
+                log_message('debug', '🧮 Financial calculations:');
+                log_message('debug', '   - Item subtotal: ' . $item_subtotal);
+                log_message('debug', '   - Item discount share: ' . $item_discount_share);
+                log_message('debug', '   - Item total after discount: ' . $item_total_after_discount);
+                log_message('debug', '   - Commission after discount: ' . $commission_after_discount);
+                log_message('debug', '   - Balance: ' . $balance);
+    
+                $output['aaData'][] = [
+                    $serial++,
+                    '<a href="' . admin_url('invoices/invoice/' . $row->invoice_id) . '" target="_blank">' . format_invoice_number($row->invoice_id) . '</a>',
+                    _d($row->last_payment_date),
+                    str_pad($row->mrd_no, 0, '0', STR_PAD_LEFT),
+                    '<a href="' . admin_url('clients/client/' . $row->mrd_no) . '" target="_blank">' . html_escape($row->client_name) . '</a>',
+                    ($row->firstname || $row->lastname) ? html_escape($row->firstname . ' ' . $row->lastname) : 'N/A',
+                    html_escape($row->description),
+                    html_escape($row->long_description),
+                    app_format_money($item_subtotal, $currency->name),
+                    app_format_money($item_discount_share, $currency->name),
+                    app_format_money($item_total_after_discount, $currency->name),
+                    app_format_money($balance, $currency->name),
+                    '<span class="tw-text-green-600">' . app_format_money($commission_after_discount, $currency->name) . '</span>',
+                ];
+    
+                // Accumulate totals
+                $total_subtotal += $item_subtotal;
+                $total_discount += $item_discount_share;
+                $total_total    += ($index === 0) ? (float)$row->total : 0; // Add invoice total only once per invoice
+                $total_balance  += ($index === 0) ? $balance : 0; // Add balance only once per invoice
+                $total_commission += $commission_after_discount;
+    
+                log_message('debug', '📊 Current totals after item:');
+                log_message('debug', '   - Total Subtotal: ' . $total_subtotal);
+                log_message('debug', '   - Total Discount: ' . $total_discount);
+                log_message('debug', '   - Total Total: ' . $total_total);
+                log_message('debug', '   - Total Balance: ' . $total_balance);
+                log_message('debug', '   - Total Commission: ' . $total_commission);
+    
+                log_message('debug', "✅ Item processed successfully");
+            }
+        }
+    
+        // Log final totals
+        log_message('debug', '🎯 FINAL TOTALS:');
+        log_message('debug', '   - Total Subtotal: ' . $total_subtotal);
+        log_message('debug', '   - Total Discount: ' . $total_discount);
+        log_message('debug', '   - Total Total: ' . $total_total);
+        log_message('debug', '   - Total Balance: ' . $total_balance);
+        log_message('debug', '   - Total Commission: ' . $total_commission);
+    
+        // Add totals row
         $output['aaData'][] = [
-    $serial++,
-    '<a href="' . admin_url('invoices/invoice/' . $row->invoice_id) . '" target="_blank">' . format_invoice_number($row->invoice_id) . '</a>',
-    _d($row->last_payment_date),
-    str_pad($row->mrd_no, 0, '0', STR_PAD_LEFT),
-    '<a href="' . admin_url('clients/client/' . $row->mrd_no) . '" target="_blank">' . html_escape($row->client_name) . '</a>',
-    ($row->firstname || $row->lastname) ? html_escape($row->firstname . ' ' . $row->lastname) : 'N/A',
-    html_escape($row->description),
-    html_escape($row->long_description),
-    app_format_money($item_subtotal, $currency->name),
-    app_format_money($discount_total_item, $currency->name),
-    app_format_money($item_total_after_discount, $currency->name),
-    app_format_money($balance, $currency->name),
-    '<span class="tw-text-green-600">' . app_format_money($commission_after_discount, $currency->name) . '</span>',
-];
-
-        // Accumulate totals
-            $total_subtotal += $item_subtotal;
-            $total_discount += $discount_total_item;
-            $total_total    += (float)$row->total;
-            $total_balance  += $balance;
-            $total_commission += $commission_after_discount;
-
+            '', '', '', '', '', '', '', '<strong>Total:</strong>',
+            '<strong>' . app_format_money($total_subtotal, $currency->name) . '</strong>',
+            '<strong>' . app_format_money($total_discount, $currency->name) . '</strong>',
+            '<strong>' . app_format_money($total_total, $currency->name) . '</strong>',
+            '<strong>' . app_format_money($total_balance, $currency->name) . '</strong>',
+            '<strong>' . app_format_money($total_commission, $currency->name) . '</strong>',
+        ];
+    
+        log_message('debug', '📋 Final output contains ' . count($output['aaData']) . ' rows');
+        log_message('debug', '📄 Final output sample: ' . json_encode(array_slice($output['aaData'], 0, 2)));
+    
+        log_message('debug', '📤 Outputting JSON response');
+        echo json_encode($output);
+        
+        log_message('debug', '✅ referral_details_table method completed successfully');
     }
-
-    $output['aaData'][] = [
-        '', '', '', '', '', '', '', '<strong>Total:</strong>',
-        '<strong>' . app_format_money($total_subtotal, $currency->name) . '</strong>',
-        '<strong>' . app_format_money($total_discount, $currency->name) . '</strong>',
-        '<strong>' . app_format_money($total_total, $currency->name) . '</strong>',
-        '<strong>' . app_format_money($total_balance, $currency->name) . '</strong>',
-        '<strong>' . app_format_money($total_commission, $currency->name) . '</strong>',
-    ];
-
-    log_message('debug', 'Final Totals: ' . json_encode([
-        'subtotal' => $total_subtotal,
-        'discount' => $total_discount,
-        'total' => $total_total,
-        'balance' => $total_balance,
-        'commission' => $total_commission,
-    ]));
-
-    echo json_encode($output);
-}
-
 
 // public function referral_details_table()
 // {
@@ -1909,7 +2161,7 @@ $balance = (float)$row->total - (float)$row->total_paid;
 //     $customFieldsValuesTable = db_prefix() . 'customfieldsvalues';
 //     $customFieldsTable = db_prefix() . 'customfields';
 //     $affiliateUsersTable = db_prefix() . 'affiliate_users';
-//     $staffTable = db_prefix() . 'staff';
+//     $staffTable = db_prefix() . 'staff   ';
 
 
 //     $this->load->model('invoices_model');
@@ -2067,22 +2319,341 @@ public function outpatient_bill_report()
         access_denied('invoices');
     }
 
-    $data['title'] = _l('outpatient_bill_report');
+    $data['title'] = _l('Outpatient Bill Rrreport');
     $this->load->view('admin/reports/outpatient_bill_report', $data);
     
 }
 
 
- public function outpatient_bill_table()
+//  public function outpatient_bill_table()
+// {
+//     log_message('debug', 'Starting outpatient_bill_table method');
+
+//     if (!staff_can('view', 'invoices')) {
+//         log_message('debug', 'Access denied for viewing invoices');
+//         access_denied('invoices');
+//     }
+
+//       $invoiceTable = db_prefix() . 'invoices';
+//     $clientsTable = db_prefix() . 'clients';
+//     $itemableTable = db_prefix() . 'itemable';
+//     $paymentRecordsTable = db_prefix() . 'invoicepaymentrecords';
+//     $customFieldsValuesTable = db_prefix() . 'customfieldsvalues';
+//     $customFieldsTable = db_prefix() . 'customfields';
+//     $affiliateUsersTable = db_prefix() . 'affiliate_users';
+//     $staffTable = db_prefix() . 'staff';
+
+//     $this->load->model('invoices_model');
+//     $this->load->model('currencies_model');
+//     $currency = $this->currencies_model->get_base_currency();
+//     log_message('debug', 'Loaded base currency: ' . print_r($currency, true));
+
+  
+
+//     // Filters from POST
+//      $from_date = $this->input->post('report_from');
+//     $to_date   = $this->input->post('report_to');
+//     $mrd_from  = $this->input->post('mrd_from');
+//     $mrd_to    = $this->input->post('mrd_to');
+//     $clientid  = $this->input->post('customer_id');
+//     $project_id = $this->input->post('project_id');
+//     $referral_name = $this->input->post('referral_name');
+
+//     $where = [];
+
+//     if ($from_date && $to_date) {
+//         $where[] = 'AND DATE(' . db_prefix() . 'invoices.date) BETWEEN "' . $this->db->escape_str($from_date) . '" AND "' . $this->db->escape_str($to_date) . '"';
+//     } elseif ($from_date) {
+//         $where[] = 'AND DATE(' . db_prefix() . 'invoices.date) >= "' . $this->db->escape_str($from_date) . '"';
+//     } elseif ($to_date) {
+//         $where[] = 'AND DATE(' . db_prefix() . 'invoices.date) <= "' . $this->db->escape_str($to_date) . '"';
+//     }
+
+//     if ($mrd_from && $mrd_to) {
+//         $where[] = 'AND ' . db_prefix() . 'clients.userid BETWEEN "' . $this->db->escape_str($mrd_from) . '" AND "' . $this->db->escape_str($mrd_to) . '"';
+//     } elseif ($mrd_from) {
+//         $where[] = 'AND ' . db_prefix() . 'clients.userid >= "' . $this->db->escape_str($mrd_from) . '"';
+//     } elseif ($mrd_to) {
+//         $where[] = 'AND ' . db_prefix() . 'clients.userid <= "' . $this->db->escape_str($mrd_to) . '"';
+//     }
+
+//       if ($referral_name) {
+//         $referral_name_esc = $this->db->escape_like_str($referral_name);
+//         $where[] = 'AND CONCAT(au.firstname, " ", au.lastname) LIKE "%' . $referral_name_esc . '%"';
+//     }
+
+
+//     if (staff_cant('view', 'invoices')) {
+//         $where[] = get_invoices_where_sql_for_staff(get_staff_user_id());
+//     }
+
+//     log_message('info', 'due_paid_details_table filters: from_date=' . $from_date . ', to_date=' . $to_date . ', mrd_no=, mrd_from=' . $mrd_from . ', mrd_to=' . $mrd_to . ', clientid=' . $clientid . ', project_id=' . $project_id);
+
+//     $aColumns = [
+//         'number',
+//         'total',
+//         'tblinvoices.datecreated as invoice_datecreated',
+//         get_sql_select_client_company(),
+//         $clientsTable . '.userid as mrd_no',
+//         $invoiceTable . '.status',
+
+//         "(SELECT pm.name 
+//         FROM " . db_prefix() . "invoicepaymentrecords pr
+//         JOIN " . db_prefix() . "payment_modes pm ON pr.paymentmode = pm.id
+//         WHERE pr.invoiceid = " . db_prefix() . "invoices.id 
+//         ORDER BY pr.date DESC, pr.id DESC 
+//         LIMIT 1) AS payment_mode",
+
+
+//         db_prefix() . 'invoices.discount_total as discount',
+
+//         "(SELECT GROUP_CONCAT(description SEPARATOR ', ')
+//             FROM $itemableTable
+//             WHERE rel_id = $invoiceTable.id AND rel_type = 'invoice') as all_items",
+//         'subtotal',
+//         "(SELECT SUM(amount) FROM $paymentRecordsTable WHERE invoiceid = $invoiceTable.id) as total_paid",
+//         "($invoiceTable.total - IFNULL((SELECT SUM(amount) FROM $paymentRecordsTable WHERE invoiceid = $invoiceTable.id), 0)) as balance",
+        
+//         '(SELECT IFNULL(SUM(CAST(cfdv.value AS DECIMAL(10,2))), 0)
+//         FROM ' . db_prefix() . 'customfieldsvalues cfdv
+//         JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id
+//         JOIN ' . db_prefix() . 'itemable items ON items.id = cfdv.relid
+//         WHERE cfd.name = "Serv.charge"
+//             AND cfdv.fieldto = "items"
+//             AND items.rel_id = ' . db_prefix() . 'invoices.id
+//             AND items.rel_type = "invoice") AS service_charge',
+
+
+//              '(SELECT GROUP_CONCAT(pr.transactionid SEPARATOR ", ") 
+//                 FROM ' . db_prefix() . 'invoicepaymentrecords pr
+//                 WHERE pr.invoiceid = ' . $invoiceTable . '.id
+//                 ) as payment_details',
+
+
+//                '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
+//             JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
+//             WHERE cfd.name = "Age" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
+//             AND cfdv.fieldto = "invoice" LIMIT 1) as Age',
+
+//         '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
+//             JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
+//             WHERE cfd.name = "Sex" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
+//             AND cfdv.fieldto = "invoice" LIMIT 1) as Sex',
+
+//         '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
+//             JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
+//             WHERE cfd.name = "Mobile.no" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
+//             AND cfdv.fieldto = "invoice" LIMIT 1) as Mobile',
+
+//              '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
+//             JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
+//             WHERE cfd.name = "Ref.By" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
+//             AND cfdv.fieldto = "invoice" LIMIT 1) as Refer',
+
+//                  "(SELECT SUM(amount) 
+//                 FROM " . db_prefix() . "invoicepaymentrecords 
+//                 WHERE invoiceid = $invoiceTable.id AND paymentmode = 2) as Cash_Amount",
+
+//                 "(SELECT SUM(amount) 
+//                 FROM " . db_prefix() . "invoicepaymentrecords 
+//                 WHERE invoiceid = $invoiceTable.id AND paymentmode = 3) as Cheque_Amount",
+
+//                 "(SELECT SUM(amount) 
+//                 FROM " . db_prefix() . "invoicepaymentrecords 
+//                 WHERE invoiceid = $invoiceTable.id AND paymentmode = 4) as Card",
+
+//                 "(SELECT SUM(amount) 
+//                 FROM " . db_prefix() . "invoicepaymentrecords 
+//                 WHERE invoiceid = $invoiceTable.id AND paymentmode = 5) as UPI",
+
+//        "CONCAT($staffTable.firstname, ' ', $staffTable.lastname) as sales_agent_name",
+
+//         "CONCAT(au.firstname, ' ', au.lastname) as affiliate_user_name",
+//     ];
+//     $sIndexColumn = 'id';
+//     $sTable = db_prefix() . 'invoices';
+
+//     $join = [
+//         "LEFT JOIN $clientsTable ON $clientsTable.userid = $invoiceTable.clientid",
+//         "LEFT JOIN " . db_prefix() . "staff ON " . $invoiceTable . ".sale_agent = " . db_prefix() . "staff.staffid",
+//         "LEFT JOIN $affiliateUsersTable AS au ON au.affiliate_code = $clientsTable.affiliate_code COLLATE utf8mb4_unicode_ci",
+//         'LEFT JOIN ' . db_prefix() . 'currencies ON ' . db_prefix() . 'currencies.id = ' . $invoiceTable . '.currency',
+//         'LEFT JOIN ' . db_prefix() . 'projects ON ' . db_prefix() . 'projects.id = ' . $invoiceTable . '.project_id',
+//     ];
+//     log_message('debug', 'Joins set up: ' . print_r($join, true));
+
+//     $custom_fields = get_table_custom_fields('invoice');
+//     $customFieldsColumns = [];
+
+//     foreach ($custom_fields as $key => $field) {
+//         $selectAs = (is_cf_date($field) ? 'date_picker_cvalue_' . $key : 'cvalue_' . $key);
+//         $customFieldsColumns[] = $selectAs;
+//         $aColumns[] = 'ctable_' . $key . '.value as ' . $selectAs;
+//         $join[] = 'LEFT JOIN ' . db_prefix() . 'customfieldsvalues as ctable_' . $key . ' ON ' . $invoiceTable . '.id = ctable_' . $key . '.relid AND ctable_' . $key . '.fieldto="' . $field['fieldto'] . '" AND ctable_' . $key . '.fieldid=' . $field['id'];
+//     }
+//     log_message('debug', 'Custom fields joins added: ' . print_r($join, true));
+
+//     $result = data_tables_init($aColumns, $sIndexColumn, $sTable, $join, $where, [
+//         db_prefix() . 'invoices.id',
+//         db_prefix() . 'invoices.clientid',
+//         db_prefix() . 'currencies.name as currency_name',
+//         'formatted_number',
+//     ]);
+//     log_message('debug', 'DataTables result obtained');
+
+//     $output  = $result['output'];
+//     $rResult = $result['rResult'];
+
+//     $serial_number = 1;
+
+//     $total_subtotal = 0;
+//     $total_discount = 0;
+//     $total_total = 0;
+//     $total_service_charge = 0;
+//     $total_paid_amount = 0;
+//     $total_balance = 0;
+//     $cash_total = 0;
+//     $cheque_total = 0;
+//     $card_total = 0;
+//     $upi_total = 0;
+
+//     foreach ($rResult as $aRow) {
+//         $row = [];
+
+//         $formattedNumber = format_invoice_number($aRow['id']);
+//         if (empty($aRow['formatted_number']) || $formattedNumber !== $aRow['formatted_number']) {
+//             $this->invoices_model->save_formatted_number($aRow['id']);
+//             log_message('debug', 'Saved formatted number for invoice ID: ' . $aRow['id']);
+//         }
+//         $row[] = '<a href="' . admin_url('invoices/invoice/' . $aRow['id']) . '" target="_blank">' . html_escape($formattedNumber) . '</a>';
+//         $row[] = !empty($aRow['invoice_datecreated']) ? date('d-m-Y h:i A', strtotime($aRow['invoice_datecreated'])) : '';
+//         $row[] = str_pad($aRow['mrd_no'], 0, '0', STR_PAD_LEFT);
+//         $row[] = empty($aRow['deleted_customer_name']) ? '<a href="' . admin_url('clients/client/' . $aRow['clientid']) . '">' . e($aRow['company']) . '</a>' : e($aRow['deleted_customer_name']);
+//         $row[] = $aRow['affiliate_user_name'] ?: 'N/A';
+//         $row[] = $aRow['all_items'] ?: '-';
+
+//       // Initialize used payment modes array
+//         $displayed_modes = [];
+//         $this->ci->load->model('payments_model');
+//         $invoice_payments = $this->ci->payments_model->get_invoice_payments($aRow['id']);
+//         if (!empty($invoice_payments)) {
+//             foreach ($invoice_payments as $payment) {
+//                 $payment_mode = !empty($payment['paymentmethod']) ? $payment['paymentmethod'] : $payment['name'];
+//                 if (!in_array($payment_mode, $displayed_modes)) {
+//                     $displayed_modes[] = $payment_mode;
+//                 }
+//             }
+//         }
+//         $all_modes = !empty($displayed_modes) ? implode(', ', $displayed_modes) : '-';
+//         $row[] = $all_modes;
+
+//         $row[] = !empty($aRow['Age']) ? $aRow['Age'] : '-';
+//         $row[] = !empty($aRow['Sex']) ? $aRow['Sex'] : '-';
+//         $row[] = !empty($aRow['Mobile']) ? $aRow['Mobile'] : '-'; 
+//         $row[] = app_format_money($aRow['subtotal'], $aRow['currency_name']);
+//         $row[] = app_format_money($aRow['discount'], $currency->name);
+//         $row[] = app_format_money($aRow['total'], $aRow['currency_name']);
+
+//         // Normalize the payment mode string for comparison
+//       $has_service_charge_mode = false;
+// $invoice_payments = $this->ci->payments_model->get_invoice_payments($aRow['id']);
+
+// foreach ($invoice_payments as $payment) {
+//     $mode = strtolower(trim($payment['paymentmethod'] ?? $payment['name']));
+//     if (strpos($mode, 'upi') !== false || strpos($mode, 'credit/debit card') !== false) {
+//         $has_service_charge_mode = true;
+//         break;
+//     }
+// }
+
+// $service_charge_value = ($has_service_charge_mode && is_numeric($aRow['service_charge']))
+//     ? $aRow['service_charge']
+//     : 0;
+
+
+//         // Show formatted service charge
+//         $row[] = app_format_money($service_charge_value, $currency->name);
+
+//         $row[] = app_format_money($aRow['total_paid'], $aRow['currency_name']);
+//         $row[] = app_format_money($aRow['balance'], $aRow['currency_name']);   
+//         $row[] = !empty($aRow['Cash_Amount']) ? $aRow['Cash_Amount'] : '0';
+//         $row[] = !empty($aRow['Cheque_Amount']) ? $aRow['Cheque_Amount'] : '0';
+//         $row[] = !empty($aRow['Card']) ? $aRow['Card'] : '0';
+//         $row[] = !empty($aRow['UPI']) ? $aRow['UPI'] : '0';
+//         $row[] = !empty($aRow['payment_details']) ? html_escape($aRow['payment_details']) : '-';
+//         $row[] = $aRow['sales_agent_name'] ?: 'N/A';
+
+//         // Accumulate totals - log current row values for these keys
+//         log_message('debug', 'Accumulating totals from row - total_amount: ' . ($aRow['total_amount'] ?? 'N/A') . ', discount: ' . ($aRow['discount'] ?? 'N/A') . ', bill_amount: ' . ($aRow['bill_amount'] ?? 'N/A') . ', paid_amount: ' . ($aRow['paid_amount'] ?? 'N/A') . ', balance: ' . ($aRow['balance'] ?? 'N/A'));
+
+//         $total_total_amount += $aRow['subtotal'] ?? 0;
+//         $total_discount += $aRow['discount'] ?? 0;
+//         $total_bill_amount += $aRow['total'] ?? 0;
+//       $payment_mode = strtolower(trim($aRow['payment_mode'] ?? ''));
+// $service_charge = isset($aRow['service_charge']) ? (float) $aRow['service_charge'] : 0;
+
+// if (strpos($payment_mode, 'upi') === false && strpos($payment_mode, 'credit/debit card') === false) {
+//     $service_charge = 0;
+// }
+// $total_service_charge += $service_charge;
+
+//         $total_paid_amount += $aRow['total_paid'] ?? 0;
+//         $total_balance += $aRow['balance'] ?? 0;
+//         $total_cash += $aRow['Cash_Amount'] ?? 0;
+//         $total_cheque += $aRow['Cheque_Amount'] ?? 0;
+//         $total_card += $aRow['Card'] ?? 0;
+//         $total_upi += $aRow['UPI'] ?? 0;
+
+
+//         $output['aaData'][] = $row;
+//     }
+
+//     // Append totals row at the end (optional)
+//     $totals_row = [
+//         '<strong>Total</strong>',
+//         '',
+//         '',
+//         '',
+//         '',
+//         '',
+//         '',
+//         '',
+//         '',
+//         '',
+//         app_format_money($total_total_amount, $currency->name),
+//         app_format_money($total_discount, $currency->name),
+//         app_format_money($total_bill_amount, $currency->name),
+//         app_format_money($total_service_charge, $currency->name),
+//         app_format_money($total_paid_amount, $currency->name),
+//         app_format_money($total_balance, $currency->name),
+//         app_format_money($total_cash, $currency->name),         // Cash Amount
+//         app_format_money($total_cheque, $currency->name),       // Cheque Amount
+//         app_format_money($total_card, $currency->name),         // Credit/Debit card
+//         app_format_money($total_upi, $currency->name),          // UPI
+//         '',
+//         '',
+//         '',
+//         '',
+//     ];
+
+//     $output['aaData'][] = $totals_row;
+
+//     log_message('debug', 'Outputting JSON response with total rows');
+
+//     echo json_encode($output);
+// }
+
+
+public function outpatient_bill_table()
 {
-    log_message('debug', 'Starting outpatient_bill_table method');
+    log_message('debug', '🚀 Starting outpatient_bill_table method');
 
     if (!staff_can('view', 'invoices')) {
-        log_message('debug', 'Access denied for viewing invoices');
+        log_message('debug', '❌ Access denied for viewing invoices');
         access_denied('invoices');
     }
 
-      $invoiceTable = db_prefix() . 'invoices';
+    $invoiceTable = db_prefix() . 'invoices';
     $clientsTable = db_prefix() . 'clients';
     $itemableTable = db_prefix() . 'itemable';
     $paymentRecordsTable = db_prefix() . 'invoicepaymentrecords';
@@ -2093,19 +2664,25 @@ public function outpatient_bill_report()
 
     $this->load->model('invoices_model');
     $this->load->model('currencies_model');
+    $this->load->model('payments_model'); // Added payments model
     $currency = $this->currencies_model->get_base_currency();
-    log_message('debug', 'Loaded base currency: ' . print_r($currency, true));
-
-  
+    log_message('debug', '💰 Loaded base currency: ' . print_r($currency, true));
 
     // Filters from POST
-     $from_date = $this->input->post('report_from');
+    $from_date = $this->input->post('report_from');
     $to_date   = $this->input->post('report_to');
     $mrd_from  = $this->input->post('mrd_from');
     $mrd_to    = $this->input->post('mrd_to');
     $clientid  = $this->input->post('customer_id');
     $project_id = $this->input->post('project_id');
     $referral_name = $this->input->post('referral_name');
+
+    log_message('debug', '🎯 Received filters:');
+    log_message('debug', '   - from_date: ' . $from_date);
+    log_message('debug', '   - to_date: ' . $to_date);
+    log_message('debug', '   - mrd_from: ' . $mrd_from);
+    log_message('debug', '   - mrd_to: ' . $mrd_to);
+    log_message('debug', '   - referral_name: ' . $referral_name);
 
     $where = [];
 
@@ -2125,17 +2702,16 @@ public function outpatient_bill_report()
         $where[] = 'AND ' . db_prefix() . 'clients.userid <= "' . $this->db->escape_str($mrd_to) . '"';
     }
 
-      if ($referral_name) {
+    if ($referral_name) {
         $referral_name_esc = $this->db->escape_like_str($referral_name);
         $where[] = 'AND CONCAT(au.firstname, " ", au.lastname) LIKE "%' . $referral_name_esc . '%"';
     }
-
 
     if (staff_cant('view', 'invoices')) {
         $where[] = get_invoices_where_sql_for_staff(get_staff_user_id());
     }
 
-    log_message('info', 'due_paid_details_table filters: from_date=' . $from_date . ', to_date=' . $to_date . ', mrd_no=, mrd_from=' . $mrd_from . ', mrd_to=' . $mrd_to . ', clientid=' . $clientid . ', project_id=' . $project_id);
+    log_message('debug', '📋 WHERE conditions: ' . implode(' ', $where));
 
     $aColumns = [
         'number',
@@ -2151,7 +2727,6 @@ public function outpatient_bill_report()
         WHERE pr.invoiceid = " . db_prefix() . "invoices.id 
         ORDER BY pr.date DESC, pr.id DESC 
         LIMIT 1) AS payment_mode",
-
 
         db_prefix() . 'invoices.discount_total as discount',
 
@@ -2171,16 +2746,24 @@ public function outpatient_bill_report()
             AND items.rel_id = ' . db_prefix() . 'invoices.id
             AND items.rel_type = "invoice") AS service_charge',
 
+        '(SELECT GROUP_CONCAT(pr.transactionid SEPARATOR ", ") 
+            FROM ' . db_prefix() . 'invoicepaymentrecords pr
+            WHERE pr.invoiceid = ' . $invoiceTable . '.id
+            ) as payment_details',
 
-               '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
-            JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
-            WHERE cfd.name = "Payment Details" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
-            AND cfdv.fieldto = "invoice" LIMIT 1) as payment_details',
-
-               '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
+        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
             JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
             WHERE cfd.name = "Age" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
             AND cfdv.fieldto = "invoice" LIMIT 1) as Age',
+            '(
+  SELECT cfdv.value 
+  FROM tblcustomfieldsvalues cfdv
+  JOIN tblcustomfields cfd ON cfdv.fieldid = cfd.id 
+  WHERE cfd.name = "AgeOption" 
+    AND cfdv.relid = tblinvoices.id 
+    AND cfdv.fieldto = "invoice" 
+  LIMIT 1
+ ) AS AgeOption',
 
         '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
             JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
@@ -2192,36 +2775,33 @@ public function outpatient_bill_report()
             WHERE cfd.name = "Mobile.no" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
             AND cfdv.fieldto = "invoice" LIMIT 1) as Mobile',
 
-             '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
+        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
             JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
             WHERE cfd.name = "Ref.By" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
             AND cfdv.fieldto = "invoice" LIMIT 1) as Refer',
 
-            '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
-            JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
-            WHERE cfd.name = "UPI" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
-            AND cfdv.fieldto = "invoice" LIMIT 1) as UPI',
+        "(SELECT SUM(amount) 
+            FROM " . db_prefix() . "invoicepaymentrecords 
+            WHERE invoiceid = $invoiceTable.id AND paymentmode = 2) as Cash_Amount",
 
-            '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
-            JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
-            WHERE cfd.name = "Cash Amount" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
-            AND cfdv.fieldto = "invoice" LIMIT 1) as Cash_Amount',
+        "(SELECT SUM(amount) 
+            FROM " . db_prefix() . "invoicepaymentrecords 
+            WHERE invoiceid = $invoiceTable.id AND paymentmode = 3) as Cheque_Amount",
 
-            '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
-            JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
-            WHERE cfd.name = "Cheque Amount" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
-            AND cfdv.fieldto = "invoice" LIMIT 1) as Cheque_Amount',
+        "(SELECT SUM(amount) 
+            FROM " . db_prefix() . "invoicepaymentrecords 
+            WHERE invoiceid = $invoiceTable.id AND paymentmode = 6) as Card",
 
-            '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
-            JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
-            WHERE cfd.name = "Credit/Debit Card" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
-            AND cfdv.fieldto = "invoice" LIMIT 1) as Card',
+        "(SELECT SUM(amount) 
+            FROM " . db_prefix() . "invoicepaymentrecords 
+            WHERE invoiceid = $invoiceTable.id AND paymentmode = 10) as UPI",
 
-
-       "CONCAT($staffTable.firstname, ' ', $staffTable.lastname) as sales_agent_name",
-
+        "CONCAT($staffTable.firstname, ' ', $staffTable.lastname) as sales_agent_name",
         "CONCAT(au.firstname, ' ', au.lastname) as affiliate_user_name",
     ];
+
+    log_message('debug', '📊 aColumns defined: ' . print_r($aColumns, true));
+
     $sIndexColumn = 'id';
     $sTable = db_prefix() . 'invoices';
 
@@ -2232,7 +2812,8 @@ public function outpatient_bill_report()
         'LEFT JOIN ' . db_prefix() . 'currencies ON ' . db_prefix() . 'currencies.id = ' . $invoiceTable . '.currency',
         'LEFT JOIN ' . db_prefix() . 'projects ON ' . db_prefix() . 'projects.id = ' . $invoiceTable . '.project_id',
     ];
-    log_message('debug', 'Joins set up: ' . print_r($join, true));
+
+    log_message('debug', '🔗 Joins set up: ' . print_r($join, true));
 
     $custom_fields = get_table_custom_fields('invoice');
     $customFieldsColumns = [];
@@ -2243,7 +2824,8 @@ public function outpatient_bill_report()
         $aColumns[] = 'ctable_' . $key . '.value as ' . $selectAs;
         $join[] = 'LEFT JOIN ' . db_prefix() . 'customfieldsvalues as ctable_' . $key . ' ON ' . $invoiceTable . '.id = ctable_' . $key . '.relid AND ctable_' . $key . '.fieldto="' . $field['fieldto'] . '" AND ctable_' . $key . '.fieldid=' . $field['id'];
     }
-    log_message('debug', 'Custom fields joins added: ' . print_r($join, true));
+
+    log_message('debug', '🏷️ Custom fields processed: ' . count($custom_fields));
 
     $result = data_tables_init($aColumns, $sIndexColumn, $sTable, $join, $where, [
         db_prefix() . 'invoices.id',
@@ -2251,43 +2833,66 @@ public function outpatient_bill_report()
         db_prefix() . 'currencies.name as currency_name',
         'formatted_number',
     ]);
-    log_message('debug', 'DataTables result obtained');
+
+    log_message('debug', '📦 DataTables result obtained');
+    log_message('debug', '📊 Number of records found: ' . count($result['rResult']));
 
     $output  = $result['output'];
     $rResult = $result['rResult'];
 
+    // Log the raw SQL query for debugging
+    log_message('debug', '🔍 Raw SQL Query: ' . $this->db->last_query());
+
     $serial_number = 1;
 
-    $total_subtotal = 0;
+    $total_total_amount = 0;
     $total_discount = 0;
-    $total_total = 0;
+    $total_bill_amount = 0;
     $total_service_charge = 0;
     $total_paid_amount = 0;
     $total_balance = 0;
-    $cash_total = 0;
-    $cheque_total = 0;
-    $card_total = 0;
-    $upi_total = 0;
+    $total_cash = 0;
+    $total_cheque = 0;
+    $total_card = 0;
+    $total_upi = 0;
 
-    foreach ($rResult as $aRow) {
+    log_message('debug', '📋 Processing ' . count($rResult) . ' rows:');
+
+    foreach ($rResult as $index => $aRow) {
+        log_message('debug', "--- Processing Row {$index} ---");
+        log_message('debug', '📄 Raw row data: ' . json_encode($aRow));
+
         $row = [];
 
+        // Format invoice number
         $formattedNumber = format_invoice_number($aRow['id']);
         if (empty($aRow['formatted_number']) || $formattedNumber !== $aRow['formatted_number']) {
             $this->invoices_model->save_formatted_number($aRow['id']);
-            log_message('debug', 'Saved formatted number for invoice ID: ' . $aRow['id']);
+            log_message('debug', '💾 Saved formatted number for invoice ID: ' . $aRow['id']);
         }
         $row[] = '<a href="' . admin_url('invoices/invoice/' . $aRow['id']) . '" target="_blank">' . html_escape($formattedNumber) . '</a>';
-        $row[] = !empty($aRow['invoice_datecreated']) ? date('d-m-Y h:i A', strtotime($aRow['invoice_datecreated'])) : '';
-        $row[] = str_pad($aRow['mrd_no'], 0, '0', STR_PAD_LEFT);
-        $row[] = empty($aRow['deleted_customer_name']) ? '<a href="' . admin_url('clients/client/' . $aRow['clientid']) . '">' . e($aRow['company']) . '</a>' : e($aRow['deleted_customer_name']);
-        $row[] = $aRow['affiliate_user_name'] ?: 'N/A';
-        $row[] = $aRow['all_items'] ?: '-';
+        log_message('debug', '🔢 Invoice Number: ' . $formattedNumber);
 
-      // Initialize used payment modes array
+        $row[] = !empty($aRow['invoice_datecreated']) ? date('d-m-Y h:i A', strtotime($aRow['invoice_datecreated'])) : '';
+        log_message('debug', '📅 Date: ' . $row[1]);
+
+        $row[] = str_pad($aRow['mrd_no'], 0, '0', STR_PAD_LEFT);
+        log_message('debug', '🏥 MRD No: ' . $aRow['mrd_no']);
+
+        $row[] = empty($aRow['deleted_customer_name']) ? '<a href="' . admin_url('clients/client/' . $aRow['clientid']) . '">' . e($aRow['company']) . '</a>' : e($aRow['deleted_customer_name']);
+        log_message('debug', '👤 Customer: ' . $aRow['company']);
+
+        $row[] = $aRow['affiliate_user_name'] ?: 'N/A';
+        log_message('debug', '👥 Referral: ' . $aRow['affiliate_user_name']);
+
+        $row[] = $aRow['all_items'] ?: '-';
+        log_message('debug', '📦 Items: ' . substr($aRow['all_items'] ?? '-', 0, 50) . '...');
+
+        // Payment modes
         $displayed_modes = [];
-        $this->ci->load->model('payments_model');
-        $invoice_payments = $this->ci->payments_model->get_invoice_payments($aRow['id']);
+        $invoice_payments = $this->payments_model->get_invoice_payments($aRow['id']);
+        log_message('debug', '💳 Found ' . count($invoice_payments) . ' payment records for invoice ' . $aRow['id']);
+        
         if (!empty($invoice_payments)) {
             foreach ($invoice_payments as $payment) {
                 $payment_mode = !empty($payment['paymentmethod']) ? $payment['paymentmethod'] : $payment['name'];
@@ -2298,56 +2903,93 @@ public function outpatient_bill_report()
         }
         $all_modes = !empty($displayed_modes) ? implode(', ', $displayed_modes) : '-';
         $row[] = $all_modes;
-
-        $row[] = !empty($aRow['Age']) ? $aRow['Age'] : '-';
+        log_message('debug', '💳 Payment Modes: ' . $all_modes);
+        
+        $row[] = !empty($aRow['Age'])
+            ? $aRow['Age'] . ' (' . (strtolower($aRow['AgeOption']) === 'year' ? 'Y' : 'M') . ')'
+            : '-';
+        log_message('debug', '👴 Age: ' . $aRow['Age']);
+        log_message('debug', '👴 AgeOption: ' . $aRow['AgeOption']);
+        
         $row[] = !empty($aRow['Sex']) ? $aRow['Sex'] : '-';
-        $row[] = !empty($aRow['Mobile']) ? $aRow['Mobile'] : '-'; 
+        log_message('debug', '🚻 Sex: ' . $aRow['Sex']);
+
+        $row[] = !empty($aRow['Mobile']) ? $aRow['Mobile'] : '-';
+        log_message('debug', '📱 Mobile: ' . $aRow['Mobile']);
+
         $row[] = app_format_money($aRow['subtotal'], $aRow['currency_name']);
+        log_message('debug', '💰 Subtotal: ' . $aRow['subtotal']);
+
         $row[] = app_format_money($aRow['discount'], $currency->name);
+        log_message('debug', '💸 Discount: ' . $aRow['discount']);
+
         $row[] = app_format_money($aRow['total'], $aRow['currency_name']);
+        log_message('debug', '💵 Total: ' . $aRow['total']);
 
-        // Normalize the payment mode string for comparison
-      $has_service_charge_mode = false;
-$invoice_payments = $this->ci->payments_model->get_invoice_payments($aRow['id']);
-
-foreach ($invoice_payments as $payment) {
-    $mode = strtolower(trim($payment['paymentmethod'] ?? $payment['name']));
-    if (strpos($mode, 'upi') !== false || strpos($mode, 'credit/debit card') !== false) {
-        $has_service_charge_mode = true;
-        break;
-    }
-}
-
-$service_charge_value = ($has_service_charge_mode && is_numeric($aRow['service_charge']))
-    ? $aRow['service_charge']
-    : 0;
-
-
-        // Show formatted service charge
+        $service_charge_value = $aRow['service_charge'] ?? 0;
         $row[] = app_format_money($service_charge_value, $currency->name);
+        log_message('debug', '⚡ Service Charge: ' . $service_charge_value);
 
         $row[] = app_format_money($aRow['total_paid'], $aRow['currency_name']);
-        $row[] = app_format_money($aRow['balance'], $aRow['currency_name']);   
+        log_message('debug', '💳 Paid Amount: ' . $aRow['total_paid']);
+
+        $row[] = app_format_money($aRow['balance'], $aRow['currency_name']);
+        log_message('debug', '⚖️ Balance: ' . $aRow['balance']);
+
         $row[] = !empty($aRow['Cash_Amount']) ? $aRow['Cash_Amount'] : '0';
+        log_message('debug', '💵 Cash Amount: ' . $aRow['Cash_Amount']);
+
         $row[] = !empty($aRow['Cheque_Amount']) ? $aRow['Cheque_Amount'] : '0';
+        log_message('debug', '🏦 Cheque Amount: ' . $aRow['Cheque_Amount']);
+
         $row[] = !empty($aRow['Card']) ? $aRow['Card'] : '0';
+        log_message('debug', '💳 Card Amount: ' . $aRow['Card']);
+
         $row[] = !empty($aRow['UPI']) ? $aRow['UPI'] : '0';
+        log_message('debug', '📱 UPI Amount: ' . $aRow['UPI']);
+
         $row[] = !empty($aRow['payment_details']) ? html_escape($aRow['payment_details']) : '-';
+        log_message('debug', '📝 Payment Details: ' . substr($aRow['payment_details'] ?? '-', 0, 50) . '...');
+
         $row[] = $aRow['sales_agent_name'] ?: 'N/A';
+        log_message('debug', '👨‍💼 Sales Agent: ' . $aRow['sales_agent_name']);
 
-        // Accumulate totals - log current row values for these keys
-        log_message('debug', 'Accumulating totals from row - total_amount: ' . ($aRow['total_amount'] ?? 'N/A') . ', discount: ' . ($aRow['discount'] ?? 'N/A') . ', bill_amount: ' . ($aRow['bill_amount'] ?? 'N/A') . ', paid_amount: ' . ($aRow['paid_amount'] ?? 'N/A') . ', balance: ' . ($aRow['balance'] ?? 'N/A'));
-
+        // Accumulate totals - FIXED SERVICE CHARGE LOGIC
+        log_message('debug', '🧮 Accumulating totals for row ' . $index);
+        
         $total_total_amount += $aRow['subtotal'] ?? 0;
         $total_discount += $aRow['discount'] ?? 0;
         $total_bill_amount += $aRow['total'] ?? 0;
-      $payment_mode = strtolower(trim($aRow['payment_mode'] ?? ''));
-$service_charge = isset($aRow['service_charge']) ? (float) $aRow['service_charge'] : 0;
+        
+        $service_charge_value = $aRow['service_charge'] ?? 0;
 
-if (strpos($payment_mode, 'upi') === false && strpos($payment_mode, 'credit/debit card') === false) {
-    $service_charge = 0;
-}
-$total_service_charge += $service_charge;
+        // Get payment modes from the displayed_modes array we already created
+        $payment_modes = !empty($displayed_modes) ? $displayed_modes : [];
+        $payment_modes_lower = array_map('strtolower', $payment_modes);
+
+        // Check if service charge should be applied
+        $should_apply_service_charge = false;
+        foreach ($payment_modes_lower as $mode) {
+            if (strpos($mode, 'upi') !== false || strpos($mode, 'card') !== false || 
+                strpos($mode, 'credit') !== false || strpos($mode, 'debit') !== false ||
+                strpos($mode, 'cc') !== false) {
+                $should_apply_service_charge = true;
+                break;
+            }
+        }
+
+        // Apply service charge only for relevant payment modes
+        if ($should_apply_service_charge) {
+            $total_service_charge += (float) $service_charge_value;
+        } else {
+            $total_service_charge += 0;
+        }
+
+        log_message('debug', '💡 Service Charge Calculation:');
+        log_message('debug', '   - Raw Service Charge: ' . $service_charge_value);
+        log_message('debug', '   - Payment Modes: ' . implode(', ', $payment_modes));
+        log_message('debug', '   - Should Apply Service Charge: ' . ($should_apply_service_charge ? 'Yes' : 'No'));
+        log_message('debug', '   - Service Charge Added: ' . ($should_apply_service_charge ? $service_charge_value : 0));
 
         $total_paid_amount += $aRow['total_paid'] ?? 0;
         $total_balance += $aRow['balance'] ?? 0;
@@ -2356,11 +2998,32 @@ $total_service_charge += $service_charge;
         $total_card += $aRow['Card'] ?? 0;
         $total_upi += $aRow['UPI'] ?? 0;
 
+        log_message('debug', '📊 Current totals after row ' . $index . ':');
+        log_message('debug', '   - Total Amount: ' . $total_total_amount);
+        log_message('debug', '   - Total Discount: ' . $total_discount);
+        log_message('debug', '   - Total Bill: ' . $total_bill_amount);
+        log_message('debug', '   - Total Service Charge: ' . $total_service_charge);
+        log_message('debug', '   - Total Paid: ' . $total_paid_amount);
+        log_message('debug', '   - Total Balance: ' . $total_balance);
 
         $output['aaData'][] = $row;
+        log_message('debug', "✅ Row {$index} processed successfully");
     }
 
-    // Append totals row at the end (optional)
+    // Log final totals
+    log_message('debug', '🎯 FINAL TOTALS:');
+    log_message('debug', '   - Total Amount: ' . $total_total_amount);
+    log_message('debug', '   - Total Discount: ' . $total_discount);
+    log_message('debug', '   - Total Bill: ' . $total_bill_amount);
+    log_message('debug', '   - Total Service Charge: ' . $total_service_charge);
+    log_message('debug', '   - Total Paid: ' . $total_paid_amount);
+    log_message('debug', '   - Total Balance: ' . $total_balance);
+    log_message('debug', '   - Total Cash: ' . $total_cash);
+    log_message('debug', '   - Total Cheque: ' . $total_cheque);
+    log_message('debug', '   - Total Card: ' . $total_card);
+    log_message('debug', '   - Total UPI: ' . $total_upi);
+
+    // Append totals row
     $totals_row = [
         '<strong>Total</strong>',
         '',
@@ -2378,10 +3041,10 @@ $total_service_charge += $service_charge;
         app_format_money($total_service_charge, $currency->name),
         app_format_money($total_paid_amount, $currency->name),
         app_format_money($total_balance, $currency->name),
-        app_format_money($total_cash, $currency->name),         // Cash Amount
-        app_format_money($total_cheque, $currency->name),       // Cheque Amount
-        app_format_money($total_card, $currency->name),         // Credit/Debit card
-        app_format_money($total_upi, $currency->name),          // UPI
+        app_format_money($total_cash, $currency->name),
+        app_format_money($total_cheque, $currency->name),
+        app_format_money($total_card, $currency->name),
+        app_format_money($total_upi, $currency->name),
         '',
         '',
         '',
@@ -2389,10 +3052,13 @@ $total_service_charge += $service_charge;
     ];
 
     $output['aaData'][] = $totals_row;
+    log_message('debug', '📋 Totals row added to output');
 
-    log_message('debug', 'Outputting JSON response with total rows');
+    log_message('debug', '📤 Outputting JSON response with ' . count($output['aaData']) . ' rows');
+    log_message('debug', '📄 Final output sample: ' . json_encode(array_slice($output['aaData'], 0, 2)));
 
     echo json_encode($output);
+    log_message('debug', '✅ outpatient_bill_table method completed successfully');
 }
 
 

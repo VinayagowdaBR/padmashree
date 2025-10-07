@@ -45,6 +45,60 @@ class affiliate extends AdminController
      *  manage members
      *  @return view
      */
+
+     public function save_affiliate()
+     {
+         log_message('info', 'save_affiliate called');
+     
+         if ($this->input->post()) {
+             $data = $this->input->post();
+     
+             try {
+                 $insert_id = $this->affiliate_model->add_member($data);
+     
+                 if ($insert_id) {
+                     echo json_encode([
+                         'success' => true,
+                         'message' => 'Affiliate added successfully',
+                         'id'      => $insert_id
+                     ]);
+                 } else {
+                     echo json_encode([
+                         'success' => false,
+                         'message' => 'Failed to add affiliate'
+                     ]);
+                 }
+             } catch (Exception $e) {
+                 // Catch duplicate entry error
+                 if (strpos($e->getMessage(), 'Duplicate entry') !== false) {
+                     preg_match("/Duplicate entry '(.+)' for key '(.+)'/", $e->getMessage(), $matches);
+     
+                     echo json_encode([
+                         'success' => false,
+                         'message' => 'Duplicate entry: ' . ($matches[2] ?? 'unique field') . ' already exists',
+                         'field'   => $matches[2] ?? null,
+                         'value'   => $matches[1] ?? null
+                     ]);
+                 } else {
+                     // General DB error
+                     echo json_encode([
+                         'success' => false,
+                         'message' => 'Database error: ' . $e->getMessage()
+                     ]);
+                 }
+             }
+         } else {
+             echo json_encode([
+                 'success' => false,
+                 'message' => 'No data received'
+             ]);
+         }
+     }
+     
+     
+     
+     
+
     public function members()
     {
         if (!affiliate_has_permission('member', '', 'view')) {
@@ -75,66 +129,84 @@ class affiliate extends AdminController
 
         $this->load->view('members/manage', $data);
     }
-public function member($id = '')
-{
-    log_message('info', 'add_member called  in controller : ' );
+  
 
-    if (!affiliate_has_permission('member', '', 'edit') && !affiliate_has_permission('member', '', 'create')) {
-        access_denied('affiliate_member');
-    }
 
-    if ($this->input->post()) {
-        $this->load->library('form_validation');
-
-        // Validate only required fields
-        $this->form_validation->set_rules('firstname', 'First Name', 'required|trim');
-        $this->form_validation->set_rules('lastname', 'Last Name', 'required|trim');
-        $this->form_validation->set_rules('phone', 'Phone', 'required|trim');
-
-        if ($this->form_validation->run() !== false) {
-            $data = $this->input->post();
-
-        
-
-            if ($id == '') {
-                if (!affiliate_has_permission('member', '', 'create')) {
-                    access_denied('affiliate_member');
-                }
-                $id = $this->affiliate_model->add_member($data);
-                if ($id) {
-                    set_alert('success', _l('added_successfully', _l('member')));
+ public function member($id = '')
+    {
+        log_message('info', 'add_member called in controller');
+    
+        if (!affiliate_has_permission('member', '', 'edit') && !affiliate_has_permission('member', '', 'create')) {
+            access_denied('affiliate_member');
+        }
+    
+        if ($this->input->post()) {
+            $this->load->library('form_validation');
+    
+            // Validate only required fields
+            $this->form_validation->set_rules('firstname', 'First Name', 'required|trim');
+            $this->form_validation->set_rules('lastname', 'Last Name', 'required|trim');
+         
+    
+            if ($this->form_validation->run() !== false) {
+                $data = $this->input->post();
+    
+                try {
+                    if ($id == '') {
+                        if (!affiliate_has_permission('member', '', 'create')) {
+                            access_denied('affiliate_member');
+                        }
+    
+                        $id = $this->affiliate_model->add_member($data);
+    
+                        if ($id) {
+                            set_alert('success', _l('added_successfully', _l('member')));
+                            redirect(admin_url('affiliate/members'));
+                        }
+                    } else {
+                        if (!affiliate_has_permission('member', '', 'edit')) {
+                            access_denied('affiliate_member');
+                        }
+    
+                        $success = $this->affiliate_model->update_member($data, $id);
+    
+                        if ($success) {
+                            set_alert('success', _l('updated_successfully', _l('member')));
+                        }
+                        redirect(admin_url('affiliate/members'));
+                    }
+                } catch (Exception $e) {
+                    if (strpos($e->getMessage(), 'Duplicate entry') !== false) {
+                        preg_match("/Duplicate entry '(.+)' for key '(.+)'/", $e->getMessage(), $matches);
+                        $field = $matches[2] ?? 'field';
+                        $value = $matches[1] ?? '';
+    
+                        set_alert('danger', 'Duplicate entry: ' . $field . ' (' . $value . ') already exists.');
+                    } else {
+                        set_alert('danger', 'Database error: ' . $e->getMessage());
+                    }
+    
                     redirect(admin_url('affiliate/members'));
                 }
             } else {
-                if (!affiliate_has_permission('member', '', 'edit')) {
-                    access_denied('affiliate_member');
-                }
-                $success = $this->affiliate_model->update_member($data, $id);
-                if ($success) {
-                    set_alert('success', _l('updated_successfully', _l('member')));
-                }
-                redirect(admin_url('affiliate/members'));
+                set_alert('danger', _l('Please fill all required fields: First Name, Last Name, Phone.'));
             }
-        } else {
-            set_alert('danger', _l('Please fill all required fields: First Name, Last Name, Phone.'));
         }
+    
+        if ($id == '') {
+            $title = _l('add_new', _l('member'));
+            $data['members'] = $this->affiliate_model->get_member('', ['status' => 1, 'approval' => 1]);
+        } else {
+            $data['member'] = $this->affiliate_model->get_member($id);
+            $title = _l('edit', _l('member'));
+            $data['members'] = $this->affiliate_model->get_member('', 'status = 1 and approval = 1 and id != ' . $id);
+        }
+    
+        $data['id'] = $id;
+        $data['groups'] = $this->affiliate_model->get_member_group();
+        $data['title'] = $title;
+        $this->load->view('members/member', $data);
     }
-
-    if ($id == '') {
-        $title = _l('add_new', _l('member'));
-        $data['members'] = $this->affiliate_model->get_member('', ['status' => 1, 'approval' => 1]);
-    } else {
-        $data['member'] = $this->affiliate_model->get_member($id);
-        $title = _l('edit', _l('member'));
-        $data['members'] = $this->affiliate_model->get_member('', 'status = 1 and approval = 1 and id != ' . $id);
-    }
-
-    $data['id'] = $id;
-    $data['groups'] = $this->affiliate_model->get_member_group();
-    $data['title'] = $title;
-    $this->load->view('members/member', $data);
-}
-
 
     /**
      *  add member group

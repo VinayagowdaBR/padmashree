@@ -291,6 +291,24 @@ class Clients extends AdminController
 }
 
 
+public function update_option()
+{
+    // Load model inside the method
+    $this->load->model('Clients_model');
+
+    // Call model function
+    $updated = $this->Clients_model->update_option_value(36, '1'); // id=36, value='1'
+
+    if ($updated) {
+        log_message('debug', 'tbloptions row updated successfully (id=36).');
+        echo "Option updated successfully"; // This will be returned to AJAX
+    } else {
+        log_message('error', 'Failed to update tbloptions (id=36).');
+        echo "Failed to update option"; // This will be returned to AJAX
+    }
+}
+
+
     public function export($contact_id)
     {
         if (is_admin()) {

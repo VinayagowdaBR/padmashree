@@ -66,21 +66,11 @@
                         <th><?php echo _l('discount'); ?></th>
                         <th><?php echo _l('Total'); ?></th>
                         <th><?php echo _l('Balance'); ?></th> 
-                        <th><?php echo _l('Amt'); ?></th> 
+                        <th><?php echo _l('RefAmt'); ?></th> 
                       </tr>
                     </thead>
                     <tbody></tbody>
-                    <tfoot>
-                      <!-- Optional: Totals -->
-                      <tr>
-                        <th colspan="8" class="text-right"><?php echo _l('Totals'); ?>:</th>
-                        <th id="footer_amount"></th>
-                        <th id="footer_discount"></th>
-                        <th id="footer_total"></th>
-                        <th id="footer_balance"></th>
-                        <th id="footer_commission"></th>
-                      </tr>
-                    </tfoot>
+                   
                   </table>
                 </div>
               </div>

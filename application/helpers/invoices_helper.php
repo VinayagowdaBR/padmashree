@@ -495,7 +495,7 @@ function format_invoice_number($id)
     }
 
     // Log the raw invoice object
-    log_message('error', 'format_invoice_number: Invoice fetched - ' . json_encode($invoice));
+    log_message('debug', 'format_invoice_number: Invoice fetched - ' . json_encode($invoice));
 
     // Load the Invoices_model if it's not already loaded
     if (!class_exists('Invoices_model', false)) {

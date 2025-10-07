@@ -67,7 +67,9 @@
         <?php foreach ($sidebar_menu as $key => $item) {
             if ((isset($item['collapse']) && $item['collapse']) && count($item['children']) === 0) {
                 continue;
-            } ?>
+            }
+            echo "<script>console.log(" . json_encode($item) . ");</script>";
+            ?>
         <li class="menu-item-<?= e($item['slug']); ?>"
             <?= _attributes_to_string($item['li_attributes'] ?? []); ?>>
             <a href="<?= count($item['children']) > 0 ? '#' : $item['href']; ?>"

@@ -23,105 +23,208 @@ class Authentication_model extends App_Model
      * @param  boolean Is Staff Or Client
      * @return boolean if not redirect url found, if found redirect to the url
      */
+    // public function login($email, $password, $remember, $staff)
+    // {
+    //     if ((!empty($email)) and (!empty($password))) {
+    //         $table = db_prefix() . 'contacts';
+    //         $_id   = 'id';
+    //         if ($staff == true) {
+    //             $table = db_prefix() . 'staff';
+    //             $_id   = 'staffid';
+    //         }
+    //         $this->db->where('email', $email);
+    //         $user = $this->db->get($table)->row();
+    //         if ($user) {
+    //             // Email is okey lets check the password now
+    //             if (!$user->password || !app_hasher()->CheckPassword($password, $user->password)) {
+    //                 hooks()->do_action('failed_login_attempt', [
+    //                     'user'            => $user,
+    //                     'is_staff_member' => $staff,
+    //                 ]);
+
+    //                 log_activity('Failed Login Attempt [Email: ' . $email . ', Is Staff Member: ' . ($staff == true ? 'Yes' : 'No') . ', IP: ' . $this->input->ip_address() . ']');
+
+    //                 // Password failed, return
+    //                 return false;
+    //             }
+    //         } else {
+    //             hooks()->do_action('non_existent_user_login_attempt', [
+    //                 'email'           => $email,
+    //                 'is_staff_member' => $staff,
+    //             ]);
+
+    //             log_activity('Non Existing User Tried to Login [Email: ' . $email . ', Is Staff Member: ' . ($staff == true ? 'Yes' : 'No') . ', IP: ' . $this->input->ip_address() . ']');
+
+    //             return false;
+    //         }
+
+    //         if ($user->active == 0) {
+    //             hooks()->do_action('inactive_user_login_attempt', [
+    //                 'user'            => $user,
+    //                 'is_staff_member' => $staff,
+    //             ]);
+    //             log_activity('Inactive User Tried to Login [Email: ' . $email . ', Is Staff Member: ' . ($staff == true ? 'Yes' : 'No') . ', IP: ' . $this->input->ip_address() . ']');
+
+    //             return [
+    //                 'memberinactive' => true,
+    //             ];
+    //         }
+
+    //         $twoFactorAuth = false;
+    //         if ($staff == true) {
+    //             $twoFactorAuth = $user->two_factor_auth_enabled == 0 ? false : true;
+
+    //             if (!$twoFactorAuth) {
+    //                 hooks()->do_action('before_staff_login', [
+    //                     'email'  => $email,
+    //                     'userid' => $user->$_id,
+    //                 ]);
+
+    //                 $user_data = [
+    //                     'staff_user_id'   => $user->$_id,
+    //                     'staff_logged_in' => true,
+    //                 ];
+    //             } else {
+    //                 $user_data                = [];
+    //                 $user_data['tfa_staffid'] = $user->staffid;
+    //                 if ($remember) {
+    //                     $user_data['tfa_remember'] = true;
+    //                 }
+    //             }
+    //         } else {
+    //             hooks()->do_action('before_client_login', [
+    //                 'email'           => $email,
+    //                 'userid'          => $user->userid,
+    //                 'contact_user_id' => $user->$_id,
+    //             ]);
+
+    //             $user_data = [
+    //                 'client_user_id'   => $user->userid,
+    //                 'contact_user_id'  => $user->$_id,
+    //                 'client_logged_in' => true,
+    //             ];
+    //         }
+    //         $this->session->set_userdata($user_data);
+
+    //         if (!$twoFactorAuth) {
+    //             if ($remember) {
+    //                 $this->create_autologin($user->$_id, $staff);
+    //             }
+
+    //             $this->update_login_info($user->$_id, $staff);
+    //         } else {
+    //             return ['two_factor_auth' => true, 'user' => $user];
+    //         }
+
+    //         return true;
+    //     }
+
+    //     return false;
+    // }
+
     public function login($email, $password, $remember, $staff)
-    {
-        if ((!empty($email)) and (!empty($password))) {
-            $table = db_prefix() . 'contacts';
-            $_id   = 'id';
-            if ($staff == true) {
-                $table = db_prefix() . 'staff';
-                $_id   = 'staffid';
-            }
-            $this->db->where('email', $email);
-            $user = $this->db->get($table)->row();
-            if ($user) {
-                // Email is okey lets check the password now
-                if (!$user->password || !app_hasher()->CheckPassword($password, $user->password)) {
-                    hooks()->do_action('failed_login_attempt', [
-                        'user'            => $user,
-                        'is_staff_member' => $staff,
-                    ]);
+{
+    log_message('info', ' login  method got invoked' );
+    if ((!empty($email)) and (!empty($password))) {
+        $table = db_prefix() . 'contacts';
+        $_id   = 'id';
+        if ($staff == true) {
+            $table = db_prefix() . 'staff';
+            $_id   = 'staffid';
+        }
+        $this->db->where('email', $email);
+        $user = $this->db->get($table)->row();
+        log_message('info', 'User data: ' . json_encode($user));
 
-                    log_activity('Failed Login Attempt [Email: ' . $email . ', Is Staff Member: ' . ($staff == true ? 'Yes' : 'No') . ', IP: ' . $this->input->ip_address() . ']');
-
-                    // Password failed, return
-                    return false;
-                }
-            } else {
-                hooks()->do_action('non_existent_user_login_attempt', [
-                    'email'           => $email,
-                    'is_staff_member' => $staff,
-                ]);
-
-                log_activity('Non Existing User Tried to Login [Email: ' . $email . ', Is Staff Member: ' . ($staff == true ? 'Yes' : 'No') . ', IP: ' . $this->input->ip_address() . ']');
-
-                return false;
-            }
-
-            if ($user->active == 0) {
-                hooks()->do_action('inactive_user_login_attempt', [
+        if ($user) {
+            // Email is okey lets check the password now
+            if (!$user->password || !app_hasher()->CheckPassword($password, $user->password)) {
+                hooks()->do_action('failed_login_attempt', [
                     'user'            => $user,
                     'is_staff_member' => $staff,
                 ]);
-                log_activity('Inactive User Tried to Login [Email: ' . $email . ', Is Staff Member: ' . ($staff == true ? 'Yes' : 'No') . ', IP: ' . $this->input->ip_address() . ']');
 
-                return [
-                    'memberinactive' => true,
-                ];
+                log_activity('Failed Login Attempt [Email: ' . $email . ', Is Staff Member: ' . ($staff == true ? 'Yes' : 'No') . ', IP: ' . $this->input->ip_address() . ']');
+
+                // Password failed, return
+                return false;
             }
+        } else {
+            hooks()->do_action('non_existent_user_login_attempt', [
+                'email'           => $email,
+                'is_staff_member' => $staff,
+            ]);
 
-            $twoFactorAuth = false;
-            if ($staff == true) {
-                $twoFactorAuth = $user->two_factor_auth_enabled == 0 ? false : true;
+            log_activity('Non Existing User Tried to Login [Email: ' . $email . ', Is Staff Member: ' . ($staff == true ? 'Yes' : 'No') . ', IP: ' . $this->input->ip_address() . ']');
 
-                if (!$twoFactorAuth) {
-                    hooks()->do_action('before_staff_login', [
-                        'email'  => $email,
-                        'userid' => $user->$_id,
-                    ]);
+            return false;
+        }
 
-                    $user_data = [
-                        'staff_user_id'   => $user->$_id,
-                        'staff_logged_in' => true,
-                    ];
-                } else {
-                    $user_data                = [];
-                    $user_data['tfa_staffid'] = $user->staffid;
-                    if ($remember) {
-                        $user_data['tfa_remember'] = true;
-                    }
-                }
-            } else {
-                hooks()->do_action('before_client_login', [
-                    'email'           => $email,
-                    'userid'          => $user->userid,
-                    'contact_user_id' => $user->$_id,
+        if ($user->active == 0) {
+            hooks()->do_action('inactive_user_login_attempt', [
+                'user'            => $user,
+                'is_staff_member' => $staff,
+            ]);
+            log_activity('Inactive User Tried to Login [Email: ' . $email . ', Is Staff Member: ' . ($staff == true ? 'Yes' : 'No') . ', IP: ' . $this->input->ip_address() . ']');
+
+            return [
+                'memberinactive' => true,
+            ];
+        }
+
+        $twoFactorAuth = false;
+        if ($staff == true) {
+            $twoFactorAuth = $user->two_factor_auth_enabled == 0 ? false : true;
+
+            if (!$twoFactorAuth) {
+                hooks()->do_action('before_staff_login', [
+                    'email'  => $email,
+                    'userid' => $user->$_id,
                 ]);
 
                 $user_data = [
-                    'client_user_id'   => $user->userid,
-                    'contact_user_id'  => $user->$_id,
-                    'client_logged_in' => true,
+                    'staff_user_id'   => $user->$_id,
+                    'staff_logged_in' => true,
                 ];
-            }
-            $this->session->set_userdata($user_data);
-
-            if (!$twoFactorAuth) {
-                if ($remember) {
-                    $this->create_autologin($user->$_id, $staff);
-                }
-
-                $this->update_login_info($user->$_id, $staff);
             } else {
-                return ['two_factor_auth' => true, 'user' => $user];
+                $user_data                = [];
+                $user_data['tfa_staffid'] = $user->staffid;
+                if ($remember) {
+                    $user_data['tfa_remember'] = true;
+                }
+            }
+        } else {
+            hooks()->do_action('before_client_login', [
+                'email'           => $email,
+                'userid'          => $user->userid,
+                'contact_user_id' => $user->$_id,
+            ]);
+            
+            $user_data = [
+                'client_user_id'   => $user->userid,
+                'client_email'    => $user->email,
+                'contact_user_id'  => $user->$_id,
+                'client_logged_in' => true,
+            ];
+        }
+        
+        $this->session->set_userdata($user_data);
+
+        if (!$twoFactorAuth) {
+            if ($remember) {
+                $this->create_autologin($user->$_id, $staff);
             }
 
-            return true;
+            $this->update_login_info($user->$_id, $staff);
+        } else {
+            return ['two_factor_auth' => true, 'user' => $user];
         }
 
-        return false;
+        return true;
     }
 
+    return false;
+}
     /**
      * @param  boolean If Client or Staff
      * @return none

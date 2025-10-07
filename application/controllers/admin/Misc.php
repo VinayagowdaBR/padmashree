@@ -49,10 +49,16 @@ class Misc extends AdminController
 
     public function get_taxes_dropdown_template()
     {
+        log_message('info', 'get_taxes_dropdown_template() was called.'); // ✅ Log entry
+    
         $name    = $this->input->post('name');
         $taxname = $this->input->post('taxname');
-        echo $this->misc_model->get_taxes_dropdown_template($name, $taxname);
+    
+        log_message('debug', 'POST data received - name: ' . $name . ', taxname: ' . print_r($taxname, true));
+    
+        // echo $this->misc_model->get_taxes_dropdown_template($name, $taxname);
     }
+    
 
     public function dismiss_cron_setup_message()
     {

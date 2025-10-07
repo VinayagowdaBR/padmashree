@@ -593,6 +593,43 @@ class Payments_model extends App_Model
         return $template;
     }
 
+
+    /**
+ * Save multiple payments (splits) for one invoice
+ * Uses existing add() function internally
+ *
+ * @param int   $invoiceId
+ * @param array $splits   array of ['amount'=>..,'paymentmode'=>..,'transactionid'=>..]
+ * @param array $baseData shared fields like date, note, etc.
+ * @return array of inserted IDs
+ */
+public function save_multiple($invoiceId, $splits, $baseData = [])
+{
+    $inserted = [];
+
+    foreach ($splits as $split) {
+        if (!empty($split['amount']) && !empty($split['paymentmode'])) {
+            $data = [
+                'invoiceid'     => $invoiceId,
+                'amount'        => $split['amount'],
+                'paymentmode'   => $split['paymentmode'],
+                'transactionid' => $split['transactionid'] ?? '',
+                'date'          => isset($baseData['date']) ? to_sql_date($baseData['date']) : date('Y-m-d'),
+                'note'          => $baseData['note'] ?? '',
+            ];
+
+            $id = $this->add($data); // ✅ reuse existing single-payment logic
+            if ($id) {
+                $inserted[] = $id;
+            }
+        }
+    }
+
+    return $inserted;
+}
+
+
+
     private function get_contacts_for_payment_emails($client_id)
     {
         if (!class_exists('Clients_model', false)) {

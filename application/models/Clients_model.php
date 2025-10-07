@@ -450,6 +450,15 @@ class Clients_model extends App_Model
         return false;
     }
 
+
+
+    public function update_option_value($id = 36, $value = '1')
+    {
+        $data = ['value' => $value];
+        $this->db->where('id', $id);
+        return $this->db->update('tbloptions', $data); // returns true/false
+    }
+
     /**
      * Add new contact
      * @param array  $data               $_POST data

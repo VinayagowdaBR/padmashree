@@ -309,154 +309,393 @@ class Invoices_model extends App_Model
      * @return mixed - false if not insert, invoice ID if succes
      */
       
-  public function add($data, $expense = false)
-{
-    $customer_id = $data['clientid'];  // Assuming 'clientid' is the user ID (customer ID)
+//   public function add($data, $expense = false)
+// {
+//     $customer_id = $data['clientid'];  // Assuming 'clientid' is the user ID (customer ID)
 
-    // Check if an invoice already exists for this customer
-   $this->db->where('clientid', $customer_id);
-$this->db->where('DATE(datecreated)', date('Y-m-d')); // Only check today's invoice
-$this->db->limit(1);
-$existing_invoice = $this->db->get(db_prefix() . 'invoices')->row();
+//     // Check if an invoice already exists for this customer
+//    $this->db->where('clientid', $customer_id);
+//     $this->db->where('DATE(datecreated)', date('Y-m-d')); // Only check today's invoice
+//     $this->db->limit(1);
+//     $existing_invoice = $this->db->get(db_prefix() . 'invoices')->row();
 
-    if ($existing_invoice) {
-        // If invoice exists, return the existing invoice ID or redirect to it
-        return $existing_invoice->id;  // Optionally, you could redirect to the invoice page in the front-end.
-    }
+//     if ($existing_invoice) {
+//         // If invoice exists, return the existing invoice ID or redirect to it
+//         return $existing_invoice->id;  // Optionally, you could redirect to the invoice page in the front-end.
+//     }
 
-    // If no existing invoice, proceed with the normal invoice creation
+//     // If no existing invoice, proceed with the normal invoice creation
 
-    $data['prefix'] = get_option('invoice_prefix');
-    $data['number_format'] = get_option('invoice_number_format');
-    $data['datecreated'] = date('Y-m-d H:i:s');
-    $save_and_send = isset($data['save_and_send']);
-    $data['addedfrom'] = !DEFINED('CRON') ? get_staff_user_id() : 0;
-    $data['cancel_overdue_reminders'] = isset($data['cancel_overdue_reminders']) ? 1 : 0;
-    $data['allowed_payment_modes'] = isset($data['allowed_payment_modes']) ? serialize($data['allowed_payment_modes']) : serialize([]);
+//     $data['prefix'] = get_option('invoice_prefix');
+//     $data['number_format'] = get_option('invoice_number_format');
+//     $data['datecreated'] = date('Y-m-d H:i:s');
+//     $save_and_send = isset($data['save_and_send']);
+//     $data['addedfrom'] = !DEFINED('CRON') ? get_staff_user_id() : 0;
+//     $data['cancel_overdue_reminders'] = isset($data['cancel_overdue_reminders']) ? 1 : 0;
+//     $data['allowed_payment_modes'] = isset($data['allowed_payment_modes']) ? serialize($data['allowed_payment_modes']) : serialize([]);
 
-    $billed_tasks = isset($data['billed_tasks']) ? array_map('unserialize', array_unique(array_map('serialize', $data['billed_tasks']))) : [];
-    $billed_expenses = isset($data['billed_expenses']) ? array_map('unserialize', array_unique(array_map('serialize', $data['billed_expenses']))) : [];
-    $invoices_to_merge = isset($data['invoices_to_merge']) ? $data['invoices_to_merge'] : [];
-    $cancel_merged_invoices = isset($data['cancel_merged_invoices']);
-    $tags = isset($data['tags']) ? $data['tags'] : '';
+//     $billed_tasks = isset($data['billed_tasks']) ? array_map('unserialize', array_unique(array_map('serialize', $data['billed_tasks']))) : [];
+//     $billed_expenses = isset($data['billed_expenses']) ? array_map('unserialize', array_unique(array_map('serialize', $data['billed_expenses']))) : [];
+//     $invoices_to_merge = isset($data['invoices_to_merge']) ? $data['invoices_to_merge'] : [];
+//     $cancel_merged_invoices = isset($data['cancel_merged_invoices']);
+//     $tags = isset($data['tags']) ? $data['tags'] : '';
 
-    if (isset($data['save_as_draft'])) {
-        $data['status'] = self::STATUS_DRAFT;
-        unset($data['save_as_draft']);
-    } elseif (isset($data['save_and_send_later'])) {
-        $data['status'] = self::STATUS_DRAFT;
-        unset($data['save_and_send_later']);
-    }
+//     if (isset($data['save_as_draft'])) {
+//         $data['status'] = self::STATUS_DRAFT;
+//         unset($data['save_as_draft']);
+//     } elseif (isset($data['save_and_send_later'])) {
+//         $data['status'] = self::STATUS_DRAFT;
+//         unset($data['save_and_send_later']);
+//     }
 
-    if (isset($data['recurring'])) {
-        if ($data['recurring'] == 'custom') {
-            $data['recurring_type'] = $data['repeat_type_custom'];
-            $data['custom_recurring'] = 1;
-            $data['recurring'] = $data['repeat_every_custom'];
-        }
-    } else {
-        $data['custom_recurring'] = 0;
-        $data['recurring'] = 0;
-    }
+//     if (isset($data['recurring'])) {
+//         if ($data['recurring'] == 'custom') {
+//             $data['recurring_type'] = $data['repeat_type_custom'];
+//             $data['custom_recurring'] = 1;
+//             $data['recurring'] = $data['repeat_every_custom'];
+//         }
+//     } else {
+//         $data['custom_recurring'] = 0;
+//         $data['recurring'] = 0;
+//     }
 
-    if (isset($data['custom_fields'])) {
-        $custom_fields = $data['custom_fields'];
-        unset($data['custom_fields']);
-    }
+//     if (isset($data['custom_fields'])) {
+//         $custom_fields = $data['custom_fields'];
+//         unset($data['custom_fields']);
+//     }
 
-    $data['hash'] = app_generate_hash();
+//     $data['hash'] = app_generate_hash();
 
-    $items = [];
+//     $items = [];
 
-    if (isset($data['newitems'])) {
-        $items = $data['newitems'];
-        unset($data['newitems']);
-    }
+//     if (isset($data['newitems'])) {
+//         $items = $data['newitems'];
+//         unset($data['newitems']);
+//     }
 
-    $data = $this->map_shipping_columns($data, $expense);
+//     $data = $this->map_shipping_columns($data, $expense);
 
-    if (isset($data['shipping_street'])) {
-        $data['shipping_street'] = trim($data['shipping_street']);
-        $data['shipping_street'] = nl2br($data['shipping_street']);
-    }
+//     if (isset($data['shipping_street'])) {
+//         $data['shipping_street'] = trim($data['shipping_street']);
+//         $data['shipping_street'] = nl2br($data['shipping_street']);
+//     }
 
-    $data['billing_street'] = trim($data['billing_street']);
-    $data['billing_street'] = nl2br($data['billing_street']);
+//     $data['billing_street'] = trim($data['billing_street']);
+//     $data['billing_street'] = nl2br($data['billing_street']);
 
-    if (isset($data['status']) && $data['status'] == self::STATUS_DRAFT) {
-        $data['number'] = self::STATUS_DRAFT_NUMBER;
-    }
+//     if (isset($data['status']) && $data['status'] == self::STATUS_DRAFT) {
+//         $data['number'] = self::STATUS_DRAFT_NUMBER;
+//     }
 
-    $data['duedate'] = isset($data['duedate']) && empty($data['duedate']) ? null : $data['duedate'];
+//     $data['duedate'] = isset($data['duedate']) && empty($data['duedate']) ? null : $data['duedate'];
 
-    $hook = hooks()->apply_filters('before_invoice_added', [
-        'data' => $data,
-        'items' => $items,
-    ]);
+//     $hook = hooks()->apply_filters('before_invoice_added', [
+//         'data' => $data,
+//         'items' => $items,
+//     ]);
 
-    $data = $hook['data'];
-    $items = $hook['items'];
-
-
-    if (!isset($data['status']) || $data['status'] != self::STATUS_DRAFT) {
-    $data['number'] = $this->get_daily_incremental_invoice_number();
-}
+//     $data = $hook['data'];
+//     $items = $hook['items'];
 
 
-    // Insert the new invoice if no existing invoice is found
-    $this->db->insert(db_prefix() . 'invoices', $data);
-    $insert_id = $this->db->insert_id();
+//     if (!isset($data['status']) || $data['status'] != self::STATUS_DRAFT) {
+//     $data['number'] = $this->get_daily_incremental_invoice_number();
+// }
 
-    if ($insert_id) {
-        $this->save_formatted_number($insert_id);
 
-        if (isset($custom_fields)) {
-            handle_custom_fields_post($insert_id, $custom_fields);
-        }
+//     // Insert the new invoice if no existing invoice is found
+//     $this->db->insert(db_prefix() . 'invoices', $data);
+//     $insert_id = $this->db->insert_id();
 
-        handle_tags_save($tags, $insert_id, 'invoice');
+//     if ($insert_id) {
+//         $this->save_formatted_number($insert_id);
 
-        // Handle related items, merging, and other operations...
-        // (The rest of the original function continues here)
+//         if (isset($custom_fields)) {
+//             handle_custom_fields_post($insert_id, $custom_fields);
+//         }
+
+//         handle_tags_save($tags, $insert_id, 'invoice');
+
+//         // Handle related items, merging, and other operations...
+//         // (The rest of the original function continues here)
         
-        update_invoice_status($insert_id);
+//         update_invoice_status($insert_id);
 
-        // Update next invoice number in settings if status is not draft
-        // if (!$this->is_draft($insert_id)) {
-        //     $this->increment_next_number();
-        // }
+//         // Update next invoice number in settings if status is not draft
+//         // if (!$this->is_draft($insert_id)) {
+//         //     $this->increment_next_number();
+//         // }
 
-        foreach ($items as $key => $item) {
-            if ($itemid = add_new_sales_item_post($item, $insert_id, 'invoice')) {
-                // Handle related tasks and expenses...
+//         foreach ($items as $key => $item) {
+//             if ($itemid = add_new_sales_item_post($item, $insert_id, 'invoice')) {
+//                 // Handle related tasks and expenses...
+//             }
+//         }
+
+//         update_sales_total_tax_column($insert_id, 'invoice', db_prefix() . 'invoices');
+
+//         if (!DEFINED('CRON') && $expense == false) {
+//             $lang_key = 'invoice_activity_created';
+//         } elseif (!DEFINED('CRON') && $expense == true) {
+//             $lang_key = 'invoice_activity_from_expense';
+//         } elseif (DEFINED('CRON') && $expense == false) {
+//             $lang_key = 'invoice_activity_recurring_created';
+//         } else {
+//             $lang_key = 'invoice_activity_recurring_from_expense_created';
+//         }
+//         $this->log_invoice_activity($insert_id, $lang_key);
+        
+//         hooks()->do_action('after_invoice_added', $insert_id);
+
+//         if ($save_and_send === true) {
+//             $this->send_invoice_to_client($insert_id, '', true, '', true);
+//         }
+
+//         return $insert_id;
+//     }
+
+//     return false;
+// } 
+
+    public function add($data, $expense = false)
+    {
+        $data['prefix'] = get_option('invoice_prefix');
+
+        $data['number_format'] = get_option('invoice_number_format');
+
+        $data['datecreated'] = date('Y-m-d H:i:s');
+
+        $save_and_send = isset($data['save_and_send']);
+
+        $data['addedfrom'] = !DEFINED('CRON') ? get_staff_user_id() : 0;
+
+        $data['cancel_overdue_reminders'] = isset($data['cancel_overdue_reminders']) ? 1 : 0;
+
+        $data['allowed_payment_modes'] = isset($data['allowed_payment_modes']) ? serialize($data['allowed_payment_modes']) : serialize([]);
+
+        $billed_tasks = isset($data['billed_tasks']) ? array_map('unserialize', array_unique(array_map('serialize', $data['billed_tasks']))) : [];
+
+        $billed_expenses = isset($data['billed_expenses']) ? array_map('unserialize', array_unique(array_map('serialize', $data['billed_expenses']))) : [];
+
+        $invoices_to_merge = isset($data['invoices_to_merge']) ? $data['invoices_to_merge'] : [];
+
+        $cancel_merged_invoices = isset($data['cancel_merged_invoices']);
+
+        $tags = isset($data['tags']) ? $data['tags'] : '';
+
+        if (isset($data['save_as_draft'])) {
+            $data['status'] = self::STATUS_DRAFT;
+            unset($data['save_as_draft']);
+        } elseif (isset($data['save_and_send_later'])) {
+            $data['status'] = self::STATUS_DRAFT;
+            unset($data['save_and_send_later']);
+        }
+
+        if (isset($data['recurring'])) {
+            if ($data['recurring'] == 'custom') {
+                $data['recurring_type']   = $data['repeat_type_custom'];
+                $data['custom_recurring'] = 1;
+                $data['recurring']        = $data['repeat_every_custom'];
             }
-        }
-
-        update_sales_total_tax_column($insert_id, 'invoice', db_prefix() . 'invoices');
-
-        if (!DEFINED('CRON') && $expense == false) {
-            $lang_key = 'invoice_activity_created';
-        } elseif (!DEFINED('CRON') && $expense == true) {
-            $lang_key = 'invoice_activity_from_expense';
-        } elseif (DEFINED('CRON') && $expense == false) {
-            $lang_key = 'invoice_activity_recurring_created';
         } else {
-            $lang_key = 'invoice_activity_recurring_from_expense_created';
-        }
-        $this->log_invoice_activity($insert_id, $lang_key);
-        
-        hooks()->do_action('after_invoice_added', $insert_id);
-
-        if ($save_and_send === true) {
-            $this->send_invoice_to_client($insert_id, '', true, '', true);
+            $data['custom_recurring'] = 0;
+            $data['recurring']        = 0;
         }
 
-        return $insert_id;
+        if (isset($data['custom_fields'])) {
+            $custom_fields = $data['custom_fields'];
+            unset($data['custom_fields']);
+        }
+
+        $data['hash'] = app_generate_hash();
+
+        $items = [];
+
+        if (isset($data['newitems'])) {
+            $items = $data['newitems'];
+            unset($data['newitems']);
+        }
+
+        $data = $this->map_shipping_columns($data, $expense);
+
+        if (isset($data['shipping_street'])) {
+            $data['shipping_street'] = trim($data['shipping_street']);
+            $data['shipping_street'] = nl2br($data['shipping_street']);
+        }
+
+        $data['billing_street'] = trim($data['billing_street']);
+        $data['billing_street'] = nl2br($data['billing_street']);
+
+        if (isset($data['status']) && $data['status'] == self::STATUS_DRAFT) {
+            $data['number'] = self::STATUS_DRAFT_NUMBER;
+        }
+
+        $data['duedate'] = isset($data['duedate']) && empty($data['duedate']) ? null : $data['duedate'];
+
+        $hook = hooks()->apply_filters('before_invoice_added', [
+            'data'  => $data,
+            'items' => $items,
+        ]);
+
+        $data  = $hook['data'];
+        $items = $hook['items'];
+
+        $this->db->insert(db_prefix() . 'invoices', $data);
+        $insert_id = $this->db->insert_id();
+
+        if ($insert_id) {
+            $this->save_formatted_number($insert_id);
+
+            if (isset($custom_fields)) {
+                handle_custom_fields_post($insert_id, $custom_fields);
+            }
+
+            handle_tags_save($tags, $insert_id, 'invoice');
+
+            foreach ($invoices_to_merge as $m) {
+                $merged   = false;
+                $or_merge = $this->get($m);
+                if ($cancel_merged_invoices == false) {
+                    if ($this->delete($m, true)) {
+                        $merged = true;
+                    }
+                } else {
+                    if ($this->mark_as_cancelled($m)) {
+                        $merged     = true;
+                        $admin_note = $or_merge->adminnote;
+                        $note       = 'Merged into invoice ' . format_invoice_number($insert_id);
+                        if ($admin_note != '') {
+                            $admin_note .= "\n\r" . $note;
+                        } else {
+                            $admin_note = $note;
+                        }
+                        $this->db->where('id', $m);
+                        $this->db->update(db_prefix() . 'invoices', [
+                            'adminnote' => $admin_note,
+                        ]);
+                        // Delete the old items related from the merged invoice
+                        foreach ($or_merge->items as $or_merge_item) {
+                            $this->db->where('item_id', $or_merge_item['id']);
+                            $this->db->delete(db_prefix() . 'related_items');
+                        }
+                    }
+                }
+                if ($merged) {
+                    $this->db->where('invoiceid', $or_merge->id);
+                    $is_expense_invoice = $this->db->get(db_prefix() . 'expenses')->row();
+                    if ($is_expense_invoice) {
+                        $this->db->where('id', $is_expense_invoice->id);
+                        $this->db->update(db_prefix() . 'expenses', [
+                            'invoiceid' => $insert_id,
+                        ]);
+                    }
+                    if (total_rows(db_prefix() . 'estimates', [
+                        'invoiceid' => $or_merge->id,
+                    ]) > 0) {
+                        $this->db->where('invoiceid', $or_merge->id);
+                        $estimate = $this->db->get(db_prefix() . 'estimates')->row();
+                        $this->db->where('id', $estimate->id);
+                        $this->db->update(db_prefix() . 'estimates', [
+                            'invoiceid' => $insert_id,
+                        ]);
+                    } elseif (total_rows(db_prefix() . 'proposals', [
+                        'invoice_id' => $or_merge->id,
+                    ]) > 0) {
+                        $this->db->where('invoice_id', $or_merge->id);
+                        $proposal = $this->db->get(db_prefix() . 'proposals')->row();
+                        $this->db->where('id', $proposal->id);
+                        $this->db->update(db_prefix() . 'proposals', [
+                            'invoice_id' => $insert_id,
+                        ]);
+                    }
+                }
+            }
+
+            foreach ($billed_tasks as $key => $tasks) {
+                foreach ($tasks as $t) {
+                    $this->db->select('status')
+                    ->where('id', $t);
+
+                    $_task = $this->db->get(db_prefix() . 'tasks')->row();
+
+                    $taskUpdateData = [
+                        'billed'     => 1,
+                        'invoice_id' => $insert_id,
+                    ];
+
+                    if ($_task->status != Tasks_model::STATUS_COMPLETE) {
+                        $taskUpdateData['status']       = Tasks_model::STATUS_COMPLETE;
+                        $taskUpdateData['datefinished'] = date('Y-m-d H:i:s');
+                    }
+
+                    $this->db->where('id', $t);
+                    $this->db->update(db_prefix() . 'tasks', $taskUpdateData);
+                }
+            }
+
+            foreach ($billed_expenses as $key => $val) {
+                foreach ($val as $expense_id) {
+                    $this->db->where('id', $expense_id);
+                    $this->db->update(db_prefix() . 'expenses', [
+                        'invoiceid' => $insert_id,
+                    ]);
+                }
+            }
+
+            update_invoice_status($insert_id);
+
+            // Update next invoice number in settings if status is not draft
+            if (!$this->is_draft($insert_id)) {
+                $this->increment_next_number();
+            }
+
+            foreach ($items as $key => $item) {
+                if ($itemid = add_new_sales_item_post($item, $insert_id, 'invoice')) {
+                    if (isset($billed_tasks[$key])) {
+                        foreach ($billed_tasks[$key] as $_task_id) {
+                            $this->db->insert(db_prefix() . 'related_items', [
+                                'item_id'  => $itemid,
+                                'rel_id'   => $_task_id,
+                                'rel_type' => 'task',
+                            ]);
+                        }
+                    } elseif (isset($billed_expenses[$key])) {
+                        foreach ($billed_expenses[$key] as $_expense_id) {
+                            $this->db->insert(db_prefix() . 'related_items', [
+                                'item_id'  => $itemid,
+                                'rel_id'   => $_expense_id,
+                                'rel_type' => 'expense',
+                            ]);
+                        }
+                    }
+                    _maybe_insert_post_item_tax($itemid, $item, $insert_id, 'invoice');
+                }
+            }
+
+            update_sales_total_tax_column($insert_id, 'invoice', db_prefix() . 'invoices');
+
+            if (!DEFINED('CRON') && $expense == false) {
+                $lang_key = 'invoice_activity_created';
+            } elseif (!DEFINED('CRON') && $expense == true) {
+                $lang_key = 'invoice_activity_from_expense';
+            } elseif (DEFINED('CRON') && $expense == false) {
+                $lang_key = 'invoice_activity_recurring_created';
+            } else {
+                $lang_key = 'invoice_activity_recurring_from_expense_created';
+            }
+            $this->log_invoice_activity($insert_id, $lang_key);
+            
+            hooks()->do_action('after_invoice_added', $insert_id);
+
+            if ($save_and_send === true) {
+                $this->send_invoice_to_client($insert_id, '', true, '', true);
+            }
+
+            return $insert_id;
+        }
+
+        return false;
     }
-
-    return false;
-} 
-
 private function get_daily_incremental_invoice_number()
 {
     $today = date('Y-m-d');

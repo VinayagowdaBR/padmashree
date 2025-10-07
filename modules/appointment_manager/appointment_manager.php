@@ -76,21 +76,21 @@ function appointment_manager_module_init_menu_items()
         'href'     => admin_url('appointment_manager/all_appointments'),
         'position' => 15,
     ]);
-    $CI->app_menu->add_sidebar_children_item('appointment_manager', [
-        'slug'     => 'appmgr_holidays',
-        'name'     => _l('appmgr_holidays'),
-        'icon'     => 'fa-solid fa-mug-hot',
-        'href'     => admin_url('appointment_manager/holidays'),
-        'position' => 20,
-    ]);
+    // $CI->app_menu->add_sidebar_children_item('appointment_manager', [
+    //     'slug'     => 'appmgr_holidays',
+    //     'name'     => _l('appmgr_holidays'),
+    //     'icon'     => 'fa-solid fa-mug-hot',
+    //     'href'     => admin_url('appointment_manager/holidays'),
+    //     'position' => 20,
+    // ]);
 
-    $CI->app_menu->add_sidebar_children_item('appointment_manager', [
-        'slug'     => 'appmgr_locations',
-        'name'     => _l('appmgr_locations'),
-        'icon'     => 'fa-solid fa-location-dot',
-        'href'     => admin_url('appointment_manager/locations'),
-        'position' => 25,
-    ]);
+    // $CI->app_menu->add_sidebar_children_item('appointment_manager', [
+    //     'slug'     => 'appmgr_locations',
+    //     'name'     => _l('appmgr_locations'),
+    //     'icon'     => 'fa-solid fa-location-dot',
+    //     'href'     => admin_url('appointment_manager/locations'),
+    //     'position' => 25,
+    // ]);
     $CI->app_menu->add_sidebar_children_item('appointment_manager', [
         'slug'     => 'appmgr_appointies',
         'name'     => _l('appmgr_appointies'),
@@ -98,13 +98,13 @@ function appointment_manager_module_init_menu_items()
         'href'     => admin_url('appointment_manager/appointies'),
         'position' => 30,
     ]);
-    $CI->app_menu->add_sidebar_children_item('appointment_manager', [
-        'slug'     => 'appmgr_treatments',
-        'name'     => _l('appmgr_treatments'),
-        'icon'     => 'fa-solid fa-taxi',
-        'href'     => admin_url('appointment_manager/services'),
-        'position' => 31,
-    ]);
+    // $CI->app_menu->add_sidebar_children_item('appointment_manager', [
+    //     'slug'     => 'appmgr_treatments',
+    //     'name'     => _l('appmgr_treatments'),
+    //     'icon'     => 'fa-solid fa-taxi',
+    //     'href'     => admin_url('appointment_manager/services'),
+    //     'position' => 31,
+    // ]);
     $CI->app_tabs->add_customer_profile_tab('appointment_manager', [
         'name'     => _l('appointment_manager'),
         'view'     => 'appointment_manager/client_appointments',
@@ -123,13 +123,13 @@ function appointment_manager_module_init_menu_items()
         'href'     => admin_url('appointment_manager/statuses'),
         'position' => 5,
     ]);
-    $CI->app_menu->add_sidebar_children_item('appointment_manager', [
-        'slug' => 'appmgr_reports',
-        'name' => _l('appmgr_reports'),
-        'icon' => 'fa  fa-file',
-        'href' => admin_url('appointment_manager/appmgr_reports'),
-        'position' => 40,
-    ]);
+    // $CI->app_menu->add_sidebar_children_item('appointment_manager', [
+    //     'slug' => 'appmgr_reports',
+    //     'name' => _l('appmgr_reports'),
+    //     'icon' => 'fa  fa-file',
+    //     'href' => admin_url('appointment_manager/appmgr_reports'),
+    //     'position' => 40,
+    // ]);
     $CI->app_scripts->add(APPOINTMENT_MANAGER_MODULE_NAME . '-js', base_url('modules/' . APPOINTMENT_MANAGER_MODULE_NAME . '/assets/js/' . APPOINTMENT_MANAGER_MODULE_NAME . '.js'));
     $CI->app_scripts->add(APPOINTMENT_MANAGER_MODULE_NAME . 'popper-js', base_url('modules/' . APPOINTMENT_MANAGER_MODULE_NAME . '/assets/js/popper.min.js'));
     $capabilities['capabilities'] = [

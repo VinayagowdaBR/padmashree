@@ -21,18 +21,47 @@ $pdf->writeHTML('<hr style="border: 1px solid #000; margin: 4px 0;">', false, fa
 $label_width = '100px';
 
 $left_info = '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">' . _l('Name') . '</span>: ' . $invoice->client->company . '</p>';
+// Add this at the top for debugging
+
+
+$left_info = '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">' . _l('Name') . '</span>: ' . $invoice->client->company . '</p>';
+
+$age_value = '';
+$age_option_value = '';
 
 foreach ($pdf_custom_fields as $field) {
     $field_name_lower = strtolower(trim($field['name']));
-    if (!in_array($field_name_lower, ['age', 'sex'])) {
-        continue;
-    }
     $value = get_custom_field_value($invoice->id, $field['id'], 'invoice');
+    
     if ($value == '') {
         continue;
     }
+    
+    if ($field_name_lower === 'age') {
+        $age_value = $value;
+        continue; // We'll handle age separately with age option
+    } elseif ($field_name_lower === 'ageoption') {
+        $age_option_value = $value;
+        continue; // We'll handle this with age
+    } elseif (!in_array($field_name_lower, ['age', 'sex', 'ageoption'])) {
+        continue;
+    }
+    
     $left_info .= '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">' . $field['name'] . '</span>: ' . $value . '</p>';
 }
+
+// Handle age and age option together
+if (!empty($age_value)) {
+    $age_display = $age_value;
+    if (!empty($age_option_value)) {
+        $age_display .= ' (' . $age_option_value . ')';
+    }
+    $left_info .= '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">Age</span>: ' . $age_display . '</p>';
+    
+    // Log the combined age display
+}
+
+
 
 $right_info = '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">' . _l('Date & Time') . '</span>: ' . _d($invoice->datecreated) . '</p>';
 $right_info .= '<p style="color:#4e4e4e;"><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">BILL NO</span>: ' . $invoice_number . '</p>';
@@ -70,6 +99,53 @@ $tblhtml = $items->table();
 $pdf->writeHTML($tblhtml, true, false, false, false, '');
 $pdf->Ln(2);
 
+// $tbltotal = '<table cellpadding="6" style="font-size:' . ($font_size + 2) . 'px">';
+// $tbltotal .= '  
+// <tr>
+//     <td align="right" width="85%"><strong>' . _l('Charges(Rs)') . '</strong></td>
+//     <td align="right" width="15%">' . app_format_money($invoice->subtotal, $invoice->currency_name) . '</td>
+// </tr>';
+
+// if (is_sale_discount_applied($invoice)) {
+//     $tbltotal .= '
+//     <tr>
+//         <td align="right" width="85%"><strong>' . _l('Discount(Rs)');
+//     if (is_sale_discount($invoice, 'percent')) {
+//         $tbltotal .= ' (' . app_format_number($invoice->discount_percent, true) . '%)';
+//     }
+//     $tbltotal .= '</strong></td>
+//         <td align="right" width="15%">-' . app_format_money($invoice->discount_total, $invoice->currency_name) . '</td>
+//     </tr>';
+// }
+
+// $tbltotal .= '
+// <tr style="background-color:#e5e7eb;">
+//     <td align="right" width="85%"><strong>' . _l('Total Charges(Rs)') . '</strong></td>
+//     <td align="right" width="15%">' . app_format_money($invoice->total, $invoice->currency_name) . '</td>
+// </tr>';
+
+// if (count($invoice->payments) > 0 && get_option('show_total_paid_on_invoice') == 1) {
+//     $tbltotal .= '
+//     <tr>
+//         <td align="right" width="85%"><strong>' . _l('Advanced Amount(Rs)') . '</strong></td>
+//         <td align="right" width="15%">-' . app_format_money(sum_from_table(db_prefix() . 'invoicepaymentrecords', [
+//         'field' => 'amount',
+//         'where' => ['invoiceid' => $invoice->id],
+//     ]), $invoice->currency_name) . '</td>
+//     </tr>';
+// }
+
+// if (get_option('show_amount_due_on_invoice') == 1 && $invoice->status != Invoices_model::STATUS_CANCELLED) {
+//     $tbltotal .= '<tr style="background-color:#e5e7eb;">
+//         <td align="right" width="85%"><strong>' . _l('Balance(Rs)') . '</strong></td>
+//         <td align="right" width="15%">' . app_format_money($invoice->total_left_to_pay, $invoice->currency_name) . '</td>
+//     </tr>';
+// }
+
+// $tbltotal .= '</table>';
+// $pdf->writeHTML($tbltotal, true, false, false, false, '');
+
+
 $tbltotal = '<table cellpadding="6" style="font-size:' . ($font_size + 2) . 'px">';
 $tbltotal .= '
 <tr>
@@ -96,14 +172,32 @@ $tbltotal .= '
 </tr>';
 
 if (count($invoice->payments) > 0 && get_option('show_total_paid_on_invoice') == 1) {
-    $tbltotal .= '
-    <tr>
-        <td align="right" width="85%"><strong>' . _l('Advanced Amount(Rs)') . '</strong></td>
-        <td align="right" width="15%">-' . app_format_money(sum_from_table(db_prefix() . 'invoicepaymentrecords', [
+    $total_paid = sum_from_table(db_prefix() . 'invoicepaymentrecords', [
         'field' => 'amount',
         'where' => ['invoiceid' => $invoice->id],
-    ]), $invoice->currency_name) . '</td>
-    </tr>';
+    ]);
+    
+    // Check if it's a partial payment or full payment
+    if ($total_paid < $invoice->total) {
+        // Partial payment - show as "Advanced Amount"
+        $tbltotal .= '
+        <tr>
+            <td align="right" width="85%"><strong>' . _l('Advanced Amount(Rs)') . '</strong></td>
+            <td align="right" width="15%">-' . app_format_money($total_paid, $invoice->currency_name) . '</td>
+        </tr>';
+    } else {
+        // Full payment - show as "Paid Amount"
+        // $tbltotal .= '
+        // <tr>
+        //     <td align="right" width="85%"><strong>' . _l('Paid Amount(Rs)') . '</strong></td>
+        //     <td align="right" width="15%">-' . app_format_money($total_paid, $invoice->currency_name) . '</td>
+        // </tr>';
+        $tbltotal .= '
+<tr>
+    <td align="right" width="85%"><strong>' . _l('Paid Amount(Rs)') . '</strong></td>
+    <td align="right" width="15%">' . app_format_money($total_paid, $invoice->currency_name) . '</td>
+</tr>';
+    }
 }
 
 if (get_option('show_amount_due_on_invoice') == 1 && $invoice->status != Invoices_model::STATUS_CANCELLED) {
@@ -158,10 +252,10 @@ if (!empty($displayed_modes)) {
     $all_modes = implode(', ', $displayed_modes);
     $tblhtml = '<table width="100%" bgcolor="#fff" cellspacing="0" cellpadding="5" border="0">
         <tr>
-         <td><strong>Received by : </strong>'  . $invoice->client->company . '</td>
+         <td><strong>Received by : </strong>'  . $invoice->generated_by_email . '</td>
         </tr>
         <tr>
-        <td><strong>Payment Details : </strong>' .  $all_modes . '</td>
+        <td><strong>Payment Details : < /strong>' .  $all_modes . '</td>
         </tr>
     </table>
     <hr style="border:0.5px solid #000; margin:3px 0;">';
@@ -188,7 +282,7 @@ if (!empty($invoice->sale_agent)) {
 
         // Create two cells: one left-aligned, one right-aligned
         $pdf->MultiCell(100, 0, 'Sale Agent: ' . get_staff_full_name($agent->staffid), 0, 'L', 0, 0);
-        $pdf->MultiCell(0, 0, 'Authorised Signatory', 0, 'R', 0, 1);
+        // $pdf->MultiCell(0, 0, 'Authorised Signatory', 0, 'R', 0, 1);
     }
 }
 

@@ -220,7 +220,7 @@ if (isset($invoice->scheduled_email) && $invoice->scheduled_email) { ?>
                             <?= e(app_format_money($invoice->total, $invoice->currency_name)); ?>
                         </td>
                     </tr>
-                    <?php if (count($invoice->payments) > 0 && get_option('show_total_paid_on_invoice') == 1) { ?>
+                    <!-- <?php if (count($invoice->payments) > 0 && get_option('show_total_paid_on_invoice') == 1) { ?>
                     <tr>
                         <td>
                             <span
@@ -230,7 +230,37 @@ if (isset($invoice->scheduled_email) && $invoice->scheduled_email) { ?>
                             <?= e('-' . app_format_money(sum_from_table(db_prefix() . 'invoicepaymentrecords', ['field' => 'amount', 'where' => ['invoiceid' => $invoice->id]]), $invoice->currency_name)); ?>
                         </td>
                     </tr>
-                    <?php } ?>
+                    <?php } ?> -->
+                    <?php if (count($invoice->payments) > 0 && get_option('show_total_paid_on_invoice') == 1) { 
+    $total_paid = sum_from_table(db_prefix() . 'invoicepaymentrecords', [
+        'field' => 'amount',
+        'where' => ['invoiceid' => $invoice->id],
+    ]);
+    
+    if ($total_paid < $invoice->total) {
+        // Partial payment - show as "Advanced Amount" with minus sign
+        ?>
+        <tr>
+            <td>
+                <span class="tw-font-medium tw-text-neutral-700"><?= _l('Advanced Amount(Rs)'); ?></span>
+            </td>
+            <td>
+                <?= e('-' . app_format_money($total_paid, $invoice->currency_name)); ?>
+            </td>
+        </tr>
+    <?php } else { 
+        // Full payment - show as "Paid Amount" without minus sign
+        ?>
+        <tr>
+            <td>
+                <span class="tw-font-medium tw-text-neutral-700"><?= _l('Paid Amount(Rs)'); ?></span>
+            </td>
+            <td>    
+                <?= e(app_format_money($total_paid, $invoice->currency_name)); ?>
+            </td>
+        </tr>
+    <?php } ?>
+<?php } ?>
                     <?php if (get_option('show_credits_applied_on_invoice') == 1 && $credits_applied = total_credits_applied_to_invoice($invoice->id)) { ?>
                     <tr>
                         <td>
@@ -282,7 +312,7 @@ if (isset($invoice->scheduled_email) && $invoice->scheduled_email) { ?>
             <small class="text-muted">
                 <?= e($attachment['filetype']); ?></small>
         </div>
-        <div class="col-md-4 text-right tw-space-x-2">
+        <!-- <div class="col-md-4 text-right tw-space-x-2">
             <?php if ($attachment['visible_to_customer'] == 0) {
                 $icon    = 'fa-toggle-off';
                 $tooltip = _l('show_to_customer');
@@ -302,7 +332,7 @@ if (isset($invoice->scheduled_email) && $invoice->scheduled_email) { ?>
                 <i class="fa-regular fa-trash-can"></i>
             </a>
             <?php } ?>
-        </div>
+        </div> -->
     </div>
     <?php
     } ?>

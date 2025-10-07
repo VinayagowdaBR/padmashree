@@ -304,28 +304,411 @@ public function validate_invoice_number()
     }
 
     /* Add new invoice or update existing */
-   public function invoice($id = '')
+    // public function invoice($id = '')
+    // {   
+    //     if ($this->input->post()) {
+    //         $invoice_data = $this->input->post();
+                 
+    //         // Handle PDF upload
+    //         if (!empty($_FILES['pdf_attachment']['name'])) {
+    //             $config['upload_path'] = FCPATH . 'uploads/prescription/';
+    //             $config['allowed_types'] = 'pdf';
+    //             $config['max_size'] = 2048; // 2MB
+    //             $config['overwrite'] = true;
+                
+    //             // Generate filename based on invoice number if available
+    //             $invoice_number = isset($invoice_data['number']) ? $invoice_data['number'] : 'temp';
+    //             $filename = 'prescription_' . preg_replace('/[^a-zA-Z0-9]/', '_', $invoice_number) . '.pdf';
+    //             $config['file_name'] = $filename;
+                
+    //             // Create directory if it doesn't exist
+    //             if (!is_dir($config['upload_path'])) {
+    //                 mkdir($config['upload_path'], 0755, true);
+    //             }
+                
+    //             $this->load->library('upload', $config);
+                
+    //             if ($this->upload->do_upload('pdf_attachment')) {
+    //                 $upload_data = $this->upload->data();
+    //                 $invoice_data['pdf_attachment'] = 'uploads/prescription/' . $upload_data['file_name'];
+    //                 log_message('debug', 'PDF uploaded successfully: ' . $invoice_data['pdf_attachment']);
+    //             } else {
+    //                 $upload_error = $this->upload->display_errors();
+    //                 log_message('error', 'PDF upload failed: ' . $upload_error);
+    //                 set_alert('danger', 'PDF upload failed: ' . $upload_error);
+    //             }
+    //         }
+            
+    //         if ($id == '') {
+    //             // Create new invoice
+    //             if (staff_cant('create', 'invoices')) {
+    //                 access_denied('invoices');
+    //             }
+    
+    //             if (hooks()->apply_filters('validate_invoice_number', true)) {
+    //                 $number = ltrim($invoice_data['number'], '0');
+    //                 if (total_rows('invoices', [
+    //                     'YEAR(date)' => (int) date('Y', strtotime(to_sql_date($invoice_data['date']))),
+    //                     'number'     => $number,
+    //                     'status !='  => Invoices_model::STATUS_DRAFT,
+    //                 ])) {
+    //                     set_alert('warning', _l('invoice_number_exists'));
+    //                     redirect(admin_url('invoices/invoice'));
+    //                 }
+    //             }
+    
+    //             // Log before inserting
+    //             log_message('debug', 'Attempting to insert invoice with data: ' . print_r($invoice_data, true));
+                
+    //             $id = $this->invoices_model->add($invoice_data);
+                
+    //             if ($id) {
+    //                 // After successful insertion, rename the PDF file with the final invoice number
+    //                 $final_invoice = $this->invoices_model->get($id);
+    //                 if ($final_invoice && !empty($invoice_data['pdf_attachment'])) {
+    //                     $formatted_number = format_invoice_number($id);
+    //                     $new_filename = 'prescription_' . preg_replace('/[^a-zA-Z0-9]/', '_', $formatted_number) . '.pdf';
+    //                     $new_path = 'uploads/prescription/' . $new_filename;
+                        
+    //                     // Rename the file
+    //                     if (file_exists(FCPATH . $invoice_data['pdf_attachment']) && rename(FCPATH . $invoice_data['pdf_attachment'], FCPATH . $new_path)) {
+    //                         // Update the database with the new path
+    //                         $this->db->where('id', $id);
+    //                         $this->db->update('tblinvoices', ['pdf_attachment' => $new_path]);
+    //                         log_message('debug', 'PDF renamed to: ' . $new_path);
+    //                     }
+    //                 }
+                    
+    //                 // ✅ Increment next_invoice_number after successful insert
+    //                 $next_number = (int) get_option('next_invoice_number');
+    //                 $this->db->where('name', 'next_invoice_number');
+    //                 $this->db->update('tbloptions', ['value' => $next_number + 1]);
+                    
+    //                 set_alert('success', _l('added_successfully', _l('invoice')));
+    //                 $redUrl = admin_url('invoices/list_invoices/' . $id);
+                    
+    //                 // Handle save and actions
+    //                 if (isset($invoice_data['save_and_record_payment'])) {
+    //                     $this->session->set_userdata('record_payment', true);
+    //                 } elseif (isset($invoice_data['save_and_send_later'])) {
+    //                     $this->session->set_userdata('send_later', true);
+    //                 }
+                    
+    //                 redirect($redUrl);
+    //             } else {
+    //                 // Log insertion failure
+    //                 log_message('error', 'Invoice insertion failed. Data: ' . print_r($invoice_data, true));
+    //                 set_alert('danger', _l('invoice_add_failed'));
+    //                 redirect(admin_url('invoices/invoice'));
+    //             }
+    //         } else {
+    //             // Update existing invoice
+    //             if (staff_cant('edit', 'invoices')) {
+    //                 access_denied('invoices');
+    //             }
+    
+    //             // Validate invoice number for update
+    //             if (hooks()->apply_filters('validate_invoice_number', true) && isset($invoice_data['number'])) {
+    //                 $number = trim(ltrim($invoice_data['number'], '0'));
+    //                 if (total_rows('invoices', [
+    //                     'date'       => to_sql_date($invoice_data['date']),
+    //                     'number'     => $number,
+    //                     'status !='  => Invoices_model::STATUS_DRAFT,
+    //                     'id !='      => $id,
+    //                 ])) {
+    //                     set_alert('warning', _l('invoice_number_exists'));
+    //                     redirect(admin_url('invoices/invoice/' . $id));
+    //                 }
+    //             }
+    
+    //             // Log before updating
+    //             log_message('debug', 'Attempting to update invoice ID ' . $id . ' with data: ' . print_r($invoice_data, true));
+                
+    //             $success = $this->invoices_model->update($invoice_data, $id);
+                
+    //             if ($success) {
+    //                 // After successful update, rename the PDF file if it was uploaded
+    //                 if (!empty($invoice_data['pdf_attachment'])) {
+    //                     $final_invoice = $this->invoices_model->get($id);
+    //                     if ($final_invoice) {
+    //                         $formatted_number = format_invoice_number($id);
+    //                         $new_filename = 'prescription_' . preg_replace('/[^a-zA-Z0-9]/', '_', $formatted_number) . '.pdf';
+    //                         $new_path = 'uploads/prescription/' . $new_filename;
+                            
+    //                         // Rename the file if it's a temporary name
+    //                         if (strpos($invoice_data['pdf_attachment'], 'temp') !== false && file_exists(FCPATH . $invoice_data['pdf_attachment'])) {
+    //                             if (rename(FCPATH . $invoice_data['pdf_attachment'], FCPATH . $new_path)) {
+    //                                 // Update the database with the new path
+    //                                 $this->db->where('id', $id);
+    //                                 $this->db->update('tblinvoices', ['pdf_attachment' => $new_path]);
+    //                                 log_message('debug', 'PDF renamed to: ' . $new_path);
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+                    
+    //                 // Log successful update
+    //                 log_message('debug', 'Invoice successfully updated. ID: ' . $id);
+    //                 set_alert('success', _l('updated_successfully', _l('invoice')));
+    //             } else {
+    //                 // Log update failure
+    //                 log_message('error', 'Invoice update failed. ID: ' . $id . ' | Data: ' . print_r($invoice_data, true));
+    //                 set_alert('danger', _l('invoice_update_failed'));
+    //             }
+    
+    //             redirect(admin_url('invoices/list_invoices/' . $id));
+    //         }
+    //     }
+    
+    //     if ($id == '') {
+    //         $title                  = _l('create_new_invoice');
+    //         $data['billable_tasks'] = [];
+    //     } else {
+    //         $invoice = $this->invoices_model->get($id);
+    
+    //         if (!$invoice || !user_can_view_invoice($id)) {
+    //             blank_page(_l('invoice_not_found'));
+    //         }
+    
+    //         $data['invoices_to_merge'] = $this->invoices_model->check_for_merge_invoice($invoice->clientid, $invoice->id);
+    //         $data['expenses_to_bill']  = $this->invoices_model->get_expenses_to_bill($invoice->clientid);
+    //         $data['invoice']           = $invoice;
+    //         $data['edit']              = true;
+    //         $data['billable_tasks']    = $this->tasks_model->get_billable_tasks($invoice->clientid, !empty($invoice->project_id) ? $invoice->project_id : '');
+    //         $title                     = _l('edit', _l('invoice')) . ' - ' . format_invoice_number($invoice->id);
+            
+    //         // Log existing invoice data when loading edit form
+    //         log_message('debug', 'Loading invoice for editing. ID: ' . $id . ' | Data: ' . print_r($invoice, true));
+    //     }
+    
+    //     if ($this->input->get('customer_id')) {
+    //         $data['customer_id'] = $this->input->get('customer_id');
+    //         log_message('debug', 'Customer ID from GET: ' . $data['customer_id']);
+    //     }
+    
+    //     // Add this to fetch clients from tblclients
+    //     $this->load->model('clients_model');
+    //     $data['clients'] = $this->clients_model->get();
+    
+    //     $this->load->model('payment_modes_model');
+    //     $data['payment_modes'] = $this->payment_modes_model->get('', [
+    //         'expenses_only !=' => 1,
+    //     ]);
+    
+    //     $this->load->model('taxes_model');
+    //     $data['taxes'] = $this->taxes_model->get();
+    
+    //     $this->load->model('invoice_items_model');
+    //     $data['ajaxItems'] = false;
+    //     if (total_rows(db_prefix() . 'items') <= ajax_on_total_items()) {
+    //         $data['items'] = $this->invoice_items_model->get_grouped();
+    //     } else {
+    //         $data['items']     = [];
+    //         $data['ajaxItems'] = true;
+    //     }
+    //     $data['items_groups']  = $this->invoice_items_model->get_groups();
+    //     $this->load->model('currencies_model');
+    //     $data['currencies']    = $this->currencies_model->get();
+    //     $data['base_currency'] = $this->currencies_model->get_base_currency();
+    //     $data['staff']         = $this->staff_model->get('', ['active' => 1]);
+    //     $data['title']         = $title;
+    //     $data['bodyclass']     = 'invoice';
+    
+    //     $this->load->view('admin/invoices/invoice', $data);
+    // }
+//     public function invoice($id = '')
+// {   
+//     if ($this->input->post()) {
+//         $invoice_data = $this->input->post();
+             
+//         if ($id == '') {
+//             // Create new invoice
+//             if (staff_cant('create', 'invoices')) {
+//                 access_denied('invoices');
+//             }
+
+//             if (hooks()->apply_filters('validate_invoice_number', true)) {
+//                 $number = ltrim($invoice_data['number'], '0');
+//                 if (total_rows('invoices', [
+//                     'YEAR(date)' => (int) date('Y', strtotime(to_sql_date($invoice_data['date']))),
+//                     'number'     => $number,
+//                     'status !='  => Invoices_model::STATUS_DRAFT,
+//                 ])) {
+//                     set_alert('warning', _l('invoice_number_exists'));
+//                     redirect(admin_url('invoices/invoice'));
+//                 }
+//             }
+
+//             // Log before inserting
+//             log_message('debug', 'Attempting to insert invoice with data: ' . print_r($invoice_data, true));
+            
+//             $id = $this->invoices_model->add($invoice_data);
+            
+//             if ($id) {
+//                 log_message('debug', 'Invoice successfully inserted with ID: ' . $id);
+//                 // ✅ Increment next_invoice_number after successful insert
+//                 $next_number = (int) get_option('next_invoice_number');
+//                 $this->db->where('name', 'next_invoice_number');
+//                 $this->db->update('tbloptions', ['value' => $next_number + 1]);
+                
+//                 set_alert('success', _l('added_successfully', _l('invoice')));
+//                 $redUrl = admin_url('invoices/list_invoices/' . $id);
+                
+//                 // Handle save and actions
+//                 if (isset($invoice_data['save_and_record_payment'])) {
+//                     $this->session->set_userdata('record_payment', true);
+//                 } elseif (isset($invoice_data['save_and_send_later'])) {
+//                     $this->session->set_userdata('send_later', true);
+//                 }
+                
+//                 redirect($redUrl);
+//             } else {
+//                 // Log insertion failure
+//                 log_message('error', 'Invoice insertion failed. Data: ' . print_r($invoice_data, true));
+//                 set_alert('danger', _l('invoice_add_failed'));
+//                 redirect(admin_url('invoices/invoice'));
+//             }
+//         } else {
+//             // Update existing invoice
+//             if (staff_cant('edit', 'invoices')) {
+//                 access_denied('invoices');
+//             }
+
+//             // Validate invoice number for update
+//             if (hooks()->apply_filters('validate_invoice_number', true) && isset($invoice_data['number'])) {
+//                 $number = trim(ltrim($invoice_data['number'], '0'));
+//                 if (total_rows('invoices', [
+//                     'date'       => to_sql_date($invoice_data['date']),
+//                     'number'     => $number,
+//                     'status !='  => Invoices_model::STATUS_DRAFT,
+//                     'id !='      => $id,
+//                 ])) {
+//                     set_alert('warning', _l('invoice_number_exists'));
+//                     redirect(admin_url('invoices/invoice/' . $id));
+//                 }
+//             }
+
+//             // Log before updating
+//             log_message('debug', 'Attempting to update invoice ID ' . $id . ' with data: ' . print_r($invoice_data, true));
+            
+//             $success = $this->invoices_model->update($invoice_data, $id);
+            
+//             if ($success) {
+//                 // Log successful update
+//                 log_message('debug', 'Invoice successfully updated. ID: ' . $id);
+//                 set_alert('success', _l('updated_successfully', _l('invoice')));
+//             } else {
+//                 // Log update failure
+//                 log_message('error', 'Invoice update failed. ID: ' . $id . ' | Data: ' . print_r($invoice_data, true));
+//                 set_alert('danger', _l('invoice_update_failed'));
+//             }
+
+//             redirect(admin_url('invoices/list_invoices/' . $id));
+//         }
+//     }
+
+//     if ($id == '') {
+//         $title                  = _l('create_new_invoice');
+//         $data['billable_tasks'] = [];
+//     } else {
+//         $invoice = $this->invoices_model->get($id);
+
+//         if (!$invoice || !user_can_view_invoice($id)) {
+//             blank_page(_l('invoice_not_found'));
+//         }
+
+//         $data['invoices_to_merge'] = $this->invoices_model->check_for_merge_invoice($invoice->clientid, $invoice->id);
+//         $data['expenses_to_bill']  = $this->invoices_model->get_expenses_to_bill($invoice->clientid);
+//         $data['invoice']           = $invoice;
+//         $data['edit']              = true;
+//         $data['billable_tasks']    = $this->tasks_model->get_billable_tasks($invoice->clientid, !empty($invoice->project_id) ? $invoice->project_id : '');
+//         $title                     = _l('edit', _l('invoice')) . ' - ' . format_invoice_number($invoice->id);
+        
+//         // Log existing invoice data when loading edit form
+//         log_message('debug', 'Loading invoice for editing. ID: ' . $id . ' | Data: ' . print_r($invoice, true));
+//     }
+
+//     if ($this->input->get('customer_id')) {
+//         $data['customer_id'] = $this->input->get('customer_id');
+//         log_message('debug', 'Customer ID from GET: ' . $data['customer_id']);
+//     }
+
+//     // Add this to fetch clients from tblclients
+//     $this->load->model('clients_model');
+//     $data['clients'] = $this->clients_model->get();
+
+//     $this->load->model('payment_modes_model');
+//     $data['payment_modes'] = $this->payment_modes_model->get('', [
+//         'expenses_only !=' => 1,
+//     ]);
+
+//     $this->load->model('taxes_model');
+//     $data['taxes'] = $this->taxes_model->get();
+
+//     $this->load->model('invoice_items_model');
+//     $data['ajaxItems'] = false;
+//     if (total_rows(db_prefix() . 'items') <= ajax_on_total_items()) {
+//         $data['items'] = $this->invoice_items_model->get_grouped();
+//     } else {
+//         $data['items']     = [];
+//         $data['ajaxItems'] = true;
+//     }
+//     $data['items_groups']  = $this->invoice_items_model->get_groups();
+//     $this->load->model('currencies_model');
+//     $data['currencies']    = $this->currencies_model->get();
+//     $data['base_currency'] = $this->currencies_model->get_base_currency();
+//     $data['staff']         = $this->staff_model->get('', ['active' => 1]);
+//     $data['title']         = $title;
+//     $data['bodyclass']     = 'invoice';
+
+//     $this->load->view('admin/invoices/invoice', $data);
+// }
+
+public function invoice($id = '')
 {
     if ($this->input->post()) {
         $invoice_data = $this->input->post();
+        log_message('debug', 'Invoice POST Data: ' . print_r($invoice_data, true));
         if ($id == '') {
             if (staff_cant('create', 'invoices')) {
                 access_denied('invoices');
             }
-
             if (hooks()->apply_filters('validate_invoice_number', true)) {
+
                 $number = ltrim($invoice_data['number'], '0');
-                if (total_rows('invoices', [
-                    'YEAR(date)' => (int) date('Y', strtotime(to_sql_date($invoice_data['date']))),
+                $invoice_date_sql = to_sql_date($invoice_data['date']);
+            
+                // Log what is being validated
+                log_message('debug', '--- Invoice Number Validation Started ---');
+                log_message('debug', 'Original Invoice Number: ' . $invoice_data['number']);
+                log_message('debug', 'Trimmed Invoice Number: ' . $number);
+                log_message('debug', 'Invoice Date (SQL Format): ' . $invoice_date_sql);
+            
+                // 🔍 Now the filter checks exact DATE (not just YEAR)
+                $filter = [
+                    'DATE(date)' => $invoice_date_sql,
                     'number'     => $number,
                     'status !='  => Invoices_model::STATUS_DRAFT,
-                ])) {
+                ];
+            
+                log_message('debug', 'Invoice Validation Filter: ' . print_r($filter, true));
+            
+                $duplicate_count = total_rows('invoices', $filter);
+                log_message('debug', 'Duplicate Invoice Count Found: ' . $duplicate_count);
+            
+                if ($duplicate_count) {
+                    log_message('error', 'Duplicate invoice number detected: ' . $number . ' on date ' . $invoice_date_sql);
                     set_alert('warning', _l('invoice_number_exists'));
                     redirect(admin_url('invoices/invoice'));
                 }
+            
+                log_message('debug', '--- Invoice Number Validation Completed Successfully ---');
             }
+            
 
             $id = $this->invoices_model->add($invoice_data);
+            log_message('debug', 'Invoice Insert Attempt: ' . print_r($invoice_data, true));
+            log_message('debug', 'Inserted Invoice ID: ' . $id);
             if ($id) {
                 set_alert('success', _l('added_successfully', _l('invoice')));
                 $redUrl = admin_url('invoices/list_invoices/' . $id);
@@ -343,20 +726,23 @@ public function validate_invoice_number()
                 access_denied('invoices');
             }
 
+            // If number not set, is draft
             if (hooks()->apply_filters('validate_invoice_number', true) && isset($invoice_data['number'])) {
                 $number = trim(ltrim($invoice_data['number'], '0'));
                 if (total_rows('invoices', [
-                    'date'       => to_sql_date($invoice_data['date']),
+                    'YEAR(date)' => (int) date('Y', strtotime(to_sql_date($invoice_data['date']))),
                     'number'     => $number,
                     'status !='  => Invoices_model::STATUS_DRAFT,
                     'id !='      => $id,
                 ])) {
                     set_alert('warning', _l('invoice_number_exists'));
+
                     redirect(admin_url('invoices/invoice/' . $id));
                 }
             }
-
             $success = $this->invoices_model->update($invoice_data, $id);
+            log_message('debug', 'Invoice Update Attempt ID=' . $id . ' Data: ' . print_r($invoice_data, true));
+    log_message('debug', 'Invoice Update Result: ' . ($success ? 'Success' : 'Failed'));
             if ($success) {
                 set_alert('success', _l('updated_successfully', _l('invoice')));
             }
@@ -364,7 +750,6 @@ public function validate_invoice_number()
             redirect(admin_url('invoices/list_invoices/' . $id));
         }
     }
-
     if ($id == '') {
         $title                  = _l('create_new_invoice');
         $data['billable_tasks'] = [];
@@ -377,19 +762,17 @@ public function validate_invoice_number()
 
         $data['invoices_to_merge'] = $this->invoices_model->check_for_merge_invoice($invoice->clientid, $invoice->id);
         $data['expenses_to_bill']  = $this->invoices_model->get_expenses_to_bill($invoice->clientid);
-        $data['invoice']           = $invoice;
-        $data['edit']              = true;
-        $data['billable_tasks']    = $this->tasks_model->get_billable_tasks($invoice->clientid, !empty($invoice->project_id) ? $invoice->project_id : '');
-        $title                     = _l('edit', _l('invoice')) . ' - ' . format_invoice_number($invoice->id);
+
+        $data['invoice']        = $invoice;
+        $data['edit']           = true;
+        $data['billable_tasks'] = $this->tasks_model->get_billable_tasks($invoice->clientid, !empty($invoice->project_id) ? $invoice->project_id : '');
+
+        $title = _l('edit', _l('invoice')) . ' - ' . format_invoice_number($invoice->id);
     }
 
     if ($this->input->get('customer_id')) {
         $data['customer_id'] = $this->input->get('customer_id');
     }
-
-    // Add this to fetch clients from tblclients
-    $this->load->model('clients_model');
-    $data['clients'] = $this->clients_model->get();
 
     $this->load->model('payment_modes_model');
     $data['payment_modes'] = $this->payment_modes_model->get('', [
@@ -398,8 +781,8 @@ public function validate_invoice_number()
 
     $this->load->model('taxes_model');
     $data['taxes'] = $this->taxes_model->get();
-
     $this->load->model('invoice_items_model');
+
     $data['ajaxItems'] = false;
     if (total_rows(db_prefix() . 'items') <= ajax_on_total_items()) {
         $data['items'] = $this->invoice_items_model->get_grouped();
@@ -407,14 +790,16 @@ public function validate_invoice_number()
         $data['items']     = [];
         $data['ajaxItems'] = true;
     }
-    $data['items_groups']  = $this->invoice_items_model->get_groups();
-    $this->load->model('currencies_model');
-    $data['currencies']    = $this->currencies_model->get();
-    $data['base_currency'] = $this->currencies_model->get_base_currency();
-    $data['staff']         = $this->staff_model->get('', ['active' => 1]);
-    $data['title']         = $title;
-    $data['bodyclass']     = 'invoice';
+    $data['items_groups'] = $this->invoice_items_model->get_groups();
 
+    $this->load->model('currencies_model');
+    $data['currencies'] = $this->currencies_model->get();
+
+    $data['base_currency'] = $this->currencies_model->get_base_currency();
+
+    $data['staff']     = $this->staff_model->get('', ['active' => 1]);
+    $data['title']     = $title;
+    $data['bodyclass'] = 'invoice';
     $this->load->view('admin/invoices/invoice', $data);
 }
 
@@ -670,12 +1055,55 @@ public function validate_invoice_number()
     }
 
     /* Generates invoice PDF and senting to email of $send_to_email = true is passed */
+    // public function pdf($id)
+    // {
+    //     if (!$id) {
+    //         redirect(admin_url('invoices/list_invoices'));
+    //     }
+
+    //     $canView = user_can_view_invoice($id);
+    //     if (!$canView) {
+    //         access_denied('Invoices');
+    //     } else {
+    //         if (staff_cant('view', 'invoices') && staff_cant('view_own', 'invoices') && $canView == false) {
+    //             access_denied('Invoices');
+    //         }
+    //     }
+
+    //     $invoice        = $this->invoices_model->get($id);
+    //     $invoice        = hooks()->apply_filters('before_admin_view_invoice_pdf', $invoice);
+    //     $invoice_number = format_invoice_number($invoice->id);
+
+    //     try {
+    //         $pdf = invoice_pdf($invoice);
+    //     } catch (Exception $e) {
+    //         $message = $e->getMessage();
+    //         echo $message;
+    //         if (strpos($message, 'Unable to get the size of the image') !== false) {
+    //             show_pdf_unable_to_get_image_size_error();
+    //         }
+    //         die;
+    //     }
+
+    //     $type = 'D';
+
+    //     if ($this->input->get('output_type')) {
+    //         $type = $this->input->get('output_type');
+    //     }
+
+    //     if ($this->input->get('print')) {
+    //         $type = 'I';
+    //     }
+
+    //     $pdf->Output(mb_strtoupper(slug_it($invoice_number)) . '.pdf', $type);
+    // }
+
     public function pdf($id)
     {
         if (!$id) {
             redirect(admin_url('invoices/list_invoices'));
         }
-
+    
         $canView = user_can_view_invoice($id);
         if (!$canView) {
             access_denied('Invoices');
@@ -684,32 +1112,61 @@ public function validate_invoice_number()
                 access_denied('Invoices');
             }
         }
-
-        $invoice        = $this->invoices_model->get($id);
-        $invoice        = hooks()->apply_filters('before_admin_view_invoice_pdf', $invoice);
+    
+        $invoice = $this->invoices_model->get($id);
+        $invoice = hooks()->apply_filters('before_admin_view_invoice_pdf', $invoice);
         $invoice_number = format_invoice_number($invoice->id);
+    
+        // 🔹 Get logged in user email
+        $logged_in_user_email = '';
+        if ($this->session->userdata('staff_logged_in')) {
+            // Staff user
+            $staff_id = $this->session->userdata('staff_user_id');
+            $this->db->select('email');
+            $this->db->where('staffid', $staff_id);
+            $staff = $this->db->get(db_prefix() . 'staff')->row();
+            if ($staff) {
+                $logged_in_user_email = $staff->email;
+            }
+        } elseif ($this->session->userdata('client_logged_in')) {
+            // Client user
+            $logged_in_user_email = $this->session->userdata('client_email');
+        }
+       
 
+         // 🔹 Add logged in user email to invoice object
+    $invoice->generated_by_email = $logged_in_user_email;
+
+    
+        // 🔹 Log invoice data and user email before generating PDF
+        log_message('debug', 'Invoice Data: ' . print_r($invoice, true));
+        log_message('debug', 'Logged in user email: ' . $logged_in_user_email);
+    
         try {
             $pdf = invoice_pdf($invoice);
         } catch (Exception $e) {
             $message = $e->getMessage();
+            log_message('error', 'PDF Generation Error: ' . $message);
             echo $message;
             if (strpos($message, 'Unable to get the size of the image') !== false) {
                 show_pdf_unable_to_get_image_size_error();
             }
             die;
         }
-
+    
         $type = 'D';
-
+    
         if ($this->input->get('output_type')) {
             $type = $this->input->get('output_type');
         }
-
+    
         if ($this->input->get('print')) {
             $type = 'I';
         }
-
+    
+        log_message('debug', 'Invoice PDF Output Type: ' . $type);  
+        log_message('debug', 'PDF generated by user: ' . $logged_in_user_email);
+    
         $pdf->Output(mb_strtoupper(slug_it($invoice_number)) . '.pdf', $type);
     }
 

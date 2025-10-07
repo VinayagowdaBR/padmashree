@@ -74,19 +74,19 @@
                             </a>
                         </li>
                         <?php } ?>
-                        <li role="presentation">
+                        <!-- <li role="presentation">
                             <a href="#tab_tasks"
                                 onclick="init_rel_tasks_table(<?= e($invoice->id); ?>,'invoice'); return false;"
                                 aria-controls="tab_tasks" role="tab" data-toggle="tab">
                                 <?= _l('tasks'); ?>
                             </a>
-                        </li>
-                        <li role="presentation">
+                        </li> -->
+                        <!-- <li role="presentation">
                             <a href="#tab_activity" aria-controls="tab_activity" role="tab" data-toggle="tab">
                                 <?= _l('invoice_view_activity_tooltip'); ?>
                             </a>
-                        </li>
-                        <li role="presentation">
+                        </li> -->
+                        <!-- <li role="presentation">
                             <a href="#tab_reminders"
                                 onclick="initDataTable('.table-reminders', admin_url + 'misc/get_reminders/' + <?= $invoice->id; ?> + '/' + 'invoice', undefined, undefined,undefined,[1,'asc']); return false;"
                                 aria-controls="tab_reminders" role="tab" data-toggle="tab">
@@ -106,7 +106,7 @@ if ($total_reminders > 0) {
 }
 ?>
                             </a>
-                        </li>
+                        </li> -->
                         <li role="presentation" class="tab-separator">
                             <a href="#tab_notes"
                                 onclick="get_sales_notes(<?= e($invoice->id); ?>,'invoices'); return false"
@@ -120,7 +120,7 @@ if ($total_reminders > 0) {
                                 </span>
                             </a>
                         </li>
-                        <li role="presentation" data-toggle="tooltip"
+                        <!-- <li role="presentation" data-toggle="tooltip"
                             title="<?= _l('emails_tracking'); ?>"
                             class="tab-separator">
                             <a href="#tab_emails_tracking" aria-controls="tab_emails_tracking" role="tab"
@@ -131,8 +131,8 @@ if ($total_reminders > 0) {
                                 <?= _l('emails_tracking'); ?>
                                 <?php } ?>
                             </a>
-                        </li>
-                        <li role="presentation" data-toggle="tooltip"
+                        </li> -->
+                        <!-- <li role="presentation" data-toggle="tooltip"
                             title="<?= _l('view_tracking'); ?>"
                             class="tab-separator">
                             <a href="#tab_views" aria-controls="tab_views" role="tab" data-toggle="tab">
@@ -142,7 +142,7 @@ if ($total_reminders > 0) {
                                 <?= _l('view_tracking'); ?>
                                 <?php } ?>
                             </a>
-                        </li>
+                        </li> -->
                         <li role="presentation" data-toggle="tooltip"
                             data-title="<?= _l('toggle_full_view'); ?>"
                             class="tab-separator toggle_view">
@@ -164,11 +164,10 @@ if ($total_reminders > 0) {
                     <div class="pull-right">
                         <?php
                      $_tooltip = _l('invoice_sent_to_email_tooltip');
-$_tooltip_already_send         = '';
-if ($invoice->sent == 1 && is_date($invoice->datesend)) {
-    $_tooltip_already_send = _l('invoice_already_send_to_client_tooltip', time_ago($invoice->datesend));
-}
-?>
+    $_tooltip_already_send         = '';
+    if ($invoice->sent == 1 && is_date($invoice->datesend)) {
+       $_tooltip_already_send = _l('invoice_already_send_to_client_tooltip', time_ago($invoice->datesend));
+    }?>
                         <?php if (staff_can('edit', 'invoices')) { ?>
                         <a href="<?= admin_url('invoices/invoice/' . $invoice->id); ?>"
                             data-toggle="tooltip"
@@ -200,7 +199,7 @@ if ($invoice->sent == 1 && is_date($invoice->datesend)) {
                                 </li>
                             </ul>
                         </div>
-                        <?php if (! empty($invoice->clientid)) { ?>
+                        <!-- <?php if (! empty($invoice->clientid)) { ?>
                         <span<?php if ($invoice->status == Invoices_model::STATUS_CANCELLED) { ?>
                             data-toggle="tooltip"
                             data-title="<?= _l('invoice_cancelled_email_disabled'); ?>"
@@ -213,10 +212,12 @@ if ($invoice->sent == 1 && is_date($invoice->datesend)) {
                                     data-title="<?= e($_tooltip_already_send); ?>"><i
                                         class="fa-regular fa-envelope"></i></span></a>
                             </span>
-                            <?php } ?>
+                            <?php } ?> -->
                             <!-- Single button -->
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default pull-left dropdown-toggle"
+                                        <a href="#" data-toggle="modal"
+                                            data-target="#sales_attach_file"><?= _l('invoice_attach_file'); ?></a>
+                                <!-- <button type="button" class="btn btn-default pull-left dropdown-toggle"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <?= _l('more'); ?>
                                     <span class="caret"></span>
@@ -297,7 +298,7 @@ if ($invoice->sent == 1 && is_date($invoice->datesend)) {
                                     <?php } ?>
                                     <?php } ?>
                                     <?php hooks()->do_action('after_invoice_preview_more_menu'); ?>
-                                </ul>
+                                </ul> -->
                             </div>
                             <?php if (staff_can('create', 'payments') && abs($invoice->total) > 0) { ?>
                             <a href="#"

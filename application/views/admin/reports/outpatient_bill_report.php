@@ -34,7 +34,7 @@
                 <div class="form-group">
                   <label for="referral_name"><?php echo _l('Referral Name'); ?></label>
                   <input type="text" name="referral_name" id="referral_name" class="form-control" placeholder="Enter Referral Name" />
-                </div>
+                </div>  
               </div>
               <div class="col-md-2">
                 <div class="btn-group" style="margin-top:25px;">
@@ -60,7 +60,7 @@
                         <th>PaidBy</th>
                         <th>Age</th>
                         <th>Sex</th>
-                        <th>Mobile.no</th>
+                        <th>Mobile No</th>
                         <th>Total Amt</th>
                         <th>Disc</th>
                         <th>Bill Amt</th>
@@ -69,7 +69,7 @@
                         <th>Bal</th>
                         <th>Cash Amt</th>
                         <th>Cheq Amt</th>
-                        <th>Credit/debit</th>
+                        <th>CC</th>
                         <th>UPI</th>
                         <th>Pay Details</th>
                         <th>Gen.By</th>
@@ -77,16 +77,7 @@
                     </thead>
                     <tbody></tbody>
                     <tfoot>
-                      <!-- <tr>
-                        <th colspan="10" class="text-right"><?php echo _l('total'); ?>:</th>
-                        <th id="footer_total_amount"></th>
-                        <th id="footer_discount"></th>
-                        <th id="footer_bill_amount"></th>
-                        <th id="footer_service_charge"></th>
-                        <th id="footer_paid_amount"></th>
-                        <th id="footer_balance"></th>
-                        <th colspan="6"></th>
-                      </tr> -->
+                     
                     </tfoot>
                   </table>
                 </div>

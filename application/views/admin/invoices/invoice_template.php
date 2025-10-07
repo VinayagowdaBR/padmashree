@@ -201,27 +201,27 @@ $data_original_number = isset($invoice) ? $invoice->number : 'false';
                     </div>
                 </div>
                 <?php } ?>
+                <?php $rel_id = (isset($invoice) ? $invoice->id : false); ?>
+                <?php if (isset($custom_fields_rel_transfer)) {
+                    $rel_id = $custom_fields_rel_transfer;
+                } ?>
                 <?php
-$allowed_fields = ['Age', 'Sex', 'Mobile.no'];
-$all_fields_html = render_custom_fields('invoice', $rel_id);
-$dom = new DOMDocument();
-libxml_use_internal_errors(true);
-$dom->loadHTML($all_fields_html);
-libxml_clear_errors();
-
-$xpath = new DOMXPath($dom);
-$filtered_html = '';
-
-foreach ($xpath->query('//label') as $label) {
-    $label_text = trim($label->textContent);
-    if (in_array($label_text, $allowed_fields)) {
-        $filtered_html .= $dom->saveHTML($label->parentNode);
+$customFieldsHtml = render_custom_fields('invoice', $rel_id);
+log_message('debug', 'Custom Fields rel_id: ' . var_export($rel_id, true));
+// Add CSS to hide unwanted fields
+echo '<style>
+    .custom-fields-form-row .col-md-4:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])):not(:has([data-fieldid="77"])):not(:has([data-fieldid="97"])),
+    .custom-fields-form-row .col-md-3:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])):not(:has([data-fieldid="77"])):not(:has([data-fieldid="97"])),
+    .custom-fields-form-row .col-md-6:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])):not(:has([data-fieldid="77"])):not(:has([data-fieldid="97"])),
+    .custom-fields-form-row .col-md-12:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])):not(:has([data-fieldid="77"])):not(:has([data-fieldid="97"])) {
+        display: none;
     }
-}
+</style>';
 
-echo $filtered_html;
+echo $customFieldsHtml;
+
+log_message('debug', 'Custom Fields Output (with CSS filtering): ' . $customFieldsHtml);
 ?>
-
             </div>
             <div class="col-md-6">
                 <div class="tw-ml-3">
@@ -568,9 +568,9 @@ if (isset($invoice) && $invoice->show_quantity_as == 2 || isset($hours_quantity)
                         <th width="15%" align="right">
                             <?= _l('invoice_table_rate_heading'); ?>
                         </th>
-                        <th width="20%" align="right">
+                        <!-- <th width="20%" align="right">
                             <?= _l('invoice_table_tax_heading'); ?>
-                        </th>
+                        </th> -->
                         <th width="10%" align="right">
                             <?= _l('invoice_table_amount_heading'); ?>
                         </th>
@@ -601,7 +601,7 @@ if (isset($invoice) && $invoice->show_quantity_as == 2 || isset($hours_quantity)
                             <input type="number" name="rate" class="form-control"
                                 placeholder="<?= _l('item_rate_placeholder'); ?>">
                         </td>
-                        <td>
+                        <td style="visibility: hidden;">
                             <?php
    $default_tax = unserialize(get_option('default_tax'));
 $select         = '<select class="selectpicker display-block tax main-tax" data-width="100%" name="taxname" multiple data-none-selected-text="' . _l('no_tax') . '">';
@@ -668,11 +668,11 @@ echo $select;
                                 $item['unit']     = '';
                             }
 
-                            $table_row .= '<input type="text" placeholder="' . $unit_placeholder . '" name="' . $items_indicator . '[' . $i . '][unit]" class="form-control input-transparent text-right" value="' . $item['unit'] . '">';
+                            // $table_row .= '<input type="text" placeholder="' . $unit_placeholder . '" name="' . $items_indicator . '[' . $i . '][unit]" class="form-control input-transparent text-right" value="' . $item['unit'] . '">';
 
                             $table_row .= '</td>';
                             $table_row .= '<td class="rate"><input type="number" data-toggle="tooltip" title="' . _l('numbers_not_formatted_while_editing') . '" onblur="calculate_total();" onchange="calculate_total();" name="' . $items_indicator . '[' . $i . '][rate]" value="' . $item['rate'] . '" class="form-control"></td>';
-                            $table_row .= '<td class="taxrate">' . $this->misc_model->get_taxes_dropdown_template('' . $items_indicator . '[' . $i . '][taxname][]', $invoice_item_taxes, 'invoice', $item['id'], true, $manual) . '</td>';
+                            // $table_row .= '<td class="taxrate">' . $this->misc_model->get_taxes_dropdown_template('' . $items_indicator . '[' . $i . '][taxname][]', $invoice_item_taxes, 'invoice', $item['id'], true, $manual) . '</td>';
                             $table_row .= '<td class="amount" align="right">' . $amount . '</td>';
                             $table_row .= '<td><a href="#" class="btn btn-danger pull-left !tw-px-3" onclick="delete_item(this,' . $item['id'] . '); return false;"><i class="fa fa-times"></i></a></td>';
                             if (isset($item['task_id'])) {
@@ -847,30 +847,3 @@ echo $select;
         </ul>
     </div>
 </div>
-
-<script>
-$(document).ready(function () {
-    $('#clientid').on('change', function () {
-        var clientId = $(this).val();
-
-        if (clientId) {
-            $.ajax({
-                url: admin_url + 'your_controller/fetch_customer_data/' + clientId,
-                type: 'GET',
-                dataType: 'json',
-                success: function (response) {
-    $('.f_client_id').append(
-        '<div class="fetched-customer-data">' +
-            '<p><strong>Name:</strong> ' + response.name + '</p>' +
-            '<p><strong>Email:</strong> ' + response.email + '</p>' +
-        '</div>'
-    );
-}
-                error: function () {
-                    alert('Failed to fetch customer data.');
-                }
-            });
-        }
-    });
-});
-</script>

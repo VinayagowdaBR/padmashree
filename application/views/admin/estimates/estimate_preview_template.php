@@ -469,7 +469,7 @@ if ($estimate->sent == 1) {
                                     <small class="text-muted">
                                         <?= e($attachment['filetype']); ?></small>
                                 </div>
-                                <div class="col-md-4 text-right tw-space-x-2">
+                                <!-- <div class="col-md-4 text-right tw-space-x-2">
                                     <?php if ($attachment['visible_to_customer'] == 0) {
                                         $icon    = 'fa fa-toggle-off';
                                         $tooltip = _l('show_to_customer');
@@ -489,7 +489,7 @@ if ($estimate->sent == 1) {
                                         <i class="fa-regular fa-trash-can"></i>
                                     </a>
                                     <?php } ?>
-                                </div>
+                                </div> -->
                             </div>
                             <?php } ?>
                             <?php } ?>

@@ -20,7 +20,7 @@ function app_init_admin_sidebar_menu_items()
             || (!have_assigned_customers() && staff_can('create',  'customers')))
     ) {
         $CI->app_menu->add_sidebar_menu_item('customers', [
-            'name'     => _l('als_clients'),
+            'name'     => _l('Patient'),
             'href'     => admin_url('clients'),
             'position' => 5,
             'icon'     => 'fa-regular fa-user',
@@ -125,15 +125,15 @@ function app_init_admin_sidebar_menu_items()
     //     ]);
     // }
 
-    if (staff_can('view',  'contracts') || staff_can('view_own',  'contracts')) {
-        $CI->app_menu->add_sidebar_menu_item('contracts', [
-            'name'     => _l('contracts'),
-            'href'     => admin_url('contracts'),
-            'icon'     => 'fa-regular fa-note-sticky',
-            'position' => 25,
-            'badge'    => [],
-        ]);
-    }
+    // if (staff_can('view',  'contracts') || staff_can('view_own',  'contracts')) {
+    //     $CI->app_menu->add_sidebar_menu_item('contracts', [
+    //         'name'     => _l('contracts'),
+    //         'href'     => admin_url('contracts'),
+    //         'icon'     => 'fa-regular fa-note-sticky',
+    //         'position' => 25,
+    //         'badge'    => [],
+    //     ]);
+    // }
 
     // $CI->app_menu->add_sidebar_menu_item('projects', [
     //     'name'     => _l('projects'),
@@ -212,139 +212,180 @@ function app_init_admin_sidebar_menu_items()
     // }
 
     // Utilities
-    $CI->app_menu->add_sidebar_menu_item('utilities', [
-        'collapse' => true,
-        'name'     => _l('als_utilities'),
-        'position' => 55,
-        'icon'     => 'fa-regular fa-circle-dot',
-        'badge'    => [],
-    ]);
+    // $CI->app_menu->add_sidebar_menu_item('utilities', [
+    //     'collapse' => true,
+    //     'name'     => _l('als_utilities'),
+    //     'position' => 55,
+    //     'icon'     => 'fa-regular fa-circle-dot',
+    //     'badge'    => [],
+    // ]);
 
-    $CI->app_menu->add_sidebar_children_item('utilities', [
-        'slug'     => 'media',
-        'name'     => _l('als_media'),
-        'href'     => admin_url('utilities/media'),
-        'position' => 5,
-        'badge'    => [],
-    ]);
+    // $CI->app_menu->add_sidebar_children_item('utilities', [
+    //     'slug'     => 'media',
+    //     'name'     => _l('als_media'),
+    //     'href'     => admin_url('utilities/media'),
+    //     'position' => 5,
+    //     'badge'    => [],
+    // ]);
 
-    if (staff_can('view',  'bulk_pdf_exporter')) {
-        $CI->app_menu->add_sidebar_children_item('utilities', [
-            'slug'     => 'bulk-pdf-exporter',
-            'name'     => _l('bulk_pdf_exporter'),
-            'href'     => admin_url('utilities/bulk_pdf_exporter'),
-            'position' => 10,
-            'badge'    => [],
-        ]);
-    }
-
-    $CI->app_menu->add_sidebar_children_item('utilities', [
-        'slug'     => 'calendar',
-        'name'     => _l('als_calendar_submenu'),
-        'href'     => admin_url('utilities/calendar'),
-        'position' => 15,
-        'badge'    => [],
-    ]);
-
-
-    if (is_admin()) {
-        $CI->app_menu->add_sidebar_children_item('utilities', [
-            'slug'     => 'announcements',
-            'name'     => _l('als_announcements_submenu'),
-            'href'     => admin_url('announcements'),
-            'position' => 20,
-            'badge'    => [],
-        ]);
-
-        $CI->app_menu->add_sidebar_children_item('utilities', [
-            'slug'     => 'activity-log',
-            'name'     => _l('als_activity_log_submenu'),
-            'href'     => admin_url('utilities/activity_log'),
-            'position' => 25,
-            'badge'    => [],
-        ]);
-
-        $CI->app_menu->add_sidebar_children_item('utilities', [
-            'slug'     => 'ticket-pipe-log',
-            'name'     => _l('ticket_pipe_log'),
-            'href'     => admin_url('utilities/pipe_log'),
-            'position' => 30,
-            'badge'    => [],
-        ]);
-    }
-
-    if (staff_can('view-timesheets', 'reports') || staff_can('view', 'reports')) {
-        $CI->app_menu->add_sidebar_menu_item('reports', [
-            'collapse' => true,
-            'name'     => _l('als_reports'),
-            'href'     => admin_url('reports'),
-            'icon'     => 'fa-solid fa-chart-line',
-            'position' => 60,
-            'badge'    => [],
-        ]);
-    }
-
-    // if (staff_can('view-timesheets', 'reports')) {
-    //     $CI->app_menu->add_sidebar_children_item('reports', [
-    //         'slug'     => 'timesheets-reports',
-    //         'name'     => _l('timesheets_overview'),
-    //         'href'     => admin_url('staff/timesheets?view=all'),
-    //         'position' => 25,
+    // if (staff_can('view',  'bulk_pdf_exporter')) {
+    //     $CI->app_menu->add_sidebar_children_item('utilities', [
+    //         'slug'     => 'bulk-pdf-exporter',
+    //         'name'     => _l('bulk_pdf_exporter'),
+    //         'href'     => admin_url('utilities/bulk_pdf_exporter'),
+    //         'position' => 10,
     //         'badge'    => [],
     //     ]);
     // }
 
-    if (staff_can('view',  'reports')) {
-        $CI->app_menu->add_sidebar_children_item('reports', [
-            'slug'     => 'sales-reports',
-            'name'     => _l('als_reports_sales_submenu'),
-            'href'     => admin_url('reports/sales'),
-            'position' => 5,
-            'badge'    => [],
-        ]);
-        $CI->app_menu->add_sidebar_children_item('reports', [
-            'slug'     => 'expenses-reports',
-            'name'     => _l('als_reports_expenses'),
-            'href'     => admin_url('reports/expenses'),
-            'position' => 10,
-            'badge'    => [],
-        ]);
-        $CI->app_menu->add_sidebar_children_item('reports', [
-        'slug'     => 'outpatient-bill-report',           
-        'name'     => 'Outpatient Bill Report',           
-        'href'     => admin_url('reports/outpatient_bill_report'), 
-        'position' => 37,                                 
-        'badge'    => [],                                 
-        ]);
-        $CI->app_menu->add_sidebar_children_item('reports', [
-            'slug'     => 'balance-details-reports',
-            'name'     => 'Balance Details',
-            'href'     => admin_url('reports/balance_details'),
-            'position' => 35,
-            'badge'    => [],
-        ]);
-        $CI->app_menu->add_sidebar_children_item('reports', [
-            'slug'     => 'due-paid-details-reports',
-            'name'     => 'Due Paid Details',
-            'href'     => admin_url('reports/due_paid_details'),
-            'position' => 36,
-            'badge'    => []
-        ]);  
-        $CI->app_menu->add_sidebar_children_item('reports', [
-            'slug'     => 'referral-details-reports',
-            'name'     => _l('Referral Details'), // Uses language file if available
-            'href'     => admin_url('reports/referral_details'),
-            'position' => 37, // Adjust if needed
-            'badge'    => []
-        ]);
+    // $CI->app_menu->add_sidebar_children_item('utilities', [
+    //     'slug'     => 'calendar',
+    //     'name'     => _l('als_calendar_submenu'),
+    //     'href'     => admin_url('utilities/calendar'),
+    //     'position' => 15,
+    //     'badge'    => [],
+    // ]);
 
-          $CI->app_menu->add_sidebar_children_item('reports', [
-            'slug'     => 'summarry-details-reports',
-            'name'     => _l('Summary Report'), // Uses language file if available
-            'href'     => admin_url('reports/summary_report'),
-            'position' => 38, // Adjust if needed
-            'badge'    => []
-        ]);
+
+    // if (is_admin()) {
+    //     $CI->app_menu->add_sidebar_children_item('utilities', [
+    //         'slug'     => 'announcements',
+    //         'name'     => _l('als_announcements_submenu'),
+    //         'href'     => admin_url('announcements'),
+    //         'position' => 20,
+    //         'badge'    => [],
+    //     ]);
+
+    //     $CI->app_menu->add_sidebar_children_item('utilities', [
+    //         'slug'     => 'activity-log',
+    //         'name'     => _l('als_activity_log_submenu'),
+    //         'href'     => admin_url('utilities/activity_log'),
+    //         'position' => 25,
+    //         'badge'    => [],
+    //     ]);
+
+    //     $CI->app_menu->add_sidebar_children_item('utilities', [
+    //         'slug'     => 'ticket-pipe-log',
+    //         'name'     => _l('ticket_pipe_log'),
+    //         'href'     => admin_url('utilities/pipe_log'),
+    //         'position' => 30,
+    //         'badge'    => [],
+    //     ]);
+    // }
+
+    
+   // REPORTS SECTION WITH PERMISSION CHECKING
+
+   $has_report_permissions = false;
+   $report_permissions = [];
+
+   // Check each report permission
+   if (staff_can('view-timesheets', 'reports')) {
+       $has_report_permissions = true;
+       $report_permissions['timesheets'] = true;
+   }
+
+   if (staff_can('view', 'reports')) {
+       $has_report_permissions = true;
+       $report_permissions['view'] = true;
+   }
+
+   if (staff_can('sales-reports', 'reports')) {
+       $has_report_permissions = true;
+       $report_permissions['sales'] = true;
+   }
+
+   if (staff_can('due-paid-details-reports', 'reports')) {
+       $has_report_permissions = true;
+       $report_permissions['due_paid'] = true;
+   }
+
+   if (staff_can('outpatient-bill-report', 'reports')) {
+       $has_report_permissions = true;
+       $report_permissions['outpatient'] = true;
+   }
+
+   if (staff_can('referral-details-reports', 'reports')) {
+       $has_report_permissions = true;
+       $report_permissions['referral'] = true;
+   }
+
+   if (staff_can('summary-details-reports', 'reports')) {
+       $has_report_permissions = true;
+       $report_permissions['summary'] = true;
+   }
+
+   // Only add reports menu if user has at least one report permission
+   if ($has_report_permissions) {
+       $CI->app_menu->add_sidebar_menu_item('reports', [
+           'collapse' => true,
+           'name'     => _l('als_reports'),
+           'href'     => admin_url('reports'),
+           'icon'     => 'fa-solid fa-chart-line',
+           'position' => 60,
+           'badge'    => [],
+       ]);
+
+       // Add individual report items based on permissions
+       if (isset($report_permissions['timesheets'])) {
+           $CI->app_menu->add_sidebar_children_item('reports', [
+               'slug'     => 'timesheets-reports',
+               'name'     => _l('timesheets_overview'),
+               'href'     => admin_url('staff/timesheets?view=all'),
+               'position' => 5,
+               'badge'    => [],
+           ]);
+       }
+
+       if (isset($report_permissions['sales'])) {
+           $CI->app_menu->add_sidebar_children_item('reports', [
+               'slug'     => 'sales-reports',
+               'name'     => _l('als_reports_sales_submenu'),
+               'href'     => admin_url('reports/sales'),
+               'position' => 10,
+               'badge'    => [],
+           ]);
+       }
+
+       if (isset($report_permissions['due_paid'])) {
+           $CI->app_menu->add_sidebar_children_item('reports', [
+               'slug'     => 'due-paid-details-reports',
+               'name'     => 'Due Paid Details',
+               'href'     => admin_url('reports/due_paid_details'),
+               'position' => 15,
+               'badge'    => [],
+           ]);
+       }
+
+       if (isset($report_permissions['outpatient'])) {
+           $CI->app_menu->add_sidebar_children_item('reports', [
+               'slug'     => 'outpatient-bill-report',
+               'name'     => 'Outpatient Bill Report',
+               'href'     => admin_url('reports/outpatient_bill_report'),
+               'position' => 20,
+               'badge'    => [],
+           ]);
+       }
+
+       if (isset($report_permissions['referral'])) {
+           $CI->app_menu->add_sidebar_children_item('reports', [
+               'slug'     => 'referral-details-reports',
+               'name'     => _l('Referral Details'),
+               'href'     => admin_url('reports/referral_details'),
+               'position' => 25,
+               'badge'    => [],
+           ]);
+       }
+
+       if (isset($report_permissions['summary'])) {
+           $CI->app_menu->add_sidebar_children_item('reports', [
+               'slug'     => 'summary-details-reports',
+               'name'     => _l('Summary Report'),
+               'href'     => admin_url('reports/summary_report'),
+               'position' => 30,
+               'badge'    => [],
+           ]);
+       }
         // $CI->app_menu->add_sidebar_children_item('reports', [
         //     'slug'     => 'expenses-vs-income-reports',
         //     'name'     => _l('als_expenses_vs_income'),
@@ -613,3 +654,9 @@ function app_init_admin_sidebar_menu_items()
         'badge'    => [],
     ]);
 }
+
+
+
+
+
+//  this is the menu items 

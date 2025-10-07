@@ -1,13 +1,12 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-<?php
-/**
- * Included in application/views/admin/clients/client.php
- */
-?>
 <script>
 Dropzone.options.clientAttachmentsUpload = false;
 var customer_id = $('input[name="userid"]').val();
-$(function() {
+$(document).ready(function() {
+    // Ensure jQuery and Bootstrap are available
+    if (typeof $ === 'undefined' || typeof $.fn.modal === 'undefined') {
+        console.error('jQuery or Bootstrap is not loaded. Please ensure both are included in init_head() or init_tail().');
+        return;
+    }
 
     if ($('#client-attachments-upload').length > 0) {
         new Dropzone('#client-attachments-upload', appCreateDropzoneOptions({
@@ -16,8 +15,7 @@ $(function() {
                 done();
             },
             success: function(file, response) {
-                if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length ===
-                    0) {
+                if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
                     window.location.reload();
                 }
             }
@@ -29,7 +27,7 @@ $(function() {
         $('body').find('.nav-tabs [href="#' + tab_active + '"]').click();
     }
 
-    if(tab_active === 'customer_admins') {
+    if (tab_active === 'customer_admins') {
         $('#profile-save-section').addClass('hide');
     }
 
@@ -37,12 +35,12 @@ $(function() {
         $('#profile-save-section').addClass('hide');
     });
 
-    $('.customer-profile-tabs  a').not('a[href="#customer_admins"]').on('click', function() {
+    $('.customer-profile-tabs a').not('a[href="#customer_admins"]').on('click', function() {
         $('#profile-save-section').removeClass('hide');
     });
 
     $("input[name='tasks_related_to[]']").on('change', function() {
-        var tasks_related_values = []
+        var tasks_related_values = [];
         $('#tasks_related_filter :checkbox:checked').each(function(i) {
             tasks_related_values[i] = $(this).val();
         });
@@ -112,7 +110,7 @@ $(function() {
     initDataTable('.table-contracts-single-client', admin_url + 'contracts/table/' + customer_id, undefined,
         undefined, 'undefined', [6, 'desc']);
 
-    /* Custome profile contacts table */
+    /* Customer profile contacts table */
     var contactsNotSortable = [];
     <?php if (is_gdpr() && get_option('gdpr_enable_consent_for_contacts') == '1') { ?>
     contactsNotSortable.push($('#th-consent').index());
@@ -129,6 +127,7 @@ $(function() {
         });
         <?php } ?>
     }
+
     /* Customer profile invoices table */
     initDataTable('.table-invoices-single-client',
         admin_url + 'invoices/table/' + customer_id,
@@ -176,7 +175,7 @@ $(function() {
         'undefined',
         'undefined', [6, 'desc']);
 
-    /* Custome profile projects table */
+    /* Customer profile projects table */
     initDataTable('.table-projects-single-client', admin_url + 'projects/table/' + customer_id, undefined,
         undefined, 'undefined',
         <?php echo hooks()->apply_filters('projects_table_default_order', json_encode([5, 'asc'])); ?>);
@@ -208,8 +207,7 @@ $(function() {
                         response = JSON.parse(response);
                         if (response.exists == true) {
                             $companyExistsDiv.removeClass('hide');
-                            $companyExistsDiv.html('<div class="alert alert-info">' + response
-                                .message + '</div>');
+                            $companyExistsDiv.html('<div class="alert alert-info">' + response.message + '</div>');
                         } else {
                             $companyExistsDiv.addClass('hide');
                         }
@@ -224,8 +222,7 @@ $(function() {
         $('input[name="billing_city"]').val($('input[name="city"]').val());
         $('input[name="billing_state"]').val($('input[name="state"]').val());
         $('input[name="billing_zip"]').val($('input[name="zip"]').val());
-        $('select[name="billing_country"]').selectpicker('val', $('select[name="country"]')
-            .selectpicker('val'));
+        $('select[name="billing_country"]').selectpicker('val', $('select[name="country"]').selectpicker('val'));
     });
 
     $('.customer-copy-billing-address').on('click', function(e) {
@@ -234,8 +231,7 @@ $(function() {
         $('input[name="shipping_city"]').val($('input[name="billing_city"]').val());
         $('input[name="shipping_state"]').val($('input[name="billing_state"]').val());
         $('input[name="shipping_zip"]').val($('input[name="billing_zip"]').val());
-        $('select[name="shipping_country"]').selectpicker('val', $('select[name="billing_country"]')
-            .selectpicker('val'));
+        $('select[name="shipping_country"]').selectpicker('val', $('select[name="billing_country"]').selectpicker('val'));
     });
 
     $('body').on('hidden.bs.modal', '#contact', function() {
@@ -246,14 +242,55 @@ $(function() {
         $('select[name="default_currency"]').prop('disabled', false);
     });
 
+    // Affiliate modal save button handler
+    $('#saveAffiliate').on('click', function() {
+        try {
+            console.log('Save button clicked'); // Debug log
+            const affiliateData = {
+    firstname: $('#affiliate_name').val(),
+    lastname: $('#affiliate_lastname').val(),
+    phone: $('#affiliate_phone').val(),
+    status: 1
+};
+
+            console.log('Affiliate Data:', affiliateData);
+
+            $.ajax({
+                url: '<?= admin_url('affiliate/save_affiliate'); ?>',
+                type: 'POST',
+                data: affiliateData,
+                dataType: 'json',
+                success: function(response) {
+                    console.log('Server response:', response);
+                    if (response.success) {
+                        alert_float('success', 'Affiliate saved successfully!');
+                        $('#affiliateModal').modal('hide');
+                        $('#affiliate_name').val('');
+                        $('#affiliate_lastname').val('');
+                        $('#affiliate_phone').val('');
+                    } else {
+                        alert_float('danger', response.message || 'Failed to save affiliate');
+                    }
+                },
+                error: function(error) {
+                    console.error('AJAX error:', error);
+                    alert_float('danger', 'Error saving affiliate');
+                }
+            });
+        } catch (error) {
+            console.error('Error saving affiliate data:', error);
+            alert_float('danger', 'Error processing affiliate data');
+        }
+    });
 });
+
+
 
 function delete_contact_profile_image(contact_id) {
     requestGet('clients/delete_contact_profile_image/' + contact_id).done(function() {
         $('body').find('#contact-profile-image').removeClass('hide');
         $('body').find('#contact-remove-img').addClass('hide');
-        $('body').find('#contact-img').attr('src',
-            '<?php echo base_url('assets/images/user-placeholder.jpg'); ?>');
+        $('body').find('#contact-img').attr('src', '<?php echo base_url('assets/images/user-placeholder.jpg'); ?>');
     });
 }
 
@@ -278,11 +315,8 @@ function validate_contact_form() {
         password: {
             required: {
                 depends: function(element) {
-
                     var $sentSetPassword = $('input[name="send_set_password_email"]');
-
-                    if ($('#contact input[name="contactid"]').val() == '' && $sentSetPassword.prop(
-                            'checked') == false) {
+                    if ($('#contact input[name="contactid"]').val() == '' && $sentSetPassword.prop('checked') == false) {
                         return true;
                     }
                 }
@@ -293,7 +327,6 @@ function validate_contact_form() {
             required: true,
             <?php } ?>
             email: true,
-            // Use this hook only if the contacts are not logging into the customers area and you are not using support tickets piping.
             <?php if (hooks()->apply_filters('contact_email_unique', 'true') === 'true') { ?>
             remote: {
                 url: admin_url + "misc/contact_email_exists",
@@ -352,8 +385,7 @@ function contactFormHandler(form) {
 
         if (response.proposal_warning && response.proposal_warning != false) {
             $('body').find('#contact_proposal_warning').removeClass('hide');
-            $('body').find('#contact_update_proposals_emails').attr('data-original-email', response
-                .original_email);
+            $('body').find('#contact_update_proposals_emails').attr('data-original-email', response.original_email);
             $('#contact').animate({
                 scrollTop: 0
             }, 800);
@@ -392,13 +424,11 @@ function contact(client_id, contact_id) {
     });
 }
 
-
 function update_all_proposal_emails_linked_to_contact(contact_id) {
     var data = {};
     data.update = true;
     data.original_email = $('body').find('#contact_update_proposals_emails').data('original-email');
-    $.post(admin_url + 'clients/update_all_proposal_emails_linked_to_customer/' + contact_id, data).done(function(
-        response) {
+    $.post(admin_url + 'clients/update_all_proposal_emails_linked_to_customer/' + contact_id, data).done(function(response) {
         response = JSON.parse(response);
         if (response.success) {
             alert_float('success', response.message);

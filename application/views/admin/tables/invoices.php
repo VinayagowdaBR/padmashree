@@ -160,14 +160,13 @@ foreach ($rResult as $aRow) {
         if ($aRow['recurring'] > 0) {
             $numberOutput .= '<br /><span class="label label-primary inline-block tw-mt-1 tw-font-medium">' . _l('invoice_recurring_indicator') . '</span>';
         }
-
         $numberOutput .= '<div class="row-options">';
-        $numberOutput .= '<a href="' . site_url('invoice/' . $aRow['id'] . '/' . $aRow['hash']) . '" target="_blank">' . _l('view') . '</a>';
+        $numberOutput .= '<a href="' . admin_url('invoices/pdf/' . $aRow['id'] . '?output_type=I') . '" target="_blank">' . _l('view') . '</a>';
         if (staff_can('edit', 'invoices')) {
             $numberOutput .= ' | <a href="' . admin_url('invoices/invoice/' . $aRow['id']) . '">' . _l('edit') . '</a>';
         }
         $numberOutput .= '</div>';
-
+        
         $row[] = $numberOutput;
          $row[] = !empty($aRow['invoice_datecreated']) ? date('d-m-Y h:i A', strtotime($aRow['invoice_datecreated'])) : '';
         $row[] =  str_pad($aRow['mrd_no'], 0, '0', STR_PAD_LEFT);

@@ -350,11 +350,21 @@ function _simple_editor_config() {
     menubar: false,
     autoresize_bottom_margin: 15,
     plugins: [
-      "quickbars", "table", "advlist", "codesample", "autosave", "lists", "link", "image", "media",
+      "quickbars",
+      "table",
+      "advlist",
+      "codesample",
+      "autosave",
+      "lists",
+      "link",
+      "image",
+      "media",
     ],
-    toolbar: "blocks image media alignleft aligncenter alignright bullist numlist restoredraft",
-    quickbars_insert_toolbar: 'image quicktable | hr',
-    quickbars_selection_toolbar: "bold italic | forecolor backcolor | quicklink | h2 h3 | codesample",
+    toolbar:
+      "blocks image media alignleft aligncenter alignright bullist numlist restoredraft",
+    quickbars_insert_toolbar: "image quicktable | hr",
+    quickbars_selection_toolbar:
+      "bold italic | forecolor backcolor | quicklink | h2 h3 | codesample",
     browser_spellcheck: true,
   };
 }
@@ -810,6 +820,226 @@ function appDataTableInline(element, options) {
 
 // Returns datatbles export button array based on settings
 // Admin area only
+// function get_datatable_buttons(table) {
+//   // pdfmake arabic fonts support
+//   if (
+//     app.user_language.toLowerCase() == "persian" ||
+//     app.user_language.toLowerCase() == "arabic"
+//   ) {
+//     if ($("body").find("#amiri").length === 0) {
+//       var mainjs = document.createElement("script");
+//       mainjs.setAttribute(
+//         "src",
+//         "https://rawgit.com/xErik/pdfmake-fonts-google/master/build/script/ofl/amiri.js"
+//       );
+//       mainjs.setAttribute("id", "amiri");
+//       document.head.appendChild(mainjs);
+
+//       var mapjs = document.createElement("script");
+//       mapjs.setAttribute(
+//         "src",
+//         "https://rawgit.com/xErik/pdfmake-fonts-google/master/build/script/ofl/amiri.map.js"
+//       );
+//       document.head.appendChild(mapjs);
+//     }
+//   }
+
+//   var formatExport = {
+//     body: function (data, row, column, node) {
+//       // Fix for notes inline datatables
+//       // Causing issues because of the hidden textarea for edit and the content is duplicating
+//       // This logic may be extended in future for other similar fixes
+//       var newTmpRow = $("<div></div>", data);
+//       newTmpRow.append(data);
+
+//       if (newTmpRow.find("[data-note-edit-textarea]").length > 0) {
+//         newTmpRow.find("[data-note-edit-textarea]").remove();
+//         data = newTmpRow.html().trim();
+//       }
+//       // Convert e.q. two months ago to actual date
+//       var exportTextHasActionDate = newTmpRow.find(".text-has-action.is-date");
+
+//       if (exportTextHasActionDate.length) {
+//         data = exportTextHasActionDate.attr("data-title");
+//       }
+
+//       if (newTmpRow.find(".row-options").length > 0) {
+//         newTmpRow.find(".row-options").remove();
+//         data = newTmpRow.html().trim();
+//       }
+
+//       if (newTmpRow.find(".table-export-exclude").length > 0) {
+//         newTmpRow.find(".table-export-exclude").remove();
+//         data = newTmpRow.html().trim();
+//       }
+
+//       if (data) {
+//         /*       // 300,00 becomes 300.00 because excel does not support decimal as coma
+//                 var regexFixExcelExport = new RegExp("([0-9]{1,3})(,)([0-9]{" + app.options.decimal_places + ',' + app.options.decimal_places + "})", "gm");
+//                 // Convert to string because matchAll won't work on integers in case datatables convert the text to integer
+//                 var _stringData = data.toString();
+//                 var found = _stringData.matchAll(regexFixExcelExport);
+//                 if (found) {
+//                     data = data.replace(regexFixExcelExport, "$1.$3");
+//                 }*/
+//       }
+
+//       // Datatables use the same implementation to strip the html.
+//       var div = document.createElement("div");
+//       div.innerHTML = data;
+//       var text = div.textContent || div.innerText || "";
+
+//       return text.trim();
+//     },
+//   };
+//   var table_buttons_options = [];
+
+//   if (
+//     typeof table_export_button_is_hidden != "function" ||
+//     !table_export_button_is_hidden()
+//   ) {
+//     table_buttons_options.push({
+//       extend: "collection",
+//       text: app.lang.dt_button_export,
+//       className: "btn btn-sm btn-default-dt-options",
+//       buttons: [
+//         {
+//           extend: "excel",
+//           text: app.lang.dt_button_excel,
+//           footer: true,
+//           exportOptions: {
+//             columns: [":not(.not-export)"],
+//             rows: function (index) {
+//               return _dt_maybe_export_only_selected_rows(index, table);
+//             },
+//             format: formatExport,
+//           },
+//         },
+//         {
+//           extend: "csvHtml5",
+//           text: app.lang.dt_button_csv,
+//           footer: true,
+//           exportOptions: {
+//             columns: [":not(.not-export)"],
+//             rows: function (index) {
+//               return _dt_maybe_export_only_selected_rows(index, table);
+//             },
+//             format: formatExport,
+//           },
+//         },
+//         {
+//           extend: "pdfHtml5",
+//           text: app.lang.dt_button_pdf,
+//           footer: true,
+//           exportOptions: {
+//             columns: [":not(.not-export)"],
+//             rows: function (index) {
+//               return _dt_maybe_export_only_selected_rows(index, table);
+//             },
+//             format: formatExport,
+//           },
+//           orientation: "landscape",
+//           customize: function (doc) {
+//             // Fix for column widths
+//             var table_api = $(table).DataTable();
+//             var columns = table_api.columns().visible();
+//             var columns_total = columns.length;
+//             var total_visible_columns = 0;
+
+//             for (i = 0; i < columns_total; i++) {
+//               // Is only visible column
+//               if (columns[i] == true) {
+//                 total_visible_columns++;
+//               }
+//             }
+
+//             setTimeout(function () {
+//               if (total_visible_columns <= 5) {
+//                 var pdf_widths = [];
+//                 for (i = 0; i < total_visible_columns; i++) {
+//                   pdf_widths.push(735 / total_visible_columns);
+//                 }
+
+//                 doc.content[1].table.widths = pdf_widths;
+//               }
+//             }, 10);
+
+//             if (
+//               app.user_language.toLowerCase() == "persian" ||
+//               app.user_language.toLowerCase() == "arabic"
+//             ) {
+//               doc.defaultStyle.font = Object.keys(pdfMake.fonts)[0];
+//             }
+
+//             doc.styles.tableHeader.alignment = "left";
+//             doc.defaultStyle.fontSize = 10;
+
+//             doc.styles.tableHeader.fontSize = 10;
+//             doc.styles.tableHeader.margin = [3, 3, 3, 3];
+
+//             doc.styles.tableFooter.fontSize = 10;
+//             doc.styles.tableFooter.margin = [3, 0, 0, 0];
+
+//             doc.pageMargins = [2, 20, 2, 20];
+//           },
+//         },
+//         {
+//           extend: "print",
+//           text: app.lang.dt_button_print,
+//           footer: true,
+//           exportOptions: {
+//             columns: [":not(.not-export)"],
+//             rows: function (index) {
+//               return _dt_maybe_export_only_selected_rows(index, table);
+//             },
+//             format: formatExport,
+//           },
+//         },
+//       ],
+//     });
+//   }
+//   var tableButtons = $("body").find(".table-btn");
+
+//   $.each(tableButtons, function () {
+//     var b = $(this);
+//     if (b.length && b.attr("data-table")) {
+//       if ($(table).is(b.attr("data-table"))) {
+//         table_buttons_options.push({
+//           text: b.text().trim(),
+//           className: "btn btn-sm btn-default-dt-options",
+//           action: function (e, dt, node, config) {
+//             b.click();
+//           },
+//         });
+//       }
+//     }
+//   });
+
+//   if (!$(table).hasClass("dt-inline")) {
+//     table_buttons_options.push({
+//       text: '<i class="fa fa-refresh"></i>',
+//       className: "btn btn-sm btn-default-dt-options btn-dt-reload",
+//       action: function (e, dt, node, config) {
+//         dt.ajax.reload();
+//       },
+//     });
+//   }
+
+//   // TODO
+//   // console.log
+
+//   /*   if ($(table).hasClass('customizable-table')) {
+//             table_buttons_options.push({
+//                 columns: '.toggleable',
+//                 text: '<i class="fa fa-cog"></i>',
+//                 extend: 'colvis',
+//                 className: 'btn btn-default-dt-options dt-column-visibility',
+//             });
+//         }*/
+
+//   return table_buttons_options;
+// }
+
 function get_datatable_buttons(table) {
   // pdfmake arabic fonts support
   if (
@@ -918,62 +1148,6 @@ function get_datatable_buttons(table) {
           },
         },
         {
-          extend: "pdfHtml5",
-          text: app.lang.dt_button_pdf,
-          footer: true,
-          exportOptions: {
-            columns: [":not(.not-export)"],
-            rows: function (index) {
-              return _dt_maybe_export_only_selected_rows(index, table);
-            },
-            format: formatExport,
-          },
-          orientation: "landscape",
-          customize: function (doc) {
-            // Fix for column widths
-            var table_api = $(table).DataTable();
-            var columns = table_api.columns().visible();
-            var columns_total = columns.length;
-            var total_visible_columns = 0;
-
-            for (i = 0; i < columns_total; i++) {
-              // Is only visible column
-              if (columns[i] == true) {
-                total_visible_columns++;
-              }
-            }
-
-            setTimeout(function () {
-              if (total_visible_columns <= 5) {
-                var pdf_widths = [];
-                for (i = 0; i < total_visible_columns; i++) {
-                  pdf_widths.push(735 / total_visible_columns);
-                }
-
-                doc.content[1].table.widths = pdf_widths;
-              }
-            }, 10);
-
-            if (
-              app.user_language.toLowerCase() == "persian" ||
-              app.user_language.toLowerCase() == "arabic"
-            ) {
-              doc.defaultStyle.font = Object.keys(pdfMake.fonts)[0];
-            }
-
-            doc.styles.tableHeader.alignment = "left";
-            doc.defaultStyle.fontSize = 10;
-
-            doc.styles.tableHeader.fontSize = 10;
-            doc.styles.tableHeader.margin = [3, 3, 3, 3];
-
-            doc.styles.tableFooter.fontSize = 10;
-            doc.styles.tableFooter.margin = [3, 0, 0, 0];
-
-            doc.pageMargins = [2, 20, 2, 20];
-          },
-        },
-        {
           extend: "print",
           text: app.lang.dt_button_print,
           footer: true,
@@ -983,6 +1157,127 @@ function get_datatable_buttons(table) {
               return _dt_maybe_export_only_selected_rows(index, table);
             },
             format: formatExport,
+          },
+          customize: function (win) {
+            try {
+              // DEBUG: Check what's in the document before making changes
+              console.log(
+                "Original body content:",
+                $(win.document.body).html()
+              );
+              console.log("Document title:", win.document.title);
+
+              // Check if there's a caption
+              var caption = $(win.document.body).find("caption");
+              if (caption.length) {
+                console.log("Table caption found:", caption.text());
+              }
+              //debug
+              $(win.document.body)
+                .find("h1, h2, h3, h4, h5, h6")
+                .each(function () {
+                  console.log("Heading found:", $(this).text());
+                });
+              // Remove default DataTable styling
+              $(win.document.body).find("table").removeClass("dataTable");
+
+              // More aggressive compact styling
+              $(win.document.body).css({
+                "font-size": "6px",
+                margin: "0",
+                padding: "0",
+                height: "auto",
+                "min-height": "0",
+              });
+
+              // Compact table styling
+              var table = $(win.document.body).find("table");
+              table.addClass("compact").css({
+                "font-size": "6px",
+                width: "100%",
+                "border-collapse": "collapse",
+                margin: "0",
+                padding: "0",
+                "page-break-inside": "avoid",
+              });
+
+              // Ultra-compact cell styling
+              table.find("td, th").css({
+                padding: "0.5px 1px",
+                margin: "0",
+                "line-height": "1",
+                border: "0.5px solid #ccc",
+                height: "auto",
+                "min-height": "auto",
+              });
+
+              // Remove any empty rows or elements that might cause expansion
+              $(win.document.body).find(".dataTables_empty").remove();
+
+              // Remove any potential empty space creators
+              $(win.document.body)
+                .find("br")
+                .each(function () {
+                  if (
+                    $(this).prev().length === 0 &&
+                    $(this).next().length === 0
+                  ) {
+                    $(this).remove();
+                  }
+                });
+
+              // Add CSS to control printing more precisely
+              var style = win.document.createElement("style");
+              style.innerHTML = `
+                @media print {
+                  * {
+                    box-sizing: border-box;
+                  }
+                  body {
+                    margin: 2mm !important;
+                    padding: 0 !important;
+                    height: auto !important;
+                    min-height: auto !important;
+                    width: 100% !important;
+                  }
+                  table {
+                    page-break-inside: avoid !important;
+                    break-inside: avoid !important;
+                    width: 100% !important;
+                    max-width: 100% !important;
+                  }
+                  tr {
+                    page-break-inside: avoid !important;
+                    break-inside: avoid !important;
+                  }
+                  .dataTables_empty {
+                    display: none !important;
+                  }
+                  /* Prevent empty pages */
+                  html, body {
+                    height: auto !important;
+                    overflow: hidden !important;
+                  }
+                }
+              `;
+              win.document.head.appendChild(style);
+
+              // Force recalc of layout
+              setTimeout(function () {
+                var body = $(win.document.body);
+                var html = $(win.document.documentElement);
+
+                // Ensure body doesn't exceed viewport
+                body.css("height", "auto");
+                html.css("height", "auto");
+
+                // Remove any overflow
+                body.css("overflow", "visible");
+                html.css("overflow", "visible");
+              }, 100);
+            } catch (error) {
+              console.error("Print customization error:", error);
+            }
           },
         },
       ],
@@ -1015,21 +1310,8 @@ function get_datatable_buttons(table) {
     });
   }
 
-  // TODO
-  // console.log
-
-  /*   if ($(table).hasClass('customizable-table')) {
-            table_buttons_options.push({
-                columns: '.toggleable',
-                text: '<i class="fa fa-cog"></i>',
-                extend: 'colvis',
-                className: 'btn btn-default-dt-options dt-column-visibility',
-            });
-        }*/
-
   return table_buttons_options;
 }
-
 // Check if table export button should be hidden based on settings
 // Admin area only
 function table_export_button_is_hidden() {
@@ -1344,36 +1626,41 @@ function htmlEntities(str) {
 }
 
 function escapeHtml(value, doubleEncode = true) {
-  if (typeof value === 'undefined' || value === null) {
-      return '';
+  if (typeof value === "undefined" || value === null) {
+    return "";
   }
 
   // Convert value if it's an instance of a backed enum (in modern JS environments, you can use instanceof with enums)
-  if (typeof value === 'object' && value.hasOwnProperty('value')) {
-      value = value.value;
+  if (typeof value === "object" && value.hasOwnProperty("value")) {
+    value = value.value;
   }
 
-  let escapedValue = value.toString().replace(/&/g, '&amp;')
-                                     .replace(/</g, '&lt;')
-                                     .replace(/>/g, '&gt;')
-                                     .replace(/"/g, '&quot;')
-                                     .replace(/'/g, '&#039;');
+  let escapedValue = value
+    .toString()
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 
   // If doubleEncode is false, we need to revert the encoded ampersands back to their original form for already escaped entities
   if (!doubleEncode) {
-      escapedValue = escapedValue.replace(/&amp;(#\d+;|#[xX][\da-fA-F]+;|[a-zA-Z]+;)/g, '&$1');
+    escapedValue = escapedValue.replace(
+      /&amp;(#\d+;|#[xX][\da-fA-F]+;|[a-zA-Z]+;)/g,
+      "&$1"
+    );
   }
 
   return escapedValue;
 }
 
 function init_tinymce_inline_editor(options = {}, selector) {
-  selector = selector || 'div.editable'
+  selector = selector || "div.editable";
 
   tinymce.remove(selector);
 
   function saveContent(manual) {
-    if(options.saveUsing) {
+    if (options.saveUsing) {
       options.saveUsing(manual);
     }
   }
@@ -1384,8 +1671,8 @@ function init_tinymce_inline_editor(options = {}, selector) {
     toolbar: false,
     menubar: false,
     branding: false,
-    cache_suffix: '?v='+app.version,
-    language: app.tinymce_lang || 'en',
+    cache_suffix: "?v=" + app.version,
+    language: app.tinymce_lang || "en",
     relative_urls: false,
     remove_script_host: false,
     paste_block_drop: true,
@@ -1401,18 +1688,30 @@ function init_tinymce_inline_editor(options = {}, selector) {
     pagebreak_separator: '<p pagebreak="true"></p>',
     pagebreak_split_block: true,
     plugins: [
-      "quickbars", "advlist", "autolink", "lists", "link", "image",
-      "visualblocks", "code", "pagebreak", "searchreplace", "media", "table"
+      "quickbars",
+      "advlist",
+      "autolink",
+      "lists",
+      "link",
+      "image",
+      "visualblocks",
+      "code",
+      "pagebreak",
+      "searchreplace",
+      "media",
+      "table",
     ],
     autoresize_bottom_margin: 50,
-    quickbars_insert_toolbar: 'image media quicktable | bullist numlist | h2 h3 | pagebreak | hr',
+    quickbars_insert_toolbar:
+      "image media quicktable | bullist numlist | h2 h3 | pagebreak | hr",
     quickbars_selection_toolbar:
-    "bold italic underline superscript | forecolor backcolor link | alignleft aligncenter alignright alignjustify | fontfamily fontsize | h2 h3",
-    contextmenu: "paste pastetext searchreplace | visualblocks pagebreak | code",
+      "bold italic underline superscript | forecolor backcolor link | alignleft aligncenter alignright alignjustify | fontfamily fontsize | h2 h3",
+    contextmenu:
+      "paste pastetext searchreplace | visualblocks pagebreak | code",
     browser_spellcheck: true,
     setup: function (editor) {
-      if(options.onSetup) {
-        options.onSetup(editor)
+      if (options.onSetup) {
+        options.onSetup(editor);
       }
 
       editor.addCommand("mceSave", function () {
@@ -1468,7 +1767,7 @@ function _tinymce_mobile_toolbar() {
 }
 
 function getHeaderScrolledPixels() {
-  var header = document.getElementById('header');
+  var header = document.getElementById("header");
 
   var headerRect = header.getBoundingClientRect();
   var headerHeight = header.offsetHeight;

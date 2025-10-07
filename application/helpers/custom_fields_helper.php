@@ -505,13 +505,21 @@ function get_items_custom_fields_for_table_html($rel_id, $rel_type)
  */
 function render_custom_fields_items_table_add_edit_preview()
 {
-    
     $where = hooks()->apply_filters('custom_fields_where_items_table_add_edit_preview', []);
 
-    return render_custom_fields('items', false, $where, [
+    // Log the $where array
+    log_message('debug', 'Custom Fields WHERE: ' . print_r($where, true));
+
+    $fields = render_custom_fields('items', false, $where, [
         'add_edit_preview' => true,
     ]);
+
+    // Log the returned fields
+    log_message('debug', 'Custom Fields Returned: ' . print_r($fields, true));
+
+    return $fields;
 }
+
 /**
  * Render custom fields for items for table which are already applied to eq. Invoice
  * @param  array $item      the $item variable from the foreach loop

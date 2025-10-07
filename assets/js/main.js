@@ -346,7 +346,11 @@ $(function () {
 
   /** TinyMCE modal fix */
   $(document).on("focusin", function (e) {
-    if ($(e.target).closest(".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root").length) {
+    if (
+      $(e.target).closest(
+        ".tox-tinymce, .tox-tinymce-aux, .moxman-window, .tam-assetmanager-root"
+      ).length
+    ) {
       e.stopImmediatePropagation();
     }
   });
@@ -2416,6 +2420,7 @@ $(function () {
   $("body").on("submit", "._transaction_form", function () {
     // On submit re-calculate total and reorder the items for all cases.
     calculate_total();
+    console.log(" this is the chethan debug at 2423 ");
 
     $("body").find("#items-warning").remove();
     var $itemsTable = $(this).find("table.items");
@@ -2463,10 +2468,12 @@ $(function () {
 
     return true;
   });
+  $("body").on("click", ".transaction-submit", function (e) {
+    console.log(" this is the chethan Subbmit at 2473 ");
 
-  $("body").on("click", ".transaction-submit", function () {
     var that = $(this);
     var form = that.parents("form._transaction_form");
+
     if (form.valid()) {
       if (that.hasClass("save-as-draft")) {
         form.append(hidden_input("save_as_draft", "true"));
@@ -2477,12 +2484,21 @@ $(function () {
       } else if (that.hasClass("save-and-send-later")) {
         form.append(hidden_input("save_and_send_later", "true"));
       }
+
+      // ✅ Set enctype before submit
+      form.attr("enctype", "multipart/form-data");
+
+      // ✅ Log enctype (content type the form will submit with)
+      console.log("Form enctype (Content-Type):", form.attr("enctype"));
     }
+
     form.submit();
   });
 
   // add invoice/estimate note
   $("body").on("submit", "#sales-notes", function () {
+    console.log(" this is the message from sales notes js file ");
+
     var form = $(this);
     if (form.find('textarea[name="description"]').val() === "") {
       return;
@@ -3235,7 +3251,7 @@ function init_rel_tasks_table(rel_id, rel_type, selector) {
   });
 
   // Related task filter - used in customer profile
-  TasksServerParams['tasks_related_to'] = '[name="tasks_related_to"]'
+  TasksServerParams["tasks_related_to"] = '[name="tasks_related_to"]';
 
   var url = admin_url + "tasks/init_relation_tasks/" + rel_id + "/" + rel_type;
 
@@ -3413,7 +3429,6 @@ function initDataTable(
       type: "POST",
       data: function (d) {
         if (Array.isArray(d.order)) {
-
           d.order = d.order.map(function (order) {
             var tHead = table.find("thead th:eq(" + order.column + ")");
             if (tHead.length > 0) {
@@ -3437,10 +3452,10 @@ function initDataTable(
           d["last_order_identifier"] = table.attr("data-last-order-identifier");
         }
 
-        var tId = table[0].getAttribute('id');
+        var tId = table[0].getAttribute("id");
 
-        if(tId && Object.hasOwn(app.dtFilters, tId)) {
-          d['filters'] = app.dtFilters[tId]
+        if (tId && Object.hasOwn(app.dtFilters, tId)) {
+          d["filters"] = app.dtFilters[tId];
         }
       },
     },
@@ -3838,15 +3853,15 @@ function logout() {
 
 // Init the media elfinder for tinymce browser
 function elFinderBrowser(callback, value, meta) {
-  tinymce.activeEditor.windowManager.elfinderCallback = callback
-  
+  tinymce.activeEditor.windowManager.elfinderCallback = callback;
+
   tinymce.activeEditor.windowManager.openUrl({
-      url: admin_url + "misc/tinymce_file_browser",
-      title: app.lang.media_files,
-      width: 900,
-      height: 450,
+    url: admin_url + "misc/tinymce_file_browser",
+    title: app.lang.media_files,
+    width: 900,
+    height: 450,
   });
-  
+
   return false;
 }
 
@@ -3871,13 +3886,13 @@ function init_editor(selector, settings) {
     promotion: false,
     selector: selector,
     browser_spellcheck: true,
-    cache_suffix: '?v='+app.version,
+    cache_suffix: "?v=" + app.version,
     height: 250,
     min_height: 250,
     statusbar: false,
     theme: "silver",
     paste_block_drop: true,
-    language: app.tinymce_lang || 'en',
+    language: app.tinymce_lang || "en",
     relative_urls: false,
     entity_encoding: "raw",
     autoresize_bottom_margin: 25,
@@ -3892,13 +3907,24 @@ function init_editor(selector, settings) {
       width: "100%",
     },
     plugins: [
-      "advlist", "autoresize", "autosave", "lists", "link", "image", "codesample",
-      "visualblocks", "code", "fullscreen",
-      "media", "save", "table",
+      "advlist",
+      "autoresize",
+      "autosave",
+      "lists",
+      "link",
+      "image",
+      "codesample",
+      "visualblocks",
+      "code",
+      "fullscreen",
+      "media",
+      "save",
+      "table",
     ],
-    toolbar: "fontfamily fontsize | forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | image link | bullist numlist | restoredraft",
+    toolbar:
+      "fontfamily fontsize | forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | image link | bullist numlist | restoredraft",
     contextmenu: "link image | paste copy",
-    file_picker_callback : elFinderBrowser,
+    file_picker_callback: elFinderBrowser,
     setup: function (ed) {
       // Default fontsize is 12
       ed.on("init", function () {
@@ -3908,9 +3934,9 @@ function init_editor(selector, settings) {
   };
 
   // Add the rtl to the settings if is true
-  if(isRTL == "true") {
-    _settings.directionality = "rtl"
-    _settings.plugins.push('directionality')
+  if (isRTL == "true") {
+    _settings.directionality = "rtl";
+    _settings.plugins.push("directionality");
   }
 
   // Possible settings passed to be overwrited or added
@@ -5104,14 +5130,20 @@ function print_lead_information() {
 
   $leadViewWrapper.find("h4").css("font-size", "100%");
 
-  $leadViewWrapper.find("dt").each(function() {
-      $(this).replaceWith("<p style='margin-bottom:5px; color:#777'><strong>" + $(this).text() + "</strong></p>");
+  $leadViewWrapper.find("dt").each(function () {
+    $(this).replaceWith(
+      "<p style='margin-bottom:5px; color:#777'><strong>" +
+        $(this).text() +
+        "</strong></p>"
+    );
   });
 
-  $leadViewWrapper.find("dd").each(function() {
-      $(this).replaceWith("<div='margin-bottom:10px;'>" + $(this).text() + "</div>");
+  $leadViewWrapper.find("dd").each(function () {
+    $(this).replaceWith(
+      "<div='margin-bottom:10px;'>" + $(this).text() + "</div>"
+    );
   });
-  
+
   $leadViewWrapper.find(".lead-field-heading + p").css("margin-bottom", "15px");
 
   var mywindow = _create_print_window(name);
@@ -5481,15 +5513,14 @@ function leads_bulk_action(event) {
 function init_proposal_editor() {
   init_tinymce_inline_editor({
     saveUsing: save_proposal_content,
-    onSetup: function(editor) {
+    onSetup: function (editor) {
       editor.on("MouseDown ContextMenu", function () {
-        if (!is_mobile() && 
-          !$("#small-table").hasClass("hide")) {
+        if (!is_mobile() && !$("#small-table").hasClass("hide")) {
           small_table_full_view();
         }
       });
-    }
-  })
+    },
+  });
 }
 
 function update_comments_count() {
@@ -6579,7 +6610,7 @@ function edit_task_comment(id) {
   tinymce.remove("#task_comment_" + id);
   var editorConfig = _simple_editor_config();
   editorConfig.auto_focus = "task_comment_" + id;
-  editorConfig.toolbar_sticky  = true;
+  editorConfig.toolbar_sticky = true;
   init_editor("#task_comment_" + id, editorConfig);
   tinymce.triggerSave();
 }
@@ -6681,12 +6712,17 @@ function edit_task_inline_description(e, id) {
     toolbar: false,
     menubar: false,
     inline: true,
-    cache_suffix: '?v='+app.version,
+    cache_suffix: "?v=" + app.version,
     selector: "#task_view_description",
     theme: "silver",
     directionality: isRTL == "true" ? "rtl" : "",
     auto_focus: "task_view_description",
-    plugins: ['quickbars', 'link', 'table', (isRTL == "true" ? " directionality" : "")],
+    plugins: [
+      "quickbars",
+      "link",
+      "table",
+      isRTL == "true" ? " directionality" : "",
+    ],
     contextmenu: "link table paste pastetext",
     quickbars_insert_toolbar: "quicktable",
     quickbars_selection_toolbar: "bold italic | quicklink h2 h3 blockquote",
@@ -6786,7 +6822,7 @@ function load_small_table_item(id, selector, input_name, url, table) {
   }
   $('input[name="' + input_name + '"]').val(id);
   do_hash_helper(id);
-  $(selector).load(admin_url + url + "/" + id)
+  $(selector).load(admin_url + url + "/" + id);
 
   $("html, body").animate(
     {
@@ -7082,6 +7118,288 @@ function clear_item_preview_values(default_taxes) {
 }
 
 // Append the added items to the preview to the table as items
+// function add_item_to_table(data, itemid, merge_invoice, bill_expense) {
+//   // If not custom data passed get from the preview
+//   console.log("=== ADD ITEM TO TABLE START ===");
+//   console.log("Input parameters:", {
+//     data,
+//     itemid,
+//     merge_invoice,
+//     bill_expense,
+//   });
+//   data =
+//     typeof data == "undefined" || data == "undefined"
+//       ? get_item_preview_values()
+//       : data;
+
+//   console.log("Final data being used:", data);
+
+//   if (
+//     data.description === "" &&
+//     data.long_description === "" &&
+//     data.rate === ""
+//   ) {
+//     console.log("Empty data - returning early");
+//     return;
+//   }
+
+//   var table_row = "";
+//   var item_key = lastAddedItemKey
+//     ? (lastAddedItemKey += 1)
+//     : $("body").find("tbody .item").length + 1;
+//   lastAddedItemKey = item_key;
+//   console.log("Generated item key:", item_key);
+
+//   table_row +=
+//     '<tr class="sortable item" data-merge-invoice="' +
+//     merge_invoice +
+//     '" data-bill-expense="' +
+//     bill_expense +
+//     '">';
+
+//   table_row += '<td class="dragger">';
+
+//   // Check if quantity is number
+//   if (isNaN(data.qty)) {
+//     data.qty = 1;
+//   }
+
+//   // Check if rate is number
+//   if (data.rate === "" || isNaN(data.rate)) {
+//     data.rate = 0;
+//   }
+
+//   var amount = data.rate * data.qty;
+
+//   var tax_name = "newitems[" + item_key + "][taxname][]";
+//   $("body").append('<div class="dt-loader"></div>');
+//   var regex = /<br[^>]*>/gi;
+//   get_taxes_dropdown_template(tax_name, data.taxname).done(function (
+//     tax_dropdown
+//   ) {
+//     // order input
+//     table_row +=
+//       '<input type="hidden" class="order" name="newitems[' +
+//       item_key +
+//       '][order]">';
+
+//     table_row += "</td>";
+
+//     table_row +=
+//       '<td class="bold description"><textarea name="newitems[' +
+//       item_key +
+//       '][description]" class="form-control" rows="5">' +
+//       data.description +
+//       "</textarea></td>";
+
+//     table_row +=
+//       '<td><textarea name="newitems[' +
+//       item_key +
+//       '][long_description]" class="form-control item_long_description" rows="5">' +
+//       data.long_description.replace(regex, "\n") +
+//       "</textarea></td>";
+
+//     var custom_fields = $("tr.main td.custom_field");
+//     var cf_has_required = false;
+
+//     if (custom_fields.length > 0) {
+//       $.each(custom_fields, function () {
+//         var cf = $(this).clone();
+//         var cf_html = "";
+//         var cf_field = $(this).find("[data-fieldid]");
+//         var cf_name =
+//           "newitems[" +
+//           item_key +
+//           "][custom_fields][items][" +
+//           cf_field.attr("data-fieldid") +
+//           "]";
+
+//         if (cf_field.is(":checkbox")) {
+//           var checked = $(this).find('input[type="checkbox"]:checked');
+//           var checkboxes = cf.find('input[type="checkbox"]');
+
+//           $.each(checkboxes, function (i, e) {
+//             var random_key = Math.random().toString(20).slice(2);
+//             $(this)
+//               .attr("id", random_key)
+//               .attr("name", cf_name)
+//               .next("label")
+//               .attr("for", random_key);
+//             if ($(this).attr("data-custom-field-required") == "1") {
+//               cf_has_required = true;
+//             }
+//           });
+
+//           $.each(checked, function (i, e) {
+//             cf.find('input[value="' + $(e).val() + '"]').attr("checked", true);
+//           });
+
+//           cf_html = cf.html();
+//         } else if (cf_field.is("input") || cf_field.is("textarea")) {
+//           if (cf_field.is("input")) {
+//             cf.find("[data-fieldid]").attr("value", cf_field.val());
+//           } else {
+//             cf.find("[data-fieldid]").html(cf_field.val());
+//           }
+//           cf.find("[data-fieldid]").attr("name", cf_name);
+//           if (
+//             cf.find("[data-fieldid]").attr("data-custom-field-required") == "1"
+//           ) {
+//             cf_has_required = true;
+//           }
+//           cf_html = cf.html();
+//         } else if (cf_field.is("select")) {
+//           if ($(this).attr("data-custom-field-required") == "1") {
+//             cf_has_required = true;
+//           }
+
+//           var selected = $(this)
+//             .find("select[data-fieldid]")
+//             .selectpicker("val");
+//           selected = typeof (selected != "array")
+//             ? new Array(selected)
+//             : selected;
+
+//           // Check if is multidimensional by multi-select customfield
+//           selected = selected[0].constructor === Array ? selected[0] : selected;
+
+//           var selectNow = cf.find("select");
+//           var $wrapper = $("<div/>");
+//           selectNow.attr("name", cf_name);
+
+//           var $select = selectNow.clone();
+//           $wrapper.append($select);
+//           $.each(selected, function (i, e) {
+//             $wrapper
+//               .find('select option[value="' + e + '"]')
+//               .attr("selected", true);
+//           });
+
+//           cf_html = $wrapper.html();
+//         }
+//         table_row += '<td class="custom_field">' + cf_html + "</td>";
+//       });
+//     }
+
+//     table_row +=
+//       '<td><input type="number" min="0" onblur="calculate_total();" onchange="calculate_total();" data-quantity name="newitems[' +
+//       item_key +
+//       '][qty]" value="' +
+//       data.qty +
+//       '" class="form-control">';
+
+//     if (!data.unit || typeof data.unit == "undefined") {
+//       data.unit = "";
+//     }
+
+//     // table_row +=
+//     //   '<input type="text" placeholder="' +
+//     //   app.lang.unit +
+//     //   '" name="newitems[' +
+//     //   item_key +
+//     //   '][unit]" class="  " value="' +
+//     //   data.unit +
+//     //   '">';
+
+//     table_row += "</td>";
+
+//     table_row +=
+//       '<td class="rate"><input type="number" data-toggle="tooltip" title="' +
+//       app.lang.item_field_not_formatted +
+//       '" onblur="calculate_total();" onchange="calculate_total();" name="newitems[' +
+//       item_key +
+//       '][rate]" value="' +
+//       data.rate +class="taxrate"
+//       '" class="form-control"></td>';
+
+//     table_row += '<td class="taxrate">' + tax_dropdown + "</td>";
+
+//     table_row +=
+//       '<td class="amount" align="right">' +
+//       format_money(amount, true) +
+//       "</td>";
+
+//     table_row +=
+//       '<td><a href="#" class="btn btn-danger pull-left !tw-px-3" onclick="delete_item(this,' +
+//       itemid +
+//       '); return false;"><i class="fa fa-trash"></i></a></td>';
+
+//     table_row += "</tr>";
+//     console.log("Generated table row HTML:", table_row);
+//     $("table.items tbody").append(table_row);
+//     console.log("Row appended to table");
+//     $(document).trigger({
+//       type: "item-added-to-table",
+//       data: data,
+//       row: table_row,
+//     });
+
+//     setTimeout(function () {
+//       calculate_total();
+//     }, 15);
+
+//     var billed_task = $('input[name="task_id"]').val();
+//     var billed_expense = $('input[name="expense_id"]').val();
+
+//     if (billed_task !== "" && typeof billed_task != "undefined") {
+//       billed_tasks = billed_task.split(",");
+//       $.each(billed_tasks, function (i, obj) {
+//         $("#billed-tasks").append(
+//           hidden_input("billed_tasks[" + item_key + "][]", obj)
+//         );
+//       });
+//     }
+
+//     if (billed_expense !== "" && typeof billed_expense != "undefined") {
+//       billed_expenses = billed_expense.split(",");
+//       $.each(billed_expenses, function (i, obj) {
+//         $("#billed-expenses").append(
+//           hidden_input("billed_expenses[" + item_key + "][]", obj)
+//         );
+//       });
+//     }
+
+//     if (
+//       $("#item_select").hasClass("ajax-search") &&
+//       $("#item_select").selectpicker("val") !== ""
+//     ) {
+//       $("#item_select").prepend("<option></option>");
+//     }
+
+//     init_selectpicker();
+//     init_datepicker();
+//     init_color_pickers();
+//     clear_item_preview_values();
+//     reorder_items();
+
+//     $("body").find("#items-warning").remove();
+//     $("body").find(".dt-loader").remove();
+//     $("#item_select").selectpicker("val", "");
+
+//     if (cf_has_required && $(".invoice-form").length) {
+//       validate_invoice_form();
+//     } else if (cf_has_required && $(".estimate-form").length) {
+//       validate_estimate_form();
+//     } else if (cf_has_required && $(".proposal-form").length) {
+//       validate_proposal_form();
+//     } else if (cf_has_required && $(".credit-note-form").length) {
+//       validate_credit_note_form();
+//     }
+
+//     if (bill_expense == "undefined" || !bill_expense) {
+//       $('select[name="task_select"]')
+//         .find('[value="' + billed_task + '"]')
+//         .remove();
+//       $('select[name="task_select"]').selectpicker("refresh");
+//     }
+//     return true;
+//   });
+
+//   console.log("Total rows in table:", $("table.items tbody .item").length);
+//   console.log("=== ADD ITEM TO TABLE END ===");
+//   return false;
+// }
+
 function add_item_to_table(data, itemid, merge_invoice, bill_expense) {
   // If not custom data passed get from the preview
   data =
@@ -7244,14 +7562,14 @@ function add_item_to_table(data, itemid, merge_invoice, bill_expense) {
       data.unit = "";
     }
 
-    table_row +=
-      '<input type="text" placeholder="' +
-      app.lang.unit +
-      '" name="newitems[' +
-      item_key +
-      '][unit]" class="form-control input-transparent text-right" value="' +
-      data.unit +
-      '">';
+    // table_row +=
+    //   '<input type="text" placeholder="' +
+    //   app.lang.unit +
+    //   '" name="newitems[' +
+    //   item_key +
+    //   '][unit]" class="form-control input-transparent text-right" value="' +
+    //   data.unit +
+    //   '">';
 
     table_row += "</td>";
 
@@ -7264,7 +7582,7 @@ function add_item_to_table(data, itemid, merge_invoice, bill_expense) {
       data.rate +
       '" class="form-control"></td>';
 
-    table_row += '<td class="taxrate">' + tax_dropdown + "</td>";
+    // table_row += '<td class="taxrate">' + tax_dropdown + "</td>";
 
     table_row +=
       '<td class="amount" align="right">' +
@@ -7845,12 +8163,12 @@ function init_invoices_total(manual) {
   });
 
   var currency = $("body").find('select[name="total_currency"]').val();
-  
+
   var data = {
     currency: currency,
     years: years,
     init_total: true,
-    display_type: _inv_total_wrapper.attr('data-type')
+    display_type: _inv_total_wrapper.attr("data-type"),
   };
 
   var project_id = $('input[name="project_id"]').val();
@@ -8585,7 +8903,7 @@ function fetch_notifications(callback) {
 }
 
 function init_new_task_comment(manual) {
-  if (tinymce.get('task_comment')) {
+  if (tinymce.get("task_comment")) {
     tinymce.remove("#task_comment");
   }
 
@@ -8632,8 +8950,8 @@ function init_new_task_comment(manual) {
   );
 
   var editorConfig = _simple_editor_config();
-  
-  editorConfig.toolbar_sticky = true
+
+  editorConfig.toolbar_sticky = true;
 
   if (typeof manual == "undefined" || manual === false) {
     editorConfig.auto_focus = true;
@@ -8650,69 +8968,69 @@ function init_new_task_comment(manual) {
   editorConfig.setup = function (editor) {
     initializeTinyMceMentions(editor, function () {
       return $.getJSON(
-        admin_url + "tasks/get_staff_names_for_mentions/" + taskid     
-      )
-    })
+        admin_url + "tasks/get_staff_names_for_mentions/" + taskid
+      );
+    });
   };
 
-  init_editor("#task_comment", editorConfig)
+  init_editor("#task_comment", editorConfig);
 }
 
 function initializeTinyMceMentions(editor, usersCallback) {
-  if(!Object.hasOwn(editor, 'perfexCommands')) {
-    editor.perfexCommands = {}
+  if (!Object.hasOwn(editor, "perfexCommands")) {
+    editor.perfexCommands = {};
   }
 
   let cachedUsers = null;
 
-  editor.perfexCommands.getUsersForMention = async function() {
-    if(Array.isArray(cachedUsers)) {
-      return cachedUsers
+  (editor.perfexCommands.getUsersForMention = async function () {
+    if (Array.isArray(cachedUsers)) {
+      return cachedUsers;
     }
 
-    let users = await usersCallback()
+    let users = await usersCallback();
 
-    cachedUsers = users.map(u=>({
+    cachedUsers = users.map((u) => ({
       value: u.id.toString(),
       text: u.name,
     }));
 
-    return cachedUsers
-  },
-  editor.perfexCommands.insertMentionUser = function (id, name, rng) {
-    // Insert in to the editor
-    editor.selection.setRng(rng || 0)
+    return cachedUsers;
+  }),
+    (editor.perfexCommands.insertMentionUser = function (id, name, rng) {
+      // Insert in to the editor
+      editor.selection.setRng(rng || 0);
 
-    editor.insertContent((
-      '<span class="mention" contenteditable="false" data-mention-id="' +
-      id +
-      '">@' +
-      name +
-      "</span>&nbsp;"
-    ))
-  }
+      editor.insertContent(
+        '<span class="mention" contenteditable="false" data-mention-id="' +
+          id +
+          '">@' +
+          name +
+          "</span>&nbsp;"
+      );
+    });
 
-  editor.ui.registry.addAutocompleter('mentions', {
-    trigger: '@', // the trigger character to open the autocompleter
+  editor.ui.registry.addAutocompleter("mentions", {
+    trigger: "@", // the trigger character to open the autocompleter
     minChars: 0, // 0 to open the dropdown immediately after the @ is typed
     columns: 1, // must be 1 for text-based results
 
     // Retrieve the available users
     fetch: function (pattern) {
-      return new Promise(resolve =>
-          resolve(editor.perfexCommands.getUsersForMention())
-      )
+      return new Promise((resolve) =>
+        resolve(editor.perfexCommands.getUsersForMention())
+      );
     },
 
     // Executed when user is selected from the dropdown
     onAction: function (autocompleteApi, rng, value) {
-      editor.perfexCommands.getUsersForMention().then(users=> {
-        let user = users.find(user=>user.value == value)
-        editor.perfexCommands.insertMentionUser(value, user.text, rng)
-        autocompleteApi.hide()
-      })
+      editor.perfexCommands.getUsersForMention().then((users) => {
+        let user = users.find((user) => user.value == value);
+        editor.perfexCommands.insertMentionUser(value, user.text, rng);
+        autocompleteApi.hide();
+      });
     },
-  })
+  });
 }
 
 function init_ajax_search(type, selector, server_data, url) {
@@ -9140,4 +9458,3 @@ function init_currency_symbol() {
   );
   init_currency();
 }
-

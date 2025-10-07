@@ -66,15 +66,15 @@ function affiliate_module_init_menu_items()
                 'position' => 30
         ]);
         
-        if(affiliate_has_permission('dashboard', '', 'view')){
-            $CI->app_menu->add_sidebar_children_item('affiliate', [
-                'slug' => 'affiliate-dashboard',
-                'name' => _l('als_dashboard'),
-                'icon' => 'fa fa-home',
-                'href' => admin_url('affiliate/dashboard'),
-                'position' => 1,
-            ]);
-        }
+        // if(affiliate_has_permission('dashboard', '', 'view')){
+        //     $CI->app_menu->add_sidebar_children_item('affiliate', [
+        //         'slug' => 'affiliate-dashboard',
+        //         'name' => _l('als_dashboard'),
+        //         'icon' => 'fa fa-home',
+        //         'href' => admin_url('affiliate/dashboard'),
+        //         'position' => 1,
+        //     ]);
+        // }
         
         if(affiliate_has_permission('member', '', 'view')){
             $CI->app_menu->add_sidebar_children_item('affiliate', [
@@ -86,45 +86,45 @@ function affiliate_module_init_menu_items()
             ]);
         }
 
-        if(affiliate_has_permission('affiliate_program', '', 'view')){
-            $CI->app_menu->add_sidebar_children_item('affiliate', [
-                'slug' => 'affiliate-programs',
-                'name' => _l('affiliate_program'),
-                'icon' => 'fa fa-square',
-                'href' => admin_url('affiliate/affiliate_programs'),
-                'position' => 3,
-            ]);
-        }
+        // if(affiliate_has_permission('affiliate_program', '', 'view')){
+        //     $CI->app_menu->add_sidebar_children_item('affiliate', [
+        //         'slug' => 'affiliate-programs',
+        //         'name' => _l('affiliate_program'),
+        //         'icon' => 'fa fa-square',
+        //         'href' => admin_url('affiliate/affiliate_programs'),
+        //         'position' => 3,
+        //     ]);
+        // }
         
-        if(affiliate_has_permission('affiliate_orders', '', 'view')){
-            $CI->app_menu->add_sidebar_children_item('affiliate', [
-                'slug' => 'affiliate-orders',
-                'name' => _l('affiliate_orders'),
-                'icon' => 'fa fa-list',
-                'href' => admin_url('affiliate/affiliate_orders'),
-                'position' => 4,
-            ]);
-        }
+        // if(affiliate_has_permission('affiliate_orders', '', 'view')){
+        //     $CI->app_menu->add_sidebar_children_item('affiliate', [
+        //         'slug' => 'affiliate-orders',
+        //         'name' => _l('affiliate_orders'),
+        //         'icon' => 'fa fa-list',
+        //         'href' => admin_url('affiliate/affiliate_orders'),
+        //         'position' => 4,
+        //     ]);
+        // }
         
-        if(affiliate_has_permission('affiliate_logs', '', 'view')){
-            $CI->app_menu->add_sidebar_children_item('affiliate', [
-                'slug' => 'affiliate-logs',
-                'name' => _l('affiliate_logs'),
-                'icon' => 'fa fa-list',
-                'href' => admin_url('affiliate/affiliate_logs'),
-                'position' => 5,
-            ]);
-        }
+        // if(affiliate_has_permission('affiliate_logs', '', 'view')){
+        //     $CI->app_menu->add_sidebar_children_item('affiliate', [
+        //         'slug' => 'affiliate-logs',
+        //         'name' => _l('affiliate_logs'),
+        //         'icon' => 'fa fa-list',
+        //         'href' => admin_url('affiliate/affiliate_logs'),
+        //         'position' => 5,
+        //     ]);
+        // }
         
-        if(affiliate_has_permission('wallet', '', 'view')){
-            $CI->app_menu->add_sidebar_children_item('affiliate', [
-                'slug' => 'affiliate-wallet',
-                'name' => _l('wallet'),
-                'icon' => 'fa fa-briefcase',
-                'href' => admin_url('affiliate/wallet'),
-                'position' => 6,
-            ]);
-        }
+        // if(affiliate_has_permission('wallet', '', 'view')){
+        //     $CI->app_menu->add_sidebar_children_item('affiliate', [
+        //         'slug' => 'affiliate-wallet',
+        //         'name' => _l('wallet'),
+        //         'icon' => 'fa fa-briefcase',
+        //         'href' => admin_url('affiliate/wallet'),
+        //         'position' => 6,
+        //     ]);
+        // }
         
         if(affiliate_has_permission('reports', '', 'view')){
             $CI->app_menu->add_sidebar_children_item('affiliate', [
@@ -136,15 +136,15 @@ function affiliate_module_init_menu_items()
             ]);
         }
         
-        if(affiliate_has_permission('settings', '', 'view')){
-            $CI->app_menu->add_sidebar_children_item('affiliate', [
-                'slug' => 'affiliate-setting',
-                'name' => _l('settings'),
-                'icon' => 'fa fa-cog',
-                'href' => admin_url('affiliate/settings?group=member_group'),
-                'position' => 8,
-            ]);
-        }
+        // if(affiliate_has_permission('settings', '', 'view')){
+        //     $CI->app_menu->add_sidebar_children_item('affiliate', [
+        //         'slug' => 'affiliate-setting',
+        //         'name' => _l('settings'),
+        //         'icon' => 'fa fa-cog',
+        //         'href' => admin_url('affiliate/settings?group=member_group'),
+        //         'position' => 8,
+        //     ]);
+        // }
     }
 }
 

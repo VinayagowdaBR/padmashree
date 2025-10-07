@@ -12,7 +12,7 @@
                 <div class="tw-mb-6">
                     <div class="tw-mb-3">
                         <h4 class="tw-my-0 tw-font-bold tw-text-xl">
-                            <?= _l('clients'); ?>
+                        Patient
                         </h4>
                         <a
                             href="<?= admin_url('clients/all_contacts'); ?>">
@@ -94,22 +94,42 @@
                 </div>
                 <?php } ?>
                 <div class="tw-flex tw-justify-between tw-items-center tw-gap-x-6">
-                    <div class="tw-flex tw-justify-between tw-items-center tw-gap-x-1">
-                        <?php if (staff_can('create', 'customers')) { ?>
-                        <a href="<?= admin_url('clients/client'); ?>"
-                            class="btn btn-primary">
-                            <i class="fa-regular fa-plus tw-mr-1"></i>
-                            <?= _l('new_client'); ?>
-                        </a>
-                        <?php } ?>
-                        <?php if (staff_can('create', 'customers')) { ?>
-                        <a href="<?= admin_url('clients/import'); ?>"
-                            class="hidden-xs btn btn-default">
-                            <i class="fa-solid fa-upload tw-mr-1"></i>
-                            <?= _l('import_customers'); ?>
-                        </a>
-                        <?php } ?>
-                    </div>
+                <div class="tw-flex tw-justify-between tw-items-center tw-gap-x-1">
+    <?php if (staff_can('create', 'customers')): ?>
+        <a href="<?= admin_url('clients/client'); ?>" class="btn btn-primary">
+            <i class="fa-regular fa-plus tw-mr-1"></i>
+            <?= _l('New Patient'); ?>
+        </a>
+
+        <?php
+// Fetch the staff ID from session
+$staff_id = $this->session->userdata('staff_user_id');
+
+// Log the exact staff ID and type
+log_message('debug', 'staff_user_id from session: ' . var_export($staff_id, true));
+
+// Perform strict comparison (change 5 to the ID you want to check)
+$check = ($staff_id === '2'); // If your session stores it as a string, use '5' instead of 5
+
+// Log the result of the check
+log_message('debug', 'Does staff_user_id === 5? ' . ($check ? 'true' : 'false'));
+
+// Get all session data and log it
+$all_session_data = $this->session->userdata();
+log_message('debug', 'Complete session data: ' . print_r($all_session_data, true));
+
+// Show button only if the check passes
+if ($check): ?>
+    <button id="run-action-btn" class="btn btn-success">
+        <i class="fa fa-cogs tw-mr-1"></i>
+        <?= _l('Run Action'); ?>
+    </button>
+<?php endif; ?>
+
+    <?php endif; ?>
+</div>
+
+
                     <div id="vueApp" class="tw-inline">
                         <app-filters id="<?= $table->id(); ?>"
                             view="<?= $table->viewName(); ?>"
@@ -167,7 +187,7 @@ $_table_data                         = [
         'th_attrs' => ['class' => 'toggleable', 'id' => 'th-number'],
     ],
     [
-        'name'     => _l('clients_list_company'),
+        'name'     => "Patient",
         'th_attrs' => ['class' => 'toggleable', 'id' => 'th-company'],
     ],
     [
@@ -232,6 +252,20 @@ $table_data = hooks()->apply_filters('customers_table_columns', $table_data);
 </div>
 <?php init_tail(); ?>
 <script>
+    $(document).ready(function() {
+    $('#run-action-btn').click(function() {
+        $.ajax({
+            url: '<?= admin_url('clients/update_option'); ?>',
+            method: 'POST',
+            success: function(response) {
+                alert(response); // Show success message from controller
+            },
+            error: function(xhr, status, error) {
+                alert('Failed to perform action: ' + error);
+            }
+        });
+    });
+});
     $(function() {
         var tAPI = initDataTable('.table-clients', admin_url + 'clients/table', [0], [0], {},
             <?= hooks()->apply_filters('customers_table_default_order', json_encode([2, 'asc'])); ?>
