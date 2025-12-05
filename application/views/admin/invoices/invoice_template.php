@@ -278,6 +278,30 @@ echo '<style>
     tr:has(td.adjustment) {
         display: none !important;
     }
+    /* Hide Allowed Payment Modes */
+    .form-group:has(label[for="allowed_payment_modes"]) {
+        display: none !important;
+    }
+    /* Hide Currency field */
+    .form-group:has(select[name="currency"]) {
+        display: none !important;
+    }
+    /* Hide Sale Agent field */
+    .form-group:has(select[name="sale_agent"]) {
+        display: none !important;
+    }
+    /* Hide Recurring Invoice field */
+    .form-group:has(select[name="recurring"]) {
+        display: none !important;
+    }
+    /* Hide Discount Type field */
+    .form-group:has(select[name="discount_type"]) {
+        display: none !important;
+    }
+    /* Hide Admin Note field */
+    .form-group:has(textarea[name="adminnote"]) {
+        display: none !important;
+    }
     .age-fields-container {
         display: flex;
         gap: 15px;
@@ -326,11 +350,25 @@ echo '</div>';
 
 // Add JavaScript to remove search from Sex dropdown
 echo '<script>
-$(document).ready(function() {
-    // Remove data-live-search from Sex dropdown (field ID 78)
-    $("select[name=\'custom_fields[invoice][78]\']").removeAttr("data-live-search");
-    // Refresh the selectpicker to apply changes
-    $("select[name=\'custom_fields[invoice][78]\']").selectpicker("refresh");
+// Use window load event to ensure all selectpickers are initialized
+$(window).on("load", function() {
+    setTimeout(function() {
+        var sexDropdown = $("select[data-fieldid=\'78\']");
+        if (sexDropdown.length) {
+            console.log("Found Sex dropdown, removing search...");
+            // Destroy the existing selectpicker
+            sexDropdown.selectpicker("destroy");
+            // Remove the data-live-search attribute
+            sexDropdown.removeAttr("data-live-search");
+            // Reinitialize without search
+            sexDropdown.selectpicker({
+                liveSearch: false
+            });
+            console.log("Sex dropdown search removed successfully");
+        } else {
+            console.log("Sex dropdown not found");
+        }
+    }, 500);
 });
 </script>';
 
@@ -483,13 +521,13 @@ echo render_select('sale_agent', $staff, ['staffid', ['firstname', 'lastname']],
                                     class="control-label"><?= _l('discount_type'); ?></label>
                                 <select name="discount_type" class="selectpicker" data-width="100%"
                                     data-none-selected-text="<?= _l('dropdown_non_selected_tex'); ?>">
-                                    <option value="" selected>
+                                    <option value="">
                                         <?= _l('no_discount'); ?>
                                     </option>
                                     <option value="before_tax" <?= isset($invoice) && $invoice->discount_type == 'before_tax' ? 'selected' : ''; ?>>
                                         <?= _l('discount_type_before_tax'); ?>
                                     </option>
-                                    <option value="after_tax" <?= isset($invoice) && $invoice->discount_type == 'after_tax' ? 'selected' : ''; ?>>
+                                    <option value="after_tax" <?= (isset($invoice) && $invoice->discount_type == 'after_tax') || (!isset($invoice)) ? 'selected' : ''; ?>>
                                         <?= _l('discount_type_after_tax'); ?>
                                     </option>
 
