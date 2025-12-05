@@ -140,6 +140,14 @@
 var duePaidTable;
 
 $(function() {
+    // Set default report_to date to current date
+    var today = new Date();
+    var day = String(today.getDate()).padStart(2, '0');
+    var month = String(today.getMonth() + 1).padStart(2, '0');
+    var year = today.getFullYear();
+    var formattedDate = day + '-' + month + '-' + year; // DD-MM-YYYY format
+    $('input[name="report_to"]').val(formattedDate);
+
     var DuePaidDetailsServerParams = {
         report_from: '[name="report_from"]',
         report_to: '[name="report_to"]',
