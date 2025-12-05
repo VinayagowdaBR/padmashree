@@ -208,19 +208,134 @@ $data_original_number = isset($invoice) ? $invoice->number : 'false';
                 <?php
 $customFieldsHtml = render_custom_fields('invoice', $rel_id);
 log_message('debug', 'Custom Fields rel_id: ' . var_export($rel_id, true));
-// Add CSS to hide unwanted fields
+
+// Get age field IDs and values
+$age_years_field_id = null;
+$age_months_field_id = null;
+$age_years = '';
+$age_months = '';
+
+// Get the custom field definitions for age fields
+$this->db->where('fieldto', 'invoice');
+$this->db->where_in('slug', ['age_years', 'age_months']);
+$this->db->or_where('LOWER(name) LIKE', '%age%year%');
+$this->db->or_where('LOWER(name) LIKE', '%age%month%');
+$age_fields = $this->db->get(db_prefix() . 'customfields')->result();
+
+foreach ($age_fields as $field) {
+    $field_name_lower = strtolower($field->name);
+    $field_slug_lower = strtolower($field->slug);
+    
+    if (strpos($field_slug_lower, 'age_years') !== false || 
+        (strpos($field_name_lower, 'age') !== false && strpos($field_name_lower, 'year') !== false)) {
+        $age_years_field_id = $field->id;
+    } elseif (strpos($field_slug_lower, 'age_months') !== false || 
+              (strpos($field_name_lower, 'age') !== false && strpos($field_name_lower, 'month') !== false)) {
+        $age_months_field_id = $field->id;
+    }
+}
+
+// Get existing values if editing
+if (isset($invoice) && $invoice->id) {
+    if ($age_years_field_id) {
+        $this->db->where('relid', $invoice->id);
+        $this->db->where('fieldid', $age_years_field_id);
+        $this->db->where('fieldto', 'invoice');
+        $years_value = $this->db->get(db_prefix() . 'customfieldsvalues')->row();
+        if ($years_value) {
+            $age_years = $years_value->value;
+        }
+    }
+    
+    if ($age_months_field_id) {
+        $this->db->where('relid', $invoice->id);
+        $this->db->where('fieldid', $age_months_field_id);
+        $this->db->where('fieldto', 'invoice');
+        $months_value = $this->db->get(db_prefix() . 'customfieldsvalues')->row();
+        if ($months_value) {
+            $age_months = $months_value->value;
+        }
+    }
+}
+
+// Add CSS to hide unwanted fields and style age fields
 echo '<style>
-    .custom-fields-form-row .col-md-4:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])):not(:has([data-fieldid="77"])):not(:has([data-fieldid="97"])),
-    .custom-fields-form-row .col-md-3:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])):not(:has([data-fieldid="77"])):not(:has([data-fieldid="97"])),
-    .custom-fields-form-row .col-md-6:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])):not(:has([data-fieldid="77"])):not(:has([data-fieldid="97"])),
-    .custom-fields-form-row .col-md-12:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])):not(:has([data-fieldid="77"])):not(:has([data-fieldid="97"])) {
+    /* Hide all custom fields except Sex (78) and Mobile.no (79) */
+    .custom-fields-form-row .col-md-4:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])),
+    .custom-fields-form-row .col-md-3:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])),
+    .custom-fields-form-row .col-md-6:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])),
+    .custom-fields-form-row .col-md-12:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])) {
         display: none;
+    }
+    /* Hide the auto-rendered age custom fields (77=old Age, 97=AgeOption, 98=Age Months) */
+    [data-fieldid="77"], [data-fieldid="97"], [data-fieldid="98"],
+    [data-fieldslug="age_years"], [data-fieldslug="age_months"],
+    .custom-field-age-years, .custom-field-age-months {
+        display: none !important;
+    }
+    /* Hide the Adjustment field */
+    tr:has(input[name="adjustment"]),
+    tr:has(td.adjustment) {
+        display: none !important;
+    }
+    .age-fields-container {
+        display: flex;
+        gap: 15px;
+        align-items: flex-end;
+    }
+    .age-field-group {
+        flex: 1;
+        max-width: 150px;
+    }
+    .age-field-group input {
+        width: 100%;
+    }
+    .age-field-label {
+        margin-left: 5px;
+        color: #777;
+        font-size: 13px;
     }
 </style>';
 
 echo $customFieldsHtml;
 
+// Add custom age fields (Years and Months) - directly use custom field names
+echo '<div class="form-group">';
+echo '    <label class="control-label">Age</label>';
+echo '    <div class="age-fields-container">';
+echo '        <div class="age-field-group">';
+if ($age_years_field_id) {
+    echo '            <input type="number" name="custom_fields[invoice][' . $age_years_field_id . ']" class="form-control" placeholder="Years" min="0" max="150" value="' . e($age_years) . '">';
+} else {
+    echo '            <input type="number" class="form-control" placeholder="Years" min="0" max="150" disabled title="Age (Years) custom field not found">';
+}
+echo '            <span class="age-field-label">years</span>';
+echo '        </div>';
+echo '        <div class="age-field-group">';
+if ($age_months_field_id) {
+    echo '            <input type="number" name="custom_fields[invoice][' . $age_months_field_id . ']" class="form-control" placeholder="Months" min="0" max="11" value="' . e($age_months) . '">';
+} else {
+    echo '            <input type="number" class="form-control" placeholder="Months" min="0" max="11" disabled title="Age (Months) custom field not found">';
+}
+echo '            <span class="age-field-label">months</span>';
+echo '        </div>';
+echo '    </div>';
+echo '</div>';
+
+
+
+// Add JavaScript to remove search from Sex dropdown
+echo '<script>
+$(document).ready(function() {
+    // Remove data-live-search from Sex dropdown (field ID 78)
+    $("select[name=\'custom_fields[invoice][78]\']").removeAttr("data-live-search");
+    // Refresh the selectpicker to apply changes
+    $("select[name=\'custom_fields[invoice][78]\']").selectpicker("refresh");
+});
+</script>';
+
 log_message('debug', 'Custom Fields Output (with CSS filtering): ' . $customFieldsHtml);
+log_message('debug', 'Age Years Field ID: ' . $age_years_field_id . ', Age Months Field ID: ' . $age_months_field_id);
 ?>
             </div>
             <div class="col-md-6">

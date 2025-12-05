@@ -49,7 +49,7 @@ $affiliates = $this->db->get()->result_array();
                         <!-- Affiliate Dropdown -->
                         <div class="form-group select-placeholder">
                             <label for="affiliate_code"><?= _l('Ref.By'); ?></label>
-                            <select id="affiliate_code" name="affiliate_code" class="form-control selectpicker" data-none-selected-text="<?= _l('dropdown_non_selected_tex'); ?>">
+                            <select id="affiliate_code" name="affiliate_code" class="form-control selectpicker" data-live-search="true" data-none-selected-text="<?= _l('dropdown_non_selected_tex'); ?>">
                                 <option value=""><?= _l('select_an_affiliate'); ?></option>
                                 <?php foreach ($affiliates as $affiliate): ?>
                                     <option value="<?= htmlspecialchars($affiliate['affiliate_code']); ?>" <?= (isset($client) && $client->affiliate_code == $affiliate['affiliate_code']) ? 'selected' : ''; ?>>
