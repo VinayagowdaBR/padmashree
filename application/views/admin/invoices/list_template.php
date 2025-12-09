@@ -4,12 +4,26 @@
         <div class="col-md-12 tw-mb-2">
             <div class="_buttons sm:tw-space-x-1 rtl:sm:tw-space-x-reverse">
                 <?php if (staff_can('create', 'invoices')) { ?>
+                    <!-- ✅ YOUR NEW PATIENT BUTTON ADDED HERE -->
+                        <a href="<?= admin_url('clients/client'); ?>" class="btn btn-primary pull-left">
+                            <i class="fa-regular fa-plus tw-mr-1"></i>
+                            <?= _l('New Patient'); ?>
+                        </a>
+                        <!-- ✅ END -->
+                
                 <a href="<?= admin_url('invoices/invoice'); ?>"
                     class="btn btn-primary pull-left new new-invoice-list">
                     <i class="fa-regular fa-plus tw-mr-1"></i>
                     <?= _l('create_new_invoice'); ?>
                 </a>
                 <?php } ?>
+
+
+
+
+
+
+
                 <?php if (! isset($project) && ! isset($customer)) { ?>
                 <?php if (staff_can('create', 'payments')) { ?>
                 <button id="add-batch-payment" onclick="add_batch_payment()" class="btn btn-default pull-left">

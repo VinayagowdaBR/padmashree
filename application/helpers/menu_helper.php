@@ -14,19 +14,19 @@ function app_init_admin_sidebar_menu_items()
         'badge'    => [],
     ]);
 
-    if (
-        staff_can('view',  'customers')
-        || (have_assigned_customers()
-            || (!have_assigned_customers() && staff_can('create',  'customers')))
-    ) {
-        $CI->app_menu->add_sidebar_menu_item('customers', [
-            'name'     => _l('Patient'),
-            'href'     => admin_url('clients'),
-            'position' => 5,
-            'icon'     => 'fa-regular fa-user',
-            'badge'    => [],
-        ]);
-    }
+    // if (
+    //     staff_can('view',  'customers')
+    //     || (have_assigned_customers()
+    //         || (!have_assigned_customers() && staff_can('create',  'customers')))
+    // ) {
+    //     $CI->app_menu->add_sidebar_menu_item('customers', [
+    //         'name'     => _l('Patient'),
+    //         'href'     => admin_url('clients'),
+    //         'position' => 5,
+    //         'icon'     => 'fa-regular fa-user',
+    //         'badge'    => [],
+    //     ]);
+    // }
 
     $CI->app_menu->add_sidebar_menu_item('sales', [
         'collapse' => true,
