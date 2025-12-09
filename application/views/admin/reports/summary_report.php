@@ -79,17 +79,22 @@
 <?php init_tail(); ?>
 <script>
 var summaryDetailsTable;
+var isFirstLoad = true;
 
 $(function () {
-  // Set default report_to date to current date
+  // Set BOTH report_from and report_to to today's date BEFORE DataTable init
   var today = new Date();
   var day = String(today.getDate()).padStart(2, '0');
   var month = String(today.getMonth() + 1).padStart(2, '0');
   var year = today.getFullYear();
   var formattedDate = day + '-' + month + '-' + year; // DD-MM-YYYY format
+  
+  // Set both dates immediately
+  $('input[name="report_from"]').val(formattedDate);
   $('input[name="report_to"]').val(formattedDate);
 
-  $('#summary-table-wrapper').hide();
+  // Show the table immediately since we're auto-loading
+  $('#summary-table-wrapper').show();
 
   var reportServerParams = {
     report_from: '[name="report_from"]',
@@ -104,6 +109,24 @@ $(function () {
     reportServerParams,
     [0, 'asc']
   );
+
+  // Use init.dt event to reload after table is fully initialized
+  $('.table-summary-details').on('init.dt', function() {
+    // Re-set dates to ensure they're correct after datepicker initialization
+    var today = new Date();
+    var day = String(today.getDate()).padStart(2, '0');
+    var month = String(today.getMonth() + 1).padStart(2, '0');
+    var year = today.getFullYear();
+    var formattedDate = day + '-' + month + '-' + year;
+    $('input[name="report_from"]').val(formattedDate);
+    $('input[name="report_to"]').val(formattedDate);
+    
+    // Trigger reload with correct dates
+    if (isFirstLoad) {
+      isFirstLoad = false;
+      summaryDetailsTable.ajax.reload(null, false);
+    }
+  });
 
   $('.table-summary-details').on('draw.dt', function () {
     var api = summaryDetailsTable;

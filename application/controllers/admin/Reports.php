@@ -1503,10 +1503,16 @@ public function due_paid_details_table()
         LIMIT 1) AS payment_mode",
 
         // Custom fields
+        // Custom fields
         '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
             JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
-            WHERE cfd.name = "Age" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
-            AND cfdv.fieldto = "invoice" LIMIT 1) as Age',
+            WHERE cfd.slug = "age_years" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
+            AND cfdv.fieldto = "invoice" LIMIT 1) as age_years',
+
+        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
+            JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
+            WHERE cfd.slug = "age_months" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
+            AND cfdv.fieldto = "invoice" LIMIT 1) as age_months',
 
         '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
             JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
@@ -1611,6 +1617,8 @@ public function due_paid_details_table()
          $row[] = !empty($aRow['invoice_datecreated']) ? date('d-m-Y h:i A', strtotime($aRow['invoice_datecreated'])) : '';
         $row[] = str_pad($aRow['mrd_no'], 0, '0', STR_PAD_LEFT);
         $row[] = !empty($aRow['clientid']) ? '<a href="' . admin_url('clients/client/' . $aRow['clientid']) . '" target="_blank">' . html_escape($aRow['client']) . '</a>' : '-';
+        $row[] = !empty($aRow['age_years']) ? html_escape($aRow['age_years']) : '-';
+        $row[] = !empty($aRow['age_months']) ? html_escape($aRow['age_months']) : '-';
         $row[] = !empty($aRow['Age']) ? $aRow['Age'] : '-';
         $row[] = !empty($aRow['Sex']) ? $aRow['Sex'] : '-';
         $row[] = !empty($aRow['Mobile']) ? $aRow['Mobile'] : '-';
@@ -1971,6 +1979,14 @@ public function referral_details()
         SELECT 
             inv.id as invoice_id,
             inv.number as invoice_number,
+            (SELECT cfdv.value FROM tblcustomfieldsvalues cfdv 
+            JOIN tblcustomfields cfd ON cfdv.fieldid = cfd.id 
+            WHERE cfd.slug = 'age_years' AND cfdv.relid = inv.id 
+            AND cfdv.fieldto = 'invoice' LIMIT 1) as age_years,
+            (SELECT cfdv.value FROM tblcustomfieldsvalues cfdv 
+            JOIN tblcustomfields cfd ON cfdv.fieldid = cfd.id 
+            WHERE cfd.slug = 'age_months' AND cfdv.relid = inv.id 
+            AND cfdv.fieldto = 'invoice' LIMIT 1) as age_months,
             ii.rate AS item_fixed_rate,
             (ii.qty * ii.rate) AS item_subtotal,
             inv.discount_total,
@@ -2092,6 +2108,8 @@ public function referral_details()
                     '<a href="' . admin_url('invoices/invoice/' . $row->invoice_id) . '" target="_blank">' . format_invoice_number($row->invoice_id) . '</a>',
                     _d($row->last_payment_date),
                     str_pad($row->mrd_no, 0, '0', STR_PAD_LEFT),
+                    html_escape($row->age_years),
+                    html_escape($row->age_months),
                     '<a href="' . admin_url('clients/client/' . $row->mrd_no) . '" target="_blank">' . html_escape($row->client_name) . '</a>',
                     ($row->firstname || $row->lastname) ? html_escape($row->firstname . ' ' . $row->lastname) : 'N/A',
                     html_escape($row->description),
@@ -2753,8 +2771,13 @@ public function outpatient_bill_table()
 
         '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
             JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
-            WHERE cfd.name = "Age" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
-            AND cfdv.fieldto = "invoice" LIMIT 1) as Age',
+            WHERE cfd.slug = "age_years" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
+            AND cfdv.fieldto = "invoice" LIMIT 1) as age_years',
+
+        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
+            JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
+            WHERE cfd.slug = "age_months" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
+            AND cfdv.fieldto = "invoice" LIMIT 1) as age_months',
             '(
   SELECT cfdv.value 
   FROM tblcustomfieldsvalues cfdv
@@ -2884,6 +2907,9 @@ public function outpatient_bill_table()
 
         $row[] = $aRow['affiliate_user_name'] ?: 'N/A';
         log_message('debug', '👥 Referral: ' . $aRow['affiliate_user_name']);
+
+        $row[] = !empty($aRow['age_years']) ? html_escape($aRow['age_years']) : '-';
+        $row[] = !empty($aRow['age_months']) ? html_escape($aRow['age_months']) : '-';
 
         $row[] = $aRow['all_items'] ?: '-';
         log_message('debug', '📦 Items: ' . substr($aRow['all_items'] ?? '-', 0, 50) . '...');

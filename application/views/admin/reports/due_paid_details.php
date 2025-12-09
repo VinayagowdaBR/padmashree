@@ -58,6 +58,8 @@
                         <th><?php echo _l('date'); ?></th>
                         <th><?php echo _l('MRD No'); ?></th>
                         <th><?php echo _l('Patient Name'); ?></th>
+                        <th><?php echo _l('Age(Y)'); ?></th>
+                        <th><?php echo _l('Age(M)'); ?></th>
                         <th><?php echo _l('Age'); ?></th>
                         <th><?php echo _l('Sex'); ?></th>
                         <th><?php echo _l('mobile'); ?></th>
@@ -138,14 +140,18 @@
 
 <script>
 var duePaidTable;
+var isFirstLoad = true;
 
 $(function() {
-    // Set default report_to date to current date
+    // Set BOTH report_from and report_to to today's date BEFORE DataTable init
     var today = new Date();
     var day = String(today.getDate()).padStart(2, '0');
     var month = String(today.getMonth() + 1).padStart(2, '0');
     var year = today.getFullYear();
     var formattedDate = day + '-' + month + '-' + year; // DD-MM-YYYY format
+    
+    // Set both dates immediately
+    $('input[name="report_from"]').val(formattedDate);
     $('input[name="report_to"]').val(formattedDate);
 
     var DuePaidDetailsServerParams = {
@@ -164,6 +170,24 @@ $(function() {
         DuePaidDetailsServerParams,
         [0, 'desc']
     );
+
+    // Use init.dt event to reload after table is fully initialized
+    $('.table-due-paid-details-report').on('init.dt', function() {
+        // Re-set dates to ensure they're correct after datepicker initialization
+        var today = new Date();
+        var day = String(today.getDate()).padStart(2, '0');
+        var month = String(today.getMonth() + 1).padStart(2, '0');
+        var year = today.getFullYear();
+        var formattedDate = day + '-' + month + '-' + year;
+        $('input[name="report_from"]').val(formattedDate);
+        $('input[name="report_to"]').val(formattedDate);
+        
+        // Trigger reload with correct dates
+        if (isFirstLoad) {
+            isFirstLoad = false;
+            duePaidTable.ajax.reload();
+        }
+    });
 
     $('.table-due-paid-details-report').on('draw.dt', function () {
         var api = duePaidTable;

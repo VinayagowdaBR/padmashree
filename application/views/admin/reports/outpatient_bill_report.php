@@ -56,6 +56,8 @@
                         <th>MRD No</th>
                         <th>Customer</th>
                         <th>Ref.By</th>
+                        <th>Age(Y)</th>
+                        <th>Age(M)</th>
                         <th>Modality</th>
                         <th>PaidBy</th>
                         <th>Age</th>
@@ -106,16 +108,22 @@
 <?php init_tail(); ?>
 
 <script>
+var outpatientTable;
+var isFirstLoad = true;
+
 $(document).ready(function () {
-    // Set default report_to date to current date
+    // Set BOTH report_from and report_to to today's date BEFORE DataTable init
     var today = new Date();
     var day = String(today.getDate()).padStart(2, '0');
     var month = String(today.getMonth() + 1).padStart(2, '0');
     var year = today.getFullYear();
     var formattedDate = day + '-' + month + '-' + year; // DD-MM-YYYY format
+    
+    // Set both dates immediately
+    $('input[name="report_from"]').val(formattedDate);
     $('input[name="report_to"]').val(formattedDate);
 
-    var outpatientTable = initDataTable(
+    outpatientTable = initDataTable(
         '.table-outpatient-bill-report',
         admin_url + 'reports/outpatient_bill_table',
         [],
@@ -140,6 +148,24 @@ $(document).ready(function () {
         data.mrd_from = $('input[name="mrd_from"]').val();
         data.mrd_to = $('input[name="mrd_to"]').val();
         data.referral_name = $('input[name="referral_name"]').val();
+    });
+
+    // Use init.dt event to reload after table is fully initialized
+    $('.table-outpatient-bill-report').on('init.dt', function() {
+        // Re-set dates to ensure they're correct after datepicker initialization
+        var today = new Date();
+        var day = String(today.getDate()).padStart(2, '0');
+        var month = String(today.getMonth() + 1).padStart(2, '0');
+        var year = today.getFullYear();
+        var formattedDate = day + '-' + month + '-' + year;
+        $('input[name="report_from"]').val(formattedDate);
+        $('input[name="report_to"]').val(formattedDate);
+        
+        // Trigger reload with correct dates
+        if (isFirstLoad) {
+            isFirstLoad = false;
+            outpatientTable.ajax.reload();
+        }
     });
 
     $('input[name="report_from"], input[name="report_to"], input[name="mrd_from"], input[name="mrd_to"], input[name="referral_name"]').on('change', function () {
