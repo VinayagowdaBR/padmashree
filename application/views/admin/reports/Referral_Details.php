@@ -58,6 +58,7 @@
                         <th><?php echo _l('Bill No'); ?></th>
                         <th><?php echo _l('Date'); ?></th>
                         <th><?php echo _l('Mrd No'); ?></th>
+                        <th><?php echo _l('Age'); ?></th>
                         <th><?php echo _l('Name'); ?></th>
                         <th><?php echo _l('Refer'); ?></th>
                         <th><?php echo _l('Modality'); ?></th>

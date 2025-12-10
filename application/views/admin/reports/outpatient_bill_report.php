@@ -56,11 +56,9 @@
                         <th>MRD No</th>
                         <th>Customer</th>
                         <th>Ref.By</th>
-                        <th>Age(Y)</th>
-                        <th>Age(M)</th>
+                        <th>Age</th>
                         <th>Modality</th>
                         <th>PaidBy</th>
-                        <th>Age</th>
                         <th>Sex</th>
                         <th>Mobile No</th>
                         <th>Total Amt</th>

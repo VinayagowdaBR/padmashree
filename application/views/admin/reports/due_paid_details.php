@@ -58,8 +58,6 @@
                         <th><?php echo _l('date'); ?></th>
                         <th><?php echo _l('MRD No'); ?></th>
                         <th><?php echo _l('Patient Name'); ?></th>
-                        <th><?php echo _l('Age(Y)'); ?></th>
-                        <th><?php echo _l('Age(M)'); ?></th>
                         <th><?php echo _l('Age'); ?></th>
                         <th><?php echo _l('Sex'); ?></th>
                         <th><?php echo _l('mobile'); ?></th>

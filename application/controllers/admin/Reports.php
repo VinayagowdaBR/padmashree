@@ -1617,9 +1617,10 @@ public function due_paid_details_table()
          $row[] = !empty($aRow['invoice_datecreated']) ? date('d-m-Y h:i A', strtotime($aRow['invoice_datecreated'])) : '';
         $row[] = str_pad($aRow['mrd_no'], 0, '0', STR_PAD_LEFT);
         $row[] = !empty($aRow['clientid']) ? '<a href="' . admin_url('clients/client/' . $aRow['clientid']) . '" target="_blank">' . html_escape($aRow['client']) . '</a>' : '-';
-        $row[] = !empty($aRow['age_years']) ? html_escape($aRow['age_years']) : '-';
-        $row[] = !empty($aRow['age_months']) ? html_escape($aRow['age_months']) : '-';
-        $row[] = !empty($aRow['Age']) ? $aRow['Age'] : '-';
+        $age_years = !empty($aRow['age_years']) ? $aRow['age_years'] : '0';
+        $age_months = !empty($aRow['age_months']) ? $aRow['age_months'] : '0';
+        $row[] = $age_years . ' Y ' . $age_months . ' M';
+        // $row[] = !empty($aRow['Age']) ? $aRow['Age'] : '-';
         $row[] = !empty($aRow['Sex']) ? $aRow['Sex'] : '-';
         $row[] = !empty($aRow['Mobile']) ? $aRow['Mobile'] : '-';
         $row[] = !empty($aRow['affiliate_user_name']) ? e($aRow['affiliate_user_name']) : 'N/A';
@@ -2108,8 +2109,7 @@ public function referral_details()
                     '<a href="' . admin_url('invoices/invoice/' . $row->invoice_id) . '" target="_blank">' . format_invoice_number($row->invoice_id) . '</a>',
                     _d($row->last_payment_date),
                     str_pad($row->mrd_no, 0, '0', STR_PAD_LEFT),
-                    html_escape($row->age_years),
-                    html_escape($row->age_months),
+                    ($row->age_years ?? '0') . ' Y ' . ($row->age_months ?? '0') . ' M',
                     '<a href="' . admin_url('clients/client/' . $row->mrd_no) . '" target="_blank">' . html_escape($row->client_name) . '</a>',
                     ($row->firstname || $row->lastname) ? html_escape($row->firstname . ' ' . $row->lastname) : 'N/A',
                     html_escape($row->description),
@@ -2149,7 +2149,7 @@ public function referral_details()
     
         // Add totals row
         $output['aaData'][] = [
-            '', '', '', '', '', '', '', '<strong>Total:</strong>',
+            '', '', '', '', '', '', '', '', '<strong>Total:</strong>',
             '<strong>' . app_format_money($total_subtotal, $currency->name) . '</strong>',
             '<strong>' . app_format_money($total_discount, $currency->name) . '</strong>',
             '<strong>' . app_format_money($total_total, $currency->name) . '</strong>',
@@ -2337,7 +2337,7 @@ public function outpatient_bill_report()
         access_denied('invoices');
     }
 
-    $data['title'] = _l('Outpatient Bill Rrreport');
+    $data['title'] = _l('Outpatient Bill Report');
     $this->load->view('admin/reports/outpatient_bill_report', $data);
     
 }
@@ -2908,8 +2908,9 @@ public function outpatient_bill_table()
         $row[] = $aRow['affiliate_user_name'] ?: 'N/A';
         log_message('debug', '👥 Referral: ' . $aRow['affiliate_user_name']);
 
-        $row[] = !empty($aRow['age_years']) ? html_escape($aRow['age_years']) : '-';
-        $row[] = !empty($aRow['age_months']) ? html_escape($aRow['age_months']) : '-';
+        $age_years = !empty($aRow['age_years']) ? $aRow['age_years'] : '0';
+        $age_months = !empty($aRow['age_months']) ? $aRow['age_months'] : '0';
+        $row[] = $age_years . ' Y ' . $age_months . ' M';
 
         $row[] = $aRow['all_items'] ?: '-';
         log_message('debug', '📦 Items: ' . substr($aRow['all_items'] ?? '-', 0, 50) . '...');
@@ -2931,11 +2932,7 @@ public function outpatient_bill_table()
         $row[] = $all_modes;
         log_message('debug', '💳 Payment Modes: ' . $all_modes);
         
-        $row[] = !empty($aRow['Age'])
-            ? $aRow['Age'] . ' (' . (strtolower($aRow['AgeOption']) === 'year' ? 'Y' : 'M') . ')'
-            : '-';
-        log_message('debug', '👴 Age: ' . $aRow['Age']);
-        log_message('debug', '👴 AgeOption: ' . $aRow['AgeOption']);
+
         
         $row[] = !empty($aRow['Sex']) ? $aRow['Sex'] : '-';
         log_message('debug', '🚻 Sex: ' . $aRow['Sex']);
