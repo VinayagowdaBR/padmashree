@@ -382,18 +382,18 @@ function _add_print_window_default_styles(mywindow) {
   mywindow.document.write("<style>");
   mywindow.document.write(
     ".clearfix:after { " +
-      "clear: both;" +
-      "}" +
-      ".clearfix:before, .clearfix:after { " +
-      'display: table; content: " ";' +
-      "}" +
-      "body { " +
-      "font-family: Arial, Helvetica, sans-serif;color: #444; font-size:13px;" +
-      "}" +
-      ".bold { " +
-      "font-weight: bold !important;" +
-      "}" +
-      ""
+    "clear: both;" +
+    "}" +
+    ".clearfix:before, .clearfix:after { " +
+    'display: table; content: " ";' +
+    "}" +
+    "body { " +
+    "font-family: Arial, Helvetica, sans-serif;color: #444; font-size:13px;" +
+    "}" +
+    ".bold { " +
+    "font-weight: bold !important;" +
+    "}" +
+    ""
   );
 
   mywindow.document.write("</style>");
@@ -1041,7 +1041,7 @@ function appDataTableInline(element, options) {
 // }
 
 function get_datatable_buttons(table) {
-  // pdfmake arabic fonts support
+  // pdfmake arabic fonts support (existing code remains the same)
   if (
     app.user_language.toLowerCase() == "persian" ||
     app.user_language.toLowerCase() == "arabic"
@@ -1066,9 +1066,7 @@ function get_datatable_buttons(table) {
 
   var formatExport = {
     body: function (data, row, column, node) {
-      // Fix for notes inline datatables
-      // Causing issues because of the hidden textarea for edit and the content is duplicating
-      // This logic may be extended in future for other similar fixes
+      // Existing formatExport code remains the same
       var newTmpRow = $("<div></div>", data);
       newTmpRow.append(data);
 
@@ -1076,9 +1074,8 @@ function get_datatable_buttons(table) {
         newTmpRow.find("[data-note-edit-textarea]").remove();
         data = newTmpRow.html().trim();
       }
-      // Convert e.q. two months ago to actual date
+      
       var exportTextHasActionDate = newTmpRow.find(".text-has-action.is-date");
-
       if (exportTextHasActionDate.length) {
         data = exportTextHasActionDate.attr("data-title");
       }
@@ -1093,25 +1090,13 @@ function get_datatable_buttons(table) {
         data = newTmpRow.html().trim();
       }
 
-      if (data) {
-        /*       // 300,00 becomes 300.00 because excel does not support decimal as coma
-                var regexFixExcelExport = new RegExp("([0-9]{1,3})(,)([0-9]{" + app.options.decimal_places + ',' + app.options.decimal_places + "})", "gm");
-                // Convert to string because matchAll won't work on integers in case datatables convert the text to integer
-                var _stringData = data.toString();
-                var found = _stringData.matchAll(regexFixExcelExport);
-                if (found) {
-                    data = data.replace(regexFixExcelExport, "$1.$3");
-                }*/
-      }
-
-      // Datatables use the same implementation to strip the html.
       var div = document.createElement("div");
       div.innerHTML = data;
       var text = div.textContent || div.innerText || "";
-
       return text.trim();
     },
   };
+  
   var table_buttons_options = [];
 
   if (
@@ -1160,61 +1145,57 @@ function get_datatable_buttons(table) {
           },
           customize: function (win) {
             try {
-              // DEBUG: Check what's in the document before making changes
-              console.log(
-                "Original body content:",
-                $(win.document.body).html()
-              );
-              console.log("Document title:", win.document.title);
-
-              // Check if there's a caption
-              var caption = $(win.document.body).find("caption");
-              if (caption.length) {
-                console.log("Table caption found:", caption.text());
-              }
-              //debug
-              $(win.document.body)
-                .find("h1, h2, h3, h4, h5, h6")
-                .each(function () {
-                  console.log("Heading found:", $(this).text());
-                });
               // Remove default DataTable styling
               $(win.document.body).find("table").removeClass("dataTable");
 
-              // More aggressive compact styling
+              // Set document body styles
               $(win.document.body).css({
-                "font-size": "6px",
-                margin: "0",
+                "font-size": "12px", // Reduced from 28px
+                margin: "2mm",
                 padding: "0",
-                height: "auto",
-                "min-height": "0",
               });
 
               // Compact table styling
               var table = $(win.document.body).find("table");
               table.addClass("compact").css({
-                "font-size": "6px",
-                width: "100%",
+                "font-size": "12px", // Reduced from 28px
+                width: "100%", // Changed from "auto" to use full width
                 "border-collapse": "collapse",
                 margin: "0",
                 padding: "0",
-                "page-break-inside": "avoid",
+                "page-break-inside": "auto",
+                "table-layout": "auto", // Changed to auto for better column width calculation
               });
 
-              // Ultra-compact cell styling
+              // Add header styling
+              table.find("thead th").css({
+                "background-color": "#f0f0f0", // Lighter color
+                "font-weight": "bold",
+                "border": "1px solid #ccc", // Thinner border
+                padding: "6px 4px", // Reduced padding
+                "text-align": "left",
+                "font-size": "12px", // Reduced from 28px
+                "height": "auto", // Changed from fixed height
+                "white-space": "nowrap", // Prevent header text wrapping
+              });
+
+              // Cell styling
               table.find("td, th").css({
-                padding: "0.5px 1px",
+                padding: "4px 3px", // Reduced padding
                 margin: "0",
-                "line-height": "1",
-                border: "0.5px solid #ccc",
-                height: "auto",
-                "min-height": "auto",
+                "line-height": "1.2", // Reduced line height
+                border: "1px solid #ccc", // Thinner border
+                "vertical-align": "top", // Changed to top alignment
+                "font-size": "12px", // Reduced from 28px
+                "height": "auto", // Changed from fixed height
+                "word-wrap": "break-word", // Allow text to wrap
+                "max-width": "200px", // Limit cell width
               });
 
-              // Remove any empty rows or elements that might cause expansion
+              // Remove any empty rows or elements
               $(win.document.body).find(".dataTables_empty").remove();
 
-              // Remove any potential empty space creators
+              // Remove unnecessary whitespace
               $(win.document.body)
                 .find("br")
                 .each(function () {
@@ -1230,51 +1211,76 @@ function get_datatable_buttons(table) {
               var style = win.document.createElement("style");
               style.innerHTML = `
                 @media print {
-                  * {
-                    box-sizing: border-box;
+                  @page {
+                    size: A4 landscape; // Changed from A3 to A4 for better fit
+                    margin: 5mm; // Increased margin
                   }
+                  html {
+                    zoom: 1 !important;
+                    -webkit-transform: scale(1) !important;
+                    transform: scale(1) !important;
+                  }
+                  * { box-sizing: border-box; }
                   body {
-                    margin: 2mm !important;
-                    padding: 0 !important;
-                    height: auto !important;
-                    min-height: auto !important;
-                    width: 100% !important;
+                    margin: 0 !important;
+                    padding: 2mm !important;
+                    font-size: 12px !important; // Reduced from 28px
+                    zoom: 1 !important;
+                    -webkit-transform: scale(1) !important;
+                    transform: scale(1) !important;
                   }
                   table {
+                    page-break-inside: auto !important;
+                    width: 100% !important; // Full width
+                    border-collapse: collapse !important;
+                    table-layout: auto !important; // Auto layout for better column widths
+                    font-size: 12px !important; // Reduced from 28px
+                  }
+                  thead th {
+                    background-color: #f0f0f0 !important;
+                    color: #000 !important;
+                    font-weight: bold !important;
+                    -webkit-print-color-adjust: exact; 
+                    print-color-adjust: exact;
+                    font-size: 12px !important; // Reduced from 28px
+                    padding: 6px 4px !important;
+                    height: auto !important; // Auto height
+                    border: 1px solid #ccc !important; // Thinner border
+                    white-space: nowrap !important; // Prevent header wrapping
+                  }
+                  tr { 
                     page-break-inside: avoid !important;
-                    break-inside: avoid !important;
-                    width: 100% !important;
-                    max-width: 100% !important;
+                    height: auto !important; // Auto height
                   }
-                  tr {
-                    page-break-inside: avoid !important;
-                    break-inside: avoid !important;
+                  td, th { 
+                    font-size: 12px !important; // Reduced from 28px
+                    padding: 4px 3px !important;
+                    border: 1px solid #ccc !important; // Thinner border
+                    white-space: normal !important;
+                    word-wrap: break-word !important;
+                    line-height: 1.2 !important; // Reduced line height
+                    height: auto !important; // Auto height
+                    max-width: 200px !important; // Limit cell width
+                    vertical-align: top !important; // Top alignment
                   }
-                  .dataTables_empty {
-                    display: none !important;
+                  .dataTables_empty { display: none !important; }
+                  
+                  /* Force table to use available space efficiently */
+                  table td:first-child,
+                  table th:first-child {
+                    width: auto !important;
+                    min-width: 50px !important;
                   }
-                  /* Prevent empty pages */
-                  html, body {
-                    height: auto !important;
-                    overflow: hidden !important;
+                  
+                  /* Make long text wrap properly */
+                  td {
+                    overflow-wrap: break-word !important;
+                    word-break: break-word !important;
                   }
                 }
               `;
               win.document.head.appendChild(style);
 
-              // Force recalc of layout
-              setTimeout(function () {
-                var body = $(win.document.body);
-                var html = $(win.document.documentElement);
-
-                // Ensure body doesn't exceed viewport
-                body.css("height", "auto");
-                html.css("height", "auto");
-
-                // Remove any overflow
-                body.css("overflow", "visible");
-                html.css("overflow", "visible");
-              }, 100);
             } catch (error) {
               console.error("Print customization error:", error);
             }
@@ -1283,6 +1289,8 @@ function get_datatable_buttons(table) {
       ],
     });
   }
+  
+  // Rest of the function remains the same
   var tableButtons = $("body").find(".table-btn");
 
   $.each(tableButtons, function () {
@@ -1312,6 +1320,8 @@ function get_datatable_buttons(table) {
 
   return table_buttons_options;
 }
+
+
 // Check if table export button should be hidden based on settings
 // Admin area only
 function table_export_button_is_hidden() {

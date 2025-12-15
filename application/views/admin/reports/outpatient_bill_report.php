@@ -72,7 +72,6 @@
                         <th>CC</th>
                         <th>UPI</th>
                         <th>Pay Details</th>
-                        <th>Gen.By</th>
                       </tr>
                     </thead>
                     <tbody></tbody>

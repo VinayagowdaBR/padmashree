@@ -2896,7 +2896,7 @@ public function outpatient_bill_table()
         $row[] = '<a href="' . admin_url('invoices/invoice/' . $aRow['id']) . '" target="_blank">' . html_escape($formattedNumber) . '</a>';
         log_message('debug', '🔢 Invoice Number: ' . $formattedNumber);
 
-        $row[] = !empty($aRow['invoice_datecreated']) ? date('d-m-Y h:i A', strtotime($aRow['invoice_datecreated'])) : '';
+        $row[] = !empty($aRow['invoice_datecreated']) ? date('d/m/y', strtotime($aRow['invoice_datecreated'])) : '';
         log_message('debug', '📅 Date: ' . $row[1]);
 
         $row[] = str_pad($aRow['mrd_no'], 0, '0', STR_PAD_LEFT);
@@ -2910,7 +2910,7 @@ public function outpatient_bill_table()
 
         $age_years = !empty($aRow['age_years']) ? $aRow['age_years'] : '0';
         $age_months = !empty($aRow['age_months']) ? $aRow['age_months'] : '0';
-        $row[] = $age_years . ' Y ' . $age_months . ' M';
+        $row[] = $age_years . '/' . $age_months;
 
         $row[] = $aRow['all_items'] ?: '-';
         log_message('debug', '📦 Items: ' . substr($aRow['all_items'] ?? '-', 0, 50) . '...');
@@ -2940,23 +2940,23 @@ public function outpatient_bill_table()
         $row[] = !empty($aRow['Mobile']) ? $aRow['Mobile'] : '-';
         log_message('debug', '📱 Mobile: ' . $aRow['Mobile']);
 
-        $row[] = app_format_money($aRow['subtotal'], $aRow['currency_name']);
+        $row[] = number_format($aRow['subtotal'], 2);
         log_message('debug', '💰 Subtotal: ' . $aRow['subtotal']);
 
-        $row[] = app_format_money($aRow['discount'], $currency->name);
+        $row[] = number_format($aRow['discount'], 2);
         log_message('debug', '💸 Discount: ' . $aRow['discount']);
 
-        $row[] = app_format_money($aRow['total'], $aRow['currency_name']);
+        $row[] = number_format($aRow['total'], 2);
         log_message('debug', '💵 Total: ' . $aRow['total']);
 
         $service_charge_value = $aRow['service_charge'] ?? 0;
-        $row[] = app_format_money($service_charge_value, $currency->name);
+        $row[] = number_format($service_charge_value, 2);
         log_message('debug', '⚡ Service Charge: ' . $service_charge_value);
 
-        $row[] = app_format_money($aRow['total_paid'], $aRow['currency_name']);
+        $row[] = number_format($aRow['total_paid'], 2);
         log_message('debug', '💳 Paid Amount: ' . $aRow['total_paid']);
 
-        $row[] = app_format_money($aRow['balance'], $aRow['currency_name']);
+        $row[] = number_format($aRow['balance'], 2);
         log_message('debug', '⚖️ Balance: ' . $aRow['balance']);
 
         $row[] = !empty($aRow['Cash_Amount']) ? $aRow['Cash_Amount'] : '0';
@@ -2974,8 +2974,7 @@ public function outpatient_bill_table()
         $row[] = !empty($aRow['payment_details']) ? html_escape($aRow['payment_details']) : '-';
         log_message('debug', '📝 Payment Details: ' . substr($aRow['payment_details'] ?? '-', 0, 50) . '...');
 
-        $row[] = $aRow['sales_agent_name'] ?: 'N/A';
-        log_message('debug', '👨‍💼 Sales Agent: ' . $aRow['sales_agent_name']);
+
 
         // Accumulate totals - FIXED SERVICE CHARGE LOGIC
         log_message('debug', '🧮 Accumulating totals for row ' . $index);
@@ -3058,19 +3057,16 @@ public function outpatient_bill_table()
         '',
         '',
         '',
-        app_format_money($total_total_amount, $currency->name),
-        app_format_money($total_discount, $currency->name),
-        app_format_money($total_bill_amount, $currency->name),
-        app_format_money($total_service_charge, $currency->name),
-        app_format_money($total_paid_amount, $currency->name),
-        app_format_money($total_balance, $currency->name),
-        app_format_money($total_cash, $currency->name),
-        app_format_money($total_cheque, $currency->name),
-        app_format_money($total_card, $currency->name),
-        app_format_money($total_upi, $currency->name),
-        '',
-        '',
-        '',
+        number_format($total_total_amount, 2),
+        number_format($total_discount, 2),
+        number_format($total_bill_amount, 2),
+        number_format($total_service_charge, 2),
+        number_format($total_paid_amount, 2),
+        number_format($total_balance, 2),
+        number_format($total_cash, 2),
+        number_format($total_cheque, 2),
+        number_format($total_card, 2),
+        number_format($total_upi, 2),
         '',
     ];
 
