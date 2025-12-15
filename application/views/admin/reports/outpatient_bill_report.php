@@ -6,7 +6,7 @@
       <div class="col-md-12">
         <div class="panel_s">
           <div class="panel-body">
-            <h4 class="no-margin"><?php echo _l('Out Patient Details'); ?></h4>
+            <h4 class="no-margin report-title"><?php echo _l('Out Patient Details'); ?></h4>
             <hr class="hr-panel-heading" />
 
             <!-- Filters -->
@@ -40,6 +40,9 @@
                 <div class="btn-group" style="margin-top:25px;">
                   <button class="btn btn-primary" onclick="filterOutpatientReport(); return false;"><?php echo _l('apply'); ?></button>
                   <button class="btn btn-default" onclick="resetOutpatientReport(); return false;"><?php echo _l('reset'); ?></button>
+                  <button class="btn btn-info" onclick="window.print(); return false;">
+                    <i class="fa fa-print"></i> <?php echo _l('Print'); ?>
+                  </button>
                 </div>
               </div>
             </div>
@@ -75,31 +78,252 @@
                       </tr>
                     </thead>
                     <tbody></tbody>
-                    <tfoot>
-                     
-                    </tfoot>
+                    <tbody></tbody>
                   </table>
                 </div>
               </div>
             </div>
 
-          </div> <!-- panel-body -->
-        </div> <!-- panel_s -->
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Optional CSS for enhanced table clarity -->
+<!-- Screen Styles -->
 <style>
   #outpatient-bill-table th,
   #outpatient-bill-table td {
     border: 1px solid #ccc !important;
     vertical-align: middle;
+    padding: 8px 4px;
   }
   #outpatient-bill-table {
     border-collapse: collapse !important;
   }
+</style>
+
+<!-- PRINT STYLES FOR OUTPATIENT REPORT -->
+<style media="print">
+  @page {
+    size: A4 landscape;
+    margin: 6mm 4mm;
+  }
+  
+  /* Hide URLs */
+  a[href]:after {
+    content: none !important;
+  }
+  
+  a {
+    text-decoration: none !important;
+    color: #000 !important;
+  }
+  
+  /* Hide UI elements */
+  #header,
+  #top-header,
+  aside,
+  .sidebar,
+  .sidebar-wrapper,
+  nav,
+  .navbar,
+  .setup-menu,
+  footer,
+  .footer,
+  .btn,
+  .btn-group,
+  button,
+  .form-group,
+  label,
+  input[type="text"],
+  input[type="date"],
+  select,
+  .hr-panel-heading,
+  .mbot15,
+  .dataTables_filter,
+  .dataTables_length,
+  .dataTables_info,
+  .dataTables_paginate,
+  .dataTables_processing,
+  div.dataTables_wrapper > div:first-child,
+  div.dataTables_wrapper > div:last-child {
+    display: none !important;
+  }
+  
+  /* Prevent blank pages */
+  html, body {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    overflow: visible !important;
+  }
+  
+  #wrapper,
+  .content,
+  .row,
+  .col-md-12 {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+  
+  .panel_s {
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+  }
+  
+  .panel-body {
+    padding: 2mm !important;
+  }
+  
+  /* Title */
+  .report-title {
+    font-size: 14pt !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    margin: 0 0 4mm 0 !important;
+    padding: 0 !important;
+    color: #000 !important;
+  }
+  
+  .table-responsive {
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    height: auto !important;
+  }
+  
+  .dataTables_wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+  }
+  
+  /* TABLE STYLES */
+  #outpatient-bill-table {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 5.5pt !important;
+    margin: 0 !important;
+    page-break-inside: auto;
+    font-family: Arial, sans-serif !important;
+  }
+  
+  #outpatient-bill-table thead {
+    display: table-header-group;
+  }
+  
+  #outpatient-bill-table tfoot {
+    display: table-footer-group;
+  }
+  
+  #outpatient-bill-table th {
+    background-color: #e0e0e0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    font-size: 6pt !important;
+    font-weight: bold !important;
+    padding: 1.5mm 0.3mm !important;
+    border: 0.3pt solid #000 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    color: #000 !important;
+    line-height: 1.1 !important;
+  }
+  
+  #outpatient-bill-table td {
+    font-size: 5.5pt !important;
+    padding: 0.8mm 0.3mm !important;
+    border: 0.3pt solid #666 !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    color: #000 !important;
+    line-height: 1.1 !important;
+  }
+  
+  #outpatient-bill-table a {
+    text-decoration: none !important;
+    color: inherit !important;
+    font-weight: normal !important;
+  }
+  
+  #outpatient-bill-table tbody tr {
+    page-break-inside: avoid;
+  }
+  
+  #outpatient-bill-table tbody tr:nth-child(even) {
+    background-color: #f5f5f5 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  #outpatient-bill-table thead tr {
+    page-break-after: avoid;
+  }
+  
+  /* FOOTER */
+  #outpatient-bill-table tfoot {
+    border-top: 2pt solid #000 !important;
+  }
+  
+  #outpatient-bill-table tfoot th {
+    background-color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    font-weight: bold !important;
+    font-size: 6pt !important;
+    padding: 2mm 0.3mm !important;
+    border: 0.5pt solid #000 !important;
+    color: #000 !important;
+  }
+  
+  #outpatient-bill-table tfoot th:first-child {
+    text-align: right !important;
+    padding-right: 2mm !important;
+  }
+  
+  #outpatient-bill-table tfoot th:not(:first-child) {
+    text-align: right !important;
+    padding-right: 2mm !important;
+  }
+  
+  /* Column widths - 21 columns */
+  #outpatient-bill-table th:nth-child(1), #outpatient-bill-table td:nth-child(1) { width: 5% !important; text-align: left !important; }
+  #outpatient-bill-table th:nth-child(2), #outpatient-bill-table td:nth-child(2) { width: 5% !important; text-align: center !important; }
+  #outpatient-bill-table th:nth-child(3), #outpatient-bill-table td:nth-child(3) { width: 4% !important; text-align: center !important; }
+  #outpatient-bill-table th:nth-child(4), #outpatient-bill-table td:nth-child(4) { width: 8% !important; text-align: left !important; }
+  #outpatient-bill-table th:nth-child(5), #outpatient-bill-table td:nth-child(5) { width: 8% !important; text-align: left !important; }
+  #outpatient-bill-table th:nth-child(6), #outpatient-bill-table td:nth-child(6) { width: 3% !important; text-align: center !important; }
+  #outpatient-bill-table th:nth-child(7), #outpatient-bill-table td:nth-child(7) { width: 4% !important; text-align: center !important; }
+  #outpatient-bill-table th:nth-child(8), #outpatient-bill-table td:nth-child(8) { width: 6% !important; text-align: left !important; }
+  #outpatient-bill-table th:nth-child(9), #outpatient-bill-table td:nth-child(9) { width: 3% !important; text-align: center !important; }
+  #outpatient-bill-table th:nth-child(10), #outpatient-bill-table td:nth-child(10) { width: 6% !important; text-align: left !important; }
+  #outpatient-bill-table th:nth-child(11), #outpatient-bill-table td:nth-child(11) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
+  #outpatient-bill-table th:nth-child(12), #outpatient-bill-table td:nth-child(12) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
+  #outpatient-bill-table th:nth-child(13), #outpatient-bill-table td:nth-child(13) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
+  #outpatient-bill-table th:nth-child(14), #outpatient-bill-table td:nth-child(14) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
+  #outpatient-bill-table th:nth-child(15), #outpatient-bill-table td:nth-child(15) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
+  #outpatient-bill-table th:nth-child(16), #outpatient-bill-table td:nth-child(16) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
+  #outpatient-bill-table th:nth-child(17), #outpatient-bill-table td:nth-child(17) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
+  #outpatient-bill-table th:nth-child(18), #outpatient-bill-table td:nth-child(18) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
+  #outpatient-bill-table th:nth-child(19), #outpatient-bill-table td:nth-child(19) { width: 4% !important; text-align: right !important; padding-right: 1mm !important; }
+  #outpatient-bill-table th:nth-child(20), #outpatient-bill-table td:nth-child(20) { width: 4% !important; text-align: right !important; padding-right: 1mm !important; }
+  #outpatient-bill-table th:nth-child(21), #outpatient-bill-table td:nth-child(21) { width: 6% !important; text-align: left !important; }
 </style>
 
 <?php init_tail(); ?>
@@ -109,14 +333,12 @@ var outpatientTable;
 var isFirstLoad = true;
 
 $(document).ready(function () {
-    // Set BOTH report_from and report_to to today's date BEFORE DataTable init
     var today = new Date();
     var day = String(today.getDate()).padStart(2, '0');
     var month = String(today.getMonth() + 1).padStart(2, '0');
     var year = today.getFullYear();
-    var formattedDate = day + '-' + month + '-' + year; // DD-MM-YYYY format
+    var formattedDate = day + '-' + month + '-' + year;
     
-    // Set both dates immediately
     $('input[name="report_from"]').val(formattedDate);
     $('input[name="report_to"]').val(formattedDate);
 
@@ -126,17 +348,7 @@ $(document).ready(function () {
         [],
         [],
         {},
-        [0, 'desc'],
-        function (settings, json) {
-            if (json.footerTotals) {
-                $('#footer_total_amount').html(json.footerTotals.total_amount);
-                $('#footer_discount').html(json.footerTotals.discount);
-                $('#footer_bill_amount').html(json.footerTotals.bill_amount);
-                $('#footer_service_charge').html(json.footerTotals.service_charge);
-                $('#footer_paid_amount').html(json.footerTotals.paid_amount);
-                $('#footer_balance').html(json.footerTotals.balance);
-            }
-        }
+        [0, 'desc']
     );
 
     $('.table-outpatient-bill-report').on('preXhr.dt', function (e, settings, data) {
@@ -147,9 +359,7 @@ $(document).ready(function () {
         data.referral_name = $('input[name="referral_name"]').val();
     });
 
-    // Use init.dt event to reload after table is fully initialized
     $('.table-outpatient-bill-report').on('init.dt', function() {
-        // Re-set dates to ensure they're correct after datepicker initialization
         var today = new Date();
         var day = String(today.getDate()).padStart(2, '0');
         var month = String(today.getMonth() + 1).padStart(2, '0');
@@ -158,7 +368,6 @@ $(document).ready(function () {
         $('input[name="report_from"]').val(formattedDate);
         $('input[name="report_to"]').val(formattedDate);
         
-        // Trigger reload with correct dates
         if (isFirstLoad) {
             isFirstLoad = false;
             outpatientTable.ajax.reload();
@@ -168,18 +377,18 @@ $(document).ready(function () {
     $('input[name="report_from"], input[name="report_to"], input[name="mrd_from"], input[name="mrd_to"], input[name="referral_name"]').on('change', function () {
         filterOutpatientReport();
     });
-
-    window.filterOutpatientReport = function () {
-        outpatientTable.ajax.reload();
-    };
-
-    window.resetOutpatientReport = function () {
-        $('input[name="report_from"]').val('');
-        $('input[name="report_to"]').val('');
-        $('input[name="mrd_from"]').val('');
-        $('input[name="mrd_to"]').val('');
-        $('input[name="referral_name"]').val('');
-        outpatientTable.ajax.reload();
-    };
 });
+
+function filterOutpatientReport() {
+    outpatientTable.ajax.reload();
+}
+
+function resetOutpatientReport() {
+    $('input[name="report_from"]').val('');
+    $('input[name="report_to"]').val('');
+    $('input[name="mrd_from"]').val('');
+    $('input[name="mrd_to"]').val('');
+    $('input[name="referral_name"]').val('');
+    outpatientTable.ajax.reload();
+}
 </script>

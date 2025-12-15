@@ -1144,127 +1144,77 @@ function get_datatable_buttons(table) {
             format: formatExport,
           },
           customize: function (win) {
-            console.log("🔥 PRINT CUSTOMIZE LOADED - VERSION: 2025-12-15 11:14 - TIGHTER COLUMNS 🔥");
+            console.log("🔥 PRINT CUSTOMIZE LOADED - DOM CLEANUP - VERSION: 2025-12-15 15:30 🔥");
             try {
-              // Remove default DataTable styling
-              $(win.document.body).find("table").removeClass("dataTable");
-
-              // Set document body styles - COMPACT like reference
-              $(win.document.body).css({
-                "font-size": "9px",
-                margin: "0",
-                padding: "0",
-              });
-
-              // Table styling - COMPACT like reference
-              var table = $(win.document.body).find("table");
-              table.addClass("compact").css({
-                "font-size": "9px",
-                width: "100%",
-                "border-collapse": "collapse",
-                margin: "0",
-                padding: "0",
-                "page-break-inside": "auto",
-                "table-layout": "fixed",
-              });
-
-              // Header styling - COMPACT like reference
-              table.find("thead th").css({
-                "background-color": "#f5f5f5",
-                "font-weight": "bold",
-                "border": "1px solid #000",
-                padding: "1px 2px",
-                "text-align": "center",
-                "font-size": "8px",
-                "height": "auto",
-                "white-space": "nowrap",
-              });
-
-              // Cell styling - COMPACT like reference
-              table.find("td, th").css({
-                padding: "1px 2px",
-                margin: "0",
-                "line-height": "1.1",
-                border: "1px solid #000",
-                "vertical-align": "middle",
-                "font-size": "8px",
-                "height": "auto",
-                "white-space": "nowrap",
-                overflow: "hidden",
-                "text-overflow": "ellipsis",
-              });
-
-              // Remove unnecessary elements
-              $(win.document.body).find(".dataTables_empty").remove();
-
-              // Add CSS for print - matching reference image exactly
+              // 1. STYLES INJECTION
               var style = win.document.createElement("style");
               style.innerHTML = `
-              @media print {
-              @page {
-                size: A4 landscape;
-                margin: 2mm;
-              }
-              html, body {
-                margin: 0 !important;
-                padding: 0 !important;
-                font-size: 9px !important;
-                font-family: Arial, sans-serif;
-              }
-              table {
-                width: 100% !important;
-                border-collapse: collapse !important;
-                table-layout: fixed !important;
-                font-size: 9px !important;
-              }
-              thead { display: table-header-group; }
-              thead th {
-                background-color: #f5f5f5 !important;
-                font-weight: bold !important;
-                -webkit-print-color-adjust: exact; 
-                print-color-adjust: exact;
-                font-size: 8px !important;
-                padding: 1px 2px !important;
-                border: 1px solid #000 !important;
-                white-space: nowrap !important;
-                text-align: center !important;
-              }
-              td, th {
-                font-size: 8px !important;
-                padding: 1px 2px !important;
-                border: 1px solid #000 !important;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-                vertical-align: middle !important;
-                line-height: 1.1 !important;
-              }
-              /* COMPACT COLUMN WIDTHS - Fixed last columns to prevent data loss */
-              table tr td:nth-child(1), table tr th:nth-child(1) { width: 2.5% !important; }  /* SN/Bill No */
-              table tr td:nth-child(2), table tr th:nth-child(2) { width: 4% !important; }    /* Date */
-              table tr td:nth-child(3), table tr th:nth-child(3) { width: 3% !important; }    /* Regn No/MRD */
-              table tr td:nth-child(4), table tr th:nth-child(4) { width: 7% !important; }    /* Patient/Customer */
-              table tr td:nth-child(5), table tr th:nth-child(5) { width: 2% !important; }    /* Age */
-              table tr td:nth-child(6), table tr th:nth-child(6) { width: 2% !important; }    /* Sex */
-              table tr td:nth-child(7), table tr th:nth-child(7) { width: 5% !important; }    /* Mobile */
-              table tr td:nth-child(8), table tr th:nth-child(8) { width: 6% !important; }    /* Ref.By */
-              table tr td:nth-child(9), table tr th:nth-child(9) { width: 4% !important; }    /* Total Amount */
-              table tr td:nth-child(10), table tr th:nth-child(10) { width: 3% !important; }  /* Discount */
-              table tr td:nth-child(11), table tr th:nth-child(11) { width: 4% !important; }  /* Bill Amount */
-              table tr td:nth-child(12), table tr th:nth-child(12) { width: 4% !important; }  /* Serv.Charge */
-              table tr td:nth-child(13), table tr th:nth-child(13) { width: 4% !important; }  /* Paid Amount */
-              table tr td:nth-child(14), table tr th:nth-child(14) { width: 4% !important; }  /* Balance */
-              table tr td:nth-child(15), table tr th:nth-child(15) { width: 4% !important; }  /* Cash Amount */
-              table tr td:nth-child(16), table tr th:nth-child(16) { width: 4% !important; }  /* Cheque Amt */
-              table tr td:nth-child(17), table tr th:nth-child(17) { width: 3% !important; }  /* CC */
-              table tr td:nth-child(18), table tr th:nth-child(18) { width: 4% !important; }  /* Paid by */
-              table tr td:nth-child(19), table tr th:nth-child(19) { width: 8% !important; }  /* Payment Details - WIDER */
-              table tr td:nth-child(20), table tr th:nth-child(20) { width: 5% !important; }  /* Gen.by - WIDER */
-              table tr td:nth-child(21), table tr th:nth-child(21) { width: 6% !important; }  /* Extra - WIDER */
-              /* Total: ~93% for full width usage with no data loss */
-            }
-          `;
+                @page {
+                  size: A4 landscape !important;
+                  margin: 3mm !important;
+                }
+                html, body {
+                  font-family: Arial, sans-serif !important;
+                  margin: 0 !important;
+                  padding: 0 !important;
+                  background: #fff !important;
+                }
+                h1 {
+                  font-size: 14pt !important;
+                  margin: 5px 0 10px 0 !important;
+                  text-align: center !important;
+                }
+                table {
+                  width: 100% !important;
+                  margin-top: 5px !important;
+                  border-collapse: collapse !important;
+                }
+              `;
               win.document.head.appendChild(style);
+
+              // 2. DOM MANIPULATION - NUCLEAR OPTION
+              var body = $(win.document.body);
+              var table = body.find("table").first();
+
+              if (table.length) {
+                // Get the Title (usually an h1)
+                var title = body.find("h1").first();
+
+                // CLEAR EVERYTHING except Title and Table
+                // We detach correct elements, empty body, and re-append
+                table.detach();
+                title.detach();
+
+                body.empty();
+                body.append(title);
+                body.append(table);
+
+                // Reset table numbering if needed
+                table.addClass("compact");
+                table.css({ "width": "100%", "margin-top": "0" });
+              }
+
+              // Apply styling to table elements
+              table.find("thead th").css({
+                "background-color": "#f0f0f0",
+                "font-size": "9px",
+                "border": "1px solid #000",
+                "padding": "2px",
+                "text-align": "center"
+              });
+
+              table.find("tbody td").css({
+                "font-size": "9px",
+                "padding": "2px",
+                "border": "1px solid #000",
+                "line-height": "1.1"
+              });
+
+              table.find("tfoot th, tfoot td").css({
+                "font-size": "9px",
+                "border": "1px solid #000",
+                "padding": "2px"
+              });
 
             } catch (error) {
               console.error("Print customization error:", error);
