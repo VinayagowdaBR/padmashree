@@ -1074,7 +1074,7 @@ function get_datatable_buttons(table) {
         newTmpRow.find("[data-note-edit-textarea]").remove();
         data = newTmpRow.html().trim();
       }
-      
+
       var exportTextHasActionDate = newTmpRow.find(".text-has-action.is-date");
       if (exportTextHasActionDate.length) {
         data = exportTextHasActionDate.attr("data-title");
@@ -1096,7 +1096,7 @@ function get_datatable_buttons(table) {
       return text.trim();
     },
   };
-  
+
   var table_buttons_options = [];
 
   if (
@@ -1144,141 +1144,126 @@ function get_datatable_buttons(table) {
             format: formatExport,
           },
           customize: function (win) {
+            console.log("🔥 PRINT CUSTOMIZE LOADED - VERSION: 2025-12-15 11:14 - TIGHTER COLUMNS 🔥");
             try {
               // Remove default DataTable styling
               $(win.document.body).find("table").removeClass("dataTable");
 
-              // Set document body styles
+              // Set document body styles - COMPACT like reference
               $(win.document.body).css({
-                "font-size": "12px", // Reduced from 28px
-                margin: "2mm",
+                "font-size": "9px",
+                margin: "0",
                 padding: "0",
               });
 
-              // Compact table styling
+              // Table styling - COMPACT like reference
               var table = $(win.document.body).find("table");
               table.addClass("compact").css({
-                "font-size": "12px", // Reduced from 28px
-                width: "100%", // Changed from "auto" to use full width
+                "font-size": "9px",
+                width: "100%",
                 "border-collapse": "collapse",
                 margin: "0",
                 padding: "0",
                 "page-break-inside": "auto",
-                "table-layout": "auto", // Changed to auto for better column width calculation
+                "table-layout": "fixed",
               });
 
-              // Add header styling
+              // Header styling - COMPACT like reference
               table.find("thead th").css({
-                "background-color": "#f0f0f0", // Lighter color
+                "background-color": "#f5f5f5",
                 "font-weight": "bold",
-                "border": "1px solid #ccc", // Thinner border
-                padding: "6px 4px", // Reduced padding
-                "text-align": "left",
-                "font-size": "12px", // Reduced from 28px
-                "height": "auto", // Changed from fixed height
-                "white-space": "nowrap", // Prevent header text wrapping
+                "border": "1px solid #000",
+                padding: "1px 2px",
+                "text-align": "center",
+                "font-size": "8px",
+                "height": "auto",
+                "white-space": "nowrap",
               });
 
-              // Cell styling
+              // Cell styling - COMPACT like reference
               table.find("td, th").css({
-                padding: "4px 3px", // Reduced padding
+                padding: "1px 2px",
                 margin: "0",
-                "line-height": "1.2", // Reduced line height
-                border: "1px solid #ccc", // Thinner border
-                "vertical-align": "top", // Changed to top alignment
-                "font-size": "12px", // Reduced from 28px
-                "height": "auto", // Changed from fixed height
-                "word-wrap": "break-word", // Allow text to wrap
-                "max-width": "200px", // Limit cell width
+                "line-height": "1.1",
+                border: "1px solid #000",
+                "vertical-align": "middle",
+                "font-size": "8px",
+                "height": "auto",
+                "white-space": "nowrap",
+                overflow: "hidden",
+                "text-overflow": "ellipsis",
               });
 
-              // Remove any empty rows or elements
+              // Remove unnecessary elements
               $(win.document.body).find(".dataTables_empty").remove();
 
-              // Remove unnecessary whitespace
-              $(win.document.body)
-                .find("br")
-                .each(function () {
-                  if (
-                    $(this).prev().length === 0 &&
-                    $(this).next().length === 0
-                  ) {
-                    $(this).remove();
-                  }
-                });
-
-              // Add CSS to control printing more precisely
+              // Add CSS for print - matching reference image exactly
               var style = win.document.createElement("style");
               style.innerHTML = `
-                @media print {
-                  @page {
-                    size: A4 landscape; // Changed from A3 to A4 for better fit
-                    margin: 5mm; // Increased margin
-                  }
-                  html {
-                    zoom: 1 !important;
-                    -webkit-transform: scale(1) !important;
-                    transform: scale(1) !important;
-                  }
-                  * { box-sizing: border-box; }
-                  body {
-                    margin: 0 !important;
-                    padding: 2mm !important;
-                    font-size: 12px !important; // Reduced from 28px
-                    zoom: 1 !important;
-                    -webkit-transform: scale(1) !important;
-                    transform: scale(1) !important;
-                  }
-                  table {
-                    page-break-inside: auto !important;
-                    width: 100% !important; // Full width
-                    border-collapse: collapse !important;
-                    table-layout: auto !important; // Auto layout for better column widths
-                    font-size: 12px !important; // Reduced from 28px
-                  }
-                  thead th {
-                    background-color: #f0f0f0 !important;
-                    color: #000 !important;
-                    font-weight: bold !important;
-                    -webkit-print-color-adjust: exact; 
-                    print-color-adjust: exact;
-                    font-size: 12px !important; // Reduced from 28px
-                    padding: 6px 4px !important;
-                    height: auto !important; // Auto height
-                    border: 1px solid #ccc !important; // Thinner border
-                    white-space: nowrap !important; // Prevent header wrapping
-                  }
-                  tr { 
-                    page-break-inside: avoid !important;
-                    height: auto !important; // Auto height
-                  }
-                  td, th { 
-                    font-size: 12px !important; // Reduced from 28px
-                    padding: 4px 3px !important;
-                    border: 1px solid #ccc !important; // Thinner border
-                    white-space: normal !important;
-                    word-wrap: break-word !important;
-                    line-height: 1.2 !important; // Reduced line height
-                    height: auto !important; // Auto height
-                    max-width: 200px !important; // Limit cell width
-                    vertical-align: top !important; // Top alignment
-                  }
-                  .dataTables_empty { display: none !important; }
-                  
-                  /* Force table to use available space efficiently */
-                  table td:first-child,
-                  table th:first-child {
-                    width: auto !important;
-                    min-width: 50px !important;
-                  }
-                  
-                  /* Make long text wrap properly */
-                  td {
-                    overflow-wrap: break-word !important;
-                    word-break: break-word !important;
-                  }
-                }
-              `;
+              @media print {
+              @page {
+                size: A4 landscape;
+                margin: 2mm;
+              }
+              html, body {
+                margin: 0 !important;
+                padding: 0 !important;
+                font-size: 9px !important;
+                font-family: Arial, sans-serif;
+              }
+              table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                table-layout: fixed !important;
+                font-size: 9px !important;
+              }
+              thead { display: table-header-group; }
+              thead th {
+                background-color: #f5f5f5 !important;
+                font-weight: bold !important;
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact;
+                font-size: 8px !important;
+                padding: 1px 2px !important;
+                border: 1px solid #000 !important;
+                white-space: nowrap !important;
+                text-align: center !important;
+              }
+              td, th {
+                font-size: 8px !important;
+                padding: 1px 2px !important;
+                border: 1px solid #000 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                vertical-align: middle !important;
+                line-height: 1.1 !important;
+              }
+              /* COMPACT COLUMN WIDTHS - Fixed last columns to prevent data loss */
+              table tr td:nth-child(1), table tr th:nth-child(1) { width: 2.5% !important; }  /* SN/Bill No */
+              table tr td:nth-child(2), table tr th:nth-child(2) { width: 4% !important; }    /* Date */
+              table tr td:nth-child(3), table tr th:nth-child(3) { width: 3% !important; }    /* Regn No/MRD */
+              table tr td:nth-child(4), table tr th:nth-child(4) { width: 7% !important; }    /* Patient/Customer */
+              table tr td:nth-child(5), table tr th:nth-child(5) { width: 2% !important; }    /* Age */
+              table tr td:nth-child(6), table tr th:nth-child(6) { width: 2% !important; }    /* Sex */
+              table tr td:nth-child(7), table tr th:nth-child(7) { width: 5% !important; }    /* Mobile */
+              table tr td:nth-child(8), table tr th:nth-child(8) { width: 6% !important; }    /* Ref.By */
+              table tr td:nth-child(9), table tr th:nth-child(9) { width: 4% !important; }    /* Total Amount */
+              table tr td:nth-child(10), table tr th:nth-child(10) { width: 3% !important; }  /* Discount */
+              table tr td:nth-child(11), table tr th:nth-child(11) { width: 4% !important; }  /* Bill Amount */
+              table tr td:nth-child(12), table tr th:nth-child(12) { width: 4% !important; }  /* Serv.Charge */
+              table tr td:nth-child(13), table tr th:nth-child(13) { width: 4% !important; }  /* Paid Amount */
+              table tr td:nth-child(14), table tr th:nth-child(14) { width: 4% !important; }  /* Balance */
+              table tr td:nth-child(15), table tr th:nth-child(15) { width: 4% !important; }  /* Cash Amount */
+              table tr td:nth-child(16), table tr th:nth-child(16) { width: 4% !important; }  /* Cheque Amt */
+              table tr td:nth-child(17), table tr th:nth-child(17) { width: 3% !important; }  /* CC */
+              table tr td:nth-child(18), table tr th:nth-child(18) { width: 4% !important; }  /* Paid by */
+              table tr td:nth-child(19), table tr th:nth-child(19) { width: 8% !important; }  /* Payment Details - WIDER */
+              table tr td:nth-child(20), table tr th:nth-child(20) { width: 5% !important; }  /* Gen.by - WIDER */
+              table tr td:nth-child(21), table tr th:nth-child(21) { width: 6% !important; }  /* Extra - WIDER */
+              /* Total: ~93% for full width usage with no data loss */
+            }
+          `;
               win.document.head.appendChild(style);
 
             } catch (error) {
@@ -1289,7 +1274,7 @@ function get_datatable_buttons(table) {
       ],
     });
   }
-  
+
   // Rest of the function remains the same
   var tableButtons = $("body").find(".table-btn");
 
