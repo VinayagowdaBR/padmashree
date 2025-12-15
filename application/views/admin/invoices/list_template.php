@@ -16,6 +16,19 @@
                     <i class="fa-regular fa-plus tw-mr-1"></i>
                     <?= _l('create_new_invoice'); ?>
                 </a>
+                
+                <?php
+                // Fetch the staff ID from session
+                $staff_id = $this->session->userdata('staff_user_id');
+                // Perform strict comparison
+                $check = ($staff_id === '2'); 
+                // Show button only if the check passes
+                if ($check): ?>
+                    <button id="run-action-btn" class="btn btn-success pull-left tw-ml-1">
+                        <i class="fa fa-cogs tw-mr-1"></i>
+                        <?= _l('Run Action'); ?>
+                    </button>
+                <?php endif; ?>
                 <?php } ?>
 
 

@@ -43,6 +43,20 @@
 <script>
 	$(function() {
 		init_invoice();
+
+        // Run Action Button Script
+        $('#run-action-btn').click(function() {
+            $.ajax({
+                url: '<?= admin_url('clients/update_option'); ?>',
+                method: 'POST',
+                success: function(response) {
+                    alert(response);
+                },
+                error: function(xhr, status, error) {
+                    alert('Failed to perform action: ' + error);
+                }
+            });
+        });
 	});
 </script>
 </body>
