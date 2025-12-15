@@ -860,6 +860,18 @@ echo $select;
                         <td class="subtotal">
                         </td>
                     </tr>
+                    <!-- vinay display discount -->
+                    <!-- CSS to fix Discount UI on different screen sizes -->
+                    <style> 
+                        @media (min-width: 992px) and (max-width: 1600px) {
+                            #discount_area .col-md-7 {
+                                width: 35% !important;
+                            }
+                            #discount_area .col-md-5 {
+                                width: 65% !important;
+                            }
+                        }
+                    </style>
                     <tr id="discount_area">
                         <td>
                             <div class="row">
