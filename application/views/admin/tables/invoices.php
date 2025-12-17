@@ -23,7 +23,8 @@ return App_table::find('invoices')->outputUsing(function ($params) {
         get_sql_select_client_company(),
         $clientsTable . '.userid as mrd_no',
         $invoiceTable . '.status',
-        'allowed_payment_modes',
+        // 'allowed_payment_modes', -- REMOVED
+        "(SELECT GROUP_CONCAT(name SEPARATOR ',') FROM " . db_prefix() . "invoicepaymentrecords JOIN " . db_prefix() . "payment_modes ON " . db_prefix() . "payment_modes.id = " . db_prefix() . "invoicepaymentrecords.paymentmode WHERE invoiceid = " . db_prefix() . "invoices.id) as paid_by_modes",
         $invoiceTable . '.discount_total',
         "(SELECT GROUP_CONCAT(description SEPARATOR ', ')
             FROM $itemableTable
@@ -98,7 +99,7 @@ return App_table::find('invoices')->outputUsing(function ($params) {
         'hash',
         'recurring',
         'deleted_customer_name',
-        'allowed_payment_modes',
+        // 'allowed_payment_modes', -- REMOVED
         'discount_total',
     ]);
 
@@ -175,20 +176,15 @@ foreach ($rResult as $aRow) {
         $row[] = $aRow['all_items'] ?: '-';
 
     $payment_modes = '';
-$payment_mode_names = []; // initialize as array
-if (!empty($aRow['allowed_payment_modes'])) {
-    $mode_ids = @unserialize($aRow['allowed_payment_modes']);
-    if (is_array($mode_ids)) {
-        foreach ($mode_ids as $id) {
-            $mode = $this->ci->payment_modes_model->get($id);
-            if ($mode) {
-                $payment_modes .= '<span class="label label-default mright5">' . $mode->name . '</span>';
-                $payment_mode_names[] = strtolower($mode->name); // lowercase for comparison
-            }
+    $payment_mode_names = []; // initialize as array
+    if (!empty($aRow['paid_by_modes'])) {
+        $modes = explode(',', $aRow['paid_by_modes']);
+        foreach ($modes as $mode_name) {
+            $payment_modes .= '<span class="label label-default mright5">' . $mode_name . '</span>';
+            $payment_mode_names[] = strtolower($mode_name); // lowercase for comparison
         }
     }
-}
-$row[] = $payment_modes;
+    $row[] = $payment_modes;
 
         $row[] = app_format_money($aRow['subtotal'], $aRow['currency_name']);
         $row[] = app_format_money($aRow['discount_total'], $aRow['currency_name']);

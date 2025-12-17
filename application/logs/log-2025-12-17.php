@@ -17373,3 +17373,5122 @@ INFO - 2025-12-17 09:40:28 --> Model "Departments_model" initialized
 INFO - 2025-12-17 09:40:28 --> Model "Estimates_model" initialized
 INFO - 2025-12-17 09:40:28 --> Model "Proposals_model" initialized
 DEBUG - 2025-12-17 09:40:28 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
+INFO - 2025-12-17 05:16:12 --> Config Class Initialized
+INFO - 2025-12-17 05:16:12 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:12 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:12 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:12 --> URI Class Initialized
+INFO - 2025-12-17 05:16:12 --> Router Class Initialized
+INFO - 2025-12-17 05:16:12 --> Output Class Initialized
+INFO - 2025-12-17 05:16:12 --> Security Class Initialized
+DEBUG - 2025-12-17 05:16:12 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:12 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:12 --> Input Class Initialized
+INFO - 2025-12-17 05:16:12 --> Language Class Initialized
+INFO - 2025-12-17 05:16:12 --> Config Class Initialized
+INFO - 2025-12-17 05:16:12 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:12 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:12 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:12 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:12 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:12 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:12 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:12 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:12 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:12 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:12 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:12 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:12 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:12 --> App_Model class loaded
+INFO - 2025-12-17 09:46:12 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:12 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:12 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:12 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:12 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:12 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:12 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:12 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:12 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/head.php
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/started_timers.php
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/notifications.php
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/header.php
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/setup_menu.php
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/projects/pinned.php
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/aside.php
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/quick_stats.php
+ERROR - 2025-12-17 09:46:12 --> Could not find the language line "New Patient"
+ERROR - 2025-12-17 09:46:12 --> Could not find the language line "Run Action"
+INFO - 2025-12-17 09:46:12 --> Model "Filters_model" initialized
+ERROR - 2025-12-17 09:46:12 --> Could not find the language line "Bill No"
+ERROR - 2025-12-17 09:46:12 --> Could not find the language line "Ref.By"
+ERROR - 2025-12-17 09:46:12 --> Could not find the language line "discount"
+ERROR - 2025-12-17 09:46:12 --> Could not find the language line "Paid Amount"
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/table_html.php
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/list_template.php
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/modals/sales_attach_file.php
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/scripts.php
+DEBUG - 2025-12-17 09:46:12 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/manage.php
+INFO - 2025-12-17 09:46:12 --> Final output sent to browser
+DEBUG - 2025-12-17 09:46:12 --> Total execution time: 0.3112
+INFO - 2025-12-17 05:16:13 --> Config Class Initialized
+INFO - 2025-12-17 05:16:13 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:13 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:13 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:13 --> URI Class Initialized
+INFO - 2025-12-17 05:16:13 --> Router Class Initialized
+INFO - 2025-12-17 05:16:13 --> Output Class Initialized
+INFO - 2025-12-17 05:16:13 --> Security Class Initialized
+DEBUG - 2025-12-17 05:16:13 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:13 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:13 --> Input Class Initialized
+INFO - 2025-12-17 05:16:13 --> Language Class Initialized
+INFO - 2025-12-17 05:16:13 --> Config Class Initialized
+INFO - 2025-12-17 05:16:13 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:13 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:13 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:13 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:13 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:13 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:13 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:13 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:13 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:13 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:13 --> App_Model class loaded
+INFO - 2025-12-17 09:46:13 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 05:16:13 --> Config Class Initialized
+INFO - 2025-12-17 05:16:13 --> Hooks Class Initialized
+INFO - 2025-12-17 09:46:13 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Clients_model" initialized
+INFO - 2025-12-17 05:16:13 --> Config Class Initialized
+INFO - 2025-12-17 05:16:13 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:13 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:13 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:13 --> URI Class Initialized
+INFO - 2025-12-17 09:46:13 --> Model "Projects_model" initialized
+INFO - 2025-12-17 05:16:13 --> Router Class Initialized
+INFO - 2025-12-17 05:16:13 --> Config Class Initialized
+INFO - 2025-12-17 05:16:13 --> Hooks Class Initialized
+INFO - 2025-12-17 09:46:13 --> Model "Staff_model" initialized
+INFO - 2025-12-17 05:16:13 --> Output Class Initialized
+INFO - 2025-12-17 09:46:13 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:13 --> Controller Class Initialized
+DEBUG - 2025-12-17 05:16:13 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:13 --> Utf8 Class Initialized
+INFO - 2025-12-17 09:46:13 --> Helper loaded: directory_helper
+INFO - 2025-12-17 05:16:13 --> Security Class Initialized
+INFO - 2025-12-17 05:16:13 --> URI Class Initialized
+DEBUG - 2025-12-17 05:16:13 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:13 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:13 --> CSRF token verified
+INFO - 2025-12-17 05:16:13 --> Input Class Initialized
+INFO - 2025-12-17 05:16:13 --> Router Class Initialized
+INFO - 2025-12-17 05:16:13 --> Language Class Initialized
+DEBUG - 2025-12-17 05:16:13 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:13 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:13 --> Output Class Initialized
+INFO - 2025-12-17 05:16:13 --> URI Class Initialized
+INFO - 2025-12-17 05:16:13 --> Security Class Initialized
+INFO - 2025-12-17 05:16:13 --> Config Class Initialized
+INFO - 2025-12-17 05:16:13 --> Loader Class Initialized
+DEBUG - 2025-12-17 05:16:13 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:13 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:13 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:13 --> CSRF token verified
+INFO - 2025-12-17 05:16:13 --> Router Class Initialized
+INFO - 2025-12-17 05:16:13 --> Input Class Initialized
+INFO - 2025-12-17 05:16:13 --> Output Class Initialized
+INFO - 2025-12-17 05:16:13 --> Language Class Initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:13 --> Security Class Initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: url_helper
+DEBUG - 2025-12-17 05:16:13 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:13 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:13 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:13 --> Input Class Initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:13 --> Language Class Initialized
+INFO - 2025-12-17 05:16:13 --> Config Class Initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:13 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: user_meta_helper
+DEBUG - 2025-12-17 09:46:13 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+INFO - 2025-12-17 05:16:13 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: file_helper
+DEBUG - 2025-12-17 09:46:13 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 05:16:13 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: modules_helper
+INFO - 2025-12-17 09:46:13 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:13 --> Config Class Initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:13 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: menu_helper
+INFO - 2025-12-17 09:46:13 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:13 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: template_helper
+DEBUG - 2025-12-17 09:46:13 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+INFO - 2025-12-17 05:16:13 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: modules_helper
+ERROR - 2025-12-17 09:46:13 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 05:16:13 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 09:46:13 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: fields_helper
+INFO - 2025-12-17 09:46:13 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: tags_helper
+INFO - 2025-12-17 09:46:13 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 09:46:13 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 09:46:13 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 09:46:13 --> Model "Leads_model" initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: sms_helper
+INFO - 2025-12-17 09:46:13 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:13 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:13 --> Helper loaded: leads_helper
+INFO - 2025-12-17 09:46:13 --> Model "Departments_model" initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 09:46:13 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:13 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:13 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:13 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: sales_helper
+INFO - 2025-12-17 09:46:13 --> Model "Proposals_model" initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: widgets_helper
+DEBUG - 2025-12-17 09:46:13 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
+INFO - 2025-12-17 05:16:13 --> Helper loaded: sms_helper
+INFO - 2025-12-17 09:46:13 --> Final output sent to browser
+INFO - 2025-12-17 05:16:13 --> Database Driver Class Initialized
+DEBUG - 2025-12-17 09:46:13 --> Total execution time: 0.3532
+INFO - 2025-12-17 05:16:13 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:13 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:13 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:13 --> Image Lib Class Initialized
+INFO - 2025-12-17 05:16:13 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 05:16:13 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:13 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:13 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:13 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:13 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:13 --> App_Model class loaded
+INFO - 2025-12-17 09:46:13 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:13 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:13 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:13 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:13 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:13 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:13 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:13 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:13 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:13 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Proposals_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Currencies_model" initialized
+DEBUG - 2025-12-17 09:46:13 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoices_total_template.php
+INFO - 2025-12-17 09:46:13 --> Final output sent to browser
+DEBUG - 2025-12-17 09:46:13 --> Total execution time: 0.2995
+INFO - 2025-12-17 05:16:13 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:13 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:13 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:13 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:13 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:13 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:13 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:13 --> App_Model class loaded
+INFO - 2025-12-17 09:46:13 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:13 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:13 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:13 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:13 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:13 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:13 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:13 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:13 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:13 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251211003
+INFO - 2025-12-17 09:46:13 --> Model "Currencies_model" initialized
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"240","date":"2025-11-21","number":"5","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 5, Number Padded: 005
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251121005
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"196","date":"2025-11-10","number":"2","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 2, Number Padded: 002
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251110002
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"227","date":"2025-11-20","number":"8","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 8, Number Padded: 008
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251120008
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"241","date":"2025-11-21","number":"6","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 6, Number Padded: 006
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251121006
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"179","date":"2025-10-07","number":"999","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251007, Number Raw: 999, Number Padded: 999
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251007999
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"178","date":"2025-10-07","number":"1","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251007, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251007001
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"276","date":"2025-11-22","number":"15","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 15, Number Padded: 015
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251122015
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"261","date":"2025-11-21","number":"26","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 26, Number Padded: 026
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251121026
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"210","date":"2025-11-18","number":"2","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251118, Number Raw: 2, Number Padded: 002
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251118002
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"229","date":"2025-11-20","number":"10","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 10, Number Padded: 010
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251120010
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"219","date":"2025-11-18","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251118, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251118011
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"187","date":"2025-11-05","number":"1007","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1007, Number Padded: 1007
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 2511051007
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"185","date":"2025-11-05","number":"1005","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1005, Number Padded: 1005
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 2511051005
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"201","date":"2025-11-10","number":"7","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 7, Number Padded: 007
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251110007
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"194","date":"2025-11-05","number":"1014","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1014, Number Padded: 1014
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 2511051014
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"271","date":"2025-11-22","number":"10","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 10, Number Padded: 010
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251122010
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"262","date":"2025-11-22","number":"1","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251122001
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"230","date":"2025-11-20","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251120011
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"238","date":"2025-11-21","number":"3","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251121003
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"220","date":"2025-11-20","number":"1","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251120001
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"272","date":"2025-11-22","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251122011
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"197","date":"2025-11-10","number":"3","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251110003
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"250","date":"2025-11-21","number":"15","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 15, Number Padded: 015
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251121015
+DEBUG - 2025-12-17 09:46:13 --> format_invoice_number: Invoice fetched - {"id":"248","date":"2025-11-21","number":"13","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 13, Number Padded: 013
+ERROR - 2025-12-17 09:46:13 --> format_invoice_number: Final formatted number - 251121013
+DEBUG - 2025-12-17 09:46:13 --> Totals Calculated: Subtotal = 182000
+DEBUG - 2025-12-17 09:46:13 --> Totals Calculated: Discount Total = 10050
+DEBUG - 2025-12-17 09:46:13 --> Totals Calculated: Total = 171950
+DEBUG - 2025-12-17 09:46:13 --> Totals Calculated: Total Paid = 133450
+DEBUG - 2025-12-17 09:46:13 --> Totals Calculated: Balance = 38500
+DEBUG - 2025-12-17 09:46:13 --> Totals Calculated: Service Charge = 3640
+INFO - 2025-12-17 05:16:13 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:13 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:13 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:13 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:13 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:13 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:13 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:13 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:13 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:13 --> App_Model class loaded
+INFO - 2025-12-17 09:46:13 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:13 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:13 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:13 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:14 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:14 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:14 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:14 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:14 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:14 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:14 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:14 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:14 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:14 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:14 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:14 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:14 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:14 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:14 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:14 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:14 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:46:14 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
+INFO - 2025-12-17 05:16:22 --> Config Class Initialized
+INFO - 2025-12-17 05:16:22 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:22 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:22 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:22 --> URI Class Initialized
+INFO - 2025-12-17 05:16:22 --> Router Class Initialized
+INFO - 2025-12-17 05:16:22 --> Output Class Initialized
+INFO - 2025-12-17 05:16:22 --> Security Class Initialized
+DEBUG - 2025-12-17 05:16:22 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:22 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:22 --> Input Class Initialized
+INFO - 2025-12-17 05:16:22 --> Language Class Initialized
+INFO - 2025-12-17 05:16:22 --> Config Class Initialized
+INFO - 2025-12-17 05:16:22 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:22 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:22 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:22 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:22 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:22 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:22 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:22 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:22 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:22 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:22 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:22 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:22 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:22 --> App_Model class loaded
+INFO - 2025-12-17 09:46:22 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:22 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:22 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:22 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:22 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:22 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:22 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:22 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:22 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:22 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:22 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:22 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:22 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:22 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:22 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:22 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:22 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:22 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:22 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:22 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:22 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:22 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:22 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:22 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Proposals_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Payments_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Email_schedule_model" initialized
+DEBUG - 2025-12-17 09:46:23 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:23 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:23 --> format_invoice_number: Final formatted number - 251211003
+INFO - 2025-12-17 09:46:23 --> Model "Taxes_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Invoice_items_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Currencies_model" initialized
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/head.php
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/started_timers.php
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/notifications.php
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/header.php
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/setup_menu.php
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/projects/pinned.php
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/aside.php
+DEBUG - 2025-12-17 09:46:23 --> format_invoice_number: Invoice fetched - {"id":"279","sent":"0","datesend":null,"clientid":"61","deleted_customer_name":null,"number":"3","prefix":"","number_format":"5","formatted_number":"251211003","datecreated":"2025-12-11 13:00:11","date":"2025-12-11","duedate":"2026-01-10","currency":"3","subtotal":"8500.00","total_tax":"0.00","total":"7650.00","adjustment":"0.00","addedfrom":"2","hash":"f0f8ed2fdf2258bf8edecd8daf2c9b80","status":"2","clientnote":null,"adminnote":"","last_overdue_reminder":null,"last_due_reminder":null,"cancel_overdue_reminders":"0","allowed_payment_modes":"a:5:{i:0;s:1:\"1\";i:1;s:1:\"2\";i:2;s:1:\"3\";i:3;s:1:\"6\";i:4;s:2:\"10\";}","token":null,"discount_percent":"10.00","discount_total":"850.00","discount_type":"after_tax","recurring":"0","recurring_type":null,"custom_recurring":"0","cycles":"0","total_cycles":"0","is_recurring_from":null,"last_recurring_date":null,"terms":null,"sale_agent":"2","billing_street":"","billing_city":"","billing_state":"","billing_zip":"","billing_country":"102","shipping_street":null,"shipping_city":null,"shipping_state":null,"shipping_zip":null,"shipping_country":null,"include_shipping":"0","show_shipping_on_invoice":"1","show_quantity_as":"1","project_id":"0","subscription_id":"0","short_link":null,"affiliate_member_id":null,"symbol":" \u20b9","name":"INR","decimal_separator":".","thousand_separator":",","placement":"before","isdefault":"1","currencyid":"3","currency_name":"INR","total_left_to_pay":"0.00","items":[{"id":"318","rel_id":"279","rel_type":"invoice","description":"CT","long_description":"ABDOMEN & PELVIS (CONTRAST)","qty":"1.00","rate":"8500.00","unit":null,"item_order":"1"}],"attachments":[],"visible_attachments_to_customer_found":false,"client":{"userid":"61","company":"vvv","vat":null,"phonenumber":null,"country":"0","city":null,"zip":null,"state":null,"address":null,"website":null,"datecreated":"2025-09-22 12:23:14","active":"1","leadid":null,"billing_street":null,"billing_city":null,"billing_state":null,"billing_zip":null,"billing_country":"0","shipping_street":null,"shipping_city":null,"shipping_state":null,"shipping_zip":null,"shipping_country":"0","longitude":null,"latitude":null,"default_language":null,"default_currency":"0","show_primary_contact":"0","stripe_id":null,"registration_confirmed":"1","addedfrom":"2","affiliate_code":""},"payments":[{"id":"2","invoiceid":"279","amount":"7650.00","paymentmode":"2","paymentmethod":null,"date":"2025-12-11","daterecorded":"2025-12-11 13:00:43","note":"","transactionid":"54541","name":"Cash","description":"","show_on_pdf":"0","invoices_only":"0","expenses_only":"0","selected_by_default":"1","active":"1","paymentid":"234"}],"scheduled_email":null}
+ERROR - 2025-12-17 09:46:23 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:23 --> format_invoice_number: Final formatted number - 251211003
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/merge_invoice.php
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/bill_expenses.php
+DEBUG - 2025-12-17 09:46:23 --> Custom Fields rel_id: '279'
+DEBUG - 2025-12-17 09:46:23 --> Custom Fields Output (with CSS filtering): <div class="row custom-fields-form-row"><div class="col-md-3"><a href="http://localhost/perfex_crm/admin/custom_fields/field/78" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group"><label for="custom_fields[invoice][78]" class="control-label">Sex</label><select data-fieldto="invoice" data-fieldid="78"  name="custom_fields[invoice][78]" class="select-placeholder selectpicker form-control" data-width="100%" data-none-selected-text="Nothing selected"  data-live-search="true"><option value=""></option><option value="Male" selected>Male</option><option value="Female">Female</option></select></div></div><div class="col-md-4"><a href="http://localhost/perfex_crm/admin/custom_fields/field/79" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][79]"><label for="custom_fields[invoice][79]" class="control-label">Mobile.no</label><input type="number" id="custom_fields[invoice][79]" name="custom_fields[invoice][79]" class="form-control" data-fieldto="invoice" data-fieldid="79" value="06362492878"></div></div><div class="col-md-4"><a href="http://localhost/perfex_crm/admin/custom_fields/field/80" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][80]"><label for="custom_fields[invoice][80]" class="control-label">Cash Amount</label><input type="text" id="custom_fields[invoice][80]" name="custom_fields[invoice][80]" class="form-control" data-fieldto="invoice" data-fieldid="80" value=""></div></div><div class="col-md-4"><a href="http://localhost/perfex_crm/admin/custom_fields/field/81" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][81]"><label for="custom_fields[invoice][81]" class="control-label">Cheque Amount</label><input type="text" id="custom_fields[invoice][81]" name="custom_fields[invoice][81]" class="form-control" data-fieldto="invoice" data-fieldid="81" value=""></div></div><div class="col-md-3"><a href="http://localhost/perfex_crm/admin/custom_fields/field/82" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][82]"><label for="custom_fields[invoice][82]" class="control-label">CC</label><input type="text" id="custom_fields[invoice][82]" name="custom_fields[invoice][82]" class="form-control" data-fieldto="invoice" data-fieldid="82" value=""></div></div><div class="col-md-4"><a href="http://localhost/perfex_crm/admin/custom_fields/field/92" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][92]"><label for="custom_fields[invoice][92]" class="control-label">UPI</label><input type="text" id="custom_fields[invoice][92]" name="custom_fields[invoice][92]" class="form-control" data-fieldto="invoice" data-fieldid="92" value=""></div></div><div class="col-md-6"><a href="http://localhost/perfex_crm/admin/custom_fields/field/93" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][93]"><label for="custom_fields[invoice][93]" class="control-label">Payment Details</label><input type="text" id="custom_fields[invoice][93]" name="custom_fields[invoice][93]" class="form-control" data-fieldto="invoice" data-fieldid="93" value=""></div></div><div class="col-md-3"><a href="http://localhost/perfex_crm/admin/custom_fields/field/77" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][77]"><label for="custom_fields[invoice][77]" class="control-label">Age</label><input type="text" id="custom_fields[invoice][77]" name="custom_fields[invoice][77]" class="form-control" data-fieldto="invoice" data-fieldid="77" value=""></div></div><div class="col-md-12"><a href="http://localhost/perfex_crm/admin/custom_fields/field/98" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][98]"><label for="custom_fields[invoice][98]" class="control-label">Age (Years)</label><input type="text" id="custom_fields[invoice][98]" name="custom_fields[invoice][98]" class="form-control" data-fieldto="invoice" data-fieldid="98" value="23"></div></div><div class="col-md-12"><a href="http://localhost/perfex_crm/admin/custom_fields/field/97" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group"><label for="custom_fields[invoice][97]" class="control-label">AgeOption</label><select data-fieldto="invoice" data-fieldid="97"  name="custom_fields[invoice][97]" class="select-placeholder selectpicker form-control" data-width="100%" data-none-selected-text="Nothing selected"  data-live-search="true"><option value=""></option><option value="YEAR">YEAR</option><option value="MONTH">MONTH</option></select></div></div><div class="col-md-12"><a href="http://localhost/perfex_crm/admin/custom_fields/field/99" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][99]"><label for="custom_fields[invoice][99]" class="control-label">Age (Months)</label><input type="text" id="custom_fields[invoice][99]" name="custom_fields[invoice][99]" class="form-control" data-fieldto="invoice" data-fieldid="99" value="2"></div></div></div>
+DEBUG - 2025-12-17 09:46:23 --> Age Years Field ID: 98, Age Months Field ID: 99
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoice_items/item_select.php
+ERROR - 2025-12-17 09:46:23 --> Severity: Warning --> Undefined array key "value" C:\xampp\htdocs\perfex_crm\application\views\admin\invoices\invoice_template.php 707
+DEBUG - 2025-12-17 09:46:23 --> Custom Fields WHERE: Array
+(
+)
+
+DEBUG - 2025-12-17 09:46:23 --> Custom Fields Returned: <td class="custom_field" data-id="84"><div class="form-group" app-field-wrapper=""><label for="" class="control-label">serv.charge</label><input type="number" id="" name="" class="form-control" data-fieldto="items" data-fieldid="84" value=""></div></td><td class="custom_field" data-id="91"><div class="form-group" app-field-wrapper=""><label for="" class="control-label">Commission</label><input type="text" id="" name="" class="form-control" data-fieldto="items" data-fieldid="91" value=""></div></td>
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoice_template.php
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoice_items/item.php
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/scripts.php
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoice.php
+INFO - 2025-12-17 09:46:23 --> Final output sent to browser
+DEBUG - 2025-12-17 09:46:23 --> Total execution time: 0.4365
+INFO - 2025-12-17 05:16:23 --> Config Class Initialized
+INFO - 2025-12-17 05:16:23 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:23 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:23 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:23 --> URI Class Initialized
+INFO - 2025-12-17 05:16:23 --> Router Class Initialized
+INFO - 2025-12-17 05:16:23 --> Output Class Initialized
+INFO - 2025-12-17 05:16:23 --> Security Class Initialized
+DEBUG - 2025-12-17 05:16:23 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:23 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:23 --> Input Class Initialized
+INFO - 2025-12-17 05:16:23 --> Language Class Initialized
+INFO - 2025-12-17 05:16:23 --> Config Class Initialized
+INFO - 2025-12-17 05:16:23 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:23 --> Config Class Initialized
+INFO - 2025-12-17 05:16:23 --> Hooks Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:23 --> Config Class Initialized
+INFO - 2025-12-17 05:16:23 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:23 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:23 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:23 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:23 --> URI Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:23 --> Router Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:23 --> Output Class Initialized
+DEBUG - 2025-12-17 05:16:23 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:23 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:23 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:23 --> URI Class Initialized
+INFO - 2025-12-17 05:16:23 --> Security Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: proposals_helper
+DEBUG - 2025-12-17 05:16:23 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:23 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:23 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:23 --> Input Class Initialized
+INFO - 2025-12-17 05:16:23 --> Router Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:23 --> Language Class Initialized
+INFO - 2025-12-17 05:16:23 --> Output Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:23 --> Security Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: leads_helper
+DEBUG - 2025-12-17 05:16:23 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:23 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:23 --> Input Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:23 --> Language Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:23 --> Config Class Initialized
+INFO - 2025-12-17 05:16:23 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:23 --> Config Class Initialized
+INFO - 2025-12-17 05:16:23 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:23 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:23 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:23 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:23 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:23 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:23 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:23 --> Image Lib Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: custom_fields_helper
+DEBUG - 2025-12-17 05:16:23 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:23 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:23 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:23 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:23 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:23 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:23 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:23 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:23 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:23 --> App_Model class loaded
+INFO - 2025-12-17 05:16:23 --> Database Driver Class Initialized
+INFO - 2025-12-17 09:46:23 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:23 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:23 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:23 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:23 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:23 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:23 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:23 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
+INFO - 2025-12-17 09:46:23 --> Final output sent to browser
+DEBUG - 2025-12-17 09:46:23 --> Total execution time: 0.3426
+INFO - 2025-12-17 05:16:23 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:23 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:23 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:23 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:23 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:23 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:23 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:23 --> App_Model class loaded
+INFO - 2025-12-17 09:46:23 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:23 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:23 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:23 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:23 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:23 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:23 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:23 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Proposals_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Currencies_model" initialized
+INFO - 2025-12-17 09:46:23 --> Final output sent to browser
+DEBUG - 2025-12-17 09:46:23 --> Total execution time: 0.3586
+INFO - 2025-12-17 05:16:23 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:23 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:23 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:23 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:23 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:23 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:23 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:23 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:23 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:23 --> App_Model class loaded
+INFO - 2025-12-17 09:46:23 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:23 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:23 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:23 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:23 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:23 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:23 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:23 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:23 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:46:23 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
+INFO - 2025-12-17 05:16:29 --> Config Class Initialized
+INFO - 2025-12-17 05:16:29 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:29 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:29 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:29 --> URI Class Initialized
+INFO - 2025-12-17 05:16:29 --> Router Class Initialized
+INFO - 2025-12-17 05:16:29 --> Output Class Initialized
+INFO - 2025-12-17 05:16:29 --> Security Class Initialized
+DEBUG - 2025-12-17 05:16:29 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:29 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:29 --> CSRF token verified
+INFO - 2025-12-17 05:16:29 --> Input Class Initialized
+INFO - 2025-12-17 05:16:29 --> Language Class Initialized
+INFO - 2025-12-17 05:16:29 --> Config Class Initialized
+INFO - 2025-12-17 05:16:29 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:29 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:29 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:29 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:29 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:29 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:29 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:29 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:29 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:29 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:29 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:29 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:29 --> App_Model class loaded
+INFO - 2025-12-17 09:46:29 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:29 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:29 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:29 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:29 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:29 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:29 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:29 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:29 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:29 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Proposals_model" initialized
+INFO - 2025-12-17 09:46:29 --> Final output sent to browser
+DEBUG - 2025-12-17 09:46:29 --> Total execution time: 0.2206
+INFO - 2025-12-17 05:16:29 --> Config Class Initialized
+INFO - 2025-12-17 05:16:29 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:29 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:29 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:29 --> URI Class Initialized
+INFO - 2025-12-17 05:16:29 --> Router Class Initialized
+INFO - 2025-12-17 05:16:29 --> Output Class Initialized
+INFO - 2025-12-17 05:16:29 --> Security Class Initialized
+DEBUG - 2025-12-17 05:16:29 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:29 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:29 --> CSRF token verified
+INFO - 2025-12-17 05:16:29 --> Input Class Initialized
+INFO - 2025-12-17 05:16:29 --> Language Class Initialized
+INFO - 2025-12-17 05:16:29 --> Config Class Initialized
+INFO - 2025-12-17 05:16:29 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:29 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:29 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:29 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:29 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:29 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:29 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:29 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:29 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:29 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:29 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:29 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:29 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:29 --> App_Model class loaded
+INFO - 2025-12-17 09:46:29 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:29 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:29 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:29 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:30 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:30 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:30 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:30 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:30 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:46:30 --> Invoice POST Data: Array
+(
+    [isedit] => 
+    [merge_current_invoice] => 279
+    [clientid] => 61
+    [project_id] => 
+    [billing_street] => 
+    [billing_city] => 
+    [billing_state] => 
+    [billing_zip] => 
+    [billing_country] => 102
+    [show_shipping_on_invoice] => on
+    [shipping_street] => 
+    [shipping_city] => 
+    [shipping_state] => 
+    [shipping_zip] => 
+    [shipping_country] => 
+    [number] => 000003
+    [date] => 2025-12-11
+    [duedate] => 2026-01-10
+    [custom_fields] => Array
+        (
+            [invoice] => Array
+                (
+                    [78] => Male
+                    [79] => 06362492878
+                    [80] => 
+                    [81] => 
+                    [82] => 
+                    [92] => 
+                    [93] => 
+                    [77] => 
+                    [98] => 23
+                    [97] => 
+                    [99] => 3
+                )
+
+        )
+
+    [allowed_payment_modes] => Array
+        (
+            [0] => 1
+            [1] => 2
+            [2] => 3
+            [3] => 6
+            [4] => 10
+        )
+
+    [currency] => 3
+    [sale_agent] => 2
+    [recurring] => 0
+    [discount_type] => after_tax
+    [repeat_every_custom] => 1
+    [repeat_type_custom] => day
+    [adminnote] => 
+    [item_select] => 
+    [task_select] => 
+    [show_quantity_as] => 1
+    [description] => 
+    [long_description] => 
+    [unit] => 
+    [rate] => 
+    [items] => Array
+        (
+            [1] => Array
+                (
+                    [itemid] => 318
+                    [order] => 1
+                    [description] => CT
+                    [long_description] => ABDOMEN & PELVIS (CONTRAST)
+                    [custom_fields] => Array
+                        (
+                            [items] => Array
+                                (
+                                    [84] => 170
+                                    [91] => 2500
+                                )
+
+                        )
+
+                    [qty] => 1.00
+                    [rate] => 8500.00
+                )
+
+        )
+
+    [subtotal] => 8500.00
+    [discount_percent] => 10.00
+    [discount_total] => 850.00
+    [adjustment] => 0.00
+    [total] => 7650.00
+    [task_id] => 
+    [expense_id] => 
+)
+
+INFO - 2025-12-17 09:46:30 --> Model "Payments_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Email_schedule_model" initialized
+DEBUG - 2025-12-17 09:46:30 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:30 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:30 --> format_invoice_number: Final formatted number - 251211003
+DEBUG - 2025-12-17 09:46:30 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:30 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:30 --> format_invoice_number: Final formatted number - 251211003
+ERROR - 2025-12-17 09:46:30 --> Severity: Warning --> Undefined array key "unit" C:\xampp\htdocs\perfex_crm\application\helpers\sales_helper.php 718
+DEBUG - 2025-12-17 09:46:30 --> Invoice Update Attempt ID=279 Data: Array
+(
+    [isedit] => 
+    [merge_current_invoice] => 279
+    [clientid] => 61
+    [project_id] => 
+    [billing_street] => 
+    [billing_city] => 
+    [billing_state] => 
+    [billing_zip] => 
+    [billing_country] => 102
+    [show_shipping_on_invoice] => on
+    [shipping_street] => 
+    [shipping_city] => 
+    [shipping_state] => 
+    [shipping_zip] => 
+    [shipping_country] => 
+    [number] => 000003
+    [date] => 2025-12-11
+    [duedate] => 2026-01-10
+    [custom_fields] => Array
+        (
+            [invoice] => Array
+                (
+                    [78] => Male
+                    [79] => 06362492878
+                    [80] => 
+                    [81] => 
+                    [82] => 
+                    [92] => 
+                    [93] => 
+                    [77] => 
+                    [98] => 23
+                    [97] => 
+                    [99] => 3
+                )
+
+        )
+
+    [allowed_payment_modes] => Array
+        (
+            [0] => 1
+            [1] => 2
+            [2] => 3
+            [3] => 6
+            [4] => 10
+        )
+
+    [currency] => 3
+    [sale_agent] => 2
+    [recurring] => 0
+    [discount_type] => after_tax
+    [repeat_every_custom] => 1
+    [repeat_type_custom] => day
+    [adminnote] => 
+    [item_select] => 
+    [task_select] => 
+    [show_quantity_as] => 1
+    [description] => 
+    [long_description] => 
+    [unit] => 
+    [rate] => 
+    [items] => Array
+        (
+            [1] => Array
+                (
+                    [itemid] => 318
+                    [order] => 1
+                    [description] => CT
+                    [long_description] => ABDOMEN & PELVIS (CONTRAST)
+                    [custom_fields] => Array
+                        (
+                            [items] => Array
+                                (
+                                    [84] => 170
+                                    [91] => 2500
+                                )
+
+                        )
+
+                    [qty] => 1.00
+                    [rate] => 8500.00
+                )
+
+        )
+
+    [subtotal] => 8500.00
+    [discount_percent] => 10.00
+    [discount_total] => 850.00
+    [adjustment] => 0.00
+    [total] => 7650.00
+    [task_id] => 
+    [expense_id] => 
+)
+
+DEBUG - 2025-12-17 09:46:30 --> Invoice Update Result: Success
+INFO - 2025-12-17 05:16:30 --> Config Class Initialized
+INFO - 2025-12-17 05:16:30 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:30 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:30 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:30 --> URI Class Initialized
+INFO - 2025-12-17 05:16:30 --> Router Class Initialized
+INFO - 2025-12-17 05:16:30 --> Output Class Initialized
+INFO - 2025-12-17 05:16:30 --> Security Class Initialized
+DEBUG - 2025-12-17 05:16:30 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:30 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:30 --> Input Class Initialized
+INFO - 2025-12-17 05:16:30 --> Language Class Initialized
+INFO - 2025-12-17 05:16:30 --> Config Class Initialized
+INFO - 2025-12-17 05:16:30 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:30 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:30 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:30 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:30 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:30 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:30 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:30 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:30 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:30 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:30 --> App_Model class loaded
+INFO - 2025-12-17 09:46:30 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:30 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:30 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:30 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:30 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:30 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:30 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:30 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/head.php
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/started_timers.php
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/notifications.php
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/header.php
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/setup_menu.php
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/projects/pinned.php
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/aside.php
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/quick_stats.php
+ERROR - 2025-12-17 09:46:30 --> Could not find the language line "New Patient"
+ERROR - 2025-12-17 09:46:30 --> Could not find the language line "Run Action"
+INFO - 2025-12-17 09:46:30 --> Model "Filters_model" initialized
+ERROR - 2025-12-17 09:46:30 --> Could not find the language line "Bill No"
+ERROR - 2025-12-17 09:46:30 --> Could not find the language line "Ref.By"
+ERROR - 2025-12-17 09:46:30 --> Could not find the language line "discount"
+ERROR - 2025-12-17 09:46:30 --> Could not find the language line "Paid Amount"
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/table_html.php
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/list_template.php
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/modals/sales_attach_file.php
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/scripts.php
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/manage.php
+INFO - 2025-12-17 09:46:30 --> Final output sent to browser
+DEBUG - 2025-12-17 09:46:30 --> Total execution time: 0.3082
+INFO - 2025-12-17 05:16:30 --> Config Class Initialized
+INFO - 2025-12-17 05:16:30 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:30 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:30 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:30 --> URI Class Initialized
+INFO - 2025-12-17 05:16:30 --> Router Class Initialized
+INFO - 2025-12-17 05:16:30 --> Output Class Initialized
+INFO - 2025-12-17 05:16:30 --> Security Class Initialized
+DEBUG - 2025-12-17 05:16:30 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:30 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:30 --> Input Class Initialized
+INFO - 2025-12-17 05:16:30 --> Language Class Initialized
+INFO - 2025-12-17 05:16:30 --> Config Class Initialized
+INFO - 2025-12-17 05:16:30 --> Hooks Class Initialized
+INFO - 2025-12-17 05:16:30 --> Config Class Initialized
+INFO - 2025-12-17 05:16:30 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:30 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:30 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:30 --> URI Class Initialized
+INFO - 2025-12-17 05:16:30 --> Config Class Initialized
+INFO - 2025-12-17 05:16:30 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:30 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:30 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:30 --> Router Class Initialized
+INFO - 2025-12-17 05:16:30 --> URI Class Initialized
+INFO - 2025-12-17 05:16:30 --> Output Class Initialized
+INFO - 2025-12-17 05:16:30 --> Router Class Initialized
+INFO - 2025-12-17 05:16:30 --> Security Class Initialized
+INFO - 2025-12-17 05:16:30 --> Config Class Initialized
+DEBUG - 2025-12-17 05:16:30 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:30 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:30 --> Output Class Initialized
+INFO - 2025-12-17 05:16:30 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:30 --> CSRF token verified
+INFO - 2025-12-17 05:16:30 --> Input Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:30 --> Language Class Initialized
+INFO - 2025-12-17 05:16:30 --> Security Class Initialized
+DEBUG - 2025-12-17 05:16:30 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:30 --> Utf8 Class Initialized
+DEBUG - 2025-12-17 05:16:30 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:30 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:30 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:30 --> CSRF token verified
+INFO - 2025-12-17 05:16:30 --> URI Class Initialized
+INFO - 2025-12-17 05:16:30 --> Input Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:30 --> Language Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:30 --> Config Class Initialized
+INFO - 2025-12-17 05:16:30 --> Router Class Initialized
+INFO - 2025-12-17 05:16:30 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:30 --> Config Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:30 --> Hooks Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:30 --> Output Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:30 --> Security Class Initialized
+INFO - 2025-12-17 05:16:30 --> Config Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:30 --> Loader Class Initialized
+DEBUG - 2025-12-17 05:16:30 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:30 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:30 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:30 --> Input Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:30 --> Language Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: countries_helper
+DEBUG - 2025-12-17 05:16:30 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:30 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:30 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:30 --> URI Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:30 --> Router Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:30 --> Output Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:30 --> Security Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: func_helper
+DEBUG - 2025-12-17 05:16:30 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:30 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:30 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:30 --> Input Class Initialized
+INFO - 2025-12-17 05:16:30 --> Language Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:30 --> Config Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:30 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:30 --> Config Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:30 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:30 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:30 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:30 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:30 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:30 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:30 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:30 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:30 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:30 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:30 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:30 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:30 --> Image Lib Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:30 --> Database Driver Class Initialized
+DEBUG - 2025-12-17 05:16:30 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:30 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:30 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:30 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:30 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:30 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:30 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:30 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:30 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:30 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:30 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:30 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:30 --> App_Model class loaded
+INFO - 2025-12-17 09:46:30 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:30 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:30 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:30 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:30 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:30 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:30 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:30 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
+INFO - 2025-12-17 09:46:30 --> Final output sent to browser
+DEBUG - 2025-12-17 09:46:30 --> Total execution time: 0.3294
+INFO - 2025-12-17 05:16:30 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:30 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:30 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:30 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:30 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:30 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:30 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:30 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:30 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:30 --> App_Model class loaded
+INFO - 2025-12-17 09:46:30 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:30 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:30 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:30 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:30 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:30 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:30 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:31 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:31 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:31 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251211003
+INFO - 2025-12-17 09:46:31 --> Model "Currencies_model" initialized
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"240","date":"2025-11-21","number":"5","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 5, Number Padded: 005
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251121005
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"196","date":"2025-11-10","number":"2","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 2, Number Padded: 002
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251110002
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"227","date":"2025-11-20","number":"8","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 8, Number Padded: 008
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251120008
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"241","date":"2025-11-21","number":"6","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 6, Number Padded: 006
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251121006
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"179","date":"2025-10-07","number":"999","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251007, Number Raw: 999, Number Padded: 999
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251007999
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"178","date":"2025-10-07","number":"1","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251007, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251007001
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"276","date":"2025-11-22","number":"15","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 15, Number Padded: 015
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251122015
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"261","date":"2025-11-21","number":"26","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 26, Number Padded: 026
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251121026
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"210","date":"2025-11-18","number":"2","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251118, Number Raw: 2, Number Padded: 002
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251118002
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"229","date":"2025-11-20","number":"10","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 10, Number Padded: 010
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251120010
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"219","date":"2025-11-18","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251118, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251118011
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"187","date":"2025-11-05","number":"1007","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1007, Number Padded: 1007
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 2511051007
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"185","date":"2025-11-05","number":"1005","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1005, Number Padded: 1005
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 2511051005
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"201","date":"2025-11-10","number":"7","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 7, Number Padded: 007
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251110007
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"194","date":"2025-11-05","number":"1014","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1014, Number Padded: 1014
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 2511051014
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"271","date":"2025-11-22","number":"10","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 10, Number Padded: 010
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251122010
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"262","date":"2025-11-22","number":"1","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251122001
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"230","date":"2025-11-20","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251120011
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"238","date":"2025-11-21","number":"3","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251121003
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"220","date":"2025-11-20","number":"1","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251120001
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"272","date":"2025-11-22","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251122011
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"197","date":"2025-11-10","number":"3","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251110003
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"250","date":"2025-11-21","number":"15","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 15, Number Padded: 015
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251121015
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"248","date":"2025-11-21","number":"13","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 13, Number Padded: 013
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251121013
+DEBUG - 2025-12-17 09:46:31 --> Totals Calculated: Subtotal = 182000
+DEBUG - 2025-12-17 09:46:31 --> Totals Calculated: Discount Total = 10050
+DEBUG - 2025-12-17 09:46:31 --> Totals Calculated: Total = 171950
+DEBUG - 2025-12-17 09:46:31 --> Totals Calculated: Total Paid = 133450
+DEBUG - 2025-12-17 09:46:31 --> Totals Calculated: Balance = 38500
+DEBUG - 2025-12-17 09:46:31 --> Totals Calculated: Service Charge = 3640
+INFO - 2025-12-17 05:16:31 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:31 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:31 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:31 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:31 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:31 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:31 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:31 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:31 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:31 --> App_Model class loaded
+INFO - 2025-12-17 09:46:31 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:31 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:31 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:31 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:31 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:31 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:31 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:31 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Proposals_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Currencies_model" initialized
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoices_total_template.php
+INFO - 2025-12-17 09:46:31 --> Final output sent to browser
+DEBUG - 2025-12-17 09:46:31 --> Total execution time: 0.6928
+INFO - 2025-12-17 05:16:31 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:31 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:31 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:31 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:31 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:31 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:31 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:31 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:31 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:31 --> App_Model class loaded
+INFO - 2025-12-17 09:46:31 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:31 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:31 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:31 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:31 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:31 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:31 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:31 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
+INFO - 2025-12-17 05:16:31 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:31 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:31 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:31 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:31 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:31 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:31 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:31 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:31 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:31 --> App_Model class loaded
+INFO - 2025-12-17 09:46:31 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:31 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:31 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:31 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:31 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:31 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:31 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:31 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Proposals_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Payments_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Email_schedule_model" initialized
+INFO - 2025-12-17 09:46:31 --> Model "Emails_model" initialized
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251211003
+INFO - 2025-12-17 09:46:31 --> Model "Currencies_model" initialized
+ERROR - 2025-12-17 09:46:31 --> Could not find the language line "Paid Amount(Rs)"
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoice_preview_html.php
+INFO - 2025-12-17 09:46:31 --> Model "Filters_model" initialized
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/filters.php
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/reminder_fields.php
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/modals/reminder.php
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/emails_tracking.php
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/groups/_statement_period_select.php
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoice_send_to_client.php
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/credit_notes/apply_invoice_credits.php
+DEBUG - 2025-12-17 09:46:31 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:31 --> format_invoice_number: Final formatted number - 251211003
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/credit_notes/invoice_create_credit_note_confirm.php
+DEBUG - 2025-12-17 09:46:31 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoice_preview_template.php
+INFO - 2025-12-17 09:46:31 --> Final output sent to browser
+DEBUG - 2025-12-17 09:46:31 --> Total execution time: 1.1628
+INFO - 2025-12-17 05:16:35 --> Config Class Initialized
+INFO - 2025-12-17 05:16:35 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:35 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:35 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:35 --> URI Class Initialized
+INFO - 2025-12-17 05:16:35 --> Router Class Initialized
+INFO - 2025-12-17 05:16:35 --> Output Class Initialized
+INFO - 2025-12-17 05:16:35 --> Security Class Initialized
+DEBUG - 2025-12-17 05:16:35 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:35 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:35 --> Input Class Initialized
+INFO - 2025-12-17 05:16:35 --> Language Class Initialized
+INFO - 2025-12-17 05:16:35 --> Config Class Initialized
+INFO - 2025-12-17 05:16:35 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:35 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:35 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:35 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:35 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:35 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:35 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:35 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:35 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:35 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:35 --> App_Model class loaded
+INFO - 2025-12-17 09:46:35 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:35 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:35 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:35 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:35 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:35 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:35 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:35 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:35 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/head.php
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/started_timers.php
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/notifications.php
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/header.php
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/setup_menu.php
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/projects/pinned.php
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/aside.php
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/quick_stats.php
+ERROR - 2025-12-17 09:46:35 --> Could not find the language line "New Patient"
+ERROR - 2025-12-17 09:46:35 --> Could not find the language line "Run Action"
+INFO - 2025-12-17 09:46:35 --> Model "Filters_model" initialized
+ERROR - 2025-12-17 09:46:35 --> Could not find the language line "Bill No"
+ERROR - 2025-12-17 09:46:35 --> Could not find the language line "Ref.By"
+ERROR - 2025-12-17 09:46:35 --> Could not find the language line "discount"
+ERROR - 2025-12-17 09:46:35 --> Could not find the language line "Paid Amount"
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/table_html.php
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/list_template.php
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/modals/sales_attach_file.php
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/scripts.php
+DEBUG - 2025-12-17 09:46:35 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/manage.php
+INFO - 2025-12-17 09:46:35 --> Final output sent to browser
+DEBUG - 2025-12-17 09:46:35 --> Total execution time: 0.3083
+INFO - 2025-12-17 05:16:35 --> Config Class Initialized
+INFO - 2025-12-17 05:16:35 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:35 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:35 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:35 --> URI Class Initialized
+INFO - 2025-12-17 05:16:35 --> Router Class Initialized
+INFO - 2025-12-17 05:16:35 --> Output Class Initialized
+INFO - 2025-12-17 05:16:35 --> Security Class Initialized
+DEBUG - 2025-12-17 05:16:35 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:35 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:35 --> Input Class Initialized
+INFO - 2025-12-17 05:16:35 --> Language Class Initialized
+INFO - 2025-12-17 05:16:35 --> Config Class Initialized
+INFO - 2025-12-17 05:16:35 --> Hooks Class Initialized
+INFO - 2025-12-17 05:16:35 --> Config Class Initialized
+INFO - 2025-12-17 05:16:35 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:16:35 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:35 --> Config Class Initialized
+INFO - 2025-12-17 05:16:35 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:35 --> Loader Class Initialized
+DEBUG - 2025-12-17 05:16:35 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:35 --> URI Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:35 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:35 --> Config Class Initialized
+INFO - 2025-12-17 05:16:35 --> Hooks Class Initialized
+INFO - 2025-12-17 05:16:35 --> URI Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:35 --> Router Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:35 --> Router Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:35 --> Output Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:35 --> Output Class Initialized
+INFO - 2025-12-17 05:16:35 --> Security Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:35 --> Security Class Initialized
+DEBUG - 2025-12-17 05:16:35 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: core_hooks_helper
+DEBUG - 2025-12-17 05:16:35 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:16:35 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:35 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:16:35 --> CSRF token verified
+DEBUG - 2025-12-17 05:16:35 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:35 --> Input Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:35 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:35 --> URI Class Initialized
+INFO - 2025-12-17 05:16:35 --> CSRF token verified
+INFO - 2025-12-17 05:16:35 --> Input Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:35 --> Language Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:35 --> Language Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:35 --> Router Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:35 --> Output Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:35 --> Config Class Initialized
+INFO - 2025-12-17 05:16:35 --> Security Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:35 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:35 --> Config Class Initialized
+DEBUG - 2025-12-17 05:16:35 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:35 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:35 --> CSRF cookie sent
+INFO - 2025-12-17 05:16:35 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:35 --> Input Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:35 --> Language Class Initialized
+INFO - 2025-12-17 05:16:35 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:35 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:36 --> Config Class Initialized
+INFO - 2025-12-17 05:16:36 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:36 --> Loader Class Initialized
+INFO - 2025-12-17 05:16:36 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:36 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:36 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:36 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:36 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:36 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:36 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:16:36 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:36 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:36 --> Image Lib Class Initialized
+INFO - 2025-12-17 05:16:36 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: leads_helper
+DEBUG - 2025-12-17 05:16:36 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:36 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:36 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:16:36 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:36 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:16:36 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:36 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:16:36 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:36 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:16:36 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:36 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:16:36 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:16:36 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:36 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:16:36 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:36 --> App_Model class loaded
+INFO - 2025-12-17 09:46:36 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:36 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:36 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:36 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:36 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:36 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:36 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:36 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:36 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:36 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:46:36 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
+INFO - 2025-12-17 09:46:36 --> Final output sent to browser
+DEBUG - 2025-12-17 09:46:36 --> Total execution time: 0.3214
+INFO - 2025-12-17 05:16:36 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:36 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:36 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:36 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:36 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:36 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:36 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:36 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:36 --> App_Model class loaded
+INFO - 2025-12-17 09:46:36 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:36 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:36 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:36 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:36 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:36 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:36 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:36 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:36 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:36 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251211003
+INFO - 2025-12-17 09:46:36 --> Model "Currencies_model" initialized
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"240","date":"2025-11-21","number":"5","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 5, Number Padded: 005
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251121005
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"196","date":"2025-11-10","number":"2","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 2, Number Padded: 002
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251110002
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"227","date":"2025-11-20","number":"8","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 8, Number Padded: 008
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251120008
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"241","date":"2025-11-21","number":"6","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 6, Number Padded: 006
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251121006
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"179","date":"2025-10-07","number":"999","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251007, Number Raw: 999, Number Padded: 999
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251007999
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"178","date":"2025-10-07","number":"1","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251007, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251007001
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"276","date":"2025-11-22","number":"15","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 15, Number Padded: 015
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251122015
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"261","date":"2025-11-21","number":"26","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 26, Number Padded: 026
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251121026
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"210","date":"2025-11-18","number":"2","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251118, Number Raw: 2, Number Padded: 002
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251118002
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"229","date":"2025-11-20","number":"10","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 10, Number Padded: 010
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251120010
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"219","date":"2025-11-18","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251118, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251118011
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"187","date":"2025-11-05","number":"1007","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1007, Number Padded: 1007
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 2511051007
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"185","date":"2025-11-05","number":"1005","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1005, Number Padded: 1005
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 2511051005
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"201","date":"2025-11-10","number":"7","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 7, Number Padded: 007
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251110007
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"194","date":"2025-11-05","number":"1014","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1014, Number Padded: 1014
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 2511051014
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"271","date":"2025-11-22","number":"10","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 10, Number Padded: 010
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251122010
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"262","date":"2025-11-22","number":"1","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251122001
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"230","date":"2025-11-20","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251120011
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"238","date":"2025-11-21","number":"3","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251121003
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"220","date":"2025-11-20","number":"1","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251120001
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"272","date":"2025-11-22","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251122011
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"197","date":"2025-11-10","number":"3","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251110003
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"250","date":"2025-11-21","number":"15","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 15, Number Padded: 015
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251121015
+DEBUG - 2025-12-17 09:46:36 --> format_invoice_number: Invoice fetched - {"id":"248","date":"2025-11-21","number":"13","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 13, Number Padded: 013
+ERROR - 2025-12-17 09:46:36 --> format_invoice_number: Final formatted number - 251121013
+DEBUG - 2025-12-17 09:46:36 --> Totals Calculated: Subtotal = 182000
+DEBUG - 2025-12-17 09:46:36 --> Totals Calculated: Discount Total = 10050
+DEBUG - 2025-12-17 09:46:36 --> Totals Calculated: Total = 171950
+DEBUG - 2025-12-17 09:46:36 --> Totals Calculated: Total Paid = 133450
+DEBUG - 2025-12-17 09:46:36 --> Totals Calculated: Balance = 38500
+DEBUG - 2025-12-17 09:46:36 --> Totals Calculated: Service Charge = 3640
+INFO - 2025-12-17 05:16:36 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:36 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:36 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:36 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:36 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:36 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:36 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:36 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:36 --> App_Model class loaded
+INFO - 2025-12-17 09:46:36 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:36 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:36 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:36 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:36 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:36 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:36 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:36 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:36 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:36 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Proposals_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Currencies_model" initialized
+DEBUG - 2025-12-17 09:46:36 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoices_total_template.php
+INFO - 2025-12-17 09:46:36 --> Final output sent to browser
+DEBUG - 2025-12-17 09:46:36 --> Total execution time: 0.7003
+INFO - 2025-12-17 05:16:36 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:16:36 --> User Agent Class Initialized
+INFO - 2025-12-17 05:16:36 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:16:36 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:16:36 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:16:36 --> Encryption Class Initialized
+INFO - 2025-12-17 05:16:36 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:16:36 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:16:36 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:16:36 --> App_Model class loaded
+INFO - 2025-12-17 09:46:36 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:46:36 --> Controller Class Initialized
+INFO - 2025-12-17 09:46:36 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:46:36 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:46:36 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:46:36 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:46:36 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:46:36 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:46:36 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:46:36 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:46:36 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:46:36 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
+INFO - 2025-12-17 05:17:03 --> Config Class Initialized
+INFO - 2025-12-17 05:17:03 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:17:03 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:03 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:03 --> URI Class Initialized
+INFO - 2025-12-17 05:17:03 --> Router Class Initialized
+INFO - 2025-12-17 05:17:03 --> Output Class Initialized
+INFO - 2025-12-17 05:17:03 --> Security Class Initialized
+DEBUG - 2025-12-17 05:17:03 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:03 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:03 --> Input Class Initialized
+INFO - 2025-12-17 05:17:03 --> Language Class Initialized
+INFO - 2025-12-17 05:17:03 --> Config Class Initialized
+INFO - 2025-12-17 05:17:03 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:03 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:03 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:03 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:03 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:03 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:03 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:03 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:03 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:03 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:03 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:03 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:03 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:03 --> App_Model class loaded
+INFO - 2025-12-17 09:47:03 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:03 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:03 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:03 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:03 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:03 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:03 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:03 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:03 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:03 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Proposals_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Payments_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Email_schedule_model" initialized
+INFO - 2025-12-17 09:47:03 --> Model "Emails_model" initialized
+DEBUG - 2025-12-17 09:47:03 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:03 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:03 --> format_invoice_number: Final formatted number - 251211003
+INFO - 2025-12-17 09:47:03 --> Model "Currencies_model" initialized
+ERROR - 2025-12-17 09:47:03 --> Could not find the language line "Paid Amount(Rs)"
+DEBUG - 2025-12-17 09:47:03 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoice_preview_html.php
+INFO - 2025-12-17 09:47:03 --> Model "Filters_model" initialized
+DEBUG - 2025-12-17 09:47:03 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/filters.php
+DEBUG - 2025-12-17 09:47:03 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/reminder_fields.php
+DEBUG - 2025-12-17 09:47:03 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/modals/reminder.php
+DEBUG - 2025-12-17 09:47:03 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/emails_tracking.php
+DEBUG - 2025-12-17 09:47:03 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/groups/_statement_period_select.php
+DEBUG - 2025-12-17 09:47:03 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoice_send_to_client.php
+DEBUG - 2025-12-17 09:47:03 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/credit_notes/apply_invoice_credits.php
+DEBUG - 2025-12-17 09:47:03 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:03 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:03 --> format_invoice_number: Final formatted number - 251211003
+DEBUG - 2025-12-17 09:47:03 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/credit_notes/invoice_create_credit_note_confirm.php
+DEBUG - 2025-12-17 09:47:03 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoice_preview_template.php
+INFO - 2025-12-17 09:47:03 --> Final output sent to browser
+DEBUG - 2025-12-17 09:47:03 --> Total execution time: 0.4128
+INFO - 2025-12-17 05:17:36 --> Config Class Initialized
+INFO - 2025-12-17 05:17:36 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:17:36 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:36 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:36 --> URI Class Initialized
+INFO - 2025-12-17 05:17:36 --> Router Class Initialized
+INFO - 2025-12-17 05:17:36 --> Output Class Initialized
+INFO - 2025-12-17 05:17:36 --> Security Class Initialized
+DEBUG - 2025-12-17 05:17:36 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:36 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:36 --> Input Class Initialized
+INFO - 2025-12-17 05:17:36 --> Language Class Initialized
+INFO - 2025-12-17 05:17:36 --> Config Class Initialized
+INFO - 2025-12-17 05:17:36 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:36 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:36 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:36 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:36 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:36 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:36 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:36 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:36 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:36 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:36 --> App_Model class loaded
+INFO - 2025-12-17 09:47:36 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:36 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:36 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:36 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:36 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:36 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:36 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:36 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:36 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/head.php
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/started_timers.php
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/notifications.php
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/header.php
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/setup_menu.php
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/projects/pinned.php
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/aside.php
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/quick_stats.php
+ERROR - 2025-12-17 09:47:36 --> Could not find the language line "New Patient"
+ERROR - 2025-12-17 09:47:36 --> Could not find the language line "Run Action"
+INFO - 2025-12-17 09:47:36 --> Model "Filters_model" initialized
+ERROR - 2025-12-17 09:47:36 --> Could not find the language line "Bill No"
+ERROR - 2025-12-17 09:47:36 --> Could not find the language line "Ref.By"
+ERROR - 2025-12-17 09:47:36 --> Could not find the language line "discount"
+ERROR - 2025-12-17 09:47:36 --> Could not find the language line "Paid Amount"
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/table_html.php
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/list_template.php
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/modals/sales_attach_file.php
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/scripts.php
+DEBUG - 2025-12-17 09:47:36 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/manage.php
+INFO - 2025-12-17 09:47:36 --> Final output sent to browser
+DEBUG - 2025-12-17 09:47:36 --> Total execution time: 0.3914
+INFO - 2025-12-17 05:17:36 --> Config Class Initialized
+INFO - 2025-12-17 05:17:36 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:17:36 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:36 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:36 --> URI Class Initialized
+INFO - 2025-12-17 05:17:36 --> Router Class Initialized
+INFO - 2025-12-17 05:17:36 --> Output Class Initialized
+INFO - 2025-12-17 05:17:36 --> Security Class Initialized
+DEBUG - 2025-12-17 05:17:36 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:36 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:36 --> Input Class Initialized
+INFO - 2025-12-17 05:17:36 --> Language Class Initialized
+INFO - 2025-12-17 05:17:36 --> Config Class Initialized
+INFO - 2025-12-17 05:17:36 --> Hooks Class Initialized
+INFO - 2025-12-17 05:17:36 --> Config Class Initialized
+INFO - 2025-12-17 05:17:36 --> Hooks Class Initialized
+INFO - 2025-12-17 05:17:36 --> Config Class Initialized
+INFO - 2025-12-17 05:17:36 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:17:36 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:36 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:36 --> URI Class Initialized
+INFO - 2025-12-17 05:17:36 --> Config Class Initialized
+INFO - 2025-12-17 05:17:36 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:36 --> Router Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: files_helper
+DEBUG - 2025-12-17 05:17:36 --> UTF-8 Support Enabled
+DEBUG - 2025-12-17 05:17:36 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:36 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:36 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:36 --> Output Class Initialized
+INFO - 2025-12-17 05:17:36 --> URI Class Initialized
+INFO - 2025-12-17 05:17:36 --> Config Class Initialized
+INFO - 2025-12-17 05:17:36 --> URI Class Initialized
+INFO - 2025-12-17 05:17:36 --> Hooks Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:36 --> Security Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:36 --> Router Class Initialized
+DEBUG - 2025-12-17 05:17:36 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:36 --> Router Class Initialized
+INFO - 2025-12-17 05:17:36 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:36 --> CSRF token verified
+INFO - 2025-12-17 05:17:36 --> Output Class Initialized
+INFO - 2025-12-17 05:17:36 --> Input Class Initialized
+INFO - 2025-12-17 05:17:36 --> Output Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:36 --> Language Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:36 --> Security Class Initialized
+INFO - 2025-12-17 05:17:36 --> Security Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: core_hooks_helper
+DEBUG - 2025-12-17 05:17:36 --> UTF-8 Support Enabled
+DEBUG - 2025-12-17 05:17:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2025-12-17 05:17:36 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:36 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:36 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:36 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:36 --> CSRF token verified
+INFO - 2025-12-17 05:17:36 --> Input Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:36 --> Input Class Initialized
+INFO - 2025-12-17 05:17:36 --> URI Class Initialized
+INFO - 2025-12-17 05:17:36 --> Language Class Initialized
+INFO - 2025-12-17 05:17:36 --> Language Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:36 --> Router Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:36 --> Config Class Initialized
+INFO - 2025-12-17 05:17:36 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:36 --> Output Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:36 --> Security Class Initialized
+INFO - 2025-12-17 05:17:36 --> Config Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:36 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: func_helper
+DEBUG - 2025-12-17 05:17:36 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:36 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:36 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:36 --> Input Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:36 --> Language Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:36 --> Config Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:36 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:36 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:36 --> Config Class Initialized
+INFO - 2025-12-17 05:17:36 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:36 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:37 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:37 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:37 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:37 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:37 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:37 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:37 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:37 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:37 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:37 --> Image Lib Class Initialized
+INFO - 2025-12-17 05:17:37 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:37 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:37 --> Helper loaded: upload_helper
+DEBUG - 2025-12-17 05:17:37 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:37 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:37 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:37 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:37 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:37 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:37 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:37 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:37 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:37 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:37 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:37 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:37 --> App_Model class loaded
+INFO - 2025-12-17 09:47:37 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:37 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:37 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:37 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:37 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:37 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:37 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:37 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
+INFO - 2025-12-17 09:47:37 --> Final output sent to browser
+DEBUG - 2025-12-17 09:47:37 --> Total execution time: 0.3672
+INFO - 2025-12-17 05:17:37 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:37 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:37 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:37 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:37 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:37 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:37 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:37 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:37 --> App_Model class loaded
+INFO - 2025-12-17 09:47:37 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:37 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:37 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:37 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:37 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:37 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:37 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:37 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251211003
+INFO - 2025-12-17 09:47:37 --> Model "Currencies_model" initialized
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"240","date":"2025-11-21","number":"5","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 5, Number Padded: 005
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251121005
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"196","date":"2025-11-10","number":"2","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 2, Number Padded: 002
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251110002
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"227","date":"2025-11-20","number":"8","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 8, Number Padded: 008
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251120008
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"241","date":"2025-11-21","number":"6","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 6, Number Padded: 006
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251121006
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"179","date":"2025-10-07","number":"999","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251007, Number Raw: 999, Number Padded: 999
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251007999
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"178","date":"2025-10-07","number":"1","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251007, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251007001
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"276","date":"2025-11-22","number":"15","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 15, Number Padded: 015
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251122015
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"261","date":"2025-11-21","number":"26","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 26, Number Padded: 026
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251121026
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"210","date":"2025-11-18","number":"2","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251118, Number Raw: 2, Number Padded: 002
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251118002
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"229","date":"2025-11-20","number":"10","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 10, Number Padded: 010
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251120010
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"219","date":"2025-11-18","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251118, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251118011
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"187","date":"2025-11-05","number":"1007","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1007, Number Padded: 1007
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 2511051007
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"185","date":"2025-11-05","number":"1005","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1005, Number Padded: 1005
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 2511051005
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"201","date":"2025-11-10","number":"7","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 7, Number Padded: 007
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251110007
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"194","date":"2025-11-05","number":"1014","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1014, Number Padded: 1014
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 2511051014
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"271","date":"2025-11-22","number":"10","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 10, Number Padded: 010
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251122010
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"262","date":"2025-11-22","number":"1","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251122001
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"230","date":"2025-11-20","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251120011
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"238","date":"2025-11-21","number":"3","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251121003
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"220","date":"2025-11-20","number":"1","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251120001
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"272","date":"2025-11-22","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251122011
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"197","date":"2025-11-10","number":"3","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251110003
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"250","date":"2025-11-21","number":"15","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 15, Number Padded: 015
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251121015
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"248","date":"2025-11-21","number":"13","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 13, Number Padded: 013
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251121013
+DEBUG - 2025-12-17 09:47:37 --> Totals Calculated: Subtotal = 182000
+DEBUG - 2025-12-17 09:47:37 --> Totals Calculated: Discount Total = 10050
+DEBUG - 2025-12-17 09:47:37 --> Totals Calculated: Total = 171950
+DEBUG - 2025-12-17 09:47:37 --> Totals Calculated: Total Paid = 133450
+DEBUG - 2025-12-17 09:47:37 --> Totals Calculated: Balance = 38500
+DEBUG - 2025-12-17 09:47:37 --> Totals Calculated: Service Charge = 3640
+INFO - 2025-12-17 05:17:37 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:37 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:37 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:37 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:37 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:37 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:37 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:37 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:37 --> App_Model class loaded
+INFO - 2025-12-17 09:47:37 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:37 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:37 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:37 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:37 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:37 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:37 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:37 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Proposals_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Currencies_model" initialized
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoices_total_template.php
+INFO - 2025-12-17 09:47:37 --> Final output sent to browser
+DEBUG - 2025-12-17 09:47:37 --> Total execution time: 0.7025
+INFO - 2025-12-17 05:17:37 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:37 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:37 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:37 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:37 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:37 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:37 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:37 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:37 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:37 --> App_Model class loaded
+INFO - 2025-12-17 09:47:37 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:37 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:37 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:37 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:37 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:37 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:37 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:37 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Proposals_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Payments_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Email_schedule_model" initialized
+INFO - 2025-12-17 09:47:37 --> Model "Emails_model" initialized
+DEBUG - 2025-12-17 09:47:37 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:37 --> format_invoice_number: Final formatted number - 251211003
+INFO - 2025-12-17 09:47:37 --> Model "Currencies_model" initialized
+ERROR - 2025-12-17 09:47:37 --> Could not find the language line "Paid Amount(Rs)"
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoice_preview_html.php
+INFO - 2025-12-17 09:47:37 --> Model "Filters_model" initialized
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/filters.php
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/reminder_fields.php
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/modals/reminder.php
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/emails_tracking.php
+DEBUG - 2025-12-17 09:47:37 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/clients/groups/_statement_period_select.php
+DEBUG - 2025-12-17 09:47:38 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoice_send_to_client.php
+DEBUG - 2025-12-17 09:47:38 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/credit_notes/apply_invoice_credits.php
+DEBUG - 2025-12-17 09:47:38 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:38 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:38 --> format_invoice_number: Final formatted number - 251211003
+DEBUG - 2025-12-17 09:47:38 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/credit_notes/invoice_create_credit_note_confirm.php
+DEBUG - 2025-12-17 09:47:38 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoice_preview_template.php
+INFO - 2025-12-17 09:47:38 --> Final output sent to browser
+DEBUG - 2025-12-17 09:47:38 --> Total execution time: 1.0646
+INFO - 2025-12-17 05:17:38 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:38 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:38 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:38 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:38 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:38 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:38 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:38 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:38 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:38 --> App_Model class loaded
+INFO - 2025-12-17 09:47:38 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:38 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:38 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:38 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:38 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:38 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:38 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:38 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:38 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:38 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:38 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:47:38 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
+INFO - 2025-12-17 05:17:40 --> Config Class Initialized
+INFO - 2025-12-17 05:17:40 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:17:40 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:40 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:40 --> URI Class Initialized
+INFO - 2025-12-17 05:17:40 --> Router Class Initialized
+INFO - 2025-12-17 05:17:40 --> Output Class Initialized
+INFO - 2025-12-17 05:17:40 --> Security Class Initialized
+DEBUG - 2025-12-17 05:17:40 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:40 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:40 --> Input Class Initialized
+INFO - 2025-12-17 05:17:40 --> Language Class Initialized
+INFO - 2025-12-17 05:17:40 --> Config Class Initialized
+INFO - 2025-12-17 05:17:40 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:40 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:40 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:40 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:40 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:40 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:40 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:40 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:40 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:40 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:40 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:40 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:40 --> App_Model class loaded
+INFO - 2025-12-17 09:47:40 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:40 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:40 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:40 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:40 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:40 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:40 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:40 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:40 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:40 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:40 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:40 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:40 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 05:17:40 --> Config Class Initialized
+INFO - 2025-12-17 05:17:40 --> Hooks Class Initialized
+INFO - 2025-12-17 09:47:40 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:40 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:40 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:40 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+DEBUG - 2025-12-17 05:17:40 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:40 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:40 --> URI Class Initialized
+INFO - 2025-12-17 05:17:40 --> Router Class Initialized
+INFO - 2025-12-17 05:17:40 --> Output Class Initialized
+INFO - 2025-12-17 05:17:40 --> Security Class Initialized
+DEBUG - 2025-12-17 05:17:40 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:40 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:40 --> Input Class Initialized
+INFO - 2025-12-17 05:17:40 --> Language Class Initialized
+ERROR - 2025-12-17 09:47:40 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 05:17:40 --> Config Class Initialized
+INFO - 2025-12-17 05:17:40 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:40 --> Helper loaded: files_helper
+INFO - 2025-12-17 09:47:40 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 05:17:40 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: url_helper
+INFO - 2025-12-17 09:47:40 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 05:17:40 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: general_helper
+INFO - 2025-12-17 09:47:40 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:40 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 05:17:40 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: func_helper
+INFO - 2025-12-17 09:47:40 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 05:17:40 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: table_helper
+INFO - 2025-12-17 09:47:40 --> Model "Leads_model" initialized
+INFO - 2025-12-17 05:17:40 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 09:47:40 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 05:17:40 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 09:47:40 --> Model "Departments_model" initialized
+INFO - 2025-12-17 05:17:40 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 09:47:40 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 05:17:40 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: fields_helper
+INFO - 2025-12-17 09:47:40 --> Model "Proposals_model" initialized
+INFO - 2025-12-17 05:17:40 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: relation_helper
+INFO - 2025-12-17 09:47:40 --> Model "Payments_model" initialized
+INFO - 2025-12-17 05:17:40 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:40 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 09:47:40 --> Model "Email_schedule_model" initialized
+INFO - 2025-12-17 05:17:40 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:40 --> Database Driver Class Initialized
+DEBUG - 2025-12-17 09:47:40 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:40 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:40 --> format_invoice_number: Final formatted number - 251211003
+INFO - 2025-12-17 09:47:40 --> Model "Taxes_model" initialized
+INFO - 2025-12-17 09:47:40 --> Model "Invoice_items_model" initialized
+INFO - 2025-12-17 09:47:40 --> Model "Currencies_model" initialized
+DEBUG - 2025-12-17 09:47:40 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/head.php
+DEBUG - 2025-12-17 09:47:40 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/started_timers.php
+DEBUG - 2025-12-17 09:47:40 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/notifications.php
+DEBUG - 2025-12-17 09:47:40 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/header.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/setup_menu.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/projects/pinned.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/aside.php
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"279","sent":"0","datesend":null,"clientid":"61","deleted_customer_name":null,"number":"3","prefix":"","number_format":"5","formatted_number":"251211003","datecreated":"2025-12-11 13:00:11","date":"2025-12-11","duedate":"2026-01-10","currency":"3","subtotal":"8500.00","total_tax":"0.00","total":"7650.00","adjustment":"0.00","addedfrom":"2","hash":"f0f8ed2fdf2258bf8edecd8daf2c9b80","status":"2","clientnote":null,"adminnote":"","last_overdue_reminder":null,"last_due_reminder":null,"cancel_overdue_reminders":"0","allowed_payment_modes":"a:5:{i:0;s:1:\"1\";i:1;s:1:\"2\";i:2;s:1:\"3\";i:3;s:1:\"6\";i:4;s:2:\"10\";}","token":null,"discount_percent":"10.00","discount_total":"850.00","discount_type":"after_tax","recurring":"0","recurring_type":null,"custom_recurring":"0","cycles":"0","total_cycles":"0","is_recurring_from":null,"last_recurring_date":null,"terms":null,"sale_agent":"2","billing_street":"","billing_city":"","billing_state":"","billing_zip":"","billing_country":"102","shipping_street":null,"shipping_city":null,"shipping_state":null,"shipping_zip":null,"shipping_country":null,"include_shipping":"0","show_shipping_on_invoice":"1","show_quantity_as":"1","project_id":"0","subscription_id":"0","short_link":null,"affiliate_member_id":null,"symbol":" \u20b9","name":"INR","decimal_separator":".","thousand_separator":",","placement":"before","isdefault":"1","currencyid":"3","currency_name":"INR","total_left_to_pay":"0.00","items":[{"id":"318","rel_id":"279","rel_type":"invoice","description":"CT","long_description":"ABDOMEN & PELVIS (CONTRAST)","qty":"1.00","rate":"8500.00","unit":null,"item_order":"1"}],"attachments":[],"visible_attachments_to_customer_found":false,"client":{"userid":"61","company":"vvv","vat":null,"phonenumber":null,"country":"0","city":null,"zip":null,"state":null,"address":null,"website":null,"datecreated":"2025-09-22 12:23:14","active":"1","leadid":null,"billing_street":null,"billing_city":null,"billing_state":null,"billing_zip":null,"billing_country":"0","shipping_street":null,"shipping_city":null,"shipping_state":null,"shipping_zip":null,"shipping_country":"0","longitude":null,"latitude":null,"default_language":null,"default_currency":"0","show_primary_contact":"0","stripe_id":null,"registration_confirmed":"1","addedfrom":"2","affiliate_code":""},"payments":[{"id":"2","invoiceid":"279","amount":"7650.00","paymentmode":"2","paymentmethod":null,"date":"2025-12-11","daterecorded":"2025-12-11 13:00:43","note":"","transactionid":"54541","name":"Cash","description":"","show_on_pdf":"0","invoices_only":"0","expenses_only":"0","selected_by_default":"1","active":"1","paymentid":"234"}],"scheduled_email":null}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251211003
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/merge_invoice.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/bill_expenses.php
+DEBUG - 2025-12-17 09:47:41 --> Custom Fields rel_id: '279'
+DEBUG - 2025-12-17 09:47:41 --> Custom Fields Output (with CSS filtering): <div class="row custom-fields-form-row"><div class="col-md-3"><a href="http://localhost/perfex_crm/admin/custom_fields/field/78" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group"><label for="custom_fields[invoice][78]" class="control-label">Sex</label><select data-fieldto="invoice" data-fieldid="78"  name="custom_fields[invoice][78]" class="select-placeholder selectpicker form-control" data-width="100%" data-none-selected-text="Nothing selected"  data-live-search="true"><option value=""></option><option value="Male" selected>Male</option><option value="Female">Female</option></select></div></div><div class="col-md-4"><a href="http://localhost/perfex_crm/admin/custom_fields/field/79" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][79]"><label for="custom_fields[invoice][79]" class="control-label">Mobile.no</label><input type="number" id="custom_fields[invoice][79]" name="custom_fields[invoice][79]" class="form-control" data-fieldto="invoice" data-fieldid="79" value="06362492878"></div></div><div class="col-md-4"><a href="http://localhost/perfex_crm/admin/custom_fields/field/80" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][80]"><label for="custom_fields[invoice][80]" class="control-label">Cash Amount</label><input type="text" id="custom_fields[invoice][80]" name="custom_fields[invoice][80]" class="form-control" data-fieldto="invoice" data-fieldid="80" value=""></div></div><div class="col-md-4"><a href="http://localhost/perfex_crm/admin/custom_fields/field/81" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][81]"><label for="custom_fields[invoice][81]" class="control-label">Cheque Amount</label><input type="text" id="custom_fields[invoice][81]" name="custom_fields[invoice][81]" class="form-control" data-fieldto="invoice" data-fieldid="81" value=""></div></div><div class="col-md-3"><a href="http://localhost/perfex_crm/admin/custom_fields/field/82" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][82]"><label for="custom_fields[invoice][82]" class="control-label">CC</label><input type="text" id="custom_fields[invoice][82]" name="custom_fields[invoice][82]" class="form-control" data-fieldto="invoice" data-fieldid="82" value=""></div></div><div class="col-md-4"><a href="http://localhost/perfex_crm/admin/custom_fields/field/92" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][92]"><label for="custom_fields[invoice][92]" class="control-label">UPI</label><input type="text" id="custom_fields[invoice][92]" name="custom_fields[invoice][92]" class="form-control" data-fieldto="invoice" data-fieldid="92" value=""></div></div><div class="col-md-6"><a href="http://localhost/perfex_crm/admin/custom_fields/field/93" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][93]"><label for="custom_fields[invoice][93]" class="control-label">Payment Details</label><input type="text" id="custom_fields[invoice][93]" name="custom_fields[invoice][93]" class="form-control" data-fieldto="invoice" data-fieldid="93" value=""></div></div><div class="col-md-3"><a href="http://localhost/perfex_crm/admin/custom_fields/field/77" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][77]"><label for="custom_fields[invoice][77]" class="control-label">Age</label><input type="text" id="custom_fields[invoice][77]" name="custom_fields[invoice][77]" class="form-control" data-fieldto="invoice" data-fieldid="77" value=""></div></div><div class="col-md-12"><a href="http://localhost/perfex_crm/admin/custom_fields/field/98" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][98]"><label for="custom_fields[invoice][98]" class="control-label">Age (Years)</label><input type="text" id="custom_fields[invoice][98]" name="custom_fields[invoice][98]" class="form-control" data-fieldto="invoice" data-fieldid="98" value="23"></div></div><div class="col-md-12"><a href="http://localhost/perfex_crm/admin/custom_fields/field/97" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group"><label for="custom_fields[invoice][97]" class="control-label">AgeOption</label><select data-fieldto="invoice" data-fieldid="97"  name="custom_fields[invoice][97]" class="select-placeholder selectpicker form-control" data-width="100%" data-none-selected-text="Nothing selected"  data-live-search="true"><option value=""></option><option value="YEAR">YEAR</option><option value="MONTH">MONTH</option></select></div></div><div class="col-md-12"><a href="http://localhost/perfex_crm/admin/custom_fields/field/99" tabindex="-1" target="_blank" class="custom-field-inline-edit-link"><i class="fa-regular fa-pen-to-square"></i></a><div class="form-group" app-field-wrapper="custom_fields[invoice][99]"><label for="custom_fields[invoice][99]" class="control-label">Age (Months)</label><input type="text" id="custom_fields[invoice][99]" name="custom_fields[invoice][99]" class="form-control" data-fieldto="invoice" data-fieldid="99" value="3"></div></div></div>
+DEBUG - 2025-12-17 09:47:41 --> Age Years Field ID: 98, Age Months Field ID: 99
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoice_items/item_select.php
+ERROR - 2025-12-17 09:47:41 --> Severity: Warning --> Undefined array key "value" C:\xampp\htdocs\perfex_crm\application\views\admin\invoices\invoice_template.php 707
+DEBUG - 2025-12-17 09:47:41 --> Custom Fields WHERE: Array
+(
+)
+
+DEBUG - 2025-12-17 09:47:41 --> Custom Fields Returned: <td class="custom_field" data-id="84"><div class="form-group" app-field-wrapper=""><label for="" class="control-label">serv.charge</label><input type="number" id="" name="" class="form-control" data-fieldto="items" data-fieldid="84" value=""></div></td><td class="custom_field" data-id="91"><div class="form-group" app-field-wrapper=""><label for="" class="control-label">Commission</label><input type="text" id="" name="" class="form-control" data-fieldto="items" data-fieldid="91" value=""></div></td>
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoice_template.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoice_items/item.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/scripts.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoice.php
+INFO - 2025-12-17 09:47:41 --> Final output sent to browser
+DEBUG - 2025-12-17 09:47:41 --> Total execution time: 0.4290
+INFO - 2025-12-17 05:17:41 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:41 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:41 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:41 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:41 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:41 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:41 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:41 --> App_Model class loaded
+INFO - 2025-12-17 09:47:41 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:41 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:41 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:41 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:41 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:41 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:41 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:41 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/head.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/started_timers.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/notifications.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/header.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/setup_menu.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/projects/pinned.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/aside.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/quick_stats.php
+ERROR - 2025-12-17 09:47:41 --> Could not find the language line "New Patient"
+ERROR - 2025-12-17 09:47:41 --> Could not find the language line "Run Action"
+INFO - 2025-12-17 09:47:41 --> Model "Filters_model" initialized
+ERROR - 2025-12-17 09:47:41 --> Could not find the language line "Bill No"
+ERROR - 2025-12-17 09:47:41 --> Could not find the language line "Ref.By"
+ERROR - 2025-12-17 09:47:41 --> Could not find the language line "discount"
+ERROR - 2025-12-17 09:47:41 --> Could not find the language line "Paid Amount"
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/table_html.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/list_template.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/modals/sales_attach_file.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/scripts.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/manage.php
+INFO - 2025-12-17 09:47:41 --> Final output sent to browser
+DEBUG - 2025-12-17 09:47:41 --> Total execution time: 0.4507
+INFO - 2025-12-17 05:17:41 --> Config Class Initialized
+INFO - 2025-12-17 05:17:41 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:17:41 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:41 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:41 --> URI Class Initialized
+INFO - 2025-12-17 05:17:41 --> Router Class Initialized
+INFO - 2025-12-17 05:17:41 --> Output Class Initialized
+INFO - 2025-12-17 05:17:41 --> Security Class Initialized
+DEBUG - 2025-12-17 05:17:41 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:41 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:41 --> Input Class Initialized
+INFO - 2025-12-17 05:17:41 --> Language Class Initialized
+INFO - 2025-12-17 05:17:41 --> Config Class Initialized
+INFO - 2025-12-17 05:17:41 --> Hooks Class Initialized
+INFO - 2025-12-17 05:17:41 --> Config Class Initialized
+INFO - 2025-12-17 05:17:41 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:17:41 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:41 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:41 --> URI Class Initialized
+INFO - 2025-12-17 05:17:41 --> Config Class Initialized
+INFO - 2025-12-17 05:17:41 --> Config Class Initialized
+INFO - 2025-12-17 05:17:41 --> Hooks Class Initialized
+INFO - 2025-12-17 05:17:41 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:41 --> Router Class Initialized
+INFO - 2025-12-17 05:17:41 --> Output Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: files_helper
+DEBUG - 2025-12-17 05:17:41 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:41 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:41 --> Security Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:41 --> URI Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: url_helper
+DEBUG - 2025-12-17 05:17:41 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:41 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:41 --> CSRF token verified
+INFO - 2025-12-17 05:17:41 --> Input Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: file_helper
+DEBUG - 2025-12-17 05:17:41 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:41 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:41 --> Router Class Initialized
+INFO - 2025-12-17 05:17:41 --> Language Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:41 --> URI Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:41 --> Output Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:41 --> Router Class Initialized
+INFO - 2025-12-17 05:17:41 --> Security Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:41 --> Config Class Initialized
+INFO - 2025-12-17 05:17:41 --> Output Class Initialized
+INFO - 2025-12-17 05:17:41 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: assets_helper
+DEBUG - 2025-12-17 05:17:41 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:41 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:41 --> CSRF token verified
+INFO - 2025-12-17 05:17:41 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:41 --> Input Class Initialized
+INFO - 2025-12-17 05:17:41 --> Security Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:41 --> Language Class Initialized
+DEBUG - 2025-12-17 05:17:41 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:41 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:41 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:41 --> Input Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:41 --> Language Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:41 --> Config Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:41 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:41 --> Config Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:41 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:41 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:41 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:41 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:41 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:41 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:41 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:41 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:41 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:41 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:41 --> Image Lib Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: sales_helper
+DEBUG - 2025-12-17 05:17:41 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:41 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:41 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:41 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:41 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:41 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:41 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:41 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:41 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:41 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:41 --> App_Model class loaded
+INFO - 2025-12-17 09:47:41 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:41 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:41 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:41 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:41 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:41 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:41 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:41 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
+INFO - 2025-12-17 09:47:41 --> Final output sent to browser
+DEBUG - 2025-12-17 09:47:41 --> Total execution time: 0.3406
+INFO - 2025-12-17 05:17:41 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:41 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:41 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:41 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:41 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:41 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:41 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:41 --> App_Model class loaded
+INFO - 2025-12-17 09:47:41 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:41 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:41 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:41 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:41 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:41 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:41 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:41 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:41 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:41 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251211003
+INFO - 2025-12-17 09:47:41 --> Model "Currencies_model" initialized
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"240","date":"2025-11-21","number":"5","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 5, Number Padded: 005
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251121005
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"196","date":"2025-11-10","number":"2","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 2, Number Padded: 002
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251110002
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"227","date":"2025-11-20","number":"8","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 8, Number Padded: 008
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251120008
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"241","date":"2025-11-21","number":"6","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 6, Number Padded: 006
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251121006
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"179","date":"2025-10-07","number":"999","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251007, Number Raw: 999, Number Padded: 999
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251007999
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"178","date":"2025-10-07","number":"1","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251007, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251007001
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"276","date":"2025-11-22","number":"15","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 15, Number Padded: 015
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251122015
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"261","date":"2025-11-21","number":"26","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 26, Number Padded: 026
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251121026
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"210","date":"2025-11-18","number":"2","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251118, Number Raw: 2, Number Padded: 002
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251118002
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"229","date":"2025-11-20","number":"10","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 10, Number Padded: 010
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251120010
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"219","date":"2025-11-18","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251118, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251118011
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"187","date":"2025-11-05","number":"1007","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1007, Number Padded: 1007
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 2511051007
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"185","date":"2025-11-05","number":"1005","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1005, Number Padded: 1005
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 2511051005
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"201","date":"2025-11-10","number":"7","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 7, Number Padded: 007
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251110007
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"194","date":"2025-11-05","number":"1014","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1014, Number Padded: 1014
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 2511051014
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"271","date":"2025-11-22","number":"10","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 10, Number Padded: 010
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251122010
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"262","date":"2025-11-22","number":"1","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251122001
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"230","date":"2025-11-20","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251120011
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"238","date":"2025-11-21","number":"3","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251121003
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"220","date":"2025-11-20","number":"1","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251120001
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"272","date":"2025-11-22","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251122011
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"197","date":"2025-11-10","number":"3","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251110003
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"250","date":"2025-11-21","number":"15","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 15, Number Padded: 015
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251121015
+DEBUG - 2025-12-17 09:47:41 --> format_invoice_number: Invoice fetched - {"id":"248","date":"2025-11-21","number":"13","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 13, Number Padded: 013
+ERROR - 2025-12-17 09:47:41 --> format_invoice_number: Final formatted number - 251121013
+DEBUG - 2025-12-17 09:47:41 --> Totals Calculated: Subtotal = 182000
+DEBUG - 2025-12-17 09:47:41 --> Totals Calculated: Discount Total = 10050
+DEBUG - 2025-12-17 09:47:41 --> Totals Calculated: Total = 171950
+DEBUG - 2025-12-17 09:47:41 --> Totals Calculated: Total Paid = 133450
+DEBUG - 2025-12-17 09:47:41 --> Totals Calculated: Balance = 38500
+DEBUG - 2025-12-17 09:47:41 --> Totals Calculated: Service Charge = 3640
+INFO - 2025-12-17 05:17:41 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:41 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:41 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:41 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:41 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:41 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:41 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:41 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:41 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:42 --> App_Model class loaded
+INFO - 2025-12-17 09:47:42 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:42 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:42 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:42 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:42 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:42 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:42 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:42 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:42 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:42 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Proposals_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Currencies_model" initialized
+DEBUG - 2025-12-17 09:47:42 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoices_total_template.php
+INFO - 2025-12-17 09:47:42 --> Final output sent to browser
+DEBUG - 2025-12-17 09:47:42 --> Total execution time: 0.6734
+INFO - 2025-12-17 05:17:42 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:42 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:42 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:42 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:42 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:42 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:42 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:42 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:42 --> App_Model class loaded
+INFO - 2025-12-17 09:47:42 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:42 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:42 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:42 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:42 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:42 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:42 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:42 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:42 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:42 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:47:42 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
+INFO - 2025-12-17 05:17:42 --> Config Class Initialized
+INFO - 2025-12-17 05:17:42 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:17:42 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:42 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:42 --> URI Class Initialized
+INFO - 2025-12-17 05:17:42 --> Router Class Initialized
+INFO - 2025-12-17 05:17:42 --> Output Class Initialized
+INFO - 2025-12-17 05:17:42 --> Security Class Initialized
+DEBUG - 2025-12-17 05:17:42 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:42 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:42 --> Input Class Initialized
+INFO - 2025-12-17 05:17:42 --> Language Class Initialized
+INFO - 2025-12-17 05:17:42 --> Config Class Initialized
+INFO - 2025-12-17 05:17:42 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:42 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:42 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:42 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:42 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:42 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:42 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:42 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:42 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:42 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:42 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:42 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:42 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:42 --> App_Model class loaded
+INFO - 2025-12-17 09:47:42 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:42 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:42 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:42 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:42 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:42 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:42 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:42 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:42 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:42 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:42 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:47:42 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/head.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/tasks/started_timers.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/notifications.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/header.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/setup_menu.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/projects/pinned.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/aside.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/quick_stats.php
+ERROR - 2025-12-17 09:47:43 --> Could not find the language line "New Patient"
+ERROR - 2025-12-17 09:47:43 --> Could not find the language line "Run Action"
+INFO - 2025-12-17 09:47:43 --> Model "Filters_model" initialized
+ERROR - 2025-12-17 09:47:43 --> Could not find the language line "Bill No"
+ERROR - 2025-12-17 09:47:43 --> Could not find the language line "Ref.By"
+ERROR - 2025-12-17 09:47:43 --> Could not find the language line "discount"
+ERROR - 2025-12-17 09:47:43 --> Could not find the language line "Paid Amount"
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/table_html.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/list_template.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/modals/sales_attach_file.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/includes/scripts.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/manage.php
+INFO - 2025-12-17 09:47:43 --> Final output sent to browser
+DEBUG - 2025-12-17 09:47:43 --> Total execution time: 0.4980
+INFO - 2025-12-17 05:17:43 --> Config Class Initialized
+INFO - 2025-12-17 05:17:43 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:17:43 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:43 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:43 --> URI Class Initialized
+INFO - 2025-12-17 05:17:43 --> Router Class Initialized
+INFO - 2025-12-17 05:17:43 --> Output Class Initialized
+INFO - 2025-12-17 05:17:43 --> Security Class Initialized
+DEBUG - 2025-12-17 05:17:43 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:43 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:43 --> Input Class Initialized
+INFO - 2025-12-17 05:17:43 --> Language Class Initialized
+INFO - 2025-12-17 05:17:43 --> Config Class Initialized
+INFO - 2025-12-17 05:17:43 --> Hooks Class Initialized
+INFO - 2025-12-17 05:17:43 --> Config Class Initialized
+INFO - 2025-12-17 05:17:43 --> Hooks Class Initialized
+INFO - 2025-12-17 05:17:43 --> Config Class Initialized
+INFO - 2025-12-17 05:17:43 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:43 --> Config Class Initialized
+INFO - 2025-12-17 05:17:43 --> Hooks Class Initialized
+DEBUG - 2025-12-17 05:17:43 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:43 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:43 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:43 --> URI Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:43 --> Router Class Initialized
+DEBUG - 2025-12-17 05:17:43 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:43 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:43 --> URI Class Initialized
+INFO - 2025-12-17 05:17:43 --> Output Class Initialized
+DEBUG - 2025-12-17 05:17:43 --> UTF-8 Support Enabled
+INFO - 2025-12-17 05:17:43 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:43 --> Utf8 Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:43 --> Security Class Initialized
+INFO - 2025-12-17 05:17:43 --> URI Class Initialized
+INFO - 2025-12-17 05:17:43 --> Router Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: core_hooks_helper
+DEBUG - 2025-12-17 05:17:43 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:43 --> Output Class Initialized
+INFO - 2025-12-17 05:17:43 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:43 --> CSRF token verified
+INFO - 2025-12-17 05:17:43 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:43 --> Input Class Initialized
+INFO - 2025-12-17 05:17:43 --> Router Class Initialized
+INFO - 2025-12-17 05:17:43 --> Security Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:43 --> Language Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:43 --> Output Class Initialized
+DEBUG - 2025-12-17 05:17:43 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:43 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:43 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:43 --> CSRF token verified
+INFO - 2025-12-17 05:17:43 --> Input Class Initialized
+INFO - 2025-12-17 05:17:43 --> Security Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:43 --> Language Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: countries_helper
+DEBUG - 2025-12-17 05:17:43 --> Global POST, GET and COOKIE data sanitized
+INFO - 2025-12-17 05:17:43 --> CSRF cookie sent
+INFO - 2025-12-17 05:17:43 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:43 --> Input Class Initialized
+INFO - 2025-12-17 05:17:43 --> Config Class Initialized
+INFO - 2025-12-17 05:17:43 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:43 --> Language Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:43 --> Config Class Initialized
+INFO - 2025-12-17 05:17:43 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:43 --> Config Class Initialized
+INFO - 2025-12-17 05:17:43 --> Loader Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: files_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: language_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: url_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: file_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: form_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: settings_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: modules_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: core_hooks_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: admin_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: assets_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: user_meta_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: emails_tracking_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: staff_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: countries_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: payment_gateways_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: general_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: misc_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: func_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: gdpr_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: datatables_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: table_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: custom_fields_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: menu_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: template_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: email_templates_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:43 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:43 --> Helper loaded: invoices_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: subscriptions_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: estimates_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: contracts_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: credit_notes_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: proposals_helper
+INFO - 2025-12-17 05:17:43 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: projects_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: tasks_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:43 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:43 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: fields_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:43 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: leads_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: tickets_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:43 --> Image Lib Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: relation_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: tags_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: deprecated_helper
+DEBUG - 2025-12-17 05:17:43 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:43 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:43 --> Helper loaded: pdf_helper
+INFO - 2025-12-17 05:17:43 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:43 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:43 --> Helper loaded: clients_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: database_helper
+INFO - 2025-12-17 05:17:43 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:43 --> Helper loaded: upload_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: sales_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: themes_helper
+INFO - 2025-12-17 05:17:43 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: pre_query_data_formatters_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: widgets_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: sms_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: deprecated_helper
+INFO - 2025-12-17 05:17:43 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:43 --> Language file loaded: language/english/english_lang.php
+INFO - 2025-12-17 05:17:43 --> Database Driver Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:43 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:43 --> App_Model class loaded
+INFO - 2025-12-17 09:47:43 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:43 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:43 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:43 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:43 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:43 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:43 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:43 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
+INFO - 2025-12-17 09:47:43 --> Final output sent to browser
+DEBUG - 2025-12-17 09:47:43 --> Total execution time: 0.3080
+INFO - 2025-12-17 05:17:43 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:43 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:43 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:43 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:43 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:43 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:43 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:43 --> App_Model class loaded
+INFO - 2025-12-17 09:47:43 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:43 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:43 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:43 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:43 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:43 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:43 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:43 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"279","date":"2025-12-11","number":"3","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251211, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251211003
+INFO - 2025-12-17 09:47:43 --> Model "Currencies_model" initialized
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"240","date":"2025-11-21","number":"5","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 5, Number Padded: 005
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251121005
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"196","date":"2025-11-10","number":"2","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 2, Number Padded: 002
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251110002
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"227","date":"2025-11-20","number":"8","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 8, Number Padded: 008
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251120008
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"241","date":"2025-11-21","number":"6","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 6, Number Padded: 006
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251121006
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"179","date":"2025-10-07","number":"999","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251007, Number Raw: 999, Number Padded: 999
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251007999
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"178","date":"2025-10-07","number":"1","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251007, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251007001
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"276","date":"2025-11-22","number":"15","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 15, Number Padded: 015
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251122015
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"261","date":"2025-11-21","number":"26","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 26, Number Padded: 026
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251121026
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"210","date":"2025-11-18","number":"2","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251118, Number Raw: 2, Number Padded: 002
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251118002
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"229","date":"2025-11-20","number":"10","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 10, Number Padded: 010
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251120010
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"219","date":"2025-11-18","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251118, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251118011
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"187","date":"2025-11-05","number":"1007","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1007, Number Padded: 1007
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 2511051007
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"185","date":"2025-11-05","number":"1005","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1005, Number Padded: 1005
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 2511051005
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"201","date":"2025-11-10","number":"7","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 7, Number Padded: 007
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251110007
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"194","date":"2025-11-05","number":"1014","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251105, Number Raw: 1014, Number Padded: 1014
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 2511051014
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"271","date":"2025-11-22","number":"10","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 10, Number Padded: 010
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251122010
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"262","date":"2025-11-22","number":"1","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251122001
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"230","date":"2025-11-20","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251120011
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"238","date":"2025-11-21","number":"3","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251121003
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"220","date":"2025-11-20","number":"1","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251120, Number Raw: 1, Number Padded: 001
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251120001
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"272","date":"2025-11-22","number":"11","prefix":"","number_format":"5","status":"2"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251122, Number Raw: 11, Number Padded: 011
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251122011
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"197","date":"2025-11-10","number":"3","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251110, Number Raw: 3, Number Padded: 003
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251110003
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"250","date":"2025-11-21","number":"15","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 15, Number Padded: 015
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251121015
+DEBUG - 2025-12-17 09:47:43 --> format_invoice_number: Invoice fetched - {"id":"248","date":"2025-11-21","number":"13","prefix":"","number_format":"5","status":"1"}
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Using Format 5 - Date: 251121, Number Raw: 13, Number Padded: 013
+ERROR - 2025-12-17 09:47:43 --> format_invoice_number: Final formatted number - 251121013
+DEBUG - 2025-12-17 09:47:43 --> Totals Calculated: Subtotal = 182000
+DEBUG - 2025-12-17 09:47:43 --> Totals Calculated: Discount Total = 10050
+DEBUG - 2025-12-17 09:47:43 --> Totals Calculated: Total = 171950
+DEBUG - 2025-12-17 09:47:43 --> Totals Calculated: Total Paid = 133450
+DEBUG - 2025-12-17 09:47:43 --> Totals Calculated: Balance = 38500
+DEBUG - 2025-12-17 09:47:43 --> Totals Calculated: Service Charge = 3640
+INFO - 2025-12-17 05:17:43 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:43 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:43 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:43 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:43 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:43 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:43 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:43 --> App_Model class loaded
+INFO - 2025-12-17 09:47:43 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:43 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:43 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:43 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:43 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:43 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:43 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:43 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Proposals_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Currencies_model" initialized
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\application\views\admin/invoices/invoices_total_template.php
+INFO - 2025-12-17 09:47:43 --> Final output sent to browser
+DEBUG - 2025-12-17 09:47:43 --> Total execution time: 0.6092
+INFO - 2025-12-17 05:17:43 --> Session: Class initialized using 'database' driver.
+INFO - 2025-12-17 05:17:43 --> User Agent Class Initialized
+INFO - 2025-12-17 05:17:43 --> Image Lib Class Initialized
+DEBUG - 2025-12-17 05:17:43 --> Encryption: Auto-configured driver 'openssl'.
+INFO - 2025-12-17 05:17:43 --> Encryption: OpenSSL initialized with method AES-128-CBC.
+INFO - 2025-12-17 05:17:43 --> Encryption Class Initialized
+INFO - 2025-12-17 05:17:43 --> Helper loaded: email_helper
+INFO - 2025-12-17 05:17:43 --> Helper loaded: html_helper
+INFO - 2025-12-17 05:17:43 --> Email Class Initialized (Engine: phpmailer)
+INFO - 2025-12-17 05:17:43 --> App_Model class loaded
+INFO - 2025-12-17 09:47:43 --> Model "Misc_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Roles_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Client_vault_entries_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Client_groups_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Statement_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Clients_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Projects_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Staff_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Tasks_model" initialized
+INFO - 2025-12-17 09:47:43 --> Controller Class Initialized
+INFO - 2025-12-17 09:47:43 --> Helper loaded: directory_helper
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/helpers/appointment_manager_helper.php
+DEBUG - 2025-12-17 09:47:43 --> Config file loaded: C:\xampp\htdocs\perfex_crm\application\config/migration.php
+INFO - 2025-12-17 09:47:43 --> Model "User_Autologin" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Authentication_model" initialized
+INFO - 2025-12-17 09:47:43 --> Language file loaded: language/english/english_lang.php
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/language/english/appointment_manager_lang.php
+ERROR - 2025-12-17 09:47:43 --> Could not find the language line "Summary Report"
+INFO - 2025-12-17 09:47:43 --> Model "Expenses_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Payment_modes_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Invoices_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Credit_notes_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Gdpr_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Leads_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Tickets_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Departments_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Estimates_model" initialized
+INFO - 2025-12-17 09:47:43 --> Model "Proposals_model" initialized
+DEBUG - 2025-12-17 09:47:43 --> File loaded: C:\xampp\htdocs\perfex_crm\modules/appointment_manager/models/Appointment_manager_model.php
