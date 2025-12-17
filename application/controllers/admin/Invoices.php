@@ -729,14 +729,14 @@ public function invoice($id = '')
             // If number not set, is draft
             if (hooks()->apply_filters('validate_invoice_number', true) && isset($invoice_data['number'])) {
                 $number = trim(ltrim($invoice_data['number'], '0'));
+                // 🔍 Updated to check exact DATE (not just YEAR) to match insert logic
                 if (total_rows('invoices', [
-                    'YEAR(date)' => (int) date('Y', strtotime(to_sql_date($invoice_data['date']))),
+                    'DATE(date)' => to_sql_date($invoice_data['date']),
                     'number'     => $number,
                     'status !='  => Invoices_model::STATUS_DRAFT,
                     'id !='      => $id,
                 ])) {
                     set_alert('warning', _l('invoice_number_exists'));
-
                     redirect(admin_url('invoices/invoice/' . $id));
                 }
             }
