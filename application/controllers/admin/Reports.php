@@ -2109,7 +2109,7 @@ public function referral_details()
                     '<a href="' . admin_url('invoices/invoice/' . $row->invoice_id) . '" target="_blank">' . format_invoice_number($row->invoice_id) . '</a>',
                     _d($row->last_payment_date),
                     str_pad($row->mrd_no, 0, '0', STR_PAD_LEFT),
-                    ($row->age_years ?? '0') . ' Y ' . ($row->age_months ?? '0') . ' M',
+                    ($row->age_months == '0' || $row->age_months == 0) ? ($row->age_years ?? '0') . ' Y' : ($row->age_years ?? '0') . ' Y ' . ($row->age_months ?? '0') . ' M',
                     '<a href="' . admin_url('clients/client/' . $row->mrd_no) . '" target="_blank">' . html_escape($row->client_name) . '</a>',
                     ($row->firstname || $row->lastname) ? html_escape($row->firstname . ' ' . $row->lastname) : 'N/A',
                     html_escape($row->description),
@@ -2910,7 +2910,12 @@ public function outpatient_bill_table()
 
         $age_years = !empty($aRow['age_years']) ? $aRow['age_years'] : '0';
         $age_months = !empty($aRow['age_months']) ? $aRow['age_months'] : '0';
-        $row[] = $age_years . '/' . $age_months;
+        
+        if ($age_months == '0' || $age_months == 0) {
+            $row[] = $age_years;
+        } else {
+            $row[] = $age_years . '/' . $age_months;
+        }
 
         $row[] = $aRow['all_items'] ?: '-';
         log_message('debug', '📦 Items: ' . substr($aRow['all_items'] ?? '-', 0, 50) . '...');
