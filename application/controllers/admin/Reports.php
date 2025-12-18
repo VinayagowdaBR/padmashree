@@ -2915,22 +2915,7 @@ public function outpatient_bill_table()
         $row[] = $aRow['all_items'] ?: '-';
         log_message('debug', '📦 Items: ' . substr($aRow['all_items'] ?? '-', 0, 50) . '...');
 
-        // Payment modes
-        $displayed_modes = [];
-        $invoice_payments = $this->payments_model->get_invoice_payments($aRow['id']);
-        log_message('debug', '💳 Found ' . count($invoice_payments) . ' payment records for invoice ' . $aRow['id']);
-        
-        if (!empty($invoice_payments)) {
-            foreach ($invoice_payments as $payment) {
-                $payment_mode = !empty($payment['paymentmethod']) ? $payment['paymentmethod'] : $payment['name'];
-                if (!in_array($payment_mode, $displayed_modes)) {
-                    $displayed_modes[] = $payment_mode;
-                }
-            }
-        }
-        $all_modes = !empty($displayed_modes) ? implode(', ', $displayed_modes) : '-';
-        $row[] = $all_modes;
-        log_message('debug', '💳 Payment Modes: ' . $all_modes);
+
         
 
         
@@ -2970,6 +2955,22 @@ public function outpatient_bill_table()
 
         $row[] = !empty($aRow['UPI']) ? $aRow['UPI'] : '0';
         log_message('debug', '📱 UPI Amount: ' . $aRow['UPI']);
+
+        // Payment modes
+        $displayed_modes = [];
+        $invoice_payments = $this->payments_model->get_invoice_payments($aRow['id']);
+        
+        if (!empty($invoice_payments)) {
+            foreach ($invoice_payments as $payment) {
+                $payment_mode = !empty($payment['paymentmethod']) ? $payment['paymentmethod'] : $payment['name'];
+                if (!in_array($payment_mode, $displayed_modes)) {
+                    $displayed_modes[] = $payment_mode;
+                }
+            }
+        }
+        $all_modes = !empty($displayed_modes) ? implode(', ', $displayed_modes) : '-';
+        $row[] = $all_modes;
+        log_message('debug', '💳 Payment Modes: ' . $all_modes);
 
         $row[] = !empty($aRow['payment_details']) ? html_escape($aRow['payment_details']) : '-';
         log_message('debug', '📝 Payment Details: ' . substr($aRow['payment_details'] ?? '-', 0, 50) . '...');
@@ -3057,16 +3058,17 @@ public function outpatient_bill_table()
         '',
         '',
         '',
-        number_format($total_total_amount, 2),
-        number_format($total_discount, 2),
-        number_format($total_bill_amount, 2),
-        number_format($total_service_charge, 2),
-        number_format($total_paid_amount, 2),
-        number_format($total_balance, 2),
-        number_format($total_cash, 2),
-        number_format($total_cheque, 2),
-        number_format($total_card, 2),
-        number_format($total_upi, 2),
+        '<strong>' . number_format($total_total_amount, 2) . '</strong>',
+        '<strong>' . number_format($total_discount, 2) . '</strong>',
+        '<strong>' . number_format($total_bill_amount, 2) . '</strong>',
+        '<strong>' . number_format($total_service_charge, 2) . '</strong>',
+        '<strong>' . number_format($total_paid_amount, 2) . '</strong>',
+        '<strong>' . number_format($total_balance, 2) . '</strong>',
+        '<strong>' . number_format($total_cash, 2) . '</strong>',
+        '<strong>' . number_format($total_cheque, 2) . '</strong>',
+        '<strong>' . number_format($total_card, 2) . '</strong>',
+        '<strong>' . number_format($total_upi, 2) . '</strong>',
+        '', // Placeholder for PaidBy column
         '',
     ];
 

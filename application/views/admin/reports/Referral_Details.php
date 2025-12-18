@@ -75,7 +75,7 @@
                     <tbody></tbody>
                     <tfoot>
                       <tr>
-                        <th colspan="9" style="text-align:right;">Total:</th>
+                        <th colspan="9" style="text-align:right;">Totaal:</th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -105,6 +105,9 @@
   }
   #referral-details-table {
     border-collapse: collapse !important;
+  }
+  #referral-details-table tfoot th {
+    font-weight: bold !important;
   }
 </style>
 
@@ -297,6 +300,11 @@
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     page-break-inside: avoid !important;
+    display: table-row !important;
+  }
+  
+  #referral-details-table tfoot {
+    display: none !important;
   }
   
   #referral-details-table tfoot th {
@@ -316,6 +324,13 @@
     text-align: right !important;
     padding-right: 3mm !important;
     font-weight: bold !important;
+  }
+  
+  /* Target the server-side Total row which uses strong tags */
+  #referral-details-table td strong {
+    font-weight: bold !important;
+    font-size: 12px !important; /* Adjust size if needed */
+    color: #000 !important;
   }
   
   /* Amount columns */
