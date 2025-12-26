@@ -2930,14 +2930,18 @@ public function outpatient_bill_table()
         $row[] = !empty($aRow['Mobile']) ? $aRow['Mobile'] : '-';
         log_message('debug', '📱 Mobile: ' . $aRow['Mobile']);
 
+        // Calculate corrected bill amount and balance
+        $bill_amount_calc = (float)($aRow['subtotal'] ?? 0) - (float)($aRow['discount'] ?? 0);
+        $balance_calc = $bill_amount_calc - (float)($aRow['total_paid'] ?? 0);
+
         $row[] = number_format($aRow['subtotal'], 2);
         log_message('debug', '💰 Subtotal: ' . $aRow['subtotal']);
 
         $row[] = number_format($aRow['discount'], 2);
         log_message('debug', '💸 Discount: ' . $aRow['discount']);
 
-        $row[] = number_format($aRow['total'], 2);
-        log_message('debug', '💵 Total: ' . $aRow['total']);
+        $row[] = number_format($bill_amount_calc, 2);
+        log_message('debug', '💵 Total: ' . $bill_amount_calc);
 
         $service_charge_value = $aRow['service_charge'] ?? 0;
         $row[] = number_format($service_charge_value, 2);
@@ -2946,8 +2950,8 @@ public function outpatient_bill_table()
         $row[] = number_format($aRow['total_paid'], 2);
         log_message('debug', '💳 Paid Amount: ' . $aRow['total_paid']);
 
-        $row[] = number_format($aRow['balance'], 2);
-        log_message('debug', '⚖️ Balance: ' . $aRow['balance']);
+        $row[] = number_format($balance_calc, 2);
+        log_message('debug', '⚖️ Balance: ' . $balance_calc);
 
         $row[] = !empty($aRow['Cash_Amount']) ? $aRow['Cash_Amount'] : '0';
         log_message('debug', '💵 Cash Amount: ' . $aRow['Cash_Amount']);
@@ -2987,7 +2991,7 @@ public function outpatient_bill_table()
         
         $total_total_amount += $aRow['subtotal'] ?? 0;
         $total_discount += $aRow['discount'] ?? 0;
-        $total_bill_amount += $aRow['total'] ?? 0;
+        $total_bill_amount += $bill_amount_calc;
         
         $service_charge_value = $aRow['service_charge'] ?? 0;
 
@@ -3020,7 +3024,7 @@ public function outpatient_bill_table()
         log_message('debug', '   - Service Charge Added: ' . ($should_apply_service_charge ? $service_charge_value : 0));
 
         $total_paid_amount += $aRow['total_paid'] ?? 0;
-        $total_balance += $aRow['balance'] ?? 0;
+        $total_balance += $balance_calc;
         $total_cash += $aRow['Cash_Amount'] ?? 0;
         $total_cheque += $aRow['Cheque_Amount'] ?? 0;
         $total_card += $aRow['Card'] ?? 0;
@@ -3054,7 +3058,6 @@ public function outpatient_bill_table()
     // Append totals row
     $totals_row = [
         '<strong>Total</strong>',
-        '',
         '',
         '',
         '',
