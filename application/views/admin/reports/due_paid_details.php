@@ -65,7 +65,6 @@
                         <th><?php echo _l('Total Amt'); ?></th>
                         <th><?php echo _l('Disc'); ?></th>
                         <th><?php echo _l('Bill Amt'); ?></th>
-                        <th><?php echo _l('Serv.charge'); ?></th>
                         <th><?php echo _l('LastPaid Amt'); ?></th>
                         <th><?php echo _l('DuePaid Amt'); ?></th>
                         <th><?php echo _l('TotalPaid Amt'); ?></th>
@@ -91,7 +90,6 @@
                         <th></th> <!-- Total Amount -->
                         <th></th> <!-- Discount -->
                         <th></th> <!-- Bill Amount -->
-                        <th></th> <!-- Service Charge -->
                         <th></th> <!-- Last Paid -->
                         <th></th> <!-- Due Paid -->
                         <th></th> <!-- Total Paid -->
@@ -196,11 +194,10 @@ $(function() {
         $(api.column(9).footer()).html(sums.bill_amount);
         $(api.column(10).footer()).html(sums.discount);
         $(api.column(11).footer()).html(sums.total_amount);
-        $(api.column(12).footer()).html(sums.service_charge);
-        $(api.column(13).footer()).html(sums.last_paid);
-        $(api.column(14).footer()).html(sums.due_paid);
-        $(api.column(15).footer()).html(sums.total_paid);
-        $(api.column(16).footer()).html(sums.balance);
+        $(api.column(12).footer()).html(sums.last_paid);
+        $(api.column(13).footer()).html(sums.due_paid);
+        $(api.column(14).footer()).html(sums.total_paid);
+        $(api.column(15).footer()).html(sums.balance);
     });
 
     $('input[name="report_from"], input[name="report_to"], input[name="mrd_from"], input[name="mrd_to"], input[name="referral_name"]').on('change', function() {

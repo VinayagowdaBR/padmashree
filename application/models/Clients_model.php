@@ -454,9 +454,9 @@ class Clients_model extends App_Model
 
     public function update_option_value($id = 36, $value = '1')
     {
-        $data = ['value' => $value];
-        $this->db->where('id', $id);
-        return $this->db->update('tbloptions', $data); // returns true/false
+        // We ignore the ID parameter and specifically target the next_invoice_number option
+        // This ensures the reset works regardless of the option's actual ID in the database
+        return update_option('next_invoice_number', $value);
     }
 
     /**

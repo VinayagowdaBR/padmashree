@@ -528,6 +528,8 @@ class Invoices_model extends App_Model
 
         if (isset($data['status']) && $data['status'] == self::STATUS_DRAFT) {
             $data['number'] = self::STATUS_DRAFT_NUMBER;
+        } else {
+            $data['number'] = get_option('next_invoice_number');
         }
 
         $data['duedate'] = isset($data['duedate']) && empty($data['duedate']) ? null : $data['duedate'];

@@ -1562,17 +1562,6 @@ public function due_paid_details_table()
         '(SELECT MAX(date) FROM ' . db_prefix() . 'invoicepaymentrecords 
             WHERE invoiceid = ' . db_prefix() . 'invoices.id) as last_payment_date',
 
-         " (
-  SELECT SUM(CAST(cfdv.value AS DECIMAL(10,2)))
-  FROM $customFieldsValuesTable cfdv
-  JOIN $customFieldsTable cfd ON cfdv.fieldid = cfd.id
-  JOIN $itemableTable items ON items.id = cfdv.relid
-  WHERE cfd.name = 'Serv.charge'
-    AND cfdv.fieldto = 'items'
-    AND items.rel_id = $invoiceTable.id
-    AND items.rel_type = 'invoice'
-) AS service_charge",
-
         db_prefix() . 'clients.userid as mrd_no',
     ];
 
@@ -1628,19 +1617,6 @@ public function due_paid_details_table()
         $row[] = app_format_money($aRow['discount'], $currency->name);
         $row[] = '<span class="tw-font-medium">' . app_format_money($aRow['total'], $aRow['currency_name']) . '</span>';
         
-        // Normalize the payment mode string for comparison
-        $payment_mode = strtolower(trim($aRow['payment_mode'] ?? ''));
-        // Default to 0
-        $service_charge_value = 0;
-        // Only show service charge if UPI or Credit/Debit Card
-        if ($payment_mode === 'upi' || $payment_mode === 'credit/debit card') {
-            $service_charge_value = isset($aRow['service_charge']) && is_numeric($aRow['service_charge']) 
-                ? $aRow['service_charge'] 
-                : 0;
-        }
-        // Show formatted service charge
-        $row[] = app_format_money($service_charge_value, $currency->name);
-
         $row[] = app_format_money($aRow['last_paid_amount'], $currency->name);
         $row[] = app_format_money($aRow['due_paid_amount'], $currency->name);
         $row[] = app_format_money($aRow['paid'], $currency->name);
@@ -1672,7 +1648,6 @@ public function due_paid_details_table()
         'total_amount'   => 0,
         'discount'       => 0,
          'bill_amount'    => 0,
-        'service_charge' => 0,
         'last_paid'      => 0,
         'due_paid'       => 0,
         'total_paid'     => 0,
@@ -2778,15 +2753,6 @@ public function outpatient_bill_table()
         "(SELECT SUM(amount) FROM $paymentRecordsTable WHERE invoiceid = $invoiceTable.id) as total_paid",
         "($invoiceTable.total - IFNULL((SELECT SUM(amount) FROM $paymentRecordsTable WHERE invoiceid = $invoiceTable.id), 0)) as balance",
         
-        '(SELECT IFNULL(SUM(CAST(cfdv.value AS DECIMAL(10,2))), 0)
-        FROM ' . db_prefix() . 'customfieldsvalues cfdv
-        JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id
-        JOIN ' . db_prefix() . 'itemable items ON items.id = cfdv.relid
-        WHERE cfd.name = "Serv.charge"
-            AND cfdv.fieldto = "items"
-            AND items.rel_id = ' . db_prefix() . 'invoices.id
-            AND items.rel_type = "invoice") AS service_charge',
-
         '(SELECT GROUP_CONCAT(pr.transactionid SEPARATOR ", ") 
             FROM ' . db_prefix() . 'invoicepaymentrecords pr
             WHERE pr.invoiceid = ' . $invoiceTable . '.id
@@ -2966,10 +2932,6 @@ public function outpatient_bill_table()
         $row[] = number_format($bill_amount_calc, 2);
         log_message('debug', '💵 Total: ' . $bill_amount_calc);
 
-        $service_charge_value = $aRow['service_charge'] ?? 0;
-        $row[] = number_format($service_charge_value, 2);
-        log_message('debug', '⚡ Service Charge: ' . $service_charge_value);
-
         $row[] = number_format($aRow['total_paid'], 2);
         log_message('debug', '💳 Paid Amount: ' . $aRow['total_paid']);
 
@@ -3092,7 +3054,6 @@ public function outpatient_bill_table()
         '<strong>' . number_format($total_total_amount, 2) . '</strong>',
         '<strong>' . number_format($total_discount, 2) . '</strong>',
         '<strong>' . number_format($total_bill_amount, 2) . '</strong>',
-        '<strong>' . number_format($total_service_charge, 2) . '</strong>',
         '<strong>' . number_format($total_paid_amount, 2) . '</strong>',
         '<strong>' . number_format($total_balance, 2) . '</strong>',
         '<strong>' . number_format($total_cash, 2) . '</strong>',

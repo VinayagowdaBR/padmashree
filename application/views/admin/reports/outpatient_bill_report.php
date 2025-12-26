@@ -66,7 +66,6 @@
                         <th>Total Amt</th>
                         <th>Disc</th>
                         <th>Bill Amt</th>
-                        <th>Serv.Charge</th>
                         <th>Paid Amt</th>
                         <th>Bal</th>
                         <th>Cash Amt</th>
@@ -325,26 +324,27 @@
   #outpatient-bill-table th:nth-child(11), #outpatient-bill-table td:nth-child(11) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
   /* Bill Amt 12 (was 13) */
   #outpatient-bill-table th:nth-child(12), #outpatient-bill-table td:nth-child(12) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
-  /* Serv.Charge 13 (was 14) */
+  
+  /* Serv.Charge removed */
+
+  /* Paid Amt 13 (was 14 - original 15) */
   #outpatient-bill-table th:nth-child(13), #outpatient-bill-table td:nth-child(13) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
-  /* Paid Amt 14 (was 15) */
+  /* Bal 14 (was 15 - original 16) */
   #outpatient-bill-table th:nth-child(14), #outpatient-bill-table td:nth-child(14) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
-  /* Bal 15 (was 16) */
+  /* Cash 15 (was 16 - original 17) */
   #outpatient-bill-table th:nth-child(15), #outpatient-bill-table td:nth-child(15) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
-  /* Cash 16 (was 17) */
+  /* Cheq 16 (was 17 - original 18) */
   #outpatient-bill-table th:nth-child(16), #outpatient-bill-table td:nth-child(16) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
-  /* Cheq 17 (was 18) */
-  #outpatient-bill-table th:nth-child(17), #outpatient-bill-table td:nth-child(17) { width: 5% !important; text-align: right !important; padding-right: 1mm !important; }
-  /* CC 18 (was 19) */
+  /* CC 17 (was 18 - original 19) */
+  #outpatient-bill-table th:nth-child(17), #outpatient-bill-table td:nth-child(17) { width: 4% !important; text-align: right !important; padding-right: 1mm !important; }
+  /* UPI 18 (was 19 - original 20) */
   #outpatient-bill-table th:nth-child(18), #outpatient-bill-table td:nth-child(18) { width: 4% !important; text-align: right !important; padding-right: 1mm !important; }
-  /* UPI 19 (was 20) */
-  #outpatient-bill-table th:nth-child(19), #outpatient-bill-table td:nth-child(19) { width: 4% !important; text-align: right !important; padding-right: 1mm !important; }
   
-  /* PaidBy 20 (moved from 8, width was 6% left) */
+  /* PaidBy 19 (was 20) */
+  #outpatient-bill-table th:nth-child(19), #outpatient-bill-table td:nth-child(19) { width: 6% !important; text-align: left !important; }
+  
+  /* Pay Details 20 (was 21) */
   #outpatient-bill-table th:nth-child(20), #outpatient-bill-table td:nth-child(20) { width: 6% !important; text-align: left !important; }
-  
-  /* Pay Details 21 (was 21, width was 6% left) */
-  #outpatient-bill-table th:nth-child(21), #outpatient-bill-table td:nth-child(21) { width: 6% !important; text-align: left !important; }
 </style>
 
 <?php init_tail(); ?>

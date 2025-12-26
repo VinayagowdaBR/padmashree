@@ -297,14 +297,14 @@ public function update_option()
     $this->load->model('Clients_model');
 
     // Call model function
-    $updated = $this->Clients_model->update_option_value(36, '1'); // id=36, value='1'
+    $updated = $this->Clients_model->update_option_value(); // Defaults will set next_invoice_number to 1
 
     if ($updated) {
-        log_message('debug', 'tbloptions row updated successfully (id=36).');
-        echo "Option updated successfully"; // This will be returned to AJAX
+        log_message('debug', 'next_invoice_number updated successfully.');
+        echo "Option 'next_invoice_number' reset to 1 successfully"; // This will be returned to AJAX
     } else {
-        log_message('error', 'Failed to update tbloptions (id=36).');
-        echo "Failed to update option"; // This will be returned to AJAX
+        log_message('error', 'Failed to update next_invoice_number.');
+        echo "Failed to reset option"; // This will be returned to AJAX
     }
 }
 

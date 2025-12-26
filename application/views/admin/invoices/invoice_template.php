@@ -129,7 +129,9 @@ if ($format == 1) {
         $__number = sprintf('%03d', $invoice->number); // 3 digits
         $prefix   = '<span id="prefix">' . date('ymd', strtotime($invoice->date)) . '</span>';
     } else {
-        $__number = sprintf('%03d', $next_invoice_number); // 3 digits
+        // For new invoices, show "Auto" - number will be generated at save time
+        // This prevents duplicate numbers when multiple users create invoices simultaneously
+        $__number = 'Auto';
         $prefix   = '<span id="prefix">' . $yymmdd . '</span>';
     }
 }
@@ -163,7 +165,8 @@ $data_original_number = isset($invoice) ? $invoice->number : 'false';
                             value="<?= ($_is_draft) ? 'DRAFT' : $_invoice_number; ?>"
                             data-isedit="<?= e($isedit); ?>"
                             data-original-number="<?= e($data_original_number); ?>"
-                            <?= ($_is_draft) ? 'disabled' : '' ?>>
+                            <?= ($_is_draft) ? 'disabled' : '' ?>
+                            <?= (!isset($invoice) && $format == 5) ? 'readonly style="background-color:#f5f5f5;"' : '' ?>>
                         <?php if ($format == 3) { ?>
                         <span class="input-group-addon">
                             <span id="prefix_year"
