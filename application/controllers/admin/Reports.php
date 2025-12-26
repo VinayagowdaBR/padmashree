@@ -2687,17 +2687,40 @@ public function outpatient_bill_table()
     log_message('debug', '💰 Loaded base currency: ' . print_r($currency, true));
 
     // Filters from POST
-    $from_date = $this->input->post('report_from');
-    $to_date   = $this->input->post('report_to');
+    $from_date_raw = $this->input->post('report_from');
+    $to_date_raw   = $this->input->post('report_to');
     $mrd_from  = $this->input->post('mrd_from');
     $mrd_to    = $this->input->post('mrd_to');
     $clientid  = $this->input->post('customer_id');
     $project_id = $this->input->post('project_id');
     $referral_name = $this->input->post('referral_name');
 
+    // Helper function to convert date from dd-mm-yyyy to yyyy-mm-dd format
+    $convertDate = function($date) {
+        if (empty($date)) return '';
+        
+        // If already in yyyy-mm-dd format, return as is
+        if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
+            return $date;
+        }
+        
+        // Convert from dd-mm-yyyy to yyyy-mm-dd
+        if (preg_match('/^(\d{2})-(\d{2})-(\d{4})$/', $date, $matches)) {
+            return $matches[3] . '-' . $matches[2] . '-' . $matches[1];
+        }
+        
+        // Try using to_sql_date as fallback
+        return to_sql_date($date) ?: '';
+    };
+
+    $from_date = $convertDate($from_date_raw);
+    $to_date = $convertDate($to_date_raw);
+
     log_message('debug', '🎯 Received filters:');
-    log_message('debug', '   - from_date: ' . $from_date);
-    log_message('debug', '   - to_date: ' . $to_date);
+    log_message('debug', '   - from_date_raw: ' . $from_date_raw);
+    log_message('debug', '   - from_date (converted): ' . $from_date);
+    log_message('debug', '   - to_date_raw: ' . $to_date_raw);
+    log_message('debug', '   - to_date (converted): ' . $to_date);
     log_message('debug', '   - mrd_from: ' . $mrd_from);
     log_message('debug', '   - mrd_to: ' . $mrd_to);
     log_message('debug', '   - referral_name: ' . $referral_name);
@@ -2705,11 +2728,11 @@ public function outpatient_bill_table()
     $where = [];
 
     if ($from_date && $to_date) {
-        $where[] = 'AND DATE(' . db_prefix() . 'invoices.date) BETWEEN "' . $this->db->escape_str($from_date) . '" AND "' . $this->db->escape_str($to_date) . '"';
+        $where[] = 'AND DATE(' . db_prefix() . 'invoices.datecreated) BETWEEN "' . $this->db->escape_str($from_date) . '" AND "' . $this->db->escape_str($to_date) . '"';
     } elseif ($from_date) {
-        $where[] = 'AND DATE(' . db_prefix() . 'invoices.date) >= "' . $this->db->escape_str($from_date) . '"';
+        $where[] = 'AND DATE(' . db_prefix() . 'invoices.datecreated) >= "' . $this->db->escape_str($from_date) . '"';
     } elseif ($to_date) {
-        $where[] = 'AND DATE(' . db_prefix() . 'invoices.date) <= "' . $this->db->escape_str($to_date) . '"';
+        $where[] = 'AND DATE(' . db_prefix() . 'invoices.datecreated) <= "' . $this->db->escape_str($to_date) . '"';
     }
 
     if ($mrd_from && $mrd_to) {
