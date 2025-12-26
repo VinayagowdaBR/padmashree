@@ -73,16 +73,7 @@
                       </tr>
                     </thead>
                     <tbody></tbody>
-                    <tfoot>
-                      <tr>
-                        <th colspan="9" style="text-align:right;">Totaal:</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                      </tr>
-                    </tfoot>
+                    <!-- Totals row is added by the controller as part of the data -->
                   </table>
                 </div>
               </div>
@@ -402,43 +393,7 @@ $(function() {
         admin_url + 'reports/referral_details_table',
         [],
         [],
-        {
-            "footerCallback": function ( row, data, start, end, display ) {
-                var api = this.api();
-                
-                var intVal = function ( i ) {
-                    return typeof i === 'string' ?
-                        parseFloat(i.replace(/[\₹,]/g, '')) || 0 :
-                        typeof i === 'number' ? i : 0;
-                };
-                
-                var totalAmount = api.column(9).data().reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-                
-                var totalDiscount = api.column(10).data().reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-                
-                var totalTotal = api.column(11).data().reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-                
-                var totalBalance = api.column(12).data().reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-                
-                var totalCommission = api.column(13).data().reduce(function (a, b) {
-                    return intVal(a) + intVal(b);
-                }, 0);
-                
-                $(api.column(9).footer()).html(format_money(totalAmount));
-                $(api.column(10).footer()).html(format_money(totalDiscount));
-                $(api.column(11).footer()).html(format_money(totalTotal));
-                $(api.column(12).footer()).html(format_money(totalBalance));
-                $(api.column(13).footer()).html(format_money(totalCommission));
-            }
-        },
+        {},  // No footerCallback needed - totals row comes from controller
         [0, 'desc']
     );
 
