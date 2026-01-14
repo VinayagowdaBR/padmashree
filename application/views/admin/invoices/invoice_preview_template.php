@@ -56,6 +56,17 @@
                             </a>
                         </li>
                         <?php } ?>
+                        <?php if (isset($refunds) && count($refunds) > 0) { ?>
+                        <li role="presentation">
+                            <a href="#invoice_refunds" aria-controls="invoice_refunds" role="tab"
+                                data-toggle="tab">
+                                Refunds
+                                <span
+                                    class="badge badge-warning"><?= count($refunds); ?>
+                                </span>
+                            </a>
+                        </li>
+                        <?php } ?>
                         <?php if (count($applied_credits) > 0) { ?>
                         <li role="presentation">
                             <a href="#invoice_applied_credits" aria-controls="invoice_applied_credits" role="tab"
@@ -307,7 +318,19 @@ if ($total_reminders > 0) {
                                     echo ' disabled';
                                 } ?>">
                                 <i class="fa fa-plus-square"></i>
-                                <?= _l('payment'); ?></a>
+                                 <?= _l('payment'); ?></a>
+                            <?php } ?>
+                            <?php 
+                            // Add refund button if conditions met
+                            if (staff_can('create', 'invoices') && 
+                                isset($refundable_amount) && 
+                                $refundable_amount > 0 && 
+                                $invoice->status != Invoices_model::STATUS_DRAFT) { 
+                            ?>
+                            <a href="#" onclick="open_refund_modal(<?= $invoice->id; ?>); return false;"
+                                class="mleft10 btn btn-warning">
+                                <i class="fa fa-undo"></i>
+                                Process Refund</a>
                             <?php } ?>
                     </div>
                 </div>
@@ -335,6 +358,64 @@ if ($total_reminders > 0) {
                 <?php if (count($invoice->payments) > 0) { ?>
                 <div class="tab-pane" role="tabpanel" id="invoice_payments_received">
                     <?php include_once APPPATH . 'views/admin/invoices/invoice_payments_table.php'; ?>
+                </div>
+                <?php } ?>
+                <?php if (isset($refunds) && count($refunds) > 0) { ?>
+                <div class="tab-pane" role="tabpanel" id="invoice_refunds">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Payment Mode</th>
+                                    <th>Transaction ID</th>
+                                    <th>Note</th>
+                                    <th>Processed By</th>
+                                    <?php if (staff_can('delete', 'invoices')) { ?>
+                                    <th>Options</th>
+                                    <?php } ?>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($refunds as $refund) { ?>
+                                <tr>
+                                    <td><?= _d($refund['date']); ?></td>
+                                    <td>
+                                        <?php if ($refund['refund_type'] == 'percentage') { ?>
+                                            <span class="label label-info"><?= $refund['refund_value']; ?>%</span>
+                                        <?php } else { ?>
+                                            <span class="label label-default">Amount</span>
+                                        <?php } ?>
+                                    </td>
+                                    <td><strong><?= app_format_money($refund['refund_amount'], $invoice->currency_name); ?></strong></td>
+                                    <td><?= $refund['payment_mode_name']; ?></td>
+                                    <td><?= $refund['transaction_id'] ? $refund['transaction_id'] : '-'; ?></td>
+                                    <td><?= $refund['note'] ? $refund['note'] : '-'; ?></td>
+                                    <td><?= $refund['staff_name']; ?></td>
+                                    <?php if (staff_can('delete', 'invoices')) { ?>
+                                    <td>
+                                        <a href="<?= admin_url('invoices/delete_refund/' . $refund['id'] . '/' . $invoice->id); ?>" 
+                                           class="btn btn-danger btn-icon _delete"
+                                           data-toggle="tooltip"
+                                           title="<?= _l('delete'); ?>">
+                                            <i class="fa fa-remove"></i>
+                                        </a>
+                                    </td>
+                                    <?php } ?>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2" class="text-right"><strong>Total Refunded:</strong></td>
+                                    <td><strong class="text-danger"><?= app_format_money(isset($total_refunded) ? $total_refunded : 0, $invoice->currency_name); ?></strong></td>
+                                    <td colspan="<?= staff_can('delete', 'invoices') ? '5' : '4'; ?>"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
                 <?php } ?>
                 <?php if (count($applied_credits) > 0) { ?>
@@ -537,5 +618,25 @@ foreach ($views_activity as $activity) { ?>
     <?php } elseif ($send_later) { ?>
     schedule_invoice_send( <?= e($invoice->id); ?> );
     <?php } ?>
+    
+    // Refund modal function
+    function open_refund_modal(invoice_id) {
+        $.ajax({
+            url: admin_url + 'invoices/refund_invoice_modal/' + invoice_id,
+            type: 'GET',
+            success: function(response) {
+                $('body').append(response);
+                $('#refund_modal').modal('show');
+                
+                // Clean up modal after close
+                $('#refund_modal').on('hidden.bs.modal', function() {
+                    $(this).remove();
+                });
+            },
+            error: function() {
+                alert_float('danger', 'Failed to load refund modal');
+            }
+        });
+    }
 </script>
 <?php hooks()->do_action('after_invoice_preview_template_rendered', $invoice); ?>

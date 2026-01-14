@@ -18,7 +18,8 @@
       _l('Bill Amount'),    // index 9
       _l('Serv.charge'),    // index 10
       _l('Paid Amount'),    // index 11
-      _l('Balance ')        // index 12
+      _l('Balance '),       // index 12
+      _l('Refunds')         // index 13 - NEW: Refund amount column
   );
 
   // Add custom fields

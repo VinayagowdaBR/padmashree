@@ -863,6 +863,28 @@ public function invoice($id = '')
 
         $data['invoice'] = $invoice;
 
+        // Load refunds (with comprehensive error handling)
+        $data['refunds'] = [];
+        $data['total_refunded'] = 0;
+        $data['refundable_amount'] = 0;
+        
+        try {
+            if (file_exists(APPPATH . 'models/Refunds_model.php')) {
+                @$this->load->model('refunds_model');
+                if (isset($this->refunds_model) && method_exists($this->refunds_model, 'get_invoice_refunds')) {
+                    $data['refunds'] = @$this->refunds_model->get_invoice_refunds($id) ?: [];
+                    $data['total_refunded'] = @$this->refunds_model->get_total_refunded($id) ?: 0;
+                    $data['refundable_amount'] = @$this->refunds_model->get_refundable_amount($id) ?: 0;
+                }
+            }
+        } catch (Exception $e) {
+            // Silently fail - refunds are optional
+            log_activity('Refund model error: ' . $e->getMessage());
+        } catch (Throwable $e) {
+            // Catch any PHP 7+ errors as well
+            log_activity('Refund model error: ' . $e->getMessage());
+        }
+
         $data['record_payment'] = false;
         $data['send_later']     = false;
 
@@ -1191,6 +1213,89 @@ public function invoice($id = '')
     }
 
 
+
+    /**
+     * Load refund modal view
+     */
+    public function refund_invoice_modal($id)
+    {
+        if (!has_permission('invoices', '', 'view')) {
+            access_denied('invoices');
+        }
+
+        $this->load->model('refunds_model');
+        $this->load->model('payment_modes_model');
+        $this->load->model('payments_model');
+
+        $data['invoice'] = $this->invoices_model->get($id);
+        $data['refundable_amount'] = $this->refunds_model->get_refundable_amount($id);
+        $data['payment_modes'] = $this->payment_modes_model->get('', ['expenses_only !=' => 1]);
+        $data['payments'] = $this->payments_model->get_invoice_payments($id);
+
+        $this->load->view('admin/invoices/refund_modal', $data);
+    }
+
+    /**
+     * Process refund submission
+     */
+    public function process_refund()
+    {
+        if (!has_permission('invoices', '', 'create')) {
+            access_denied('invoices');
+        }
+
+        if ($this->input->post()) {
+            $this->load->model('refunds_model');
+
+            $data = $this->input->post();
+            $data['staffid'] = get_staff_user_id();
+
+            $refund_id = $this->refunds_model->add($data);
+
+            if ($refund_id) {
+                // Send notification if enabled
+                if ($this->input->post('send_notification')) {
+                    $this->refunds_model->send_refund_notification($refund_id);
+                }
+
+                set_alert('success', _l('refund_processed_successfully'));
+                echo json_encode(['success' => true, 'refund_id' => $refund_id]);
+            } else {
+                echo json_encode(['success' => false, 'message' => _l('refund_process_failed')]);
+            }
+        }
+    }
+
+    /**
+     * Delete refund
+     */
+    public function delete_refund($id, $invoiceid)
+    {
+        if (!has_permission('invoices', '', 'delete')) {
+            access_denied('invoices');
+        }
+
+        $this->load->model('refunds_model');
+
+        if ($this->refunds_model->delete($id)) {
+            set_alert('success', _l('refund_deleted'));
+        } else {
+            set_alert('warning', _l('refund_deletion_failed'));
+        }
+
+        redirect(admin_url('invoices/list_invoices/' . $invoiceid));
+    }
+
+    /**
+     * Get refund data for viewing
+     */
+    public function get_refund_data($id)
+    {
+        $this->load->model('refunds_model');
+        $refund = $this->refunds_model->get($id);
+
+        echo json_encode($refund);
+    }
 
     public function get_due_date()
     {
