@@ -10,12 +10,36 @@ class Refunds_model extends App_Model
     }
 
     /**
+     * Check if refunds table exists
+     * @return bool
+     */
+    private function table_exists()
+    {
+        return $this->db->table_exists(db_prefix() . 'refunds');
+    }
+
+    /**
+     * Safe method to check if refunds feature is available
+     * Returns empty array if table doesn't exist
+     * @return bool
+     */
+    public function is_refunds_enabled()
+    {
+        return $this->table_exists();
+    }
+
+    /**
      * Get refund by ID
      * @param  int $id refund id
      * @return object|null
      */
     public function get($id)
     {
+        // Return null if table doesn't exist yet
+        if (!$this->table_exists()) {
+            return null;
+        }
+
         $this->db->where('id', $id);
         $refund = $this->db->get(db_prefix() . 'refunds')->row();
 
@@ -43,6 +67,11 @@ class Refunds_model extends App_Model
      */
     public function get_invoice_refunds($invoiceid)
     {
+        // Return empty array if table doesn't exist yet
+        if (!$this->table_exists()) {
+            return [];
+        }
+
         $this->db->where('invoiceid', $invoiceid);
         $this->db->order_by('date', 'DESC');
         $refunds = $this->db->get(db_prefix() . 'refunds')->result_array();
@@ -71,6 +100,11 @@ class Refunds_model extends App_Model
      */
     public function get_total_refunded($invoiceid)
     {
+        // Return 0 if table doesn't exist yet
+        if (!$this->table_exists()) {
+            return 0;
+        }
+
         $this->db->select_sum('refund_amount');
         $this->db->where('invoiceid', $invoiceid);
         $result = $this->db->get(db_prefix() . 'refunds')->row();
