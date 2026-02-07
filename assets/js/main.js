@@ -77,8 +77,8 @@ $("body").on("loaded.bs.select change", "select.ajax-search", function (e) {
       .find("button.dropdown-toggle");
     dropdownToggle.after(
       '<span class="pointer ajax-clear-values" onclick="deselect_ajax_search(this); return false;" data-id="' +
-        id +
-        '"></span>'
+      id +
+      '"></span>'
     );
   }
 });
@@ -242,10 +242,10 @@ $(function () {
     if ($newTaskRelationBtn.length > 0) {
       new_task(
         admin_url +
-          "tasks/task?rel_id=" +
-          $newTaskRelationBtn.attr("data-rel-id") +
-          "&rel_type=" +
-          $newTaskRelationBtn.attr("data-rel-type")
+        "tasks/task?rel_id=" +
+        $newTaskRelationBtn.attr("data-rel-id") +
+        "&rel_type=" +
+        $newTaskRelationBtn.attr("data-rel-type")
       );
     } else if ($("body").hasClass("project")) {
       new_task(
@@ -872,10 +872,10 @@ $(function () {
       .parents("tr")
       .find(
         "td input[" +
-          (typeof is_own_attr !== typeof undefined && is_own_attr !== false
-            ? "data-can-view"
-            : "data-can-view-own") +
-          "]"
+        (typeof is_own_attr !== typeof undefined && is_own_attr !== false
+          ? "data-can-view"
+          : "data-can-view-own") +
+        "]"
       );
 
     if (view_chk_selector.data("not-applicable") == true) {
@@ -895,10 +895,10 @@ $(function () {
   $("body").on("change", 'input[name="checklist-box"]', function () {
     requestGet(
       admin_url +
-        "tasks/checkbox_action/" +
-        $(this).parents(".checklist").data("checklist-id") +
-        "/" +
-        ($(this).prop("checked") === true ? 1 : 0)
+      "tasks/checkbox_action/" +
+      $(this).parents(".checklist").data("checklist-id") +
+      "/" +
+      ($(this).prop("checked") === true ? 1 : 0)
     );
     recalculate_checklist_items_progress();
     if (
@@ -1044,10 +1044,10 @@ $(function () {
       .data("col-status-id");
     new_task(
       admin_url +
-        "tasks/task?rel_type=project&rel_id=" +
-        project_id +
-        "&milestone_id=" +
-        milestone_id
+      "tasks/task?rel_type=project&rel_id=" +
+      project_id +
+      "&milestone_id=" +
+      milestone_id
     );
     $('body [data-toggle="popover"]').popover("hide");
   });
@@ -1801,9 +1801,9 @@ $(function () {
   $("body").on("click", ".close-reminder-modal", function () {
     $(
       ".reminder-modal-" +
-        $(this).data("rel-type") +
-        "-" +
-        $(this).data("rel-id")
+      $(this).data("rel-type") +
+      "-" +
+      $(this).data("rel-id")
     ).modal("hide");
   });
 
@@ -1873,8 +1873,8 @@ $(function () {
           } else {
             errorContainer.html(
               '<div class="alert alert-warning no-mbot mtop15">' +
-                response.error +
-                "</div>"
+              response.error +
+              "</div>"
             );
           }
         })
@@ -2192,16 +2192,16 @@ $(function () {
       initDataTable(
         table_invoices,
         admin_url +
-          "invoices/table" +
-          ($("body").hasClass("recurring") ? "?recurring=1" : ""),
+        "invoices/table" +
+        ($("body").hasClass("recurring") ? "?recurring=1" : ""),
         "undefined",
         "undefined",
         Sales_table_ServerParams,
         !$("body").hasClass("recurring")
           ? [
-              [3, "desc"],
-              [0, "desc"],
-            ]
+            [3, "desc"],
+            [0, "desc"],
+          ]
           : [table_invoices.find("th.next-recurring-date").index(), "asc"]
       );
     }
@@ -2433,8 +2433,8 @@ $(function () {
     ) {
       $itemsTable.before(
         '<div class="alert alert-warning mbot20" id="items-warning">' +
-          app.lang.item_forgotten_in_preview +
-          '<i class="fa fa-angle-double-down pointer pull-right fa-2x" style="margin-top:-4px;" onclick="add_item_to_table(\'undefined\',\'undefined\',undefined); return false;"></i></div>'
+        app.lang.item_forgotten_in_preview +
+        '<i class="fa fa-angle-double-down pointer pull-right fa-2x" style="margin-top:-4px;" onclick="add_item_to_table(\'undefined\',\'undefined\',undefined); return false;"></i></div>'
       );
 
       $("html,body").animate({
@@ -2446,8 +2446,8 @@ $(function () {
       if ($itemsTable.length && $itemsTable.find(".item").length === 0) {
         $itemsTable.before(
           '<div class="alert alert-warning mbot20" id="items-warning">' +
-            app.lang.no_items_warning +
-            "</div>"
+          app.lang.no_items_warning +
+          "</div>"
         );
         $("html,body").animate({
           scrollTop: $("#items-warning").offset().top,
@@ -3012,8 +3012,8 @@ $(function () {
         new_desc_value,
         desc_selector = $(
           "[data-bill-expense=" +
-            $(this).attr("data-id") +
-            "] .item_long_description"
+          $(this).attr("data-id") +
+          "] .item_long_description"
         );
       current_desc_val = desc_selector.val();
       current_desc_val = current_desc_val.trim();
@@ -3063,8 +3063,8 @@ function _make_task_checklist_items_deletable() {
           .find("a > span.text")
           .after(
             '<small class="checklist-item-template-remove" onclick="remove_checklist_item_template(' +
-              $item.attr("value") +
-              '); event.stopPropagation();"><i class="fa fa-remove"></i></small>'
+            $item.attr("value") +
+            '); event.stopPropagation();"><i class="fa fa-remove"></i></small>'
           );
       }
     });
@@ -3098,12 +3098,12 @@ function _init_tasks_billable_select(tasks, project_id) {
       }
       billable_tasks_area.append(
         '<option value="' +
-          obj.id +
-          '"' +
-          option_data +
-          ">" +
-          obj.name +
-          "</option>"
+        obj.id +
+        '"' +
+        option_data +
+        ">" +
+        obj.name +
+        "</option>"
       );
     });
 
@@ -3124,8 +3124,8 @@ function _init_tasks_billable_select(tasks, project_id) {
 
     tasks_help_wrapper.html(
       '<span class="pointer popover-invoker" data-container=".form-group-select-task_select" data-trigger="click" data-placement="top" data-toggle="popover" data-content="' +
-        help_tooltip +
-        '"><i class="fa-regular fa-circle-question"></i></span>'
+      help_tooltip +
+      '"><i class="fa-regular fa-circle-question"></i></span>'
     );
 
     delay(function () {
@@ -4148,9 +4148,9 @@ function reminderFormHandler(form) {
   } else {
     $(
       ".reminder-modal-" +
-        form.find('[name="rel_type"]').val() +
-        "-" +
-        form.find('[name="rel_id"]').val()
+      form.find('[name="rel_type"]').val() +
+      "-" +
+      form.find('[name="rel_id"]').val()
     ).modal("hide");
   }
 
@@ -4461,8 +4461,8 @@ function init_kan_ban_sort_icon(sort, type) {
     .find("." + type)
     .prepend(
       " <i class='kanban-sort-icon fa fa-sort-amount-" +
-        sort.toLowerCase() +
-        "'></i>"
+      sort.toLowerCase() +
+      "'></i>"
     );
 }
 
@@ -4509,7 +4509,7 @@ function init_newsfeed_form() {
       dragover: function (file) {
         $("#new-post-form").addClass("dropzone-active");
       },
-      complete: function (file) {},
+      complete: function (file) { },
       drop: function (file) {
         $("#new-post-form").removeClass("dropzone-active");
       },
@@ -4719,9 +4719,9 @@ function refresh_post_likes(postid) {
 function refresh_post_comments(postid) {
   $.post(
     admin_url +
-      "newsfeed/init_post_comments/" +
-      postid +
-      "?refresh_post_comments=true"
+    "newsfeed/init_post_comments/" +
+    postid +
+    "?refresh_post_comments=true"
   ).done(function (response) {
     $('[data-comments-postid="' + postid + '"]').html(response);
   });
@@ -5133,8 +5133,8 @@ function print_lead_information() {
   $leadViewWrapper.find("dt").each(function () {
     $(this).replaceWith(
       "<p style='margin-bottom:5px; color:#777'><strong>" +
-        $(this).text() +
-        "</strong></p>"
+      $(this).text() +
+      "</strong></p>"
     );
   });
 
@@ -5782,8 +5782,8 @@ function do_task_checklist_items_height(task_checklist_items) {
     if (
       $(this).outerHeight() <
       this.scrollHeight +
-        parseFloat($(this).css("borderTopWidth")) +
-        parseFloat($(this).css("borderBottomWidth"))
+      parseFloat($(this).css("borderTopWidth")) +
+      parseFloat($(this).css("borderBottomWidth"))
     ) {
       $(this).height(0).height(this.scrollHeight);
     }
@@ -5894,10 +5894,10 @@ function save_checklist_item_template(id, field) {
       .find('select option[value=""]')
       .after(
         '<option value="' +
-          response.id +
-          '">' +
-          description.trim() +
-          "</option>"
+        response.id +
+        '">' +
+        description.trim() +
+        "</option>"
       );
     singleChecklistTemplate.removeClass("hide");
     singleChecklistTemplate.find("select").selectpicker("refresh");
@@ -7060,10 +7060,10 @@ function _set_item_preview_custom_fields_array(custom_fields) {
         $.each(selected, function (i, e) {
           $(
             'tr.main td[data-id="' +
-              cf.id +
-              '"] input[type="checkbox"][value="' +
-              e +
-              '"]'
+            cf.id +
+            '"] input[type="checkbox"][value="' +
+            e +
+            '"]'
           ).prop("checked", true);
         });
       }
@@ -7829,6 +7829,12 @@ function calculate_total() {
     discount_total_type = $(".discount-total-type.selected"),
     discount_type = $('select[name="discount_type"]').val();
 
+  if (discount_type === "" && (discount_percent != 0 || discount_fixed != 0)) {
+    // If discount type is empty but discount is applied, default to before_tax
+    $('select[name="discount_type"]').selectpicker("val", "before_tax");
+    discount_type = "before_tax";
+  }
+
   $(".tax-area").remove();
 
   $.each(rows, function () {
@@ -7946,26 +7952,28 @@ function calculate_total() {
   }
 
   var discount_html = "-" + format_money(total_discount_calculated);
-  $('input[name="discount_total"]').val(
-    accounting.toFixed(total_discount_calculated, app.options.decimal_places)
-  );
+  if (!discount_total_type.hasClass("discount-type-fixed")) {
+    $('input[name="discount_total"]').val(
+      accounting.toFixed(total_discount_calculated, app.options.decimal_places)
+    );
+  }
 
   // Append, format to html and display
   $(".discount-total").html(discount_html);
   $(".adjustment").html(format_money(adjustment));
   $(".subtotal").html(
     format_money(subtotal) +
-      hidden_input(
-        "subtotal",
-        accounting.toFixed(subtotal, app.options.decimal_places)
-      )
+    hidden_input(
+      "subtotal",
+      accounting.toFixed(subtotal, app.options.decimal_places)
+    )
   );
   $(".total").html(
     format_money(total) +
-      hidden_input(
-        "total",
-        accounting.toFixed(total, app.options.decimal_places)
-      )
+    hidden_input(
+      "total",
+      accounting.toFixed(total, app.options.decimal_places)
+    )
   );
 
   $(document).trigger("sales-total-calculated");
@@ -9003,10 +9011,10 @@ function initializeTinyMceMentions(editor, usersCallback) {
 
       editor.insertContent(
         '<span class="mention" contenteditable="false" data-mention-id="' +
-          id +
-          '">@' +
-          name +
-          "</span>&nbsp;"
+        id +
+        '">@' +
+        name +
+        "</span>&nbsp;"
       );
     });
 

@@ -510,12 +510,18 @@ function format_invoice_number($id)
         // ✅ Custom Format 5: YYMMDD + 3-digit number
         if ((int) $invoice->number_format === 5) {
             $date_part = date('ymd', strtotime($invoice->date ?? date('Y-m-d')));
-            $number_part = sprintf('%03d', (int) $invoice->number); // Format to 3 digits
+            
+            // Check if the number already starts with the date part (prevent double prefixing)
+            if (strpos((string)$invoice->number, $date_part) === 0 && strlen((string)$invoice->number) > strlen($date_part)) {
+                 $number = (string)$invoice->number;
+            } else {
+                 $number_part = sprintf('%03d', (int) $invoice->number); // Format to 3 digits
+                 $number = $date_part . $number_part;
+            }
 
             // Log the pieces used for building the number
-            log_message('error', 'format_invoice_number: Using Format 5 - Date: ' . $date_part . ', Number Raw: ' . $invoice->number . ', Number Padded: ' . $number_part);
+            log_message('debug', 'format_invoice_number: Using Format 5 - Date: ' . $date_part . ', Number Raw: ' . $invoice->number . ', Final: ' . $number);
 
-            $number = $date_part . $number_part;
         } else {
             // Use default sales number format
             $number = sales_number_format(

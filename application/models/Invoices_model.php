@@ -529,7 +529,24 @@ class Invoices_model extends App_Model
         if (isset($data['status']) && $data['status'] == self::STATUS_DRAFT) {
             $data['number'] = self::STATUS_DRAFT_NUMBER;
         } else {
-            $data['number'] = get_option('next_invoice_number');
+            // Updated Logic for Format 5 (Daily Reset)
+            if ((int) $data['number_format'] === 5) {
+                $date_prefix = date('ymd');
+                $this->db->select('number');
+                $this->db->from(db_prefix() . 'invoices');
+                $this->db->like('number', $date_prefix, 'after');
+                $this->db->order_by('number', 'desc');
+                $this->db->limit(1);
+                $last_invoice = $this->db->get()->row();
+
+                if ($last_invoice) {
+                    $data['number'] = (int)$last_invoice->number + 1;
+                } else {
+                    $data['number'] = $date_prefix . '001';
+                }
+            } else {
+                $data['number'] = get_option('next_invoice_number');
+            }
         }
 
         $data['duedate'] = isset($data['duedate']) && empty($data['duedate']) ? null : $data['duedate'];
