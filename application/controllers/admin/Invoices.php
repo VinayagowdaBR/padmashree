@@ -1228,9 +1228,17 @@ public function invoice($id = '')
         $this->load->model('payments_model');
 
         $data['invoice'] = $this->invoices_model->get($id);
+        $data['payments'] = $this->payments_model->get_invoice_payments($id);
+        
+        // Calculate payments_total from payments (sum of all payment amounts)
+        $payments_total = 0;
+        foreach ($data['payments'] as $payment) {
+            $payments_total += floatval($payment['amount']);
+        }
+        $data['invoice']->payments_total = $payments_total;
+        
         $data['refundable_amount'] = $this->refunds_model->get_refundable_amount($id);
         $data['payment_modes'] = $this->payment_modes_model->get('', ['expenses_only !=' => 1]);
-        $data['payments'] = $this->payments_model->get_invoice_payments($id);
 
         $this->load->view('admin/invoices/refund_modal', $data);
     }
@@ -1309,5 +1317,67 @@ public function invoice($id = '')
                 echo $duedate;
             }
         }
+    }
+
+    /**
+     * Load post-payment discount modal view
+     * @param int $id Invoice ID
+     */
+    public function post_payment_discount_modal($id)
+    {
+        if (!has_permission('invoices', '', 'edit')) {
+            access_denied('invoices');
+        }
+
+        $invoice = $this->invoices_model->get($id);
+        
+        if (!$invoice) {
+            echo '<div class="alert alert-danger">Invoice not found</div>';
+            return;
+        }
+        
+        if ($invoice->status != Invoices_model::STATUS_PAID) {
+            echo '<div class="alert alert-warning">Post-payment discount can only be applied to fully paid invoices</div>';
+            return;
+        }
+
+        $this->load->model('payment_modes_model');
+        $data['invoice'] = $invoice;
+        $data['payment_modes'] = $this->payment_modes_model->get('', ['expenses_only !=' => 1]);
+        
+        $this->load->view('admin/invoices/post_payment_discount_modal', $data);
+    }
+
+    /**
+     * Process post-payment discount - creates credit note and refund
+     */
+    public function apply_post_payment_discount()
+    {
+        if (!has_permission('invoices', '', 'edit')) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => _l('access_denied')]);
+            return;
+        }
+
+        if (!$this->input->post()) {
+            header('Content-Type: application/json');
+            echo json_encode(['success' => false, 'message' => 'Invalid request']);
+            return;
+        }
+
+        $invoice_id = $this->input->post('invoice_id');
+        $discount_amount = $this->input->post('discount_amount');
+        $payment_mode = $this->input->post('payment_mode');
+        $note = $this->input->post('note');
+
+        $result = $this->invoices_model->apply_post_payment_discount(
+            $invoice_id,
+            $discount_amount,
+            $payment_mode,
+            $note
+        );
+
+        header('Content-Type: application/json');
+        echo json_encode($result);
     }
 }

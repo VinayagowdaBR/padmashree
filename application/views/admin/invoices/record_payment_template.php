@@ -191,6 +191,9 @@ jQuery(document).ready(function ($) {
     // custom submit handling
     $(document).on('submit', '#record_payment_form', function (e) {
         e.preventDefault();
+        
+        var form = $(this);
+        var submitButton = form.find('button[type="submit"]');
 
         let rows = [];
         $('.payment-row').each(function () {
@@ -211,6 +214,9 @@ jQuery(document).ready(function ($) {
             alert('Please enter at least one valid payment row.');
             return false;
         }
+
+        // Disable button to prevent double submission
+        submitButton.button('loading');
 
         let commonData = {
             invoiceid: $('input[name="invoiceid"]').val(),
@@ -236,6 +242,7 @@ jQuery(document).ready(function ($) {
                 })
                 .fail(function () {
                     alert('Error saving payment row ' + (i + 1));
+                    submitButton.button('reset');
                 });
         }
 

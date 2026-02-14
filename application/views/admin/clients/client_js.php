@@ -264,6 +264,14 @@ $(document).ready(function() {
                     console.log('Server response:', response);
                     if (response.success) {
                         alert_float('success', 'Affiliate saved successfully!');
+                        
+                        // Add new option to dropdown
+                        if (response.affiliate_code && response.full_name) {
+                            var newOption = new Option(response.full_name, response.affiliate_code, true, true);
+                            $('#affiliate_code').append(newOption).trigger('change');
+                            $('#affiliate_code').selectpicker('refresh');
+                        }
+
                         $('#affiliateModal').modal('hide');
                         $('#affiliate_name').val('');
                         $('#affiliate_lastname').val('');

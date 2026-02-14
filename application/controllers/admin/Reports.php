@@ -2315,7 +2315,108 @@ public function outpatient_bill_report()
     $data['title'] = _l('Outpatient Bill Report');
     $this->load->view('admin/reports/outpatient_bill_report', $data);
     
-}
+
+    }
+
+    public function edited_bills()
+    {
+        if (!staff_can('view', 'reports') && !staff_can('sales-reports', 'reports')) {
+            access_denied('reports');
+        }
+
+        $data['title'] = 'Edited Bills Report';
+        $this->load->view('admin/reports/edited_bills', $data);
+    }
+
+    public function edited_bills_table()
+    {
+        if (!staff_can('view', 'reports') && !staff_can('sales-reports', 'reports')) {
+            access_denied('reports');
+        }
+
+        $this->load->model('invoices_model');
+        
+        $aColumns = [
+            db_prefix() . 'sales_activity.date',
+            db_prefix() . 'invoices.number',
+            db_prefix() . 'clients.company', // Patient Name
+            db_prefix() . 'sales_activity.full_name', // Staff Name
+            db_prefix() . 'sales_activity.description',
+        ];
+
+        $sIndexColumn = 'id';
+        $sTable       = db_prefix() . 'sales_activity';
+        $join         = [
+            'JOIN ' . db_prefix() . 'invoices ON ' . db_prefix() . 'invoices.id = ' . db_prefix() . 'sales_activity.rel_id',
+            'LEFT JOIN ' . db_prefix() . 'clients ON ' . db_prefix() . 'clients.userid = ' . db_prefix() . 'invoices.clientid',
+        ];
+
+        $where = ['AND rel_type = "invoice"'];
+
+        // Filters
+        if ($this->input->post('report_from')) {
+            $where[] = 'AND DATE(' . db_prefix() . 'sales_activity.date) >= "' . to_sql_date($this->input->post('report_from')) . '"';
+        }
+        if ($this->input->post('report_to')) {
+            $where[] = 'AND DATE(' . db_prefix() . 'sales_activity.date) <= "' . to_sql_date($this->input->post('report_to')) . '"';
+        }
+        if ($this->input->post('staff_name')) {
+            $where[] = 'AND ' . db_prefix() . 'sales_activity.full_name LIKE "%' . $this->db->escape_like_str($this->input->post('staff_name')) . '%"';
+        }
+
+        // Only show "Update" activities? 
+        // User asked for "Edited Bills", usually implies changes. 
+        // Let's check if we want to filter specific description types.
+        // For now, let's keep it broad, but maybe order by date desc.
+
+        $result = data_tables_init($aColumns, $sIndexColumn, $sTable, $join, $where, [
+            db_prefix() . 'invoices.id as invoice_id',
+            db_prefix() . 'invoices.formatted_number',
+            db_prefix() . 'clients.userid as mrd_no'
+        ]);
+
+        $output  = $result['output'];
+        $rResult = $result['rResult'];
+
+        // Debugging: Log the structure of the first row
+        if (!empty($rResult)) {
+            log_message('error', 'DEBUG: edited_bills_table row structure: ' . print_r($rResult[0], true));
+        }
+
+        foreach ($rResult as $aRow) {
+            $row = [];
+
+            // Helper to get value with or without prefix
+            $date = $aRow['date'] ?? $aRow[db_prefix() . 'sales_activity.date'] ?? '';
+            $full_name = $aRow['full_name'] ?? $aRow[db_prefix() . 'sales_activity.full_name'] ?? '';
+            $description = $aRow['description'] ?? $aRow[db_prefix() . 'sales_activity.description'] ?? '';
+            $company = $aRow['company'] ?? $aRow[db_prefix() . 'clients.company'] ?? '';
+
+            // Date
+            $row[] = _dt($date);
+
+            // Bill No
+            // Link to invoice
+            $number = format_invoice_number($aRow['invoice_id']); // Ensure accurate formatting
+            $row[] = '<a href="' . admin_url('invoices/invoice/' . $aRow['invoice_id']) . '" target="_blank">' . $number . '</a>';
+
+            // Patient
+            $row[] = '<a href="' . admin_url('clients/client/' . $aRow['mrd_no']) . '">' . $company . '</a>';
+
+            // Edited By
+            $row[] = $full_name;
+
+            // Modification (Description)
+            // Strip tags just in case, though usually plain text
+            $row[] = strip_tags($description);
+
+            $output['aaData'][] = $row;
+        }
+
+        echo json_encode($output);
+        die();
+    }
+
 
 
 //  public function outpatient_bill_table()
@@ -2639,10 +2740,7 @@ public function outpatient_bill_report()
 
 public function outpatient_bill_table()
 {
-    log_message('debug', '🚀 Starting outpatient_bill_table method');
-
     if (!staff_can('view', 'invoices')) {
-        log_message('debug', '❌ Access denied for viewing invoices');
         access_denied('invoices');
     }
 
@@ -2657,9 +2755,8 @@ public function outpatient_bill_table()
 
     $this->load->model('invoices_model');
     $this->load->model('currencies_model');
-    $this->load->model('payments_model'); // Added payments model
+    $this->load->model('payments_model');
     $currency = $this->currencies_model->get_base_currency();
-    log_message('debug', '💰 Loaded base currency: ' . print_r($currency, true));
 
     // Filters from POST
     $from_date_raw = $this->input->post('report_from');
@@ -2670,35 +2767,16 @@ public function outpatient_bill_table()
     $project_id = $this->input->post('project_id');
     $referral_name = $this->input->post('referral_name');
 
-    // Helper function to convert date from dd-mm-yyyy to yyyy-mm-dd format
+    // Helper function to convert date
     $convertDate = function($date) {
         if (empty($date)) return '';
-        
-        // If already in yyyy-mm-dd format, return as is
-        if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
-            return $date;
-        }
-        
-        // Convert from dd-mm-yyyy to yyyy-mm-dd
-        if (preg_match('/^(\d{2})-(\d{2})-(\d{4})$/', $date, $matches)) {
-            return $matches[3] . '-' . $matches[2] . '-' . $matches[1];
-        }
-        
-        // Try using to_sql_date as fallback
+        if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) return $date;
+        if (preg_match('/^(\d{2})-(\d{2})-(\d{4})$/', $date, $matches)) return $matches[3] . '-' . $matches[2] . '-' . $matches[1];
         return to_sql_date($date) ?: '';
     };
 
     $from_date = $convertDate($from_date_raw);
     $to_date = $convertDate($to_date_raw);
-
-    log_message('debug', '🎯 Received filters:');
-    log_message('debug', '   - from_date_raw: ' . $from_date_raw);
-    log_message('debug', '   - from_date (converted): ' . $from_date);
-    log_message('debug', '   - to_date_raw: ' . $to_date_raw);
-    log_message('debug', '   - to_date (converted): ' . $to_date);
-    log_message('debug', '   - mrd_from: ' . $mrd_from);
-    log_message('debug', '   - mrd_to: ' . $mrd_to);
-    log_message('debug', '   - referral_name: ' . $referral_name);
 
     $where = [];
 
@@ -2727,94 +2805,46 @@ public function outpatient_bill_table()
         $where[] = get_invoices_where_sql_for_staff(get_staff_user_id());
     }
 
-    log_message('debug', '📋 WHERE conditions: ' . implode(' ', $where));
-
     $aColumns = [
-        'number',
-        'total',
-        'tblinvoices.datecreated as invoice_datecreated',
-        get_sql_select_client_company(),
-        $clientsTable . '.userid as mrd_no',
-        $invoiceTable . '.status',
-
-        "(SELECT pm.name 
-        FROM " . db_prefix() . "invoicepaymentrecords pr
-        JOIN " . db_prefix() . "payment_modes pm ON pr.paymentmode = pm.id
-        WHERE pr.invoiceid = " . db_prefix() . "invoices.id 
-        ORDER BY pr.date DESC, pr.id DESC 
-        LIMIT 1) AS payment_mode",
-
+        $invoiceTable . '.number', // 0: Bill No (Explicitly use table name)
+        'tblinvoices.datecreated as invoice_datecreated', // 1: Date
+        $clientsTable . '.userid as mrd_no', // 2: MRD No
+        get_sql_select_client_company(), // 3: Customer
+        // 4: Ref.By
+        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id WHERE cfd.name = "Ref.By" AND cfdv.relid = ' . db_prefix() . 'invoices.id AND cfdv.fieldto = "invoice" LIMIT 1) as Refer',
+        // 5: Age (Years)
+        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id WHERE cfd.slug = "age_years" AND cfdv.relid = ' . db_prefix() . 'invoices.id AND cfdv.fieldto = "invoice" LIMIT 1) as age_years',
+        // 6: Modality
+        "(SELECT GROUP_CONCAT(description SEPARATOR ', ') FROM $itemableTable WHERE rel_id = $invoiceTable.id AND rel_type = 'invoice') as all_items",
+        // 7: Sex
+        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id WHERE cfd.name = "Sex" AND cfdv.relid = ' . db_prefix() . 'invoices.id AND cfdv.fieldto = "invoice" LIMIT 1) as Sex',
+        // 8: Mobile No
+        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id WHERE cfd.name = "Mobile.no" AND cfdv.relid = ' . db_prefix() . 'invoices.id AND cfdv.fieldto = "invoice" LIMIT 1) as Mobile',
+        // 9: Total Amt
+        db_prefix() . 'invoices.subtotal as subtotal',
+        // 10: Disc
         db_prefix() . 'invoices.discount_total as discount',
-
-        "(SELECT GROUP_CONCAT(description SEPARATOR ', ')
-            FROM $itemableTable
-            WHERE rel_id = $invoiceTable.id AND rel_type = 'invoice') as all_items",
-        'subtotal',
+        // 11: Bill Amt
+        db_prefix() . 'invoices.total as total',
+        // 12: Paid Amt
         "(SELECT SUM(amount) FROM $paymentRecordsTable WHERE invoiceid = $invoiceTable.id) as total_paid",
+        // 13: Bal (Calculated)
         "($invoiceTable.total - IFNULL((SELECT SUM(amount) FROM $paymentRecordsTable WHERE invoiceid = $invoiceTable.id), 0)) as balance",
-        
-        '(SELECT GROUP_CONCAT(pr.transactionid SEPARATOR ", ") 
-            FROM ' . db_prefix() . 'invoicepaymentrecords pr
-            WHERE pr.invoiceid = ' . $invoiceTable . '.id
-            ) as payment_details',
-
-        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
-            JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
-            WHERE cfd.slug = "age_years" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
-            AND cfdv.fieldto = "invoice" LIMIT 1) as age_years',
-
-        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
-            JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
-            WHERE cfd.slug = "age_months" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
-            AND cfdv.fieldto = "invoice" LIMIT 1) as age_months',
-            '(
-  SELECT cfdv.value 
-  FROM tblcustomfieldsvalues cfdv
-  JOIN tblcustomfields cfd ON cfdv.fieldid = cfd.id 
-  WHERE cfd.name = "AgeOption" 
-    AND cfdv.relid = tblinvoices.id 
-    AND cfdv.fieldto = "invoice" 
-  LIMIT 1
- ) AS AgeOption',
-
-        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
-            JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
-            WHERE cfd.name = "Sex" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
-            AND cfdv.fieldto = "invoice" LIMIT 1) as Sex',
-
-        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
-            JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
-            WHERE cfd.name = "Mobile.no" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
-            AND cfdv.fieldto = "invoice" LIMIT 1) as Mobile',
-
-        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv 
-            JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id 
-            WHERE cfd.name = "Ref.By" AND cfdv.relid = ' . db_prefix() . 'invoices.id 
-            AND cfdv.fieldto = "invoice" LIMIT 1) as Refer',
-
-        "(SELECT SUM(amount) 
-            FROM " . db_prefix() . "invoicepaymentrecords 
-            WHERE invoiceid = $invoiceTable.id AND paymentmode = 2) as Cash_Amount",
-
-        "(SELECT SUM(amount) 
-            FROM " . db_prefix() . "invoicepaymentrecords 
-            WHERE invoiceid = $invoiceTable.id AND paymentmode = 3) as Cheque_Amount",
-
-        "(SELECT SUM(amount) 
-            FROM " . db_prefix() . "invoicepaymentrecords 
-            WHERE invoiceid = $invoiceTable.id AND paymentmode = 6) as Card",
-
-        "(SELECT SUM(amount) 
-            FROM " . db_prefix() . "invoicepaymentrecords 
-            WHERE invoiceid = $invoiceTable.id AND paymentmode = 10) as UPI",
-
-        "CONCAT($staffTable.firstname, ' ', $staffTable.lastname) as sales_agent_name",
-        "CONCAT(au.firstname, ' ', au.lastname) as affiliate_user_name",
+        // 14: Cash Amt
+        "(SELECT SUM(amount) FROM " . db_prefix() . "invoicepaymentrecords WHERE invoiceid = $invoiceTable.id AND paymentmode = 2) as Cash_Amount",
+        // 15: Cheque Amt
+        "(SELECT SUM(amount) FROM " . db_prefix() . "invoicepaymentrecords WHERE invoiceid = $invoiceTable.id AND paymentmode = 3) as Cheque_Amount",
+        // 16: CC (Card)
+        "(SELECT SUM(amount) FROM " . db_prefix() . "invoicepaymentrecords WHERE invoiceid = $invoiceTable.id AND paymentmode = 6) as Card",
+        // 17: UPI
+        "(SELECT SUM(amount) FROM " . db_prefix() . "invoicepaymentrecords WHERE invoiceid = $invoiceTable.id AND paymentmode = 10) as UPI",
+        // 18: PaidBy
+        "'test' as all_payment_modes",
+        // 19: Pay Details
+        "'details' as payment_details",
     ];
 
-    log_message('debug', '📊 aColumns defined: ' . print_r($aColumns, true));
-
-    $sIndexColumn = 'id';
+    $sIndexColumn = $invoiceTable . '.id';
     $sTable = db_prefix() . 'invoices';
 
     $join = [
@@ -2825,37 +2855,19 @@ public function outpatient_bill_table()
         'LEFT JOIN ' . db_prefix() . 'projects ON ' . db_prefix() . 'projects.id = ' . $invoiceTable . '.project_id',
     ];
 
-    log_message('debug', '🔗 Joins set up: ' . print_r($join, true));
-
-    $custom_fields = get_table_custom_fields('invoice');
-    $customFieldsColumns = [];
-
-    foreach ($custom_fields as $key => $field) {
-        $selectAs = (is_cf_date($field) ? 'date_picker_cvalue_' . $key : 'cvalue_' . $key);
-        $customFieldsColumns[] = $selectAs;
-        $aColumns[] = 'ctable_' . $key . '.value as ' . $selectAs;
-        $join[] = 'LEFT JOIN ' . db_prefix() . 'customfieldsvalues as ctable_' . $key . ' ON ' . $invoiceTable . '.id = ctable_' . $key . '.relid AND ctable_' . $key . '.fieldto="' . $field['fieldto'] . '" AND ctable_' . $key . '.fieldid=' . $field['id'];
-    }
-
-    log_message('debug', '🏷️ Custom fields processed: ' . count($custom_fields));
-
-    $result = data_tables_init($aColumns, $sIndexColumn, $sTable, $join, $where, [
+    $additionalSelect = [
         db_prefix() . 'invoices.id',
         db_prefix() . 'invoices.clientid',
         db_prefix() . 'currencies.name as currency_name',
-        'formatted_number',
-    ]);
+        'formatted_number', // Add this to ensure we can access it
+        '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id WHERE cfd.slug = "age_months" AND cfdv.relid = ' . db_prefix() . 'invoices.id AND cfdv.fieldto = "invoice" LIMIT 1) as age_months',
+        "CONCAT(au.firstname, ' ', au.lastname) as affiliate_user_name",
+    ];
 
-    log_message('debug', '📦 DataTables result obtained');
-    log_message('debug', '📊 Number of records found: ' . count($result['rResult']));
+    $result = data_tables_init($aColumns, $sIndexColumn, $sTable, $join, $where, $additionalSelect);
 
     $output  = $result['output'];
     $rResult = $result['rResult'];
-
-    // Log the raw SQL query for debugging
-    log_message('debug', '🔍 Raw SQL Query: ' . $this->db->last_query());
-
-    $serial_number = 1;
 
     $total_total_amount = 0;
     $total_discount = 0;
@@ -2868,38 +2880,26 @@ public function outpatient_bill_table()
     $total_card = 0;
     $total_upi = 0;
 
-    log_message('debug', '📋 Processing ' . count($rResult) . ' rows:');
-
-    foreach ($rResult as $index => $aRow) {
-        log_message('debug', "--- Processing Row {$index} ---");
-        log_message('debug', '📄 Raw row data: ' . json_encode($aRow));
-
+    foreach ($rResult as $aRow) {
         $row = [];
 
         // Format invoice number
         $formattedNumber = format_invoice_number($aRow['id']);
         if (empty($aRow['formatted_number']) || $formattedNumber !== $aRow['formatted_number']) {
             $this->invoices_model->save_formatted_number($aRow['id']);
-            log_message('debug', '💾 Saved formatted number for invoice ID: ' . $aRow['id']);
         }
         $row[] = '<a href="' . admin_url('invoices/invoice/' . $aRow['id']) . '" target="_blank">' . html_escape($formattedNumber) . '</a>';
-        log_message('debug', '🔢 Invoice Number: ' . $formattedNumber);
 
         $row[] = !empty($aRow['invoice_datecreated']) ? date('d/m/y', strtotime($aRow['invoice_datecreated'])) : '';
-        log_message('debug', '📅 Date: ' . $row[1]);
-
         $row[] = str_pad($aRow['mrd_no'], 0, '0', STR_PAD_LEFT);
-        log_message('debug', '🏥 MRD No: ' . $aRow['mrd_no']);
-
         $row[] = empty($aRow['deleted_customer_name']) ? '<a href="' . admin_url('clients/client/' . $aRow['clientid']) . '">' . e($aRow['company']) . '</a>' : e($aRow['deleted_customer_name']);
-        log_message('debug', '👤 Customer: ' . $aRow['company']);
-
-        $row[] = $aRow['affiliate_user_name'] ?: 'N/A';
-        log_message('debug', '👥 Referral: ' . $aRow['affiliate_user_name']);
+        
+        // Use affiliate username if Ref.By is empty (fallback as per plan)
+        $referral = !empty($aRow['Refer']) ? $aRow['Refer'] : ($aRow['affiliate_user_name'] ?: 'N/A');
+        $row[] = $referral;
 
         $age_years = !empty($aRow['age_years']) ? $aRow['age_years'] : '0';
         $age_months = !empty($aRow['age_months']) ? $aRow['age_months'] : '0';
-        
         if ($age_months == '0' || $age_months == 0) {
             $row[] = $age_years;
         } else {
@@ -2907,51 +2907,26 @@ public function outpatient_bill_table()
         }
 
         $row[] = $aRow['all_items'] ?: '-';
-        log_message('debug', '📦 Items: ' . substr($aRow['all_items'] ?? '-', 0, 50) . '...');
-
-
-        
-
-        
         $row[] = !empty($aRow['Sex']) ? $aRow['Sex'] : '-';
-        log_message('debug', '🚻 Sex: ' . $aRow['Sex']);
-
         $row[] = !empty($aRow['Mobile']) ? $aRow['Mobile'] : '-';
-        log_message('debug', '📱 Mobile: ' . $aRow['Mobile']);
 
         // Calculate corrected bill amount and balance
         $bill_amount_calc = (float)($aRow['subtotal'] ?? 0) - (float)($aRow['discount'] ?? 0);
         $balance_calc = $bill_amount_calc - (float)($aRow['total_paid'] ?? 0);
 
         $row[] = number_format($aRow['subtotal'], 2);
-        log_message('debug', '💰 Subtotal: ' . $aRow['subtotal']);
-
         $row[] = number_format($aRow['discount'], 2);
-        log_message('debug', '💸 Discount: ' . $aRow['discount']);
-
         $row[] = number_format($bill_amount_calc, 2);
-        log_message('debug', '💵 Total: ' . $bill_amount_calc);
-
         $row[] = number_format($aRow['total_paid'], 2);
-        log_message('debug', '💳 Paid Amount: ' . $aRow['total_paid']);
-
         $row[] = number_format($balance_calc, 2);
-        log_message('debug', '⚖️ Balance: ' . $balance_calc);
-
         $row[] = !empty($aRow['Cash_Amount']) ? $aRow['Cash_Amount'] : '0';
-        log_message('debug', '💵 Cash Amount: ' . $aRow['Cash_Amount']);
-
         $row[] = !empty($aRow['Cheque_Amount']) ? $aRow['Cheque_Amount'] : '0';
-        log_message('debug', '🏦 Cheque Amount: ' . $aRow['Cheque_Amount']);
-
         $row[] = !empty($aRow['Card']) ? $aRow['Card'] : '0';
-        log_message('debug', '💳 Card Amount: ' . $aRow['Card']);
-
         $row[] = !empty($aRow['UPI']) ? $aRow['UPI'] : '0';
-        log_message('debug', '📱 UPI Amount: ' . $aRow['UPI']);
 
-        // Payment modes
+        // Fetch Payment Modes and Details
         $displayed_modes = [];
+        $displayed_details = [];
         $invoice_payments = $this->payments_model->get_invoice_payments($aRow['id']);
         
         if (!empty($invoice_payments)) {
@@ -2960,54 +2935,23 @@ public function outpatient_bill_table()
                 if (!in_array($payment_mode, $displayed_modes)) {
                     $displayed_modes[] = $payment_mode;
                 }
+                // Collect transaction IDs
+                if (!empty($payment['transactionid'])) {
+                    $displayed_details[] = $payment['transactionid'];
+                }
             }
         }
+        
         $all_modes = !empty($displayed_modes) ? implode(', ', $displayed_modes) : '-';
         $row[] = $all_modes;
-        log_message('debug', '💳 Payment Modes: ' . $all_modes);
 
-        $row[] = !empty($aRow['payment_details']) ? html_escape($aRow['payment_details']) : '-';
-        log_message('debug', '📝 Payment Details: ' . substr($aRow['payment_details'] ?? '-', 0, 50) . '...');
+        $payment_details_str = !empty($displayed_details) ? implode(', ', $displayed_details) : '-';
+        $row[] = html_escape($payment_details_str);
 
-
-
-        // Accumulate totals - FIXED SERVICE CHARGE LOGIC
-        log_message('debug', '🧮 Accumulating totals for row ' . $index);
-        
+        // Accumulate totals
         $total_total_amount += $aRow['subtotal'] ?? 0;
         $total_discount += $aRow['discount'] ?? 0;
         $total_bill_amount += $bill_amount_calc;
-        
-        $service_charge_value = $aRow['service_charge'] ?? 0;
-
-        // Get payment modes from the displayed_modes array we already created
-        $payment_modes = !empty($displayed_modes) ? $displayed_modes : [];
-        $payment_modes_lower = array_map('strtolower', $payment_modes);
-
-        // Check if service charge should be applied
-        $should_apply_service_charge = false;
-        foreach ($payment_modes_lower as $mode) {
-            if (strpos($mode, 'upi') !== false || strpos($mode, 'card') !== false || 
-                strpos($mode, 'credit') !== false || strpos($mode, 'debit') !== false ||
-                strpos($mode, 'cc') !== false) {
-                $should_apply_service_charge = true;
-                break;
-            }
-        }
-
-        // Apply service charge only for relevant payment modes
-        if ($should_apply_service_charge) {
-            $total_service_charge += (float) $service_charge_value;
-        } else {
-            $total_service_charge += 0;
-        }
-
-        log_message('debug', '💡 Service Charge Calculation:');
-        log_message('debug', '   - Raw Service Charge: ' . $service_charge_value);
-        log_message('debug', '   - Payment Modes: ' . implode(', ', $payment_modes));
-        log_message('debug', '   - Should Apply Service Charge: ' . ($should_apply_service_charge ? 'Yes' : 'No'));
-        log_message('debug', '   - Service Charge Added: ' . ($should_apply_service_charge ? $service_charge_value : 0));
-
         $total_paid_amount += $aRow['total_paid'] ?? 0;
         $total_balance += $balance_calc;
         $total_cash += $aRow['Cash_Amount'] ?? 0;
@@ -3015,42 +2959,13 @@ public function outpatient_bill_table()
         $total_card += $aRow['Card'] ?? 0;
         $total_upi += $aRow['UPI'] ?? 0;
 
-        log_message('debug', '📊 Current totals after row ' . $index . ':');
-        log_message('debug', '   - Total Amount: ' . $total_total_amount);
-        log_message('debug', '   - Total Discount: ' . $total_discount);
-        log_message('debug', '   - Total Bill: ' . $total_bill_amount);
-        log_message('debug', '   - Total Service Charge: ' . $total_service_charge);
-        log_message('debug', '   - Total Paid: ' . $total_paid_amount);
-        log_message('debug', '   - Total Balance: ' . $total_balance);
-
         $output['aaData'][] = $row;
-        log_message('debug', "✅ Row {$index} processed successfully");
     }
-
-    // Log final totals
-    log_message('debug', '🎯 FINAL TOTALS:');
-    log_message('debug', '   - Total Amount: ' . $total_total_amount);
-    log_message('debug', '   - Total Discount: ' . $total_discount);
-    log_message('debug', '   - Total Bill: ' . $total_bill_amount);
-    log_message('debug', '   - Total Service Charge: ' . $total_service_charge);
-    log_message('debug', '   - Total Paid: ' . $total_paid_amount);
-    log_message('debug', '   - Total Balance: ' . $total_balance);
-    log_message('debug', '   - Total Cash: ' . $total_cash);
-    log_message('debug', '   - Total Cheque: ' . $total_cheque);
-    log_message('debug', '   - Total Card: ' . $total_card);
-    log_message('debug', '   - Total UPI: ' . $total_upi);
 
     // Append totals row
     $totals_row = [
         '<strong>Total</strong>',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
+        '', '', '', '', '', '', '', '',
         '<strong>' . number_format($total_total_amount, 2) . '</strong>',
         '<strong>' . number_format($total_discount, 2) . '</strong>',
         '<strong>' . number_format($total_bill_amount, 2) . '</strong>',
@@ -3060,20 +2975,14 @@ public function outpatient_bill_table()
         '<strong>' . number_format($total_cheque, 2) . '</strong>',
         '<strong>' . number_format($total_card, 2) . '</strong>',
         '<strong>' . number_format($total_upi, 2) . '</strong>',
-        '', // Placeholder for PaidBy column
-        '',
+        '', '',
     ];
 
     $output['aaData'][] = $totals_row;
-    log_message('debug', '📋 Totals row added to output');
-
-    log_message('debug', '📤 Outputting JSON response with ' . count($output['aaData']) . ' rows');
-    log_message('debug', '📄 Final output sample: ' . json_encode(array_slice($output['aaData'], 0, 2)));
 
     echo json_encode($output);
-    log_message('debug', '✅ outpatient_bill_table method completed successfully');
+    die();
 }
-
 
 
 

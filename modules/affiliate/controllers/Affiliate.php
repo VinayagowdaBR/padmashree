@@ -57,10 +57,13 @@ class affiliate extends AdminController
                  $insert_id = $this->affiliate_model->add_member($data);
      
                  if ($insert_id) {
+                     $member = $this->affiliate_model->get_member($insert_id);
                      echo json_encode([
                          'success' => true,
                          'message' => 'Affiliate added successfully',
-                         'id'      => $insert_id
+                         'id'      => $insert_id,
+                         'affiliate_code' => $member->affiliate_code,
+                         'full_name' => $member->firstname . ' ' . $member->lastname
                      ]);
                  } else {
                      echo json_encode([

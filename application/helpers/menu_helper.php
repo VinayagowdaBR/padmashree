@@ -386,6 +386,16 @@ function app_init_admin_sidebar_menu_items()
                'badge'    => [],
            ]);
        }
+
+        if (isset($report_permissions['view']) || isset($report_permissions['sales'])) {
+            $CI->app_menu->add_sidebar_children_item('reports', [
+                'slug'     => 'edited-bills-reports',
+                'name'     => 'Edited Bills',
+                'href'     => admin_url('reports/edited_bills'),
+                'position' => 35,
+                'badge'    => [],
+            ]);
+        }
         // $CI->app_menu->add_sidebar_children_item('reports', [
         //     'slug'     => 'expenses-vs-income-reports',
         //     'name'     => _l('als_expenses_vs_income'),

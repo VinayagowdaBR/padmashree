@@ -20,14 +20,28 @@ $pdf->writeHTML('<hr style="border: 1px solid #000; margin: 4px 0;">', false, fa
 
 $label_width = '100px';
 
-$left_info = '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">' . _l('Name') . '</span>: ' . $invoice->client->company . '</p>';
-// Add this at the top for debugging
+// --- LEFT COLUMN ---
+// 1. Bill No (Moved from Right)
+$left_info = '<p style="color:#4e4e4e;"><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">BILL NO</span>: ' . $invoice_number . '</p>';
 
+// 2. Name
+$left_info .= '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">' . _l('Name') . '</span>: ' . $invoice->client->company . '</p>';
 
-$left_info = '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">' . _l('Name') . '</span>: ' . $invoice->client->company . '</p>';
+// 3. Referred By (Moved from Right)
+$CI =& get_instance();
+$CI->db->select('firstname, lastname');
+$CI->db->from('tblaffiliate_users');
+$CI->db->where('affiliate_code', $invoice->client->affiliate_code);
+$affiliate = $CI->db->get()->row();
+
+if ($affiliate && !empty($affiliate->firstname)) {
+    $fullName = trim($affiliate->firstname . ' ' . $affiliate->lastname);
+    $left_info .= '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">Referred By</span>: ' . $fullName . '</p>';
+}
 
 $age_value = '';
 $age_option_value = '';
+$sex_value = ''; // Initialize variable for Sex
 
 foreach ($pdf_custom_fields as $field) {
     $field_name_lower = strtolower(trim($field['name']));
@@ -37,6 +51,12 @@ foreach ($pdf_custom_fields as $field) {
         continue;
     }
     
+    // Capture Sex value to move to right column
+    if ($field_name_lower === 'sex') {
+        $sex_value = $value;
+        continue;
+    }
+
     if ($field_name_lower === 'age') {
         $age_value = $value;
         continue; // We'll handle age separately with age option
@@ -47,6 +67,8 @@ foreach ($pdf_custom_fields as $field) {
         continue;
     }
     
+    // This part likely won't be reached if only age, sex, ageoption are allowed and all are handled/continued above.
+    // But keeping it for safety/consistency with original logic structure if logic changes.
     $left_info .= '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">' . $field['name'] . '</span>: ' . $value . '</p>';
 }
 
@@ -57,24 +79,14 @@ if (!empty($age_value)) {
         $age_display .= ' (' . $age_option_value . ')';
     }
     $left_info .= '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">Age</span>: ' . $age_display . '</p>';
-    
-    // Log the combined age display
 }
 
-
-
+// --- RIGHT COLUMN ---
 $right_info = '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">' . _l('Date & Time') . '</span>: ' . _d($invoice->datecreated) . '</p>';
-$right_info .= '<p style="color:#4e4e4e;"><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">BILL NO</span>: ' . $invoice_number . '</p>';
 
-$CI =& get_instance();
-$CI->db->select('firstname, lastname');
-$CI->db->from('tblaffiliate_users');
-$CI->db->where('affiliate_code', $invoice->client->affiliate_code);
-$affiliate = $CI->db->get()->row();
-
-if ($affiliate && !empty($affiliate->firstname)) {
-    $fullName = trim($affiliate->firstname . ' ' . $affiliate->lastname);
-    $right_info .= '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">Referred By</span>: ' . $fullName . '</p>';
+// Add Sex to right column
+if (!empty($sex_value)) {
+    $right_info .= '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">Sex</span>: ' . $sex_value . '</p>';
 }
 
 $left_info = hooks()->apply_filters('invoice_pdf_header_after_custom_fields', $left_info, $invoice);

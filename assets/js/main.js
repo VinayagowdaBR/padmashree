@@ -1297,6 +1297,28 @@ $(function () {
   });
 
   // Lead edit toggle view/edit
+  // Discount type toggle handler - Robust implementation
+  $("body").on("click", ".discount-total-type", function (e) {
+    e.preventDefault();
+    $(".discount-total-type").removeClass("selected");
+    $(this).addClass("selected");
+    var text = $(this).text();
+    $(".discount-total-type-selected").html(text);
+    if ($(this).hasClass("discount-type-percent")) {
+      $(".input-discount-fixed").addClass("hide").val(0);
+      $(".input-discount-percent").removeClass("hide");
+    } else {
+      $(".input-discount-fixed").removeClass("hide");
+      $(".input-discount-percent").addClass("hide").val(0);
+    }
+    calculate_total();
+  });
+
+  // Explicit listeners for discount inputs to ensure calculation triggers
+  $("body").on("blur change", 'input[name="discount_percent"], input[name="discount_total"]', function () {
+    calculate_total();
+  });
+
   $("body").on("click", "[lead-edit]", function (e) {
     e.preventDefault();
     var $leadEdit = $("body .lead-edit");
@@ -7804,6 +7826,7 @@ function get_item_preview_values() {
 }
 
 // Calculate invoice total - NOT RECOMENDING EDIT THIS FUNCTION BECUASE IS VERY SENSITIVE
+// Calculate invoice total - NOT RECOMMENDING EDIT THIS FUNCTION BECAUSE IT IS VERY SENSITIVE
 function calculate_total() {
   if ($("body").hasClass("no-calculate-total")) {
     return false;
@@ -7829,8 +7852,8 @@ function calculate_total() {
     discount_total_type = $(".discount-total-type.selected"),
     discount_type = $('select[name="discount_type"]').val();
 
-  if (discount_type === "" && (discount_percent != 0 || discount_fixed != 0)) {
-    // If discount type is empty but discount is applied, default to before_tax
+  // Auto-fix: If discount_type is hidden/empty but we have a discount, default to before_tax
+  if ((discount_type === "" || !discount_type) && (discount_percent != 0 || discount_fixed != 0)) {
     $('select[name="discount_type"]').selectpicker("val", "before_tax");
     discount_type = "before_tax";
   }
@@ -7883,40 +7906,42 @@ function calculate_total() {
     }
   });
 
-  // Discount by percent
-  if (
-    discount_percent !== "" &&
-    discount_percent != 0 &&
-    discount_type == "before_tax" &&
-    discount_total_type.hasClass("discount-type-percent")
-  ) {
-    total_discount_calculated = (subtotal * discount_percent) / 100;
-  } else if (
-    discount_fixed !== "" &&
-    discount_fixed != 0 &&
-    discount_type == "before_tax" &&
-    discount_total_type.hasClass("discount-type-fixed")
-  ) {
-    total_discount_calculated = discount_fixed;
+  // LOGIC FIX: Determine Discount Mode based on VISIBILITY
+  // The UI state (which input is visible) is the most reliable indicator of user intent
+  var discount_percent_input = $('input[name="discount_percent"]');
+  var discount_fixed_input = $('input[name="discount_total"]');
+
+  var is_fixed_visible = !discount_fixed_input.hasClass('hide');
+  var is_percent_visible = !discount_percent_input.hasClass('hide');
+  var is_fixed_discount = is_fixed_visible;
+
+  // Calculate Discount
+  if (is_fixed_visible) {
+    total_discount_calculated = parseFloat(discount_fixed) || 0;
+  } else if (is_percent_visible && parseFloat(discount_percent) > 0) {
+    // Percentage
+    if (discount_type == 'before_tax') {
+      total_discount_calculated = (subtotal * discount_percent) / 100;
+    } else {
+      // We calculate after tax later, or accumulation logic?
+      // Origin logic separated before/after tax loop.
+      // Let's stick to original flow but use better conditions.
+      if (discount_type == 'before_tax') {
+        total_discount_calculated = (subtotal * discount_percent) / 100;
+      }
+    }
   }
 
+  // Apply Tax Reduction if Before Tax
   $.each(taxes, function (taxname, total_tax) {
-    if (
-      discount_percent !== "" &&
-      discount_percent != 0 &&
-      discount_type == "before_tax" &&
-      discount_total_type.hasClass("discount-type-percent")
-    ) {
-      total_tax_calculated = (total_tax * discount_percent) / 100;
-      total_tax = total_tax - total_tax_calculated;
-    } else if (
-      discount_fixed !== "" &&
-      discount_fixed != 0 &&
-      discount_type == "before_tax" &&
-      discount_total_type.hasClass("discount-type-fixed")
-    ) {
-      var t = (discount_fixed / subtotal) * 100;
-      total_tax = total_tax - (total_tax * t) / 100;
+    if (discount_type == "before_tax") {
+      if (is_fixed_discount && subtotal > 0) {
+        var t = (total_discount_calculated / subtotal) * 100;
+        total_tax = total_tax - (total_tax * t) / 100;
+      } else if (parseFloat(discount_percent) > 0) {
+        var total_tax_calculated = (total_tax * discount_percent) / 100;
+        total_tax = total_tax - total_tax_calculated;
+      }
     }
 
     total += total_tax;
@@ -7926,22 +7951,15 @@ function calculate_total() {
 
   total = total + subtotal;
 
-  // Discount by percent
-  if (
-    discount_percent !== "" &&
-    discount_percent != 0 &&
-    discount_type == "after_tax" &&
-    discount_total_type.hasClass("discount-type-percent")
-  ) {
+  // Apply Discount if After Tax (Percentage only, Fixed is already set)
+  // Wait, if it's AFTER tax, we subtract it from the TOTAL (incl tax)
+  if (discount_type == "after_tax" && parseFloat(discount_percent) > 0 && !is_fixed_discount) {
     total_discount_calculated = (total * discount_percent) / 100;
-  } else if (
-    discount_fixed !== "" &&
-    discount_fixed != 0 &&
-    discount_type == "after_tax" &&
-    discount_total_type.hasClass("discount-type-fixed")
-  ) {
-    total_discount_calculated = discount_fixed;
   }
+
+  // If fixed, it's just fixed amount subtracted regardless of tax position (mathematically for the total) 
+  // EXCEPT for how it affects the tax calculation itself (handled above).
+  // So we just subtract `total_discount_calculated` from `total`.
 
   total = total - total_discount_calculated;
   adjustment = parseFloat(adjustment);
@@ -7952,7 +7970,9 @@ function calculate_total() {
   }
 
   var discount_html = "-" + format_money(total_discount_calculated);
-  if (!discount_total_type.hasClass("discount-type-fixed")) {
+
+  // If we calculated a percentage discount, update the fixed input for form submission
+  if (!is_fixed_discount && parseFloat(discount_percent) > 0) {
     $('input[name="discount_total"]').val(
       accounting.toFixed(total_discount_calculated, app.options.decimal_places)
     );

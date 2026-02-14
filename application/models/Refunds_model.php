@@ -7,6 +7,35 @@ class Refunds_model extends App_Model
     public function __construct()
     {
         parent::__construct();
+        // Ensure refunds table exists
+        $this->ensure_table_exists();
+    }
+
+    /**
+     * Ensure refunds table exists, create if not
+     */
+    private function ensure_table_exists()
+    {
+        if (!$this->db->table_exists(db_prefix() . 'refunds')) {
+            $this->db->query("CREATE TABLE IF NOT EXISTS `" . db_prefix() . "refunds` (
+                `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+                `invoiceid` int(11) unsigned NOT NULL,
+                `paymentid` int(11) unsigned DEFAULT NULL,
+                `refund_amount` decimal(15,2) NOT NULL,
+                `refund_type` varchar(50) NOT NULL DEFAULT 'amount',
+                `refund_value` decimal(15,2) NOT NULL,
+                `refund_mode` int(11) unsigned DEFAULT NULL,
+                `transaction_id` varchar(255) DEFAULT NULL,
+                `date` date NOT NULL,
+                `note` text DEFAULT NULL,
+                `staffid` int(11) unsigned NOT NULL,
+                `datecreated` datetime NOT NULL,
+                PRIMARY KEY (`id`),
+                KEY `invoiceid` (`invoiceid`),
+                KEY `paymentid` (`paymentid`),
+                KEY `staffid` (`staffid`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+        }
     }
 
     /**
@@ -140,7 +169,7 @@ class Refunds_model extends App_Model
         // Get total paid
         $this->db->select_sum('amount');
         $this->db->where('invoiceid', $invoiceid);
-        $payments_result = $this->db->get(db_prefix() . 'invoicepayments')->row();
+        $payments_result = $this->db->get(db_prefix() . 'invoicepaymentrecords')->row();
         $total_paid = $payments_result->amount ? (float)$payments_result->amount : 0;
 
         // Get total refunded

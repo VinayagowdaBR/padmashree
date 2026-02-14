@@ -889,13 +889,15 @@ echo $select;
                                         <input type="number"
                                             value="<?= isset($invoice) ? $invoice->discount_percent : 0; ?>"
                                             class="form-control pull-left input-discount-percent<?= isset($invoice) && ! is_sale_discount($invoice, 'percent') && is_sale_discount_applied($invoice) ? ' hide' : ''; ?>"
-                                            min="0" max="100" name="discount_percent">
+                                            min="0" max="100" name="discount_percent"
+                                            onblur="calculate_total();" onchange="calculate_total();" oninput="calculate_total();">
 
                                         <input type="number" data-toggle="tooltip"
                                             data-title="<?= _l('numbers_not_formatted_while_editing'); ?>"
                                             value="<?= isset($invoice) ? $invoice->discount_total : 0; ?>"
                                             class="form-control pull-left input-discount-fixed<?= ! isset($invoice) || (isset($invoice) && ! is_sale_discount($invoice, 'fixed')) ? ' hide' : ''; ?>"
-                                            min="0" name="discount_total">
+                                            min="0" name="discount_total"
+                                            onblur="calculate_total();" onchange="calculate_total();" oninput="calculate_total();">
 
                                         <div class="input-group-addon">
                                             <div class="dropdown">

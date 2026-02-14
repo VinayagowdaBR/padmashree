@@ -4004,3 +4004,17 @@ $lang['ideal_gateway_keys_not_configured'] = 'iDEAL Payment Gateway API not conf
 $lang['ideal_gateway_cannot_be_activated_keys_not_configured'] = 'iDEAL Payment Gateway cannot be activated as the Stripe Publishable/API key is not configured.';
 $lang['company_logo_light'] = 'Company Logo Light';
 $lang['welcome_back_sign_in'] = 'Welcome, please sign in to your dashboard';
+
+# Post-Payment Discount Feature
+$lang['post_payment_discount'] = 'Post-Payment Discount';
+$lang['apply_post_payment_discount'] = 'Apply Post-Payment Discount';
+$lang['discount_amount'] = 'Discount Amount';
+$lang['post_payment_discount_help'] = 'This discount will be processed as a refund. A Credit Note will be created and a refund will be recorded against it.';
+$lang['refund_payment_mode'] = 'Refund Payment Mode';
+$lang['post_payment_discount_note_placeholder'] = 'Optional note for this discount/refund';
+$lang['apply_discount_and_create_refund'] = 'Apply Discount & Create Refund';
+$lang['payment_mode_cash'] = 'Cash';
+$lang['payment_mode_bank_transfer'] = 'Bank Transfer';
+$lang['invoice_activity_post_payment_discount'] = 'Post-payment discount applied';
+$lang['Refunded Amount'] = 'Refunded Amount';
+$lang['Net Payment'] = 'Net Payment';

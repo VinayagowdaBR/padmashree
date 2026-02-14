@@ -1208,7 +1208,39 @@ private function get_daily_incremental_invoice_number()
 
         unset($data['removed_items']);
 
-        $this->db->where('id', $id)->update('invoices', $data);
+        // [CUSTOM TRACKING] Log specific field changes
+        $track_fields = [
+            'total'            => 'Total',
+            'subtotal'         => 'Subtotal',
+            'discount_total'   => 'Total Discount',
+            'discount_percent' => 'Discount Percent',
+            'adjustment'       => 'Adjustment',
+            'status'           => 'Status',
+            'date'             => 'Invoice Date',
+            'duedate'          => 'Due Date'
+        ];
+
+        foreach ($track_fields as $field_key => $field_label) {
+            if (isset($data[$field_key]) && $data[$field_key] != $original_invoice->$field_key) {
+                // Skip if both are effectively zero/empty (loose comparison handled by !=) or strictly equal types if needed
+                // But for DB updates, string vs float might differ. 
+                // Let's rely on loose comparison but check for significant difference if numeric?
+                // For now, simple comparison is good for a start.
+                
+                $old_value = $original_invoice->$field_key;
+                $new_value = $data[$field_key];
+
+                // If dates, format them
+                if (in_array($field_key, ['date', 'duedate'])) {
+                   // Keep as is or format _d()
+                }
+
+                $log_msg = "Updated " . $field_label . " from " . $old_value . " to " . $new_value;
+                $this->log_invoice_activity($id, $log_msg);
+            }
+        }
+
+        $this->db->where('id', $id)->update(db_prefix() . 'invoices', $data);
 
         $this->save_formatted_number($id);
 
@@ -2234,5 +2266,89 @@ private function get_daily_incremental_invoice_number()
         return $this->clients_model->get_contacts($client_id, [
             'active' => 1, 'invoice_emails' => 1,
         ]);
+    }
+
+    /**
+     * Apply a discount to a fully paid invoice and create a refund
+     * Uses the existing Refunds_model to record the refund directly on the invoice
+     * 
+     * @param int $invoice_id The invoice ID
+     * @param float $discount_amount The discount amount to apply
+     * @param int $payment_mode The refund payment mode ID
+     * @param string $note Optional note for the refund
+     * @return array Result with success status and refund_id
+     */
+    public function apply_post_payment_discount($invoice_id, $discount_amount, $payment_mode, $note = '')
+    {
+        $invoice = $this->get($invoice_id);
+        
+        if (!$invoice) {
+            return ['success' => false, 'message' => 'Invoice not found'];
+        }
+        
+        if ($invoice->status != self::STATUS_PAID) {
+            return ['success' => false, 'message' => 'Invoice must be fully paid to apply post-payment discount'];
+        }
+        
+        $discount_amount = floatval($discount_amount);
+        if ($discount_amount <= 0) {
+            return ['success' => false, 'message' => 'Discount amount must be greater than 0'];
+        }
+        
+        if ($discount_amount > $invoice->total) {
+            return ['success' => false, 'message' => 'Discount amount cannot exceed invoice total'];
+        }
+        
+        // Load Refunds model
+        $this->load->model('refunds_model');
+        
+        // Check if refunds model is available
+        if (!$this->refunds_model || !method_exists($this->refunds_model, 'add')) {
+            return ['success' => false, 'message' => 'Refunds feature is not available'];
+        }
+        
+        // Check refundable amount
+        $refundable_amount = $this->refunds_model->get_refundable_amount($invoice_id);
+        if ($discount_amount > $refundable_amount) {
+            return ['success' => false, 'message' => 'Discount amount exceeds the refundable amount (' . app_format_money($refundable_amount, $invoice->currency_name) . ')'];
+        }
+        
+        // Prepare refund data for Refunds_model
+        $refund_data = [
+            'invoiceid'      => $invoice_id,
+            'refund_type'    => 'amount', // Fixed amount refund
+            'refund_value'   => $discount_amount,
+            'refund_mode'    => $payment_mode,
+            'transaction_id' => null,
+            'date'           => date('Y-m-d'),
+            'note'           => $note ?: 'Post-payment discount refund for Invoice ' . format_invoice_number($invoice_id),
+            'staffid'        => get_staff_user_id(),
+        ];
+        
+        $refund_id = $this->refunds_model->add($refund_data);
+        
+        if (!$refund_id) {
+            return ['success' => false, 'message' => 'Failed to create refund'];
+        }
+        
+        // Log activity
+        $this->log_invoice_activity($invoice_id, 'invoice_activity_post_payment_discount', false, serialize([
+            'discount_amount' => app_format_money($discount_amount, $invoice->currency_name),
+            'refund_id'       => $refund_id,
+        ]));
+        
+        log_activity('Applied post-payment discount of ' . app_format_money($discount_amount, $invoice->currency_name) . ' to Invoice ' . format_invoice_number($invoice_id) . ' [Refund ID: ' . $refund_id . ']');
+        
+        hooks()->do_action('after_post_payment_discount_applied', [
+            'invoice_id'      => $invoice_id,
+            'refund_id'       => $refund_id,
+            'discount_amount' => $discount_amount,
+        ]);
+        
+        return [
+            'success'   => true,
+            'message'   => 'Discount applied successfully. Refund of ' . app_format_money($discount_amount, $invoice->currency_name) . ' created.',
+            'refund_id' => $refund_id,
+        ];
     }
 }

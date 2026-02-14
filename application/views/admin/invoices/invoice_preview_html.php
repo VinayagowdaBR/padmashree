@@ -260,6 +260,32 @@ if (isset($invoice->scheduled_email) && $invoice->scheduled_email) { ?>
             </td>
         </tr>
     <?php } ?>
+    <?php } ?>
+<?php 
+// Show refunded amount if any refunds exist
+$CI =& get_instance();
+$CI->load->model('refunds_model');
+$total_refunded = 0;
+if (method_exists($CI->refunds_model, 'get_total_refunded')) {
+    $total_refunded = $CI->refunds_model->get_total_refunded($invoice->id);
+}
+if ($total_refunded > 0) { ?>
+    <tr>
+        <td>
+            <span class="tw-font-medium tw-text-danger"><?= _l('Refunded Amount'); ?></span>
+        </td>
+        <td>
+            <span class="text-danger"><?= e('-' . app_format_money($total_refunded, $invoice->currency_name)); ?></span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span class="tw-font-medium tw-text-success"><?= _l('Net Payment'); ?></span>
+        </td>
+        <td>
+            <span class="tw-font-medium text-success"><?= e(app_format_money($total_paid - $total_refunded, $invoice->currency_name)); ?></span>
+        </td>
+    </tr>
 <?php } ?>
                     <?php if (get_option('show_credits_applied_on_invoice') == 1 && $credits_applied = total_credits_applied_to_invoice($invoice->id)) { ?>
                     <tr>

@@ -332,6 +332,17 @@ if ($total_reminders > 0) {
                                 <i class="fa fa-undo"></i>
                                 Process Refund</a>
                             <?php } ?>
+                            
+                            <?php 
+                            // Post-Payment Discount button - only for fully paid invoices
+                            if (staff_can('edit', 'invoices') && $invoice->status == Invoices_model::STATUS_PAID) { 
+                            ?>
+                            <a href="#" onclick="open_post_payment_discount_modal(<?= $invoice->id; ?>); return false;"
+                                class="mleft10 btn btn-info" data-toggle="tooltip" 
+                                title="Apply discount after payment and create refund">
+                                <i class="fa fa-gift"></i>
+                                <?= _l('post_payment_discount'); ?></a>
+                            <?php } ?>
                     </div>
                 </div>
                 <?php
@@ -635,6 +646,27 @@ foreach ($views_activity as $activity) { ?>
             },
             error: function() {
                 alert_float('danger', 'Failed to load refund modal');
+            }
+        });
+    }
+    
+    // Post-payment discount modal function
+    function open_post_payment_discount_modal(invoice_id) {
+        $.ajax({
+            url: admin_url + 'invoices/post_payment_discount_modal/' + invoice_id,
+            type: 'GET',
+            success: function(response) {
+                $('body').append(response);
+                $('#postPaymentDiscountModal').modal('show');
+                init_selectpicker();
+                
+                // Clean up modal after close
+                $('#postPaymentDiscountModal').on('hidden.bs.modal', function() {
+                    $(this).remove();
+                });
+            },
+            error: function() {
+                alert_float('danger', 'Failed to load post-payment discount modal');
             }
         });
     }
