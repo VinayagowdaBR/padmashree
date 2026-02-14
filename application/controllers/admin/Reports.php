@@ -2801,6 +2801,17 @@ public function outpatient_bill_table()
         $where[] = 'AND CONCAT(au.firstname, " ", au.lastname) LIKE "%' . $referral_name_esc . '%"';
     }
 
+    $paid_by = $this->input->post('paid_by');
+    if ($paid_by) {
+        $where[] = 'AND EXISTS (SELECT 1 FROM ' . db_prefix() . 'invoicepaymentrecords ipr WHERE ipr.invoiceid = ' . db_prefix() . 'invoices.id AND ipr.paymentmode = "' . $this->db->escape_str($paid_by) . '")';
+    }
+
+    $pay_details = $this->input->post('pay_details');
+    if ($pay_details) {
+        $pay_details_esc = $this->db->escape_like_str($pay_details);
+        $where[] = 'AND EXISTS (SELECT 1 FROM ' . db_prefix() . 'invoicepaymentrecords ipr WHERE ipr.invoiceid = ' . db_prefix() . 'invoices.id AND (ipr.transactionid LIKE "%' . $pay_details_esc . '%" OR ipr.note LIKE "%' . $pay_details_esc . '%"))';
+    }
+
     if (staff_cant('view', 'invoices')) {
         $where[] = get_invoices_where_sql_for_staff(get_staff_user_id());
     }

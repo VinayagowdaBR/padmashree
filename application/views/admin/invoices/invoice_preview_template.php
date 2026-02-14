@@ -334,15 +334,15 @@ if ($total_reminders > 0) {
                             <?php } ?>
                             
                             <?php 
-                            // Post-Payment Discount button - only for fully paid invoices
-                            if (staff_can('edit', 'invoices') && $invoice->status == Invoices_model::STATUS_PAID) { 
+                            // Post-Payment Discount button - HIDDEN (functionality already in Process Refund)
+                            // if (staff_can('edit', 'invoices') && $invoice->status == Invoices_model::STATUS_PAID) { 
                             ?>
-                            <a href="#" onclick="open_post_payment_discount_modal(<?= $invoice->id; ?>); return false;"
+                            <!-- <a href="#" onclick="open_post_payment_discount_modal(<?= $invoice->id; ?>); return false;"
                                 class="mleft10 btn btn-info" data-toggle="tooltip" 
                                 title="Apply discount after payment and create refund">
                                 <i class="fa fa-gift"></i>
-                                <?= _l('post_payment_discount'); ?></a>
-                            <?php } ?>
+                                <?= _l('post_payment_discount'); ?></a> -->
+                            <?php // } ?>
                     </div>
                 </div>
                 <?php

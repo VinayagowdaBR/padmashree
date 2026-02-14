@@ -12,31 +12,61 @@
             <!-- Filters -->
             <div class="row mbot15">
               <input type="hidden" name="report_months" value="custom">
-              <div class="col-md-2">
+              
+              <!-- Row 1 -->
+              <div class="col-md-3">
                 <?php echo render_date_input('report_from', 'report_from'); ?>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-3">
                 <?php echo render_date_input('report_to', 'report_to'); ?>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-3">
                 <div class="form-group">
                   <label for="mrd_from"><?php echo _l('From MRD No'); ?></label>
                   <input type="text" name="mrd_from" id="mrd_from" class="form-control" placeholder="Enter From MRD No" />
                 </div>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-3">
                 <div class="form-group">
                   <label for="mrd_to"><?php echo _l('To MRD No'); ?></label>
                   <input type="text" name="mrd_to" id="mrd_to" class="form-control" placeholder="Enter To MRD No" />
                 </div>
               </div>
-              <div class="col-md-2">
+
+              <div class="clearfix"></div>
+
+              <!-- Row 2 -->
+              <div class="col-md-3">
                 <div class="form-group">
                   <label for="referral_name"><?php echo _l('Referral Name'); ?></label>
                   <input type="text" name="referral_name" id="referral_name" class="form-control" placeholder="Enter Referral Name" />
                 </div>  
               </div>
-              <div class="col-md-2">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="paid_by"><?php echo _l('Paid By'); ?></label>
+                  <select name="paid_by" id="paid_by" class="form-control selectpicker" data-live-search="true" data-size="5">
+                    <option value=""><?php echo _l('All'); ?></option>
+                    <?php
+                    $CI = &get_instance();
+                    $CI->load->model('payment_modes_model');
+                    $payment_modes = $CI->payment_modes_model->get('', [], true);
+                    foreach ($payment_modes as $mode) {
+                        if ($mode['active'] == 1) {
+                            echo '<option value="' . $mode['id'] . '">' . $mode['name'] . '</option>';
+                        }
+                    }
+                    ?>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="pay_details"><?php echo _l('Pay Details'); ?></label>
+                  <input type="text" name="pay_details" id="pay_details" class="form-control" placeholder="Enter Pay Details (e.g. Transaction ID)" />
+                </div>
+              </div>
+              <div class="col-md-3">
                 <div class="btn-group" style="margin-top:25px;">
                   <button class="btn btn-primary" onclick="filterOutpatientReport(); return false;"><?php echo _l('apply'); ?></button>
                   <button class="btn btn-default" onclick="resetOutpatientReport(); return false;"><?php echo _l('reset'); ?></button>
@@ -372,12 +402,15 @@ $(document).ready(function () {
         [0, 'desc']
     );
 
+
     $('.table-outpatient-bill-report').on('preXhr.dt', function (e, settings, data) {
         data.report_from = $('input[name="report_from"]').val();
         data.report_to = $('input[name="report_to"]').val();
         data.mrd_from = $('input[name="mrd_from"]').val();
         data.mrd_to = $('input[name="mrd_to"]').val();
         data.referral_name = $('input[name="referral_name"]').val();
+        data.paid_by = $('select[name="paid_by"]').val();
+        data.pay_details = $('input[name="pay_details"]').val();
     });
 
     $('.table-outpatient-bill-report').on('init.dt', function() {
@@ -395,7 +428,7 @@ $(document).ready(function () {
         }
     });
 
-    $('input[name="report_from"], input[name="report_to"], input[name="mrd_from"], input[name="mrd_to"], input[name="referral_name"]').on('change', function () {
+    $('input[name="report_from"], input[name="report_to"], input[name="mrd_from"], input[name="mrd_to"], input[name="referral_name"], select[name="paid_by"], input[name="pay_details"]').on('change', function () {
         filterOutpatientReport();
     });
 });
@@ -410,6 +443,8 @@ function resetOutpatientReport() {
     $('input[name="mrd_from"]').val('');
     $('input[name="mrd_to"]').val('');
     $('input[name="referral_name"]').val('');
+    $('select[name="paid_by"]').selectpicker('val', '');
+    $('input[name="pay_details"]').val('');
     outpatientTable.ajax.reload();
 }
 </script>
