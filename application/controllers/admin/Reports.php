@@ -2328,6 +2328,132 @@ public function outpatient_bill_report()
         $this->load->view('admin/reports/edited_bills', $data);
     }
 
+    public function log_edited()
+    {
+        if (!staff_can('view', 'reports') && !staff_can('sales-reports', 'reports')) {
+            access_denied('reports');
+        }
+
+        $data['title'] = 'Log Edited Report';
+        $this->load->view('admin/reports/log_edited', $data);
+    }
+    
+    public function log_edited_table()
+    {
+        if (!staff_can('view', 'reports') && !staff_can('sales-reports', 'reports')) {
+            access_denied('reports');
+        }
+
+        $activityTable = db_prefix() . 'sales_activity';
+        $invoiceTable = db_prefix() . 'invoices';
+        $clientsTable = db_prefix() . 'clients';
+        $staffTable = db_prefix() . 'staff';
+
+        // Filters from POST
+        $from_date_raw = $this->input->post('report_from');
+        $to_date_raw   = $this->input->post('report_to');
+        $mrd_from  = $this->input->post('mrd_from');
+        $mrd_to    = $this->input->post('mrd_to');
+
+        $convertDate = function($date) {
+            if (empty($date)) return '';
+            if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) return $date;
+            if (preg_match('/^(\d{2})-(\d{2})-(\d{4})$/', $date, $matches)) return $matches[3] . '-' . $matches[2] . '-' . $matches[1];
+            return to_sql_date($date) ?: '';
+        };
+
+        $from_date = $convertDate($from_date_raw);
+        $to_date = $convertDate($to_date_raw);
+
+        $where = [
+            'AND ' . $activityTable . '.rel_type = "invoice"'
+        ];
+
+        if ($from_date && $to_date) {
+            $where[] = 'AND DATE(' . $activityTable . '.date) BETWEEN "' . $this->db->escape_str($from_date) . '" AND "' . $this->db->escape_str($to_date) . '"';
+        } elseif ($from_date) {
+            $where[] = 'AND DATE(' . $activityTable . '.date) >= "' . $this->db->escape_str($from_date) . '"';
+        } elseif ($to_date) {
+            $where[] = 'AND DATE(' . $activityTable . '.date) <= "' . $this->db->escape_str($to_date) . '"';
+        }
+
+        if ($mrd_from && $mrd_to) {
+            $where[] = 'AND ' . $clientsTable . '.userid BETWEEN "' . $this->db->escape_str($mrd_from) . '" AND "' . $this->db->escape_str($mrd_to) . '"';
+        } elseif ($mrd_from) {
+            $where[] = 'AND ' . $clientsTable . '.userid >= "' . $this->db->escape_str($mrd_from) . '"';
+        } elseif ($mrd_to) {
+            $where[] = 'AND ' . $clientsTable . '.userid <= "' . $this->db->escape_str($mrd_to) . '"';
+        }
+
+        $aColumns = [
+            $activityTable . '.id', // sIndexColumn
+            $activityTable . '.date as date',
+            $invoiceTable . '.id as invoice_id',
+            $invoiceTable . '.number as invoice_number',
+            $clientsTable . '.userid as mrd_no',
+            get_sql_select_client_company(),
+            $activityTable . '.full_name as full_name', // Staff Name who edited
+            $activityTable . '.description as description',
+            $activityTable . '.additional_data as additional_data', // if needed
+        ];
+
+        $sIndexColumn = 'id';
+        $sTable = $activityTable;
+
+        $join = [
+            "JOIN $invoiceTable ON $invoiceTable.id = $activityTable.rel_id",
+            "LEFT JOIN $clientsTable ON $clientsTable.userid = $invoiceTable.clientid",
+        ];
+
+        $result = data_tables_init($aColumns, $sIndexColumn, $sTable, $join, $where, []);
+
+        $output  = $result['output'];
+        $rResult = $result['rResult'];
+
+        foreach ($rResult as $aRow) {
+            $row = [];
+
+            // Edit Date
+            $row[] = _dt($aRow['date']);
+
+            // Bill No
+            $formattedNumber = format_invoice_number($aRow['invoice_id']);
+            $row[] = '<a href="' . admin_url('invoices/invoice/' . $aRow['invoice_id']) . '" target="_blank">' . html_escape($formattedNumber) . '</a>';
+
+            // MRD No
+            $row[] = str_pad($aRow['mrd_no'], 0, '0', STR_PAD_LEFT);
+
+            // Customer
+            $row[] = '<a href="' . admin_url('clients/client/' . $aRow['mrd_no']) . '">' . e($aRow['company']) . '</a>';
+
+            // Edited By
+            $row[] = e($aRow['full_name']);
+
+            // Description
+            $desc = _l($aRow['description'], '', false);
+            if ($aRow['description'] == 'invoice_activity_payment_deleted') {
+                 $desc = 'Payment Deleted';
+                 if (!empty($aRow['additional_data'])) {
+                    $unserialized = unserialize($aRow['additional_data']);
+                    if(is_array($unserialized) && count($unserialized) > 1){
+                       $desc .= ' - Amount: ' . $unserialized[1];
+                    }
+                 }
+            } else if ($aRow['description'] == 'invoice_activity_status_updated') {
+                 $desc = 'Status Updated';
+            }
+            // Add translation mapping for custom sales activity if necessary. Actually perfex translates via _l().
+            // For custom ones that log "Updated Discount Percent from 10.00 to 20", _l won't find it and will just return the string. Which is fine.
+
+            $row[] = e($desc);
+
+            $output['aaData'][] = $row;
+        }
+
+        echo json_encode($output);
+        die();
+    }
+
     public function edited_bills_table()
     {
         if (!staff_can('view', 'invoices')) {

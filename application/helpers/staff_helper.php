@@ -112,7 +112,9 @@ function get_available_staff_permissions($data = [])
         'due-paid-details-reports' => "Due Paid Details",
         'outpatient-bill-report' => "Outpatient Bill Report",
         'referral-details-reports' => "Referral Details",
-        'summary-details-reports' => "Summary Report"
+        'summary-details-reports' => "Summary Report",
+        'edited-bills-reports' => "Edited Bills",
+        'log-edited-reports' => "Log Edited"
     ],
 ],
         'roles' => [

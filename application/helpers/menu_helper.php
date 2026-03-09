@@ -395,6 +395,14 @@ function app_init_admin_sidebar_menu_items()
                 'position' => 35,
                 'badge'    => [],
             ]);
+
+            $CI->app_menu->add_sidebar_children_item('reports', [
+                'slug'     => 'log-edited-reports',
+                'name'     => 'Log Edited',
+                'href'     => admin_url('reports/log_edited'),
+                'position' => 40,
+                'badge'    => [],
+            ]);
         }
         // $CI->app_menu->add_sidebar_children_item('reports', [
         //     'slug'     => 'expenses-vs-income-reports',
