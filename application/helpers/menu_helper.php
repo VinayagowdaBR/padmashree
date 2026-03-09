@@ -315,79 +315,89 @@ function app_init_admin_sidebar_menu_items()
        $report_permissions['summary'] = true;
    }
 
-   // Only add reports menu if user has at least one report permission
-   if ($has_report_permissions) {
-       $CI->app_menu->add_sidebar_menu_item('reports', [
-           'collapse' => true,
-           'name'     => _l('als_reports'),
-           'href'     => admin_url('reports'),
-           'icon'     => 'fa-solid fa-chart-line',
-           'position' => 60,
-           'badge'    => [],
-       ]);
+        if (staff_can('edited-bills-reports', 'reports')) {
+            $has_report_permissions = true;
+            $report_permissions['edited_bills'] = true;
+        }
 
-       // Add individual report items based on permissions
-       if (isset($report_permissions['timesheets'])) {
-           $CI->app_menu->add_sidebar_children_item('reports', [
-               'slug'     => 'timesheets-reports',
-               'name'     => _l('timesheets_overview'),
-               'href'     => admin_url('staff/timesheets?view=all'),
-               'position' => 5,
+        if (staff_can('log-edited-reports', 'reports')) {
+            $has_report_permissions = true;
+            $report_permissions['log_edited'] = true;
+        }
+
+       // Only add reports menu if user has at least one report permission
+       if ($has_report_permissions) {
+           $CI->app_menu->add_sidebar_menu_item('reports', [
+               'collapse' => true,
+               'name'     => _l('als_reports'),
+               'href'     => admin_url('reports'),
+               'icon'     => 'fa-solid fa-chart-line',
+               'position' => 60,
                'badge'    => [],
            ]);
-       }
 
-       if (isset($report_permissions['sales'])) {
-           $CI->app_menu->add_sidebar_children_item('reports', [
-               'slug'     => 'sales-reports',
-               'name'     => _l('als_reports_sales_submenu'),
-               'href'     => admin_url('reports/sales'),
-               'position' => 10,
-               'badge'    => [],
-           ]);
-       }
+           // Add individual report items based on permissions
+           if (isset($report_permissions['timesheets'])) {
+               $CI->app_menu->add_sidebar_children_item('reports', [
+                   'slug'     => 'timesheets-reports',
+                   'name'     => _l('timesheets_overview'),
+                   'href'     => admin_url('staff/timesheets?view=all'),
+                   'position' => 5,
+                   'badge'    => [],
+               ]);
+           }
 
-       if (isset($report_permissions['due_paid'])) {
-           $CI->app_menu->add_sidebar_children_item('reports', [
-               'slug'     => 'due-paid-details-reports',
-               'name'     => 'Due Paid Details',
-               'href'     => admin_url('reports/due_paid_details'),
-               'position' => 15,
-               'badge'    => [],
-           ]);
-       }
+           if (isset($report_permissions['sales'])) {
+               $CI->app_menu->add_sidebar_children_item('reports', [
+                   'slug'     => 'sales-reports',
+                   'name'     => _l('als_reports_sales_submenu'),
+                   'href'     => admin_url('reports/sales'),
+                   'position' => 10,
+                   'badge'    => [],
+               ]);
+           }
 
-       if (isset($report_permissions['outpatient'])) {
-           $CI->app_menu->add_sidebar_children_item('reports', [
-               'slug'     => 'outpatient-bill-report',
-               'name'     => 'Outpatient Bill Report',
-               'href'     => admin_url('reports/outpatient_bill_report'),
-               'position' => 20,
-               'badge'    => [],
-           ]);
-       }
+           if (isset($report_permissions['due_paid'])) {
+               $CI->app_menu->add_sidebar_children_item('reports', [
+                   'slug'     => 'due-paid-details-reports',
+                   'name'     => 'Due Paid Details',
+                   'href'     => admin_url('reports/due_paid_details'),
+                   'position' => 15,
+                   'badge'    => [],
+               ]);
+           }
 
-       if (isset($report_permissions['referral'])) {
-           $CI->app_menu->add_sidebar_children_item('reports', [
-               'slug'     => 'referral-details-reports',
-               'name'     => _l('Referral Details'),
-               'href'     => admin_url('reports/referral_details'),
-               'position' => 25,
-               'badge'    => [],
-           ]);
-       }
+           if (isset($report_permissions['outpatient'])) {
+               $CI->app_menu->add_sidebar_children_item('reports', [
+                   'slug'     => 'outpatient-bill-report',
+                   'name'     => 'Outpatient Bill Report',
+                   'href'     => admin_url('reports/outpatient_bill_report'),
+                   'position' => 20,
+                   'badge'    => [],
+               ]);
+           }
 
-       if (isset($report_permissions['summary'])) {
-           $CI->app_menu->add_sidebar_children_item('reports', [
-               'slug'     => 'summary-details-reports',
-               'name'     => _l('Summary Report'),
-               'href'     => admin_url('reports/summary_report'),
-               'position' => 30,
-               'badge'    => [],
-           ]);
-       }
+           if (isset($report_permissions['referral'])) {
+               $CI->app_menu->add_sidebar_children_item('reports', [
+                   'slug'     => 'referral-details-reports',
+                   'name'     => _l('Referral Details'),
+                   'href'     => admin_url('reports/referral_details'),
+                   'position' => 25,
+                   'badge'    => [],
+               ]);
+           }
 
-        if (isset($report_permissions['view']) || isset($report_permissions['sales'])) {
+           if (isset($report_permissions['summary'])) {
+               $CI->app_menu->add_sidebar_children_item('reports', [
+                   'slug'     => 'summary-details-reports',
+                   'name'     => _l('Summary Report'),
+                   'href'     => admin_url('reports/summary_report'),
+                   'position' => 30,
+                   'badge'    => [],
+               ]);
+           }
+
+        if (isset($report_permissions['edited_bills'])) {
             $CI->app_menu->add_sidebar_children_item('reports', [
                 'slug'     => 'edited-bills-reports',
                 'name'     => 'Edited Bills',
@@ -395,7 +405,9 @@ function app_init_admin_sidebar_menu_items()
                 'position' => 35,
                 'badge'    => [],
             ]);
-
+        }
+        
+        if (isset($report_permissions['log_edited'])) {
             $CI->app_menu->add_sidebar_children_item('reports', [
                 'slug'     => 'log-edited-reports',
                 'name'     => 'Log Edited',

@@ -2320,7 +2320,7 @@ public function outpatient_bill_report()
 
     public function edited_bills()
     {
-        if (!staff_can('view', 'reports') && !staff_can('sales-reports', 'reports')) {
+        if (!staff_can('edited-bills-reports', 'reports')) {
             access_denied('reports');
         }
 
@@ -2330,7 +2330,7 @@ public function outpatient_bill_report()
 
     public function log_edited()
     {
-        if (!staff_can('view', 'reports') && !staff_can('sales-reports', 'reports')) {
+        if (!staff_can('log-edited-reports', 'reports')) {
             access_denied('reports');
         }
 
@@ -2340,7 +2340,7 @@ public function outpatient_bill_report()
     
     public function log_edited_table()
     {
-        if (!staff_can('view', 'reports') && !staff_can('sales-reports', 'reports')) {
+        if (!staff_can('log-edited-reports', 'reports')) {
             access_denied('reports');
         }
 
