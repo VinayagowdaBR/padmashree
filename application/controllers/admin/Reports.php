@@ -2330,92 +2330,247 @@ public function outpatient_bill_report()
 
     public function edited_bills_table()
     {
-        if (!staff_can('view', 'reports') && !staff_can('sales-reports', 'reports')) {
-            access_denied('reports');
+        if (!staff_can('view', 'invoices')) {
+            access_denied('invoices');
         }
+
+        $invoiceTable = db_prefix() . 'invoices';
+        $clientsTable = db_prefix() . 'clients';
+        $itemableTable = db_prefix() . 'itemable';
+        $paymentRecordsTable = db_prefix() . 'invoicepaymentrecords';
+        $affiliateUsersTable = db_prefix() . 'affiliate_users';
+        $activityTable = db_prefix() . 'sales_activity';
+        $staffTable = db_prefix() . 'staff';
 
         $this->load->model('invoices_model');
-        
+        $this->load->model('currencies_model');
+        $this->load->model('payments_model');
+        $currency = $this->currencies_model->get_base_currency();
+
+        // Date conversion helper
+        $convertDate = function($date) {
+            if (empty($date)) return '';
+            if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) return $date;
+            if (preg_match('/^(\d{2})-(\d{2})-(\d{4})$/', $date, $matches)) return $matches[3] . '-' . $matches[2] . '-' . $matches[1];
+            return to_sql_date($date) ?: '';
+        };
+
+        // Filters from POST
+        $from_date_raw = $this->input->post('report_from');
+        $to_date_raw   = $this->input->post('report_to');
+        $mrd_from  = $this->input->post('mrd_from');
+        $mrd_to    = $this->input->post('mrd_to');
+        $referral_name = $this->input->post('referral_name');
+
+        $from_date = $convertDate($from_date_raw);
+        $to_date = $convertDate($to_date_raw);
+
+        $where = [];
+
+        // KEY DIFFERENCE: Filter by activity/edit date instead of invoice creation date
+        // Only show invoices that have sales_activity records in the selected date range
+        $activity_where = "sa.rel_type = 'invoice'";
+        if ($from_date && $to_date) {
+            $activity_where .= ' AND DATE(sa.date) BETWEEN "' . $this->db->escape_str($from_date) . '" AND "' . $this->db->escape_str($to_date) . '"';
+        } elseif ($from_date) {
+            $activity_where .= ' AND DATE(sa.date) >= "' . $this->db->escape_str($from_date) . '"';
+        } elseif ($to_date) {
+            $activity_where .= ' AND DATE(sa.date) <= "' . $this->db->escape_str($to_date) . '"';
+        }
+        $where[] = 'AND EXISTS (SELECT 1 FROM ' . $activityTable . ' sa WHERE sa.rel_id = ' . $invoiceTable . '.id AND ' . $activity_where . ')';
+
+        if ($mrd_from && $mrd_to) {
+            $where[] = 'AND ' . db_prefix() . 'clients.userid BETWEEN "' . $this->db->escape_str($mrd_from) . '" AND "' . $this->db->escape_str($mrd_to) . '"';
+        } elseif ($mrd_from) {
+            $where[] = 'AND ' . db_prefix() . 'clients.userid >= "' . $this->db->escape_str($mrd_from) . '"';
+        } elseif ($mrd_to) {
+            $where[] = 'AND ' . db_prefix() . 'clients.userid <= "' . $this->db->escape_str($mrd_to) . '"';
+        }
+
+        if ($referral_name) {
+            $referral_name_esc = $this->db->escape_like_str($referral_name);
+            $where[] = 'AND CONCAT(au.firstname, " ", au.lastname) LIKE "%' . $referral_name_esc . '%"';
+        }
+
+        $paid_by = $this->input->post('paid_by');
+        if ($paid_by) {
+            $where[] = 'AND EXISTS (SELECT 1 FROM ' . db_prefix() . 'invoicepaymentrecords ipr WHERE ipr.invoiceid = ' . db_prefix() . 'invoices.id AND ipr.paymentmode = "' . $this->db->escape_str($paid_by) . '")';
+        }
+
+        $pay_details = $this->input->post('pay_details');
+        if ($pay_details) {
+            $pay_details_esc = $this->db->escape_like_str($pay_details);
+            $where[] = 'AND EXISTS (SELECT 1 FROM ' . db_prefix() . 'invoicepaymentrecords ipr WHERE ipr.invoiceid = ' . db_prefix() . 'invoices.id AND (ipr.transactionid LIKE "%' . $pay_details_esc . '%" OR ipr.note LIKE "%' . $pay_details_esc . '%"))';
+        }
+
+        if (staff_cant('view', 'invoices')) {
+            $where[] = get_invoices_where_sql_for_staff(get_staff_user_id());
+        }
+
+        // Same columns as outpatient_bill_table
         $aColumns = [
-            db_prefix() . 'sales_activity.date',
-            db_prefix() . 'invoices.number',
-            db_prefix() . 'clients.company', // Patient Name
-            db_prefix() . 'sales_activity.full_name', // Staff Name
-            db_prefix() . 'sales_activity.description',
+            $invoiceTable . '.number',
+            'tblinvoices.datecreated as invoice_datecreated',
+            $clientsTable . '.userid as mrd_no',
+            get_sql_select_client_company(),
+            '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id WHERE cfd.name = "Ref.By" AND cfdv.relid = ' . db_prefix() . 'invoices.id AND cfdv.fieldto = "invoice" LIMIT 1) as Refer',
+            '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id WHERE cfd.slug = "age_years" AND cfdv.relid = ' . db_prefix() . 'invoices.id AND cfdv.fieldto = "invoice" LIMIT 1) as age_years',
+            "(SELECT GROUP_CONCAT(description SEPARATOR ', ') FROM $itemableTable WHERE rel_id = $invoiceTable.id AND rel_type = 'invoice') as all_items",
+            '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id WHERE cfd.name = "Sex" AND cfdv.relid = ' . db_prefix() . 'invoices.id AND cfdv.fieldto = "invoice" LIMIT 1) as Sex',
+            '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id WHERE cfd.name = "Mobile.no" AND cfdv.relid = ' . db_prefix() . 'invoices.id AND cfdv.fieldto = "invoice" LIMIT 1) as Mobile',
+            db_prefix() . 'invoices.subtotal as subtotal',
+            db_prefix() . 'invoices.discount_total as discount',
+            db_prefix() . 'invoices.total as total',
+            "(SELECT SUM(amount) FROM $paymentRecordsTable WHERE invoiceid = $invoiceTable.id) as total_paid",
+            "($invoiceTable.total - IFNULL((SELECT SUM(amount) FROM $paymentRecordsTable WHERE invoiceid = $invoiceTable.id), 0)) as balance",
+            "(SELECT SUM(amount) FROM " . db_prefix() . "invoicepaymentrecords WHERE invoiceid = $invoiceTable.id AND paymentmode = 2) as Cash_Amount",
+            "(SELECT SUM(amount) FROM " . db_prefix() . "invoicepaymentrecords WHERE invoiceid = $invoiceTable.id AND paymentmode = 3) as Cheque_Amount",
+            "(SELECT SUM(amount) FROM " . db_prefix() . "invoicepaymentrecords WHERE invoiceid = $invoiceTable.id AND paymentmode = 6) as Card",
+            "(SELECT SUM(amount) FROM " . db_prefix() . "invoicepaymentrecords WHERE invoiceid = $invoiceTable.id AND paymentmode = 10) as UPI",
+            "'test' as all_payment_modes",
+            "'details' as payment_details",
         ];
 
-        $sIndexColumn = 'id';
-        $sTable       = db_prefix() . 'sales_activity';
-        $join         = [
-            'JOIN ' . db_prefix() . 'invoices ON ' . db_prefix() . 'invoices.id = ' . db_prefix() . 'sales_activity.rel_id',
-            'LEFT JOIN ' . db_prefix() . 'clients ON ' . db_prefix() . 'clients.userid = ' . db_prefix() . 'invoices.clientid',
+        $sIndexColumn = $invoiceTable . '.id';
+        $sTable = db_prefix() . 'invoices';
+
+        $join = [
+            "LEFT JOIN $clientsTable ON $clientsTable.userid = $invoiceTable.clientid",
+            "LEFT JOIN " . db_prefix() . "staff ON " . $invoiceTable . ".sale_agent = " . db_prefix() . "staff.staffid",
+            "LEFT JOIN $affiliateUsersTable AS au ON au.affiliate_code = $clientsTable.affiliate_code COLLATE utf8mb4_unicode_ci",
+            'LEFT JOIN ' . db_prefix() . 'currencies ON ' . db_prefix() . 'currencies.id = ' . $invoiceTable . '.currency',
+            'LEFT JOIN ' . db_prefix() . 'projects ON ' . db_prefix() . 'projects.id = ' . $invoiceTable . '.project_id',
         ];
 
-        $where = ['AND rel_type = "invoice"'];
+        $additionalSelect = [
+            db_prefix() . 'invoices.id',
+            db_prefix() . 'invoices.clientid',
+            db_prefix() . 'currencies.name as currency_name',
+            'formatted_number',
+            '(SELECT cfdv.value FROM ' . db_prefix() . 'customfieldsvalues cfdv JOIN ' . db_prefix() . 'customfields cfd ON cfdv.fieldid = cfd.id WHERE cfd.slug = "age_months" AND cfdv.relid = ' . db_prefix() . 'invoices.id AND cfdv.fieldto = "invoice" LIMIT 1) as age_months',
+            "CONCAT(au.firstname, ' ', au.lastname) as affiliate_user_name",
+        ];
 
-        // Filters
-        if ($this->input->post('report_from')) {
-            $where[] = 'AND DATE(' . db_prefix() . 'sales_activity.date) >= "' . to_sql_date($this->input->post('report_from')) . '"';
-        }
-        if ($this->input->post('report_to')) {
-            $where[] = 'AND DATE(' . db_prefix() . 'sales_activity.date) <= "' . to_sql_date($this->input->post('report_to')) . '"';
-        }
-        if ($this->input->post('staff_name')) {
-            $where[] = 'AND ' . db_prefix() . 'sales_activity.full_name LIKE "%' . $this->db->escape_like_str($this->input->post('staff_name')) . '%"';
-        }
-
-        // Only show "Update" activities? 
-        // User asked for "Edited Bills", usually implies changes. 
-        // Let's check if we want to filter specific description types.
-        // For now, let's keep it broad, but maybe order by date desc.
-
-        $result = data_tables_init($aColumns, $sIndexColumn, $sTable, $join, $where, [
-            db_prefix() . 'invoices.id as invoice_id',
-            db_prefix() . 'invoices.formatted_number',
-            db_prefix() . 'clients.userid as mrd_no'
-        ]);
+        $result = data_tables_init($aColumns, $sIndexColumn, $sTable, $join, $where, $additionalSelect);
 
         $output  = $result['output'];
         $rResult = $result['rResult'];
 
-        // Debugging: Log the structure of the first row
-        if (!empty($rResult)) {
-            log_message('error', 'DEBUG: edited_bills_table row structure: ' . print_r($rResult[0], true));
-        }
+        $total_total_amount = 0;
+        $total_discount = 0;
+        $total_bill_amount = 0;
+        $total_paid_amount = 0;
+        $total_balance = 0;
+        $total_cash = 0;
+        $total_cheque = 0;
+        $total_card = 0;
+        $total_upi = 0;
 
         foreach ($rResult as $aRow) {
             $row = [];
 
-            // Helper to get value with or without prefix
-            $date = $aRow['date'] ?? $aRow[db_prefix() . 'sales_activity.date'] ?? '';
-            $full_name = $aRow['full_name'] ?? $aRow[db_prefix() . 'sales_activity.full_name'] ?? '';
-            $description = $aRow['description'] ?? $aRow[db_prefix() . 'sales_activity.description'] ?? '';
-            $company = $aRow['company'] ?? $aRow[db_prefix() . 'clients.company'] ?? '';
+            // Format invoice number
+            $formattedNumber = format_invoice_number($aRow['id']);
+            if (empty($aRow['formatted_number']) || $formattedNumber !== $aRow['formatted_number']) {
+                $this->invoices_model->save_formatted_number($aRow['id']);
+            }
+            $row[] = '<a href="' . admin_url('invoices/invoice/' . $aRow['id']) . '" target="_blank">' . html_escape($formattedNumber) . '</a>';
 
-            // Date
-            $row[] = _dt($date);
+            $row[] = !empty($aRow['invoice_datecreated']) ? date('d/m/y', strtotime($aRow['invoice_datecreated'])) : '';
+            $row[] = str_pad($aRow['mrd_no'], 0, '0', STR_PAD_LEFT);
+            $row[] = empty($aRow['deleted_customer_name']) ? '<a href="' . admin_url('clients/client/' . $aRow['clientid']) . '">' . e($aRow['company']) . '</a>' : e($aRow['deleted_customer_name']);
+            
+            // Use affiliate username if Ref.By is empty
+            $referral = !empty($aRow['Refer']) ? $aRow['Refer'] : ($aRow['affiliate_user_name'] ?: 'N/A');
+            $row[] = $referral;
 
-            // Bill No
-            // Link to invoice
-            $number = format_invoice_number($aRow['invoice_id']); // Ensure accurate formatting
-            $row[] = '<a href="' . admin_url('invoices/invoice/' . $aRow['invoice_id']) . '" target="_blank">' . $number . '</a>';
+            $age_years = !empty($aRow['age_years']) ? $aRow['age_years'] : '0';
+            $age_months = !empty($aRow['age_months']) ? $aRow['age_months'] : '0';
+            if ($age_months == '0' || $age_months == 0) {
+                $row[] = $age_years;
+            } else {
+                $row[] = $age_years . '/' . $age_months;
+            }
 
-            // Patient
-            $row[] = '<a href="' . admin_url('clients/client/' . $aRow['mrd_no']) . '">' . $company . '</a>';
+            $row[] = $aRow['all_items'] ?: '-';
+            $row[] = !empty($aRow['Sex']) ? $aRow['Sex'] : '-';
+            $row[] = !empty($aRow['Mobile']) ? $aRow['Mobile'] : '-';
 
-            // Edited By
-            $row[] = $full_name;
+            // Calculate corrected bill amount and balance
+            $bill_amount_calc = (float)($aRow['subtotal'] ?? 0) - (float)($aRow['discount'] ?? 0);
+            $balance_calc = $bill_amount_calc - (float)($aRow['total_paid'] ?? 0);
 
-            // Modification (Description)
-            // Strip tags just in case, though usually plain text
-            $row[] = strip_tags($description);
+            $row[] = number_format($aRow['subtotal'], 2);
+            $row[] = number_format($aRow['discount'], 2);
+            $row[] = number_format($bill_amount_calc, 2);
+            $row[] = number_format($aRow['total_paid'], 2);
+            $row[] = number_format($balance_calc, 2);
+            $row[] = !empty($aRow['Cash_Amount']) ? $aRow['Cash_Amount'] : '0';
+            $row[] = !empty($aRow['Cheque_Amount']) ? $aRow['Cheque_Amount'] : '0';
+            $row[] = !empty($aRow['Card']) ? $aRow['Card'] : '0';
+            $row[] = !empty($aRow['UPI']) ? $aRow['UPI'] : '0';
+
+            // Fetch Payment Modes and Details
+            $displayed_modes = [];
+            $displayed_details = [];
+            $invoice_payments = $this->payments_model->get_invoice_payments($aRow['id']);
+            
+            if (!empty($invoice_payments)) {
+                foreach ($invoice_payments as $payment) {
+                    $payment_mode = !empty($payment['paymentmethod']) ? $payment['paymentmethod'] : $payment['name'];
+                    if (!in_array($payment_mode, $displayed_modes)) {
+                        $displayed_modes[] = $payment_mode;
+                    }
+                    if (!empty($payment['transactionid'])) {
+                        $displayed_details[] = $payment['transactionid'];
+                    }
+                }
+            }
+            
+            $all_modes = !empty($displayed_modes) ? implode(', ', $displayed_modes) : '-';
+            $row[] = $all_modes;
+
+            $payment_details_str = !empty($displayed_details) ? implode(', ', $displayed_details) : '-';
+            $row[] = html_escape($payment_details_str);
+
+            // Accumulate totals
+            $total_total_amount += $aRow['subtotal'] ?? 0;
+            $total_discount += $aRow['discount'] ?? 0;
+            $total_bill_amount += $bill_amount_calc;
+            $total_paid_amount += $aRow['total_paid'] ?? 0;
+            $total_balance += $balance_calc;
+            $total_cash += $aRow['Cash_Amount'] ?? 0;
+            $total_cheque += $aRow['Cheque_Amount'] ?? 0;
+            $total_card += $aRow['Card'] ?? 0;
+            $total_upi += $aRow['UPI'] ?? 0;
 
             $output['aaData'][] = $row;
         }
 
+        // Append totals row
+        $totals_row = [
+            '<strong>Total</strong>',
+            '', '', '', '', '', '', '', '',
+            '<strong>' . number_format($total_total_amount, 2) . '</strong>',
+            '<strong>' . number_format($total_discount, 2) . '</strong>',
+            '<strong>' . number_format($total_bill_amount, 2) . '</strong>',
+            '<strong>' . number_format($total_paid_amount, 2) . '</strong>',
+            '<strong>' . number_format($total_balance, 2) . '</strong>',
+            '<strong>' . number_format($total_cash, 2) . '</strong>',
+            '<strong>' . number_format($total_cheque, 2) . '</strong>',
+            '<strong>' . number_format($total_card, 2) . '</strong>',
+            '<strong>' . number_format($total_upi, 2) . '</strong>',
+            '', '',
+        ];
+
+        $output['aaData'][] = $totals_row;
+
         echo json_encode($output);
         die();
     }
+
+
+
 
 
 

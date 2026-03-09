@@ -530,7 +530,7 @@ echo render_select('sale_agent', $staff, ['staffid', ['firstname', 'lastname']],
                                     <option value="before_tax" <?= isset($invoice) && $invoice->discount_type == 'before_tax' ? 'selected' : ''; ?>>
                                         <?= _l('discount_type_before_tax'); ?>
                                     </option>
-                                    <option value="after_tax" <?= (isset($invoice) && $invoice->discount_type == 'after_tax') || (!isset($invoice)) ? 'selected' : ''; ?>>
+                                    <option value="after_tax" <?= (isset($invoice) && $invoice->discount_type == 'after_tax') || (!isset($invoice)) || (isset($invoice) && empty($invoice->discount_type)) ? 'selected' : ''; ?>>
                                         <?= _l('discount_type_after_tax'); ?>
                                     </option>
 

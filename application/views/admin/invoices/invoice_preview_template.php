@@ -274,7 +274,6 @@ if ($total_reminders > 0) {
                                     <?php if (staff_can('edit', 'invoices') || staff_can('create', 'invoices')) { ?>
                                     <li>
                                         <?php if ($invoice->status != Invoices_model::STATUS_CANCELLED
-                                     && $invoice->status != Invoices_model::STATUS_PAID
                                      && $invoice->status != Invoices_model::STATUS_PARTIALLY) { ?>
                                         <a
                                             href="<?= admin_url('invoices/mark_as_cancelled/' . $invoice->id); ?>"><?= e(_l('invoice_mark_as', _l('invoice_status_cancelled'))); ?></a>
@@ -284,7 +283,7 @@ if ($total_reminders > 0) {
                                         <?php } ?>
                                     </li>
                                     <?php } ?>
-                                    <?php if (! in_array($invoice->status, [Invoices_model::STATUS_PAID, Invoices_model::STATUS_CANCELLED, Invoices_model::STATUS_DRAFT])
+                                    <?php if (! in_array($invoice->status, [Invoices_model::STATUS_CANCELLED, Invoices_model::STATUS_DRAFT])
                                   && staff_can('edit', 'invoices')
                                   && $invoice->duedate
                                   && is_invoices_overdue_reminders_enabled()) { ?>
