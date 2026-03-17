@@ -12,6 +12,7 @@ class Cron_custom extends App_Controller
 
     public function reset_daily_option()
     {
+
         // Update the option with ID 36 to value '1'
         $updated = $this->Clients_model->update_option_value(36, '1');
 

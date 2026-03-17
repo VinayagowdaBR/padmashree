@@ -169,6 +169,46 @@ public function validate_invoice_number()
     }
 }
 
+public function reset_invoice_number()
+{
+    if (!is_admin()) {
+        echo json_encode(['success' => false, 'message' => 'Access denied']);
+        die;
+    }
+
+    $format = (int) get_option('invoice_number_format');
+
+    if ($format === 5) {
+        // For Format 5 (YYMMDD+NNN): the daily counter is auto-generated
+        // from existing invoices, so we reset next_invoice_number AND
+        // inform the user about today's invoice count
+        $date_prefix = date('ymd');
+
+        $this->db->from(db_prefix() . 'invoices');
+        $this->db->like('number', $date_prefix, 'after');
+        $existing_count = $this->db->count_all_results();
+
+        // Reset next_invoice_number for non-format-5 usage
+        update_option('next_invoice_number', 1);
+
+        $message = "next_invoice_number reset to 1. Format 5 (YYMMDD+NNN) has {$existing_count} invoice(s) today ({$date_prefix}xxx). Next invoice will be numbered " . $date_prefix . str_pad($existing_count + 1, 3, '0', STR_PAD_LEFT) . ".";
+
+        echo json_encode([
+            'success' => true,
+            'message' => $message,
+        ]);
+    } else {
+        // For other formats, reset next_invoice_number to 1
+        update_option('next_invoice_number', 1);
+        $current = get_option('next_invoice_number');
+
+        echo json_encode([
+            'success' => ($current == '1'),
+            'message' => 'next_invoice_number reset to 1 successfully',
+        ]);
+    }
+    die;
+}
 
     public function add_note($rel_id)
     {

@@ -44,16 +44,24 @@
 	$(function() {
 		init_invoice();
 
-        // Run Action Button Script
+        // Run Action Button Script - Reset Invoice Number
         $('#run-action-btn').click(function() {
+            if (!confirm('Are you sure you want to reset the invoice number counter?')) {
+                return;
+            }
             $.ajax({
-                url: '<?= admin_url('clients/update_option'); ?>',
+                url: '<?= admin_url('invoices/reset_invoice_number'); ?>',
                 method: 'POST',
+                dataType: 'json',
                 success: function(response) {
-                    alert(response);
+                    if (response.success) {
+                        alert_float('success', response.message);
+                    } else {
+                        alert_float('danger', response.message || 'Failed to reset invoice number');
+                    }
                 },
                 error: function(xhr, status, error) {
-                    alert('Failed to perform action: ' + error);
+                    alert_float('danger', 'Failed to perform action: ' + error);
                 }
             });
         });
