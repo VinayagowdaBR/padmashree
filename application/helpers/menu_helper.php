@@ -325,6 +325,11 @@ function app_init_admin_sidebar_menu_items()
             $report_permissions['log_edited'] = true;
         }
 
+        if (staff_can('edit-referral-details-reports', 'reports')) {
+            $has_report_permissions = true;
+            $report_permissions['edit_referral_details'] = true;
+        }
+
        // Only add reports menu if user has at least one report permission
        if ($has_report_permissions) {
            $CI->app_menu->add_sidebar_menu_item('reports', [
@@ -403,6 +408,17 @@ function app_init_admin_sidebar_menu_items()
                 'name'     => 'Edited Bills',
                 'href'     => admin_url('reports/edited_bills'),
                 'position' => 35,
+                'badge'    => [],
+            ]);
+        }
+
+        // Add Edit Referral Details
+        if (isset($report_permissions['edit_referral_details'])) {
+            $CI->app_menu->add_sidebar_children_item('reports', [
+                'slug'     => 'edit-referral-details-reports',
+                'name'     => 'Edit Referral Details',
+                'href'     => admin_url('reports/edit_referral_details'),
+                'position' => 37,
                 'badge'    => [],
             ]);
         }

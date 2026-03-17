@@ -2454,6 +2454,212 @@ public function outpatient_bill_report()
         die();
     }
 
+    public function edit_referral_details()
+    {
+        if (!staff_can('edit-referral-details-reports', 'reports')) {
+            access_denied('reports');
+        }
+
+        $data['title'] = 'Edit Referral Details Report';
+        $this->load->view('admin/reports/edit_referral_details', $data);
+    }
+
+    public function edit_referral_details_table()
+    {
+        log_message('debug', '🚀 Starting edit_referral_details_table method');
+
+        if (!staff_can('view', 'invoices')) {
+            log_message('debug', '❌ Access denied for viewing invoices');
+            access_denied('invoices');
+        }
+
+        $invoiceTable = db_prefix() . 'invoices';
+        $clientsTable = db_prefix() . 'clients';
+        $itemableTable = db_prefix() . 'itemable';
+        $paymentRecordsTable = db_prefix() . 'invoicepaymentrecords';
+        $customFieldsValuesTable = db_prefix() . 'customfieldsvalues';
+        $customFieldsTable = db_prefix() . 'customfields';
+        $affiliateUsersTable = db_prefix() . 'affiliate_users';
+        $activityTable = db_prefix() . 'sales_activity';
+        $staffTable = db_prefix() . 'staff';
+
+        $this->load->model('invoices_model');
+        $this->load->model('currencies_model');
+        $currency = $this->currencies_model->get_base_currency();
+        log_message('debug', '💰 Loaded base currency: ' . print_r($currency, true));
+
+        // Date conversion helper
+        $convertDate = function($date) {
+            if (empty($date)) return '';
+            if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) return $date;
+            if (preg_match('/^(\d{2})-(\d{2})-(\d{4})$/', $date, $matches)) return $matches[3] . '-' . $matches[2] . '-' . $matches[1];
+            return to_sql_date($date) ?: '';
+        };
+
+        // Filters from POST
+        $from_date_raw = $this->input->post('report_from');
+        $to_date_raw   = $this->input->post('report_to');
+        $mrd_from  = $this->input->post('mrd_from');
+        $mrd_to    = $this->input->post('mrd_to');
+        $referral_name = $this->input->post('referral_name');
+
+        $from_date = $convertDate($from_date_raw);
+        $to_date = $convertDate($to_date_raw);
+
+        log_message('debug', '🎯 Received filters:');
+        log_message('debug', '   - from_date: ' . $from_date);
+        log_message('debug', '   - to_date: ' . $to_date);
+        log_message('debug', '   - mrd_from: ' . $mrd_from);
+        log_message('debug', '   - mrd_to: ' . $mrd_to);
+        log_message('debug', '   - referral_name: ' . $referral_name);
+
+        $where = [];
+
+        // Filter by activity/edit date instead of invoice creation date
+        $activity_where = "sa.rel_type = 'invoice'";
+        if ($from_date && $to_date) {
+            $activity_where .= ' AND DATE(sa.date) BETWEEN "' . $this->db->escape_str($from_date) . '" AND "' . $this->db->escape_str($to_date) . '"';
+        } elseif ($from_date) {
+            $activity_where .= ' AND DATE(sa.date) >= "' . $this->db->escape_str($from_date) . '"';
+        } elseif ($to_date) {
+            $activity_where .= ' AND DATE(sa.date) <= "' . $this->db->escape_str($to_date) . '"';
+        }
+        $where[] = 'AND EXISTS (SELECT 1 FROM ' . $activityTable . ' sa WHERE sa.rel_id = inv.id AND ' . $activity_where . ')';
+
+        if ($mrd_from && $mrd_to) {
+            $where[] = 'AND c.userid BETWEEN "' . $this->db->escape_str($mrd_from) . '" AND "' . $this->db->escape_str($mrd_to) . '"';
+        } elseif ($mrd_from) {
+            $where[] = 'AND c.userid >= "' . $this->db->escape_str($mrd_from) . '"';
+        } elseif ($mrd_to) {
+            $where[] = 'AND c.userid <= "' . $this->db->escape_str($mrd_to) . '"';
+        }
+
+        if ($referral_name) {
+            $referral_name_esc = $this->db->escape_like_str($referral_name);
+            $where[] = 'AND CONCAT(IFNULL(au.firstname, ""), " ", IFNULL(au.lastname, "")) LIKE "%' . $referral_name_esc . '%"';
+        }
+
+        if (staff_cant('view', 'invoices')) {
+            $where[] = get_invoices_where_sql_for_staff(get_staff_user_id());
+        }
+
+        $where[] = 'AND (inv.total - IFNULL((SELECT SUM(amount) FROM ' . $paymentRecordsTable . ' WHERE invoiceid = inv.id), 0)) = 0';
+
+        log_message('debug', '📋 WHERE conditions: ' . implode(' ', $where));
+
+        $sql = "
+        SELECT 
+            inv.id as invoice_id,
+            inv.number as invoice_number,
+            (SELECT cfdv.value FROM $customFieldsValuesTable cfdv 
+            JOIN $customFieldsTable cfd ON cfdv.fieldid = cfd.id 
+            WHERE cfd.slug = 'age_years' AND cfdv.relid = inv.id 
+            AND cfdv.fieldto = 'invoice' LIMIT 1) as age_years,
+            (SELECT cfdv.value FROM $customFieldsValuesTable cfdv 
+            JOIN $customFieldsTable cfd ON cfdv.fieldid = cfd.id 
+            WHERE cfd.slug = 'age_months' AND cfdv.relid = inv.id 
+            AND cfdv.fieldto = 'invoice' LIMIT 1) as age_months,
+            ii.rate AS item_fixed_rate,
+            (ii.qty * ii.rate) AS item_subtotal,
+            inv.discount_total,
+            inv.discount_percent,
+            inv.total,
+            inv.subtotal as invoice_subtotal,
+            c.company as client_name,
+            c.userid as mrd_no,
+            au.firstname,
+            au.lastname,
+            ii.id as item_id,
+            ii.description,
+            ii.long_description,
+            (SELECT MAX(date) FROM $paymentRecordsTable WHERE invoiceid = inv.id) as last_payment_date,
+            (SELECT SUM(amount) FROM $paymentRecordsTable WHERE invoiceid = inv.id) as total_paid,
+            cur.name as currency_name,
+            (SELECT cfdv.value FROM $customFieldsValuesTable cfdv 
+            JOIN $customFieldsTable cfd ON cfdv.fieldid = cfd.id 
+            WHERE cfd.name = 'Ref.By' AND cfdv.relid = inv.id 
+            AND cfdv.fieldto = 'invoice' LIMIT 1) as Refer
+        FROM $invoiceTable as inv
+        LEFT JOIN $clientsTable as c ON c.userid = inv.clientid
+        LEFT JOIN $affiliateUsersTable as au ON au.affiliate_code = c.affiliate_code COLLATE utf8mb4_unicode_ci
+        LEFT JOIN " . db_prefix() . "currencies as cur ON cur.id = inv.currency
+        LEFT JOIN $itemableTable as ii ON ii.rel_id = inv.id AND ii.rel_type = 'invoice'
+        WHERE 1=1 " . implode(' ', $where) . "
+        ORDER BY inv.id ASC, ii.id ASC
+        ";
+
+        log_message('debug', '🔍 Executing SQL query...');
+        $results = $this->db->query($sql)->result();
+        log_message('debug', '📊 Results found: ' . count($results));
+
+        $output['aaData'] = [];
+        $serial = 1;
+        $total_subtotal = 0;
+        $total_discount = 0;
+        $total_total = 0;
+        $total_commission = 0;
+        $total_balance = 0;
+        $commission_custom_field_id = 91;
+
+        foreach ($results as $row) {
+            $this->db->select('value');
+            $this->db->from($customFieldsValuesTable);
+            $this->db->where('relid', $row->item_id);
+            $this->db->where('fieldid', $commission_custom_field_id);
+            $this->db->where('fieldto', 'items');
+            $cf_result = $this->db->get()->row();
+
+            $commission = isset($cf_result->value) ? (float)$cf_result->value : 0;
+            $item_subtotal = (float)$row->item_fixed_rate;
+            $discount_percent = isset($row->discount_percent) ? (float)$row->discount_percent : 0;
+            $discount_total_item = $item_subtotal * ($discount_percent / 100);
+            $item_total_after_discount = $item_subtotal - $discount_total_item;
+            $commission_after_discount = max($commission - $discount_total_item, 0);
+            $balance = (float)$row->total - (float)$row->total_paid;
+
+            $age_years = !empty($row->age_years) ? $row->age_years : '0';
+            $age_months = !empty($row->age_months) ? $row->age_months : '0';
+            $age_display = ($age_months == '0' || $age_months == 0) ? $age_years : $age_years . '/' . $age_months;
+
+            $referral = !empty($row->Refer) ? $row->Refer : (($row->firstname || $row->lastname) ? $row->firstname . ' ' . $row->lastname : 'N/A');
+
+            $output['aaData'][] = [
+                $serial++,
+                '<a href="' . admin_url('invoices/invoice/' . $row->invoice_id) . '" target="_blank">' . format_invoice_number($row->invoice_id) . '</a>',
+                _d($row->last_payment_date),
+                str_pad($row->mrd_no, 0, '0', STR_PAD_LEFT),
+                $age_display,
+                '<a href="' . admin_url('clients/client/' . $row->mrd_no) . '" target="_blank">' . html_escape($row->client_name) . '</a>',
+                html_escape($referral),
+                html_escape($row->description),
+                html_escape($row->long_description),
+                number_format($item_subtotal, 2),
+                number_format($discount_total_item, 2),
+                number_format($item_total_after_discount, 2),
+                number_format($balance, 2),
+                '<span class="tw-text-green-600">' . number_format($commission_after_discount, 2) . '</span>',
+            ];
+
+            $total_subtotal += $item_subtotal;
+            $total_discount += $discount_total_item;
+            $total_total    += $item_total_after_discount;
+            $total_balance  += $balance;
+            $total_commission += $commission_after_discount;
+        }
+
+        $output['aaData'][] = [
+            '', '', '', '', '', '', '', '', '<strong>Total:</strong>',
+            '<strong>' . number_format($total_subtotal, 2) . '</strong>',
+            '<strong>' . number_format($total_discount, 2) . '</strong>',
+            '<strong>' . number_format($total_total, 2) . '</strong>',
+            '<strong>' . number_format($total_balance, 2) . '</strong>',
+            '<strong>' . number_format($total_commission, 2) . '</strong>',
+        ];
+
+        echo json_encode($output);
+        die();
+    }
+
     public function edited_bills_table()
     {
         if (!staff_can('view', 'invoices')) {

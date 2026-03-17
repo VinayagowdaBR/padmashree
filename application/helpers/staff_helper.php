@@ -103,20 +103,21 @@ function get_available_staff_permissions($data = [])
             ]),
         ],
         // In your permissions function, make sure the reports section has proper capabilities
-'reports' => [
-    'name'         => _l('reports'),
-    'capabilities' => [
-        'view'            => $viewGlobalName,
-        'view-timesheets' => _l('permission_view_timesheet_report'),
-        'sales-reports' => "Sales",
-        'due-paid-details-reports' => "Due Paid Details",
-        'outpatient-bill-report' => "Outpatient Bill Report",
-        'referral-details-reports' => "Referral Details",
-        'summary-details-reports' => "Summary Report",
-        'edited-bills-reports' => "Edited Bills",
-        'log-edited-reports' => "Log Edited"
-    ],
-],
+        'reports' => [
+            'name'         => _l('reports'),
+            'capabilities' => [
+                'view'            => $viewGlobalName,
+                'view-timesheets' => _l('permission_view_timesheet_report'),
+                'sales-reports' => "Sales",
+                'due-paid-details-reports' => "Due Paid Details",
+                'outpatient-bill-report' => "Outpatient Bill Report",
+                'referral-details-reports' => "Referral Details",
+                'summary-details-reports' => "Summary Report",
+                'edited-bills-reports' => "Edited Bills",
+                'log-edited-reports' => "Log Edited",
+                'edit-referral-details-reports' => "Edit Referral Details"
+            ],
+        ],
         'roles' => [
             'name'         => _l('roles'),
             'capabilities' => $withoutViewOwnPermissionsArray,
