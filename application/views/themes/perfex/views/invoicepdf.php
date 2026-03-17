@@ -29,14 +29,26 @@ $left_info .= '<p><span style="display:inline-block; width:' . $label_width . ';
 
 // 3. Referred By (Moved from Right)
 $CI =& get_instance();
-$CI->db->select('firstname, lastname');
-$CI->db->from('tblaffiliate_users');
-$CI->db->where('affiliate_code', $invoice->client->affiliate_code);
-$affiliate = $CI->db->get()->row();
+$CI->db->where('name', 'Ref.By');
+$CI->db->where('fieldto', 'invoice');
+$ref_by_field = $CI->db->get(db_prefix() . 'customfields')->row();
+$ref_by_value = '';
+if ($ref_by_field) {
+    $ref_by_value = get_custom_field_value($invoice->id, $ref_by_field->id, 'invoice');
+}
 
-if ($affiliate && !empty($affiliate->firstname)) {
-    $fullName = trim($affiliate->firstname . ' ' . $affiliate->lastname);
-    $left_info .= '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">Referred By</span>: ' . $fullName . '</p>';
+if (empty($ref_by_value)) {
+    $CI->db->select('firstname, lastname');
+    $CI->db->from(db_prefix() . 'affiliate_users');
+    $CI->db->where('affiliate_code', $invoice->client->affiliate_code);
+    $affiliate = $CI->db->get()->row();
+    if ($affiliate && !empty($affiliate->firstname)) {
+        $ref_by_value = trim($affiliate->firstname . ' ' . $affiliate->lastname);
+    }
+}
+
+if (!empty($ref_by_value)) {
+    $left_info .= '<p><span style="display:inline-block; width:' . $label_width . '; font-weight:bold;">Ref.By</span>: ' . $ref_by_value . '</p>';
 }
 
 $age_value = '';
@@ -234,45 +246,31 @@ if (get_option('total_to_words_enabled') == 1) {
 if (count($invoice->payments) > 0 && get_option('show_transactions_on_invoice_pdf') == 1) {
     $pdf->Ln(1);
 
-$displayed_modes = [];
-
-foreach ($invoice->payments as $payment) {
-    $payment_mode = !empty($payment['paymentmethod']) ? $payment['paymentmethod'] : $payment['name'];
-
-    // Only for UPI or Credit/Debit card
-    if (in_array(strtolower($payment_mode), ['upi', 'credit/debit card'])) {
-        $CI->db->select('value');
-        $CI->db->from(db_prefix() . 'customfieldsvalues');
-        $CI->db->where('relid', $invoice->id); // 🔁 Match with invoice ID
-        $CI->db->where('fieldto', 'invoice');  // ✅ It’s an invoice-level field
-        $CI->db->where('fieldid', 93);         // ✅ Payment Details custom field
-        $custom = $CI->db->get()->row();
-
-        if ($custom && !empty($custom->value)) {
-            $payment_mode .= ' (' . $custom->value . ')';
+    $payment_details_list = [];
+    foreach ($invoice->payments as $payment) {
+        $payment_mode_name = !empty($payment['name']) ? $payment['name'] : '';
+        if (!empty($payment['paymentmethod'])) {
+            $payment_mode_name .= ' (' . $payment['paymentmethod'] . ')';
         }
+        if (!empty($payment['transactionid'])) {
+            $payment_mode_name .= ' - ' . $payment['transactionid'];
+        }
+        $payment_details_list[] = $payment_mode_name;
     }
 
-    if (!in_array($payment_mode, $displayed_modes)) {
-        $displayed_modes[] = $payment_mode;
+    if (!empty($payment_details_list)) {
+        $all_payment_details = implode(', ', $payment_details_list);
+        $tblhtml = '<table width="100%" bgcolor="#fff" cellspacing="0" cellpadding="5" border="0">
+            <tr>
+             <td><strong>Received by : </strong>'  . $invoice->generated_by_email . '</td>
+            </tr>
+            <tr>
+            <td><strong>Payment Details : </strong>' .  $all_payment_details . '</td>
+            </tr>
+        </table>
+        <hr style="border:0.5px solid #000; margin:3px 0;">';
+        $pdf->writeHTML($tblhtml, true, false, false, false, '');
     }
-}
-
-
-
-if (!empty($displayed_modes)) {
-    $all_modes = implode(', ', $displayed_modes);
-    $tblhtml = '<table width="100%" bgcolor="#fff" cellspacing="0" cellpadding="5" border="0">
-        <tr>
-         <td><strong>Received by : </strong>'  . $invoice->generated_by_email . '</td>
-        </tr>
-        <tr>
-        <td><strong>Payment Details : < /strong>' .  $all_modes . '</td>
-        </tr>
-    </table>
-    <hr style="border:0.5px solid #000; margin:3px 0;">';
-    $pdf->writeHTML($tblhtml, true, false, false, false, '');
-}
 
     // ➕ Show clinic name right-aligned with smaller text and no spacing above
     $pdf->SetFont($font_name, '', $font_size - 2); // smaller and not bold
@@ -280,8 +278,7 @@ if (!empty($displayed_modes)) {
     $pdf->SetFont($font_name, '', $font_size); // reset to normal
 
     // Add spacing
-$pdf->Ln(15); // Adds vertical space (adjust as needed)
-
+    $pdf->Ln(15); // Adds vertical space (adjust as needed)
 }
 
 if (!empty($invoice->sale_agent)) {

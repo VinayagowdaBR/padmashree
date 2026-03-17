@@ -146,8 +146,35 @@ if (isset($invoice->scheduled_email) && $invoice->scheduled_email) { ?>
                 <?= e(get_project_name_by_id($invoice->project_id)); ?>
             </p>
             <?php } ?>
+            <?php
+            // Ref.By logic
+            $ref_by_value = '';
+            $ci = &get_instance();
+            $ci->db->where('name', 'Ref.By');
+            $ci->db->where('fieldto', 'invoice');
+            $ref_by_field = $ci->db->get(db_prefix() . 'customfields')->row();
+            if ($ref_by_field) {
+                $ref_by_value = get_custom_field_value($invoice->id, $ref_by_field->id, 'invoice');
+            }
+            // Fallback to affiliate user name if custom field is empty
+            if (empty($ref_by_value) && isset($invoice->client->affiliate_code) && !empty($invoice->client->affiliate_code)) {
+                $ci->db->where('affiliate_code', $invoice->client->affiliate_code);
+                $affiliate = $ci->db->get(db_prefix() . 'affiliate_users')->row();
+                if ($affiliate) {
+                    $ref_by_value = $affiliate->firstname . ' ' . $affiliate->lastname;
+                }
+            }
+            if (!empty($ref_by_value)) { ?>
+            <p class="no-mbot">
+                <span class="bold"><?= _l('Ref.By'); ?>:</span>
+                <?= e($ref_by_value); ?>
+            </p>
+            <?php } ?>
             <?php $pdf_custom_fields = get_custom_fields('invoice', ['show_on_pdf' => 1]); ?>
             <?php foreach ($pdf_custom_fields as $field) {
+                if (isset($ref_by_field) && $field['id'] == $ref_by_field->id) {
+                    continue;
+                }
                 $value = get_custom_field_value($invoice->id, $field['id'], 'invoice');
                 if ($value == '') {
                     continue;
@@ -243,6 +270,22 @@ if (isset($invoice->scheduled_email) && $invoice->scheduled_email) { ?>
         <tr>
             <td>
                 <span class="tw-font-medium tw-text-neutral-700"><?= _l('Advanced Amount(Rs)'); ?></span>
+                <?php 
+                $payment_methods = [];
+                foreach ($invoice->payments as $payment) {
+                    $method_str = e($payment['name']);
+                    if (!empty($payment['paymentmethod'])) {
+                        $method_str .= ' (' . e($payment['paymentmethod']) . ')';
+                    }
+                    if ($payment['transactionid']) {
+                        $method_str .= ' - ' . e($payment['transactionid']);
+                    }
+                    $payment_methods[] = $method_str;
+                }
+                if (count($payment_methods) > 0) {
+                    echo '<br /><small class="text-muted">' . implode(', ', $payment_methods) . '</small>';
+                }
+                ?>
             </td>
             <td>
                 <?= e('-' . app_format_money($total_paid, $invoice->currency_name)); ?>
@@ -254,6 +297,22 @@ if (isset($invoice->scheduled_email) && $invoice->scheduled_email) { ?>
         <tr>
             <td>
                 <span class="tw-font-medium tw-text-neutral-700"><?= _l('Paid Amount(Rs)'); ?></span>
+                <?php 
+                $payment_methods = [];
+                foreach ($invoice->payments as $payment) {
+                    $method_str = e($payment['name']);
+                    if (!empty($payment['paymentmethod'])) {
+                        $method_str .= ' (' . e($payment['paymentmethod']) . ')';
+                    }
+                    if ($payment['transactionid']) {
+                        $method_str .= ' - ' . e($payment['transactionid']);
+                    }
+                    $payment_methods[] = $method_str;
+                }
+                if (count($payment_methods) > 0) {
+                    echo '<br /><small class="text-muted">' . implode(', ', $payment_methods) . '</small>';
+                }
+                ?>
             </td>
             <td>    
                 <?= e(app_format_money($total_paid, $invoice->currency_name)); ?>

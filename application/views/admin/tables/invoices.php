@@ -30,6 +30,7 @@ return App_table::find('invoices')->outputUsing(function ($params) {
             FROM $itemableTable
             WHERE rel_id = $invoiceTable.id AND rel_type = 'invoice') as all_items",
         'subtotal',
+        "(SELECT cfdv.value FROM " . db_prefix() . "customfieldsvalues cfdv JOIN " . db_prefix() . "customfields cfd ON cfdv.fieldid = cfd.id WHERE cfd.name = 'Ref.By' AND cfdv.relid = " . $invoiceTable . ".id AND cfdv.fieldto = 'invoice' LIMIT 1) as custom_ref_by",
         "(SELECT SUM(amount) FROM $paymentRecordsTable WHERE invoiceid = $invoiceTable.id) as total_paid",
         "($invoiceTable.total - IFNULL((SELECT SUM(amount) FROM $paymentRecordsTable WHERE invoiceid = $invoiceTable.id), 0)) as balance",
        " (
@@ -172,7 +173,10 @@ foreach ($rResult as $aRow) {
          $row[] = !empty($aRow['invoice_datecreated']) ? date('d-m-Y h:i A', strtotime($aRow['invoice_datecreated'])) : '';
         $row[] =  str_pad($aRow['mrd_no'], 0, '0', STR_PAD_LEFT);
         $row[] = empty($aRow['deleted_customer_name']) ? '<a href="' . admin_url('clients/client/' . $aRow['clientid']) . '">' . e($aRow['company']) . '</a>' : e($aRow['deleted_customer_name']);
-        $row[] = $aRow['affiliate_user_name'] ?: 'N/A';
+        
+        $ref_by = !empty($aRow['custom_ref_by']) ? $aRow['custom_ref_by'] : ($aRow['affiliate_user_name'] ?: 'N/A');
+        $row[] = $ref_by;
+        
         $row[] = $aRow['all_items'] ?: '-';
 
     $payment_modes = '';

@@ -212,6 +212,14 @@ $data_original_number = isset($invoice) ? $invoice->number : 'false';
 $customFieldsHtml = render_custom_fields('invoice', $rel_id);
 log_message('debug', 'Custom Fields rel_id: ' . var_export($rel_id, true));
 
+// FIND REF.BY ID
+$this->db->where('name', 'Ref.By');
+$this->db->where('fieldto', 'invoice');
+$ref_by_field_id_debug = $this->db->get(db_prefix() . 'customfields')->row();
+if ($ref_by_field_id_debug) {
+    log_message('debug', 'Ref.By Field ID: ' . $ref_by_field_id_debug->id);
+}
+
 // Get age field IDs and values
 $age_years_field_id = null;
 $age_months_field_id = null;
@@ -261,13 +269,19 @@ if (isset($invoice) && $invoice->id) {
     }
 }
 
+// FIND REF.BY ID
+$this->db->where('name', 'Ref.By');
+$this->db->where('fieldto', 'invoice');
+$ref_by_field_id_obj = $this->db->get(db_prefix() . 'customfields')->row();
+$ref_by_field_id = $ref_by_field_id_obj ? $ref_by_field_id_obj->id : 0;
+
 // Add CSS to hide unwanted fields and style age fields
 echo '<style>
-    /* Hide all custom fields except Sex (78) and Mobile.no (79) */
-    .custom-fields-form-row .col-md-4:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])),
-    .custom-fields-form-row .col-md-3:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])),
-    .custom-fields-form-row .col-md-6:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])),
-    .custom-fields-form-row .col-md-12:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])) {
+    /* Hide all custom fields except Sex (78), Mobile.no (79) and Ref.By (' . $ref_by_field_id . ') */
+    .custom-fields-form-row .col-md-4:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])):not(:has([data-fieldid="' . $ref_by_field_id . '"])),
+    .custom-fields-form-row .col-md-3:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])):not(:has([data-fieldid="' . $ref_by_field_id . '"])),
+    .custom-fields-form-row .col-md-6:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])):not(:has([data-fieldid="' . $ref_by_field_id . '"])),
+    .custom-fields-form-row .col-md-12:not(:has([data-fieldid="78"])):not(:has([data-fieldid="79"])):not(:has([data-fieldid="' . $ref_by_field_id . '"])) {
         display: none;
     }
     /* Hide the auto-rendered age custom fields (77=old Age, 97=AgeOption, 98=Age Months) */
