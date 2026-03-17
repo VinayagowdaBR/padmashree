@@ -7,6 +7,9 @@
         <div class="panel_s">
           <div class="panel-body">
             <h2 class="no-margin report-title">Referral Details Report</h2>
+            <div class="print-only-dates text-center" style="display: none; margin-bottom: 10px;">
+                <p><strong>From:</strong> <span id="print_from_date"></span> &nbsp;&nbsp; <strong>To:</strong> <span id="print_to_date"></span></p>
+            </div>
             <hr class="hr-panel-heading" />
 
             <!-- Filters -->
@@ -192,8 +195,16 @@
     font-size: 14pt !important;
     font-weight: bold !important;
     text-align: center !important;
-    margin: 0 0 4mm 0 !important;
+    margin: 0 0 2mm 0 !important;
     padding: 0 !important;
+    color: #000 !important;
+  }
+
+  .print-only-dates {
+    display: block !important;
+    text-align: center !important;
+    font-size: 10pt !important;
+    margin-bottom: 4mm !important;
     color: #000 !important;
   }
   
@@ -380,6 +391,13 @@
 <script>
 var referralTable;
 
+function updatePrintDates() {
+    var from = $('input[name="report_from"]').val();
+    var to = $('input[name="report_to"]').val();
+    $('#print_from_date').text(from || '---');
+    $('#print_to_date').text(to || '---');
+}
+
 $(function() {
     var today = new Date();
     var day = String(today.getDate()).padStart(2, '0');
@@ -387,6 +405,7 @@ $(function() {
     var year = today.getFullYear();
     var formattedDate = day + '-' + month + '-' + year;
     $('input[name="report_to"]').val(formattedDate);
+    updatePrintDates();
 
     referralTable = initDataTable(
         '.table-referral-details-report',
@@ -403,6 +422,7 @@ $(function() {
         data.mrd_from = $('input[name="mrd_from"]').val();
         data.mrd_to = $('input[name="mrd_to"]').val();
         data.referral_name = $('input[name="referral_filter"]').val();
+        updatePrintDates();
     });
 
     $('input[name="report_from"], input[name="report_to"], input[name="mrd_from"], input[name="mrd_to"], input[name="referral_filter"]').on('change', function() {
@@ -420,6 +440,7 @@ function resetReferralReport() {
     $('input[name="mrd_from"]').val('');
     $('input[name="mrd_to"]').val('');
     $('input[name="referral_filter"]').val('');
+    updatePrintDates();
     referralTable.ajax.reload();
 }
 </script>

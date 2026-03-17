@@ -7,6 +7,7 @@
         <div class="panel_s">
           <div class="panel-body">
             <h4 class="no-margin report-title"><?php echo _l('Out Patient Details'); ?></h4>
+            <h4 class="text-center" id="report-date-range"></h4>
             <hr class="hr-panel-heading" />
 
             <!-- Filters -->
@@ -434,7 +435,18 @@ $(document).ready(function () {
 });
 
 function filterOutpatientReport() {
+    updateDateRange();
     outpatientTable.ajax.reload();
+}
+
+function updateDateRange() {
+    var from = $('input[name="report_from"]').val();
+    var to = $('input[name="report_to"]').val();
+    if (from && to) {
+        $('#report-date-range').text('From: ' + from + ' To: ' + to);
+    } else {
+        $('#report-date-range').text('');
+    }
 }
 
 function resetOutpatientReport() {
@@ -445,6 +457,7 @@ function resetOutpatientReport() {
     $('input[name="referral_name"]').val('');
     $('select[name="paid_by"]').selectpicker('val', '');
     $('input[name="pay_details"]').val('');
+    updateDateRange();
     outpatientTable.ajax.reload();
 }
 </script>
