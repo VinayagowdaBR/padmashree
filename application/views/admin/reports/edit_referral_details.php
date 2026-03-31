@@ -6,7 +6,10 @@
       <div class="col-md-12">
         <div class="panel_s">
           <div class="panel-body">
-            <h2 class="no-margin report-title">Edit Referral Details Report</h2>
+            <div class="text-center">
+                <h1 class="report-company-name" style="margin: 0; font-weight: bold; text-transform: uppercase;">PADMASHREE ADVANCED IMAGING SERVICES</h1>
+                <h2 class="no-margin report-title">Edit Referral Details Report</h2>
+            </div>
             <div class="print-only-dates text-center" style="display: none; margin-bottom: 10px;">
                 <p><strong>From:</strong> <span id="print_from_date"></span> &nbsp;&nbsp; <strong>To:</strong> <span id="print_to_date"></span></p>
             </div>
@@ -119,6 +122,7 @@
   #wrapper, .content, .row, .col-md-12 { width: 100% !important; height: auto !important; min-height: 0 !important; margin: 0 !important; padding: 0 !important; float: none !important; display: block !important; overflow: visible !important; }
   .panel_s { border: none !important; box-shadow: none !important; margin: 0 !important; }
   .panel-body { padding: 2mm !important; }
+  .report-company-name { font-size: 16pt !important; font-weight: bold !important; text-align: center !important; margin: 0 0 2mm 0 !important; padding: 0 !important; color: #000 !important; text-transform: uppercase !important; }
   .report-title { font-size: 14pt !important; font-weight: bold !important; text-align: center !important; margin: 0 0 2mm 0 !important; padding: 0 !important; color: #000 !important; }
   .print-only-dates { display: block !important; text-align: center !important; font-size: 10pt !important; margin-bottom: 4mm !important; color: #000 !important; }
   .table-responsive { overflow: visible !important; margin: 0 !important; padding: 0 !important; border: none !important; height: auto !important; }

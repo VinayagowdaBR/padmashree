@@ -8,7 +8,10 @@
       <div class="col-md-12">
         <div class="panel_s">
           <div class="panel-body">
-            <h2 class="no-margin"><?php echo _l('DUE PAID DETAILS'); ?></h2>
+            <div class="text-center">
+                <h1 class="report-company-name" style="margin: 0; font-weight: bold; text-transform: uppercase;">PADMASHREE ADVANCED IMAGING SERVICES</h1>
+                <h2 class="no-margin report-title"><?php echo _l('DUE PAID DETAILS'); ?></h2>
+            </div>
             <hr class="hr-panel-heading" />
 
             <!-- Filters -->
@@ -42,6 +45,9 @@
                 <div class="btn-group" style="margin-top:25px;">
                   <button class="btn btn-primary" onclick="filterDuePaidReport(); return false;"><?php echo _l('apply'); ?></button>
                   <button class="btn btn-default" onclick="resetDuePaidReport(); return false;"><?php echo _l('reset'); ?></button>
+                  <button class="btn btn-info" onclick="window.print(); return false;">
+                    <i class="fa fa-print"></i> <?php echo _l('Print'); ?>
+                  </button>
                 </div>
               </div>
             </div>
@@ -114,6 +120,20 @@
 
 <!-- Print-Friendly Styling -->
 <style media="print">
+  @page {
+    size: A4 landscape;
+    margin: 6mm 4mm;
+  }
+  #header, #top-header, aside, .sidebar, .sidebar-wrapper, nav, .navbar, .setup-menu, footer, .footer, .btn, .btn-group, button, .form-group, label, input, select, .hr-panel-heading, .mbot15, .dataTables_filter, .dataTables_length, .dataTables_info, .dataTables_paginate, .dataTables_processing, div.dataTables_wrapper > div:first-child, div.dataTables_wrapper > div:last-child {
+    display: none !important;
+  }
+  html, body { width: 100% !important; height: auto !important; min-height: 0 !important; margin: 0 !important; padding: 0 !important; background: #fff !important; overflow: visible !important; }
+  #wrapper, .content, .row, .col-md-12 { width: 100% !important; height: auto !important; min-height: 0 !important; margin: 0 !important; padding: 0 !important; float: none !important; display: block !important; overflow: visible !important; }
+  .panel_s { border: none !important; box-shadow: none !important; margin: 0 !important; }
+  .panel-body { padding: 2mm !important; }
+  .report-company-name { font-size: 16pt !important; font-weight: bold !important; text-align: center !important; margin: 0 0 2mm 0 !important; padding: 0 !important; color: #000 !important; text-transform: uppercase !important; }
+  .report-title { font-size: 14pt !important; font-weight: bold !important; text-align: center !important; margin: 0 0 4mm 0 !important; padding: 0 !important; color: #000 !important; }
+  
   table, th, td {
     border: 1px solid #000 !important;
     border-collapse: collapse !important;
@@ -122,6 +142,7 @@
     padding: 6px !important;
     vertical-align: middle !important;
     text-align: left !important;
+    font-size: 7pt !important;
   }
   tfoot th {
     font-weight: bold !important;

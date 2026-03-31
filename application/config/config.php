@@ -49,8 +49,8 @@ function db_prefix()
 |
 */
 
-$config['base_url'] = "http://localhost/perfex_crm/perfex_crm/";
-// $config['base_url'] = "http://192.168.1.209/perfex_crm/";   
+// $config['base_url'] = "http://localhost/perfex_crm/perfex_crm/";
+$config['base_url'] = "http://192.168.1.209/perfex_crm/";   
 
 /*
 |--------------------------------------------------------------------------

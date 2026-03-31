@@ -6,7 +6,10 @@
       <div class="col-md-12">
         <div class="panel_s">
           <div class="panel-body">
-            <h4 class="no-margin report-title"><?php echo _l('Edited Outpatient Bills'); ?></h4>
+            <div class="text-center">
+                <h1 class="report-company-name" style="margin: 0; font-weight: bold; text-transform: uppercase;">PADMASHREE ADVANCED IMAGING SERVICES</h1>
+                <h4 class="no-margin report-title"><?php echo _l('Edited Outpatient Bills'); ?></h4>
+            </div>
             <hr class="hr-panel-heading" />
 
             <!-- Filters -->
@@ -217,6 +220,15 @@
   }
   
   /* Title */
+  .report-company-name {
+    font-size: 16pt !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    margin: 0 0 2mm 0 !important;
+    padding: 0 !important;
+    color: #000 !important;
+    text-transform: uppercase !important;
+  }
   .report-title {
     font-size: 14pt !important;
     font-weight: bold !important;
