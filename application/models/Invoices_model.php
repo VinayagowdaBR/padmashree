@@ -532,8 +532,8 @@ class Invoices_model extends App_Model
             // Updated Logic for Format 5 (Daily Reset)
             if ((int) $data['number_format'] === 5) {
                 $date_prefix = date('ymd');
-                $next_seq = get_option('next_invoice_number');
-                $data['number'] = $date_prefix . str_pad($next_seq, 3, '0', STR_PAD_LEFT);
+                $next_seq = $this->get_daily_incremental_invoice_number();
+                $data['number'] = $date_prefix . $next_seq;
             } else {
                 $data['number'] = get_option('next_invoice_number');
             }
